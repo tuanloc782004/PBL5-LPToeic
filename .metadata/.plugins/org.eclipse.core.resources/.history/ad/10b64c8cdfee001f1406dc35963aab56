@@ -1,0 +1,7 @@
+package com.pbl5.service.impl;
+
+import com.pbl5.service.ListeningService;
+
+public class ListeningServiceImpl implements ListeningService{
+
+}

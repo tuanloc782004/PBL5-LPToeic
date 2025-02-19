@@ -13,4 +13,18 @@
     <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="com.pbl5.model.User"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.GrammarService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.MockExamQuestionService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.ListeningService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.ListeningQuestionService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.MockExamService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.ReadingService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.ReadingQuestionService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.PartService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.RoleService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.TestResultService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.VocabularyService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.VocabularyContentService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.UserService"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.UserAnswerService"/>
 </qualifiedTypeNameHistroy>
