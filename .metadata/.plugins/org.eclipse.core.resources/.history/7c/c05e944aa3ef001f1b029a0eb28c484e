@@ -1,0 +1,24 @@
+<div th:fragment="script">
+	<!-- plugins:js} -->
+	<script th:src="@{/admin-asset/vendors/js}/vendor.bundle.base.js}"></script>
+	<!-- endinject -->
+	<!-- Plugin js} for this page -->
+	<script
+		th:src="@{/admin-asset/vendors/jquery-bar-rating/jquery.barrating.min.js}"></script>
+	<script th:src="@{/admin-asset/vendors/chart.js/Chart.min.js}"></script>
+	<script th:src="@{/admin-asset/vendors/flot/jquery.flot.js}"></script>
+	<script th:src="@{/admin-asset/vendors/flot/jquery.flot.resize.js}"></script>
+	<script th:src="@{/admin-asset/vendors/flot/jquery.flot.categories.js}"></script>
+	<script th:src="@{/admin-asset/vendors/flot/jquery.flot.fillbetween.js}"></script>
+	<script th:src="@{/admin-asset/vendors/flot/jquery.flot.stack.js}"></script>
+	<!-- End plugin js} for this page -->
+	<!-- inject:js} -->
+	<script th:src="@{/admin-asset/js/off-canvas.js}"></script>
+	<script th:src="@{/admin-asset/js/hoverable-collapse.js}"></script>
+	<script th:src="@{/admin-asset/js/misc.js}"></script>
+	<script th:src="@{/admin-asset/js/settings.js}"></script>
+	<script th:src="@{/admin-asset/js/todolist.js}"></script>
+	<!-- endinject -->
+	<!-- Custom js} for this page -->
+	<script th:src="@{/admin-asset/js/dashboard.js}"></script>
+</div>

@@ -1,0 +1,35 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar"
+	th:fragment="sidebar">
+	<ul class="nav">
+		<li class="nav-item nav-profile border-bottom"><a th:href="@{/}"
+			class="nav-link flex-column">
+				<div class="nav-profile-image">
+					<img th:src="${currentUserAvatarUrl}" alt="profile" />
+					<!--change to offline or busy as needed-->
+				</div>
+				<div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
+					<span class="font-weight-semibold mb-1 mt-2 text-center"
+						th:text="${currentUserUsername}">admin</span>
+				</div>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/admin}">
+				<i class="mdi mdi-account-multiple menu-icon"></i> <span
+				class="menu-title">Quản lý tài khoản</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+			href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> <i
+				class="mdi mdi-book-open-page-variant menu-icon"></i> <span
+				class="menu-title">Quản lý bài học</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Buttons</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Dropdowns</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Typography</a></li>
+				</ul>
+			</div></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+				class="mdi mdi-contacts menu-icon"></i> <span class="menu-title">Icons</span>
+		</a></li>
+	</ul>
+</nav>

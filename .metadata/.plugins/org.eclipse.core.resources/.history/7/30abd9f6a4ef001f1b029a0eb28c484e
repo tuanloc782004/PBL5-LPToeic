@@ -1,0 +1,48 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar"
+	th:fragment="sidebar">
+	<ul class="nav">
+		<li class="nav-item nav-profile border-bottom"><a th:href="@{/}"
+			class="nav-link flex-column">
+				<div class="nav-profile-image">
+					<img th:src="${currentUserAvatarUrl}" alt="profile" />
+					<!--change to offline or busy as needed-->
+				</div>
+				<div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
+					<span class="font-weight-semibold mb-1 mt-2 text-center"
+						th:text="${currentUserUsername}">admin</span>
+				</div>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/admin}">
+				<i class="mdi mdi-compass-outline menu-icon"></i> <span
+				class="menu-title">Dashboard</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+			th:href="@{/}" aria-expanded="false" aria-controls="ui-basic"> <i
+				class="mdi mdi-crosshairs-gps menu-icon"></i> <span
+				class="menu-title">UI Elements</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Buttons</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Dropdowns</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/}">Typography</a></li>
+				</ul>
+			</div></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+				class="mdi mdi-contacts menu-icon"></i> <span class="menu-title">Icons</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+				class="menu-title">Forms</span></a></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+				class="mdi mdi-chart-bar menu-icon"></i> <span class="menu-title">Charts</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+				class="mdi mdi-table-large menu-icon"></i> <span class="menu-title">Tables</span>
+		</a></li>
+		<li class="nav-item pt-3"><a class="nav-link"
+			href="http://bootstrapdash.com/demo/plus-free/documentation/documentation.html"
+			target="_blank"> <i class="mdi mdi-file-document-box menu-icon"></i>
+				<span class="menu-title">Documentation</span>
+		</a></li>
+	</ul>
+</nav>

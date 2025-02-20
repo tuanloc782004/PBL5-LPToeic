@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" th:href="@{/login-form/style.css}">
+<title>PBL5</title>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container sign-up">
+			<form>
+				<h1>Tạo tài khoản</h1>
+				<input type="text" placeholder="Tên"> <input type="email"
+					placeholder="Email"> <input type="password"
+					placeholder="Mật khẩu">
+				<button>Đăng ký</button>
+			</form>
+		</div>
+		<div class="form-container sign-in">
+			<form>
+				<h1>Đăng nhập</h1>
+				<input type="username" placeholder="Username"> <input
+					type="password" placeholder="Mật khẩu"> <a href="#">Quên
+					mật khẩu?</a>
+				<button>Đăng nhập</button>
+			</form>
+		</div>
+		<div class="toggle-container">
+			<div class="toggle">
+				<div class="toggle-panel toggle-left">
+					<h1>Chào mừng trở lại!</h1>
+					<p>Nhập thông tin cá nhân của bạn để sử dụng tất cả các tính
+						năng của trang web</p>
+					<button class="hidden" id="login">Đăng nhập</button>
+				</div>
+				<div class="toggle-panel toggle-right">
+					<h1>Chào bạn!</h1>
+					<p>Đăng ký thông tin cá nhân của bạn để sử dụng tất cả các tính
+						năng của trang web</p>
+					<button class="hidden" id="register">Đăng ký</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/login-form/script.js}"></script>
+</body>
+</html>

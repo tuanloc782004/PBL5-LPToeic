@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>PBL5</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
 <body>
-	HELLO UNIVERSE !!!
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main class="main-container">
+		<div class="max-width">
+			<div class="home-content">
+				<h1>
+					Học cùng LPT<span>oeic</span>
+				</h1>
+				<button class="btn">Học ngay</button>
+			</div>
+			<div class="home-image">
+				<img th:src="@{/user-asset/image/pic1.png}" alt="Banner">
+			</div>
+		</div>
+	</main>
+
 </body>
 </html>
