@@ -79,7 +79,7 @@ body {
     text-decoration: underline 1.5px var(--color-text);
     text-underline-offset: 3px;
     padding: 3px 8px;
-    color: var(--color-text);
+    color: var(--color-white);
     font-size: 16px;
     font-weight: 400;
     transition: all 0.3s;
@@ -115,7 +115,7 @@ body {
 
 .menu-bar .user-info a {
     font-size: 16px;
-    color: var(--color-text);
+    color: var(--color-white);
     text-decoration: none;
     transition: all 0.3s;
 }

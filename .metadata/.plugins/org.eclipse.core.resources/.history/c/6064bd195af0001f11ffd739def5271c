@@ -1,0 +1,447 @@
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+--
+-- Host: localhost    Database: estorebookshop
+-- ------------------------------------------------------
+-- Server version	8.0.35
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `addresses`
+--
+
+DROP TABLE IF EXISTS `addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `addresses` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `address` text NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `zip_code` varchar(20) NOT NULL,
+  `id_user` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKb7vjjamtk9m96ukh4dyr2gwwl` (`id_user`),
+  CONSTRAINT `FKb7vjjamtk9m96ukh4dyr2gwwl` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `addresses`
+--
+
+LOCK TABLES `addresses` WRITE;
+/*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
+INSERT INTO `addresses` VALUES (9,'35 Yết Kiêu, phường Thuận Hòa','Huế','Việt Nam','49000',2),(10,'150 Tôn Đản, phường Hòa An, quận Cẩm Lệ','Đà Nẵng','Việt Nam','50000',2),(11,'Test','Test','Việt Nam ','52000',3),(12,'90 Đặng Thai Mai, phường Phú Ô','Hội An','Việt Nam ','53000',4),(13,'209 Lê Lợi, phường Ngũ Minh','Đắk Lắk','Việt Nam ','63000',5),(14,'22 Thạch Hãn, phường Nam An','Điện Bàn','Việt Nam','45000',6),(15,'Temp','Temp','Việt Nam ','12000',7),(16,'Temp2','Temp2','Việt Nam','13000',7),(17,'Temp3','Temp3','Việt Nam ','12000',7),(19,'123 Main Street','Hà Nội','Việt Nam','100000',13),(20,'456 Market Lane','TP Hồ Chí Minh','Việt Nam','700000',9),(21,'789 River Road','Đà Nẵng','Việt Nam','550000',10),(22,'321 Hill Avenue','Huế','Việt Nam','530000',11),(23,'654 Ocean Drive','Cần Thơ','Việt Nam','900000',12),(24,'123 Main Street','Hà Nội','Việt Nam','100000',13),(25,'456 Market Lane','TP Hồ Chí Minh','Việt Nam','700000',9),(26,'789 River Road','Đà Nẵng','Việt Nam','550000',10),(27,'321 Hill Avenue','Huế','Việt Nam','530000',11),(28,'654 Ocean Drive','Cần Thơ','Việt Nam','900000',12),(29,'654 Ocean Drive','Đà Nẵng','Việt Nam','550000',13),(30,'789 River Road','Huế','Việt Nam','530000',14),(31,'789 River Road','Huế','Việt Nam','530000',15),(32,'789 River Road','Huế','Việt Nam','530000',16),(33,'789 River Road','Huế','Việt Nam','530000',17),(34,'789 River Road','Huế','Việt Nam','530000',18);
+/*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_categories`
+--
+
+DROP TABLE IF EXISTS `book_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_categories` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id_book` bigint NOT NULL,
+  `id_category` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK777caeti8yd9ll7hoif44nc4m` (`id_book`),
+  KEY `FK4p4sfy6caaac5mq4pxjnxwy52` (`id_category`),
+  CONSTRAINT `FK4p4sfy6caaac5mq4pxjnxwy52` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`),
+  CONSTRAINT `FK777caeti8yd9ll7hoif44nc4m` FOREIGN KEY (`id_book`) REFERENCES `books` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_categories`
+--
+
+LOCK TABLES `book_categories` WRITE;
+/*!40000 ALTER TABLE `book_categories` DISABLE KEYS */;
+INSERT INTO `book_categories` VALUES (4,2,5),(5,2,8),(6,3,6),(7,3,8),(8,3,9),(9,4,1),(10,4,6),(11,5,1),(12,5,3),(13,5,4),(14,5,8),(15,5,9),(43,6,2),(44,6,4),(45,6,5),(46,6,8),(47,6,9),(102,8,4),(103,8,6),(104,8,8),(105,8,9),(111,1,6),(112,1,7),(113,1,9),(114,10,1),(115,10,3),(116,10,5),(117,10,6),(118,10,9),(127,11,7),(128,11,8),(129,11,1),(130,11,3),(131,11,4),(132,11,7),(133,11,8),(134,12,4),(135,12,5),(136,12,8),(137,12,9),(138,12,10),(139,13,3),(140,13,4),(141,13,6),(142,13,7),(143,13,9),(144,14,2),(145,14,3),(146,14,4),(147,14,10),(150,15,9),(151,16,9),(152,17,9),(153,18,9),(154,19,9),(155,20,9),(156,21,9),(157,22,9),(158,23,9),(159,24,9),(160,25,9),(161,26,9),(162,27,9),(163,28,9),(164,29,9),(165,30,9),(166,31,9),(167,32,9),(168,33,9),(169,34,9);
+/*!40000 ALTER TABLE `book_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_images`
+--
+
+DROP TABLE IF EXISTS `book_images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_images` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `image_url` varchar(255) DEFAULT NULL,
+  `id_book` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKnfe8hyj66yhit1lvh2hwslxsa` (`id_book`),
+  CONSTRAINT `FKnfe8hyj66yhit1lvh2hwslxsa` FOREIGN KEY (`id_book`) REFERENCES `books` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_images`
+--
+
+LOCK TABLES `book_images` WRITE;
+/*!40000 ALTER TABLE `book_images` DISABLE KEYS */;
+INSERT INTO `book_images` VALUES (1,'/upload-dir/1-1.png',1),(2,'/upload-dir/1-2.png',1),(3,'/upload-dir/1-3.png',1),(4,'/upload-dir/2-1.png',2),(5,'/upload-dir/2-2.png',2),(6,'/upload-dir/3-1.jpg',3),(7,'/upload-dir/3-2.jpg',3),(8,'/upload-dir/3-3.jpg',3),(9,'/upload-dir/4-1.jpg',4),(10,'/upload-dir/4-2.png',4),(11,'/upload-dir/4-3.png',4),(12,'/upload-dir/5.jpg',5),(13,'/upload-dir/6-1.jpg',6),(14,'/upload-dir/6-2.png',6),(15,'/upload-dir/6-3.png',6),(16,'/upload-dir/20250109_005721_download.jpg',6),(17,'/upload-dir/20250109_005721_thie-t-ke-chu-a-co-te-n-24.jpg',6),(18,'/upload-dir/20250109_164707_963d63c3dca69a9e40094b7765d4a70c.jpg',8),(20,'/upload-dir/20250111_163815_b171a7fa03dd4b06c64ad42ab0e26e28.jpg',10),(21,'/upload-dir/20250111_163815_a8ef8f8237dbcb97f1ed455905bfbd92.jpg',10),(22,'/upload-dir/20250111_163815_f0ebc142574c91cea920b19ccb2c94e0.jpg',10),(23,'/upload-dir/20250111_164213_3a83ba3e8013c5ef27605a432f9b919f.jpg',11),(24,'/upload-dir/20250111_164213_f27b9cebf10e3110cacfc8bbf8e34b61.jpg',11),(25,'/upload-dir/20250111_164213_de76514dddaa664bb540b3a4ea9c4b67.jpg',11),(26,'/upload-dir/20250111_164213_4a312960c16257b8c4cd470d86ac3a70.jpg',11),(27,'/upload-dir/20250111_164213_97bd6f0a933054852178cc8de76d8c64.jpg',11),(28,'/upload-dir/20250111_164213_1055214e924008af0490a50e84e3e5f7.jpg',11),(29,'/upload-dir/20250111_164213_5c3da7eab3e70e5ea777df1ae209f7fb.jpg',11),(30,'/upload-dir/20250111_164213_fcd5d7c1e963e66f686061393793d9b8.jpg',11),(31,'/upload-dir/20250111_164213_0f607537e4532428cca252a99d5b8f79.jpg',11),(32,'/upload-dir/20250111_164550_2d9eb83f9c090dd4c3bbac5534bd5492.jpg',12),(33,'/upload-dir/20250111_164550_389dfa44c00af8e3053f1ddb4f39ed02.png',12),(34,'/upload-dir/20250111_164550_3229d994707992bd99e1bf3eaa97473e.png',12),(35,'/upload-dir/20250111_164550_357af41f57a1d70a1daac1db7b3ee1f6.jpg',12),(36,'/upload-dir/20250111_164829_978e8e91697b138e99d4db53a4531d16.jpg',13),(37,'/upload-dir/20250111_164829_97c8898f0fa524be1e463e810787af60.jpg',13),(38,'/upload-dir/20250111_164829_a84830267c5f30b5c264507b1eaf724b.jpg',13),(39,'/upload-dir/20250111_165141_b3c6614da34af6f00938d882c90d00ce.jpg',14),(40,'/upload-dir/20250111_165141_93b941b8343f15fe230aba096da04cba.jpg',14),(41,'/upload-dir/20250111_165141_40bf1486d8fd73055fa553be62d4b450.jpg',14),(42,'/upload-dir/20250111_165141_f31c3c70adafc8c9e161312c413be98e.jpg',14),(43,'/upload-dir/20250111_165141_4a3487e5865cf7590ca995d8384e69ed.jpg',14),(44,'/upload-dir/20250111_165141_f6b10b2f37a7195102befc90702d7632.jpg',14),(45,'/upload-dir/20250111_165141_b138aebb794e0c7b5f7462390a129b0c.png',14),(46,'/upload-dir/20250111_165555_b2e124e07d3ddea05d8b03c442b2ee1d.jpg',15),(47,'/upload-dir/20250111_165555_5d08a5f3921d76dace9f0f1bdc9c6626.jpg',15),(48,'/upload-dir/20250111_165850_7c78ce642f5345b3c03ae2ff52b96bf2.jpg',16),(49,'/upload-dir/20250111_165850_9573f4abb444d74e7dab4265d4f0f8a2.jpg',16),(50,'/upload-dir/20250111_165850_5b61704ed2530c315a10bcdac6392b08s.jpg',16),(51,'/upload-dir/20250111_165850_5b61704ed2530c315a10bcdac6392b08.jpg',16),(52,'/upload-dir/20250111_165850_cfdaa8455ab70986deacd5012c44273b.jpg',16),(53,'/upload-dir/20250111_170535_7c82e53ee8254b32e97e6f5cd48830ad.jpg',17),(54,'/upload-dir/20250111_170648_3e909d1282f382c5e0e45dbf27dc9140.jpg',18),(55,'/upload-dir/20250111_171521_737e52eed0c9f3ec3b2f4d84bddac5ab.jpg',19),(56,'/upload-dir/20250111_171625_5af49bb590620e44e973b4e6609568b9.png',20),(57,'/upload-dir/20250111_171741_0495fb3883c3add66e90f9abbb49fa14.jpg',21),(58,'/upload-dir/20250111_171848_d3a9a268775a69d7a20452c2f960fa6a.jpg',22),(59,'/upload-dir/20250111_172159_5bd74be3b1b44f61d70c25bf87ea49a1.jpg',23),(60,'/upload-dir/20250111_172159_dd4f32ddcbd7e12e3091f64baa951fc0.jpg',23),(61,'/upload-dir/20250111_172159_49c1e9b35f04b2e49ce92f71e95e1750.jpg',23),(62,'/upload-dir/20250111_172312_20afee70a1fea2adf4640c3a90aa8a86.jpg',24),(63,'/upload-dir/20250111_172448_17f0f446ce09a7d91e843ca9db022013.jpg',25),(64,'/upload-dir/20250111_172448_22b7426aea345396ca99a4267e284a83.jpg',25),(65,'/upload-dir/20250111_172449_78a0bfb656a27293253e41f9d99cf79d.jpg',25),(66,'/upload-dir/20250111_172611_560415c33cf6196b13efa95e448cb748.jpg',26),(67,'/upload-dir/20250111_172725_10d984aa603f8310b61cbbf2b8d3cac4.jpg',27),(68,'/upload-dir/20250111_172841_21425894bd058bfc685377a18dd23fca.jpg',28),(69,'/upload-dir/20250111_172841_9c5d35bcb3ce1c458f98ad5d1d9d5a55.jpg',28),(70,'/upload-dir/20250111_173018_e626ab4dd85eae35e4441d3f96fe6c88.jpg',29),(71,'/upload-dir/20250111_173018_7dc186d06b7ac8baaffe208ae09ceda6.jpg',29),(72,'/upload-dir/20250111_173118_aec771892a8701468eee8d8430b4550d.jpg',30),(73,'/upload-dir/20250111_173239_39f0eb8dfdc66a298e8cba8e77441f42.png',31),(74,'/upload-dir/20250111_173239_d148cb4628f59d5c25ddb235dbfed6fe.png',31),(75,'/upload-dir/20250111_173239_c7457d8c679663fd85685365c6714a1c.jpg',31),(76,'/upload-dir/20250111_173336_352357732c97aea207de3cb74dcfd487.jpg',32),(77,'/upload-dir/20250111_173506_3fa9ce47de6f1ae04e27db6c7c1bfa76.jpg',33),(78,'/upload-dir/20250111_173606_ed18594d1102c60e0a24a7f45e5a2873.jpg',34);
+/*!40000 ALTER TABLE `book_images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `books`
+--
+
+DROP TABLE IF EXISTS `books`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `books` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `author` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `description` text NOT NULL,
+  `discount` decimal(4,2) NOT NULL,
+  `enabled` bit(1) NOT NULL,
+  `isbn` varchar(17) NOT NULL,
+  `num_of_pages` bigint NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` bigint NOT NULL,
+  `rating` decimal(3,2) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `year_of_publication` int NOT NULL,
+  `id_language` bigint NOT NULL,
+  `id_publisher` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKkibbepcitr0a3cpk3rfr7nihn` (`isbn`),
+  KEY `FKqugh5skmqh8ub5vst348nuyya` (`id_language`),
+  KEY `FKix55a38nhgwihjsecwmyvl8qq` (`id_publisher`),
+  CONSTRAINT `FKix55a38nhgwihjsecwmyvl8qq` FOREIGN KEY (`id_publisher`) REFERENCES `publishers` (`id`),
+  CONSTRAINT `FKqugh5skmqh8ub5vst348nuyya` FOREIGN KEY (`id_language`) REFERENCES `languages` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `books`
+--
+
+LOCK TABLES `books` WRITE;
+/*!40000 ALTER TABLE `books` DISABLE KEYS */;
+INSERT INTO `books` VALUES (1,'T.J.Klune','2023-12-31 17:00:00','Ngôi nhà bên bờ biển xanh thẳm là một cuốn sách nhẹ nhàng và ngọt ngào, chứa đựng những bài học đời thường mà đôi khi con người quên mất. Rằng những điều bất ngờ nhất, phù hợp nhất sẽ vô tình xuất hiện khi bạn không mong chờ nhất.',0.00,_binary '','978-3-16-148410-0',640,5.36,50,0.00,'Ngôi Nhà Bên Bờ Biển Xanh Thẳm',2022,1,1),(2,'Dịch Dương','2023-12-31 17:00:00','Cuốn sách ChatGPT thực chiến xoay quanh việc học và sử dụng các công cụ AI, cũng như cách vận hành thực tế những ứng dụng AI trong các lĩnh vực khác nhau. Cuốn sách cung cấp những kiến thức cô đọng và thực tiễn nhất để nâng cao toàn diện những nhận thức, nguyên tắc sử dụng và các thao tác liên quan đến công cụ AI.',10.00,_binary '','978-0-12-345678-9',263,4.69,50,0.00,'Chat GPT Thực Chiến',2024,1,2),(3,'Nguyễn Đoàn Minh Thư','2023-12-31 17:00:00','Hành tinh của một kẻ nghĩ nhiều là hành trình khám phá thế giới nội tâm của một người trẻ. Đó là một hành tinh đầy hỗn loạn của những suy nghĩ trăn trở, những dằn vặt, những cuộc chiến nội tâm, những cảm xúc vừa phức tạp cũng vừa rất đỗi con người. Một thế giới quen thuộc với tất cả chúng ta.',10.00,_binary '','978-1-56619-909-4',184,2.51,40,0.00,'Hành Tinh Của Một Kẻ Nghĩ Nhiều',2022,1,3),(4,'Kulzsc','2023-12-31 17:00:00','Sau thành công của “Tô bình yên vẽ hạnh phúc” và “Mình chỉ là người bình thường”, chàng họa sĩ nổi tiếng đa tài Kulzsc đã quay trở lại với “Yêu những ngày nắng Chẳng ghét những ngày mưa”. Cuốn sách là sự kết hợp hài hòa và thú vị của thể loại Sách tản văn và Sách tô màu.',10.00,_binary '','978-0-596-52068-7',168,1.81,40,0.00,'Yêu Những Ngày Nắng Chẳng Ghét Những Ngày Mưa',2022,1,5),(5,'Paulo Coelho','2023-12-31 17:00:00','Tiểu thuyết Nhà giả kim của Paulo Coelho như một câu chuyện cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông. Trong lần xuất bản đầu tiên tại Brazil vào năm 1988, sách chỉ bán được 900 bản. Nhưng, với số phận đặc biệt của cuốn sách dành cho toàn nhân loại, vượt ra ngoài biên giới quốc gia, Nhà giả kim đã làm rung động hàng triệu tâm hồn, trở thành một trong những cuốn sách bán chạy nhất mọi thời đại, và có thể làm thay đổi cuộc đời người đọc.',0.00,_binary '','978-1-4028-9462-6',228,2.49,50,0.00,'Nhà Giả Kim',2020,1,7),(6,'John Boyne','2023-12-31 17:00:00','Rất khó miêu tả câu chuyện về Chú bé mang pyjama sọc này. Thường thì chúng tôi vẫn tiết lộ vài chi tiết về cuốn sách trên bìa, nhưng trong trường hợp này chúng tôi nghĩ làm như vậy sẽ làm hỏng cảm giác đọc của bạn. Chúng tôi nghĩ điều quan trọng là bạn nên đọc mà không biết trước nó kể về điều gì.',0.00,_binary '','978-0-387-95084-1',253,2.49,30,0.00,'Chú bé mang Pyjama sọc',2023,1,11),(8,'Valérie Perrin','2023-12-31 17:00:00','“Một tiểu thuyết đầy cảm xúc, một cuốn sách đưa ta đi từ tiếng cười đến những giọt nước mắt với các nhân vật hài hước và cuốn hút.”  – Ban giám khảo giải thưởng Prix des Maisons de la Presse.\r\n\r\nViolette Toussaint sống mà như chết. Người phụ nữ ấy bị mẹ đẻ bỏ rơi ngay khi vừa lọt lòng, tới lượt cô con gái nhỏ mà cô yêu thương nhất lại bỏ cô mà đi trong một tai nạn thảm khốc, rồi cả đến người chồng một ngày kia cũng không còn ở lại bên cô. Cuộc đời của một nhân viên gác chắn nơi ga xép với những chuyến tàu nhỏ mỗi ngày đến rồi đi hay của một người quản trang tại nghĩa trang tỉnh lẻ chuyên đón nhận người chết và chăm sóc các phần mộ tưởng chừng chỉ gắn chặt với mất mát, buồn đau, rồi úa tàn dần theo năm tháng. Nhưng sự sống là mầu nhiệm, hy vọng vẫn còn đó, hạnh phúc lại có dịp được hồi sinh khi hoa kia được thay nước, khi chính con người vẫn tin vào cuộc đời.',10.00,_binary '','978-1-4028-9463-3',532,5.36,50,0.00,'Hoa Vẫn Nở Mỗi Ngày',2022,1,12),(10,'Nguyễn Hiến Lê','2023-12-31 17:00:00','Cuốn sách “Hương sắc trong vườn văn” là tập tiểu luận hướng dẫn người viết văn rèn luyện tay nghề do dịch giả Nguyễn Hiến Lê thực hiện. Trong đó, tác giả đã chia thành 14 chương và chương nào cũng đắc dụng, đó là những gợi ý cho người viết cần phải có những ý niệm ngay từ khi ban đầu khi thực hiện tác phẩm.',10.00,_binary '','978-3-642-11746-6',440,6.94,50,0.00,'Hương sắc trong vườn văn',2022,1,12),(11,'Phạm Lữ Ân','2023-12-31 17:00:00','Nếu biết trăm năm là hữu hạn ngay từ tên gọi đã rất gợi mở và đầy ẩn ý. Với những cảm xúc sâu lắng, bao gồm những bài viết ngắn, đầy chất thơ, chiêm nghiệm về mọi vấn đề của cuộc sống hôm nay, với những buồn vui như hạt mưa trong tưới mát tâm hồn, cuốn sách đã chạm được đến những mẫu số chung của mỗi người khi trình bày những thứ tình cảm thân thương từ tình cảm gia đình cho đến tình yêu, tình bạn…\r\n\r\nKhông phải ngẫu nhiên mà tác phẩm này nhận được nhiều sự yêu mến đến vậy, khi tái bản lên tới con số 30 lần. Những trang viết của Nếu biết trăm năm là hữu hạn suốt bao nhiêu năm qua vẫn như người bạn tâm tình cùng bao thế hệ bạn đọc, xứng đáng trở thành một trong những cuốn sách được yêu thích nhất ở Việt Nam.',10.00,_binary '','978-0-672-31745-9',268,5.63,30,0.00,'Nếu Biết Trăm Năm Là Hữu Hạn',2022,1,8),(12,'Mavis Vivu Ký','2023-12-31 17:00:00','“Vạn dặm đường từ một bước chân” là hành trình của Mavis Vi Vu Ký khám phá 63 tỉnh thành Việt Nam trong 6 năm. Bạn có thể tìm thấy trong 248 trang sách một Mavis ngây ngô, háo hức trước những điều mới lạ, nhưng theo dòng thời gian, trải qua nhiều sự kiện cũng như thử thách dần trở nên độc lập và mạnh mẽ hơn.\r\nTừng vùng đất trên đất nước hình chữ S hiện lên rất thực và đời dưới góc nhìn của Mavis Vi Vu Ký. Một Pleiku sống động với hàng thông là biển hồ chè rộng lớn, những luống chè xanh ngát nối đuôi nhau trải dài bất tận cùng đập Tân Sơn, ngắm nhìn mặt nước xanh phẳng lặng, bình yên; Hoàng hôn Tà Xùa cũng rất đẹp, lý tưởng bậc nhất có lẽ là ngắm từ khu vực Đỉnh Gió hay Thái Nguyên với nhiều con thác đẹp như tranh với cảnh sắc yên bình và ngoạn mục. Và vô vàn cảnh sắc tươi đẹp khác của thiên nhiên Việt Nam.',10.00,_binary '','978-1-86197-876-9',248,4.65,40,0.00,'Vạn Dặm Đường Từ Một Bước Chân',2024,1,9),(13,'Nhiều tác giả','2023-12-31 17:00:00','“Chuyện kể rằng có nàng và tôi” là cuốn sách nhỏ với những áng thơ nhẹ nhàng, lãng mạn thể hiện mối giao hòa đẹp đẽ trong tâm hồn những người con gái. Tình yêu của họ vượt trên tất thảy mọi định kiến, chỉ còn lại là những cảm xúc dạt dào, vô tận. Trong những câu thơ đôi khi họ là những người lãng du cô đơn bước chân qua đám đông tranh cãi ồn ào và luôn khao khát tìm kiếm hạnh phúc.',10.00,_binary '','978-1-4919-1889-0',152,1.90,50,0.00,'Chuyện Kể Rằng Có Nàng Và Tôi',2022,1,9),(14,'Bùi Anh Tấn','2023-12-31 17:00:00','Một thế giới không có đàn bà là tiểu thuyết của nhà văn Bùi Anh Tấn, được chuyển thể thành phim cùng tên nằm trong Series Cảnh sát hình sự đình đám một thời.\r\n\r\nTruyện mở ra bằng cái chết của thạc sĩ Bàng - Phó viện trường Viện nghiên cứu, một nhân vật có gia thế, học thức và địa vị cao trong xã hội. Ông được phát hiện bị bắn chết trên giường ngủ trong trạng thái gần như lõa thể. Cùng lúc đó, Phòng cảnh sát hình sự cũng nhận được ba vụ án khác, nạn nhân là những nam thanh niên trẻ, bị đánh đập, hành hạ tới chết.\r\n\r\nBí mật nào được ẩn giấu đằng sau những vụ án mạng trên. Cái chết của ba thanh niên có liên quan gì đến vụ án của thạc sĩ Bàng?',10.00,_binary '','978-0-19-852663-6',460,1.40,20,0.00,'Một Thế Giới Không Có Đàn Bà',2019,1,7),(15,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-1-59327-584-6',188,0.89,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 1',2023,1,1),(16,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-0-13-359414-0',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 2',2023,1,1),(17,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-0-13-110362-7',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 3',2023,1,1),(18,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-0-395-19395-8',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 4',2023,1,1),(19,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-1-4919-1126-0',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 5 ',2023,1,1),(20,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',14.00,_binary '','978-0-8493-3253-4',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 6 ',2023,1,1),(21,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-0-8493-3254-1',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 7',2023,1,1),(22,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',14.00,_binary '','978-0-262-12304-3',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 8',2023,1,1),(23,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động.\r\n\r\nCuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',24.00,_binary '','978-0-131-40565-9',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 9',2023,1,1),(24,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',20.00,_binary '','978-0-8493-3255-8',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 10',2023,1,1),(25,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',14.00,_binary '','978-1-4028-9464-9',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 11',2023,1,1),(26,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',21.00,_binary '','978-0-131-40565-8',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 12',2023,1,1),(27,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',14.00,_binary '','978-1-4919-1125-7',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 13 ',2023,1,1),(28,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',10.00,_binary '','978-0-131-40566-6',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 14',2023,1,1),(29,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y\r\n\r\nHãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',20.00,_binary '','978-0-13-110173-1',188,0.99,40,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 15',2023,1,1),(30,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',21.00,_binary '','978-0-131-40566-2',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 16',2023,1,1),(31,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',11.00,_binary '','978-0-262-12302-9',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 17',2023,1,1),(32,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',5.00,_binary '','978-1-4028-9464-6',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 18',2023,1,1),(33,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',16.00,_binary '','978-0-262-12305-0',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 19',2023,1,1),(34,'ONO Eriko','2023-12-31 17:00:00','Tuy dáng người nhỏ nhắn, nhưng Miko là một cô nhóc cực kỳ khỏe khoắn năng động. Cuộc sống quanh cô nhóc lúc nào cũng rộn ràng. Mari ôm mộng làm họa sỹ truyện tranh, nên cùng Miko vẽ truyện gửi dự thi, mối quan hệ tay ba giữa Miko với Yoshida - thích Miko và Haruna - thích Y Hãy cùng thưởng thức tập truyện và sống vui tươi mỗi ngày giống Miko các bạn nhé!',14.00,_binary '','978-0-13-110176-2',188,0.99,50,0.00,'Nhóc Miko! Cô Bé Nhí Nhảnh - Tập 20 ',2023,1,1);
+/*!40000 ALTER TABLE `books` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart_items`
+--
+
+DROP TABLE IF EXISTS `cart_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart_items` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `quantity` bigint NOT NULL,
+  `id_book` bigint NOT NULL,
+  `id_cart` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKiy2ivvdf2k3557be6rtoxo0o1` (`id_book`),
+  KEY `FKp3m3a38fr52d9reuijxa959w5` (`id_cart`),
+  CONSTRAINT `FKiy2ivvdf2k3557be6rtoxo0o1` FOREIGN KEY (`id_book`) REFERENCES `books` (`id`),
+  CONSTRAINT `FKp3m3a38fr52d9reuijxa959w5` FOREIGN KEY (`id_cart`) REFERENCES `carts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_items`
+--
+
+LOCK TABLES `cart_items` WRITE;
+/*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
+INSERT INTO `cart_items` VALUES (27,2,1,34),(28,1,2,34),(29,1,3,35),(30,1,4,35),(31,1,5,36),(32,2,6,36),(35,2,4,38),(36,1,8,38),(41,2,1,41),(42,1,8,41),(43,1,3,42),(44,3,10,42),(45,2,2,43),(46,1,6,43),(47,1,5,44),(48,4,8,45),(49,4,3,44),(50,5,5,42),(51,4,31,34),(52,5,4,46),(53,2,33,42),(54,1,6,44),(55,2,4,51),(56,3,5,49),(57,2,6,34),(58,4,22,44),(59,4,24,50),(60,4,27,48),(61,5,11,50),(62,2,31,49),(63,2,16,52),(64,2,19,34),(65,3,5,34),(66,2,25,36),(67,4,33,41),(68,4,18,35),(69,4,8,47),(70,5,17,41),(71,5,16,49),(72,5,20,34),(73,5,11,52),(74,4,15,51),(75,1,27,49),(76,1,24,36),(77,5,28,52),(78,1,21,42),(79,2,10,44),(80,2,17,48),(81,3,19,48),(82,3,3,51),(83,3,28,34),(84,4,23,42),(85,4,27,41),(86,4,3,43),(87,4,28,36),(88,5,20,47),(89,1,18,44),(90,2,10,42),(91,1,29,36),(92,2,15,35),(93,1,8,36),(94,1,12,41),(95,2,18,46),(96,3,3,46),(97,2,13,38),(98,4,21,43),(99,3,26,49),(100,4,17,46),(101,4,5,44),(102,4,13,36),(103,5,30,34),(104,5,4,42),(105,5,17,49),(106,5,14,36),(107,1,3,50),(108,5,30,51),(109,1,34,46),(110,3,6,43),(111,3,26,43),(112,2,28,35),(113,3,27,46),(114,3,15,49),(115,3,18,47),(116,3,14,52),(117,5,33,51);
+/*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carts`
+--
+
+DROP TABLE IF EXISTS `carts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `carts` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_user` bigint NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK4t6kgtbfl3plhbd36c3qre097` (`id_user`),
+  CONSTRAINT `FK4t6kgtbfl3plhbd36c3qre097` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carts`
+--
+
+LOCK TABLES `carts` WRITE;
+/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+INSERT INTO `carts` VALUES (34,'2023-12-31 17:00:00',2,'2024-12-31 17:00:00'),(35,'2023-12-31 17:00:00',3,'2024-12-31 17:00:00'),(36,'2023-12-31 17:00:00',4,'2024-05-31 17:00:00'),(38,'2023-12-31 17:00:00',5,'2024-12-31 17:00:00'),(41,'2023-12-31 17:00:00',6,'2024-12-31 17:00:00'),(42,'2023-12-31 17:00:00',7,'2024-05-31 17:00:00'),(43,'2023-12-31 17:00:00',9,'2024-12-31 17:00:00'),(44,'2023-12-31 17:00:00',10,'2024-12-31 17:00:00'),(45,'2023-12-31 17:00:00',11,'2024-12-31 17:00:00'),(46,'2023-12-31 17:00:00',12,'2024-12-31 17:00:00'),(47,'2023-12-31 17:00:00',13,'2024-12-31 17:00:00'),(48,'2023-12-31 17:00:00',14,'2024-12-31 17:00:00'),(49,'2023-12-31 17:00:00',15,'2024-12-31 17:00:00'),(50,'2023-12-31 17:00:00',16,'2024-12-31 17:00:00'),(51,'2023-12-31 17:00:00',17,'2024-12-31 17:00:00'),(52,'2023-12-31 17:00:00',18,'2024-12-31 17:00:00');
+/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK41g4n0emuvcm3qyf1f6cn43c0` (`category_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Fiction','2023-12-31 17:00:00'),(2,'Non-Fiction','2023-12-31 17:00:00'),(3,'Mystery & Thriller','2023-12-31 17:00:00'),(4,'Fantasy','2023-12-31 17:00:00'),(5,'Science Fiction','2023-12-31 17:00:00'),(6,'Romance','2023-12-31 17:00:00'),(7,'Biography & Memoir','2023-12-31 17:00:00'),(8,'Self-Help','2023-12-31 17:00:00'),(9,'Children\'s Books','2023-12-31 17:00:00'),(10,'History','2023-12-31 17:00:00');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `languages`
+--
+
+DROP TABLE IF EXISTS `languages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `languages` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `language_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK7frcoader3e973dr2c7x3i3k8` (`language_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `languages`
+--
+
+LOCK TABLES `languages` WRITE;
+/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+INSERT INTO `languages` VALUES (3,'Chinese'),(2,'English'),(1,'Vietnamese');
+/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_details`
+--
+
+DROP TABLE IF EXISTS `order_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_details` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` bigint NOT NULL,
+  `id_book` bigint NOT NULL,
+  `id_order` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKdscnmmeqbe121qn0d3mirixka` (`id_book`),
+  KEY `FK6h10g6el6eyicu33ddse0gm3v` (`id_order`),
+  CONSTRAINT `FK6h10g6el6eyicu33ddse0gm3v` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`),
+  CONSTRAINT `FKdscnmmeqbe121qn0d3mirixka` FOREIGN KEY (`id_book`) REFERENCES `books` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_details`
+--
+
+LOCK TABLES `order_details` WRITE;
+/*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+INSERT INTO `order_details` VALUES (1,5.96,7,22,1),(2,4.01,5,15,1),(3,8.91,10,17,1),(4,6.81,8,22,1),(5,3.76,5,23,1),(6,4.46,5,19,2),(7,48.24,9,1,2),(8,18.74,3,10,3),(9,0.79,1,29,3),(10,31.23,5,10,3),(11,4.26,5,27,4),(12,7.66,9,20,4),(13,8.02,9,24,4),(14,8.02,9,17,5),(15,2.67,3,21,5),(16,2.67,3,28,5),(17,1.60,2,15,5),(18,6.24,7,16,6),(19,2.35,3,30,6),(20,2.52,2,14,6),(21,5.96,7,25,6),(22,2.26,3,23,7),(23,1.70,2,22,7),(24,8.91,10,17,7),(25,3.56,4,16,8),(26,1.60,2,15,8),(27,8.01,10,15,8),(28,5.07,1,11,8),(29,6.26,8,30,9),(30,3.78,3,14,9),(31,14.94,6,5,9),(32,17.43,7,5,10),(33,40.54,8,11,10),(34,49.97,8,10,10),(35,6.30,5,14,10),(36,18.74,3,10,11),(37,1.60,2,15,11),(38,31.23,5,10,11),(39,18.07,8,3,12),(40,0.88,1,31,12),(41,14.94,6,6,12),(42,1.88,2,32,13),(43,9.41,10,32,13),(44,7.13,9,29,13),(45,5.35,6,16,13),(46,12.60,10,14,14),(47,4.22,1,2,14),(48,5.11,6,20,14),(49,32.16,6,1,14),(50,11.40,7,4,15),(51,11.97,7,13,16),(52,0.89,1,19,16),(53,1.50,2,23,17),(54,7.13,8,24,17),(55,3.96,5,29,18),(56,1.76,2,31,18),(57,7.56,6,14,19),(58,8.51,10,22,19),(59,2.55,3,34,19),(60,50.67,10,11,20),(61,4.89,3,4,21),(62,3.42,2,13,22),(63,7.66,9,20,22),(64,5.11,6,20,23),(65,7.56,6,14,23),(66,3.13,4,26,23),(67,5.35,6,17,24),(68,24.98,4,10,25),(69,8.02,9,17,25),(70,37.99,9,2,25),(71,7.92,10,29,25),(72,8.02,9,24,25),(73,8.91,10,19,26),(74,7.47,3,5,27),(75,6.81,8,27,27),(76,2.55,3,27,28),(77,56.21,9,10,28),(78,5.35,6,18,28),(79,8.51,10,20,28),(80,3.42,2,13,28),(81,1.88,2,32,29),(82,8.02,9,28,29),(83,42.88,8,1,29),(84,29.55,7,2,29),(85,19.30,4,8,30),(86,29.55,7,2,30),(87,4.46,5,16,30),(88,0.89,1,17,30),(89,7.82,10,26,31),(90,6.26,8,30,31),(91,8.51,10,34,32),(92,24.90,10,6,33),(93,7.93,9,31,34),(94,3.56,4,19,34),(95,1.70,2,25,35),(96,1.70,2,34,35),(97,2.52,2,14,35),(98,6.84,4,13,35),(99,6.24,7,17,35),(100,3.01,4,23,36),(101,1.88,2,32,36),(102,4.52,2,3,37),(103,5.64,6,32,37),(104,5.35,6,17,37),(105,37.52,7,1,37),(106,2.55,3,25,37),(107,62.46,10,10,38),(108,40.54,8,11,38),(109,6.81,8,25,38),(110,0.80,1,15,38),(111,24.90,10,6,38),(112,8.51,10,27,39),(113,7.66,9,20,39),(114,1.58,2,29,39),(115,1.70,2,34,39),(116,14.47,3,8,39),(117,8.37,2,12,40),(118,0.88,1,31,40),(119,7.13,8,24,40),(120,1.63,1,4,41),(121,10.13,2,11,41),(122,8.82,7,14,41),(123,6.17,7,31,41),(124,8.91,10,24,42),(125,2.55,3,20,42),(126,4.75,6,29,43),(127,6.02,8,23,43),(128,3.76,5,23,43),(129,5.11,6,27,44),(130,7.56,6,14,44),(131,1.70,2,22,45),(132,0.89,1,19,45),(133,8.51,10,22,46),(134,15.20,3,11,47),(135,3.56,4,28,47),(136,7.66,9,20,47),(137,4.69,6,30,48),(138,5.96,7,25,48),(139,4.26,5,20,48),(140,1.78,2,24,48),(141,8.51,10,25,49),(142,2.67,3,24,50),(143,8.37,2,12,50),(144,7.66,9,22,50),(145,5.11,6,27,50);
+/*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(50) NOT NULL,
+  `total_price` decimal(10,2) NOT NULL,
+  `id_address` bigint NOT NULL,
+  `id_user` bigint NOT NULL,
+  `note` text,
+  `payment_method` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKde7mh7mbkbkc04kint4oriq0a` (`id_address`),
+  KEY `FKtb6jdc061vu6ydv1445lrigtb` (`id_user`),
+  CONSTRAINT `FKde7mh7mbkbkc04kint4oriq0a` FOREIGN KEY (`id_address`) REFERENCES `addresses` (`id`),
+  CONSTRAINT `FKtb6jdc061vu6ydv1445lrigtb` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'2024-02-26 17:00:00','Completed',29.45,28,12,'Note for order 1','Paypal'),(2,'2024-05-24 17:00:00','Completed',52.70,16,7,'Note for order 2','Paypal'),(3,'2024-07-20 17:00:00','Completed',50.76,14,6,'Note for order 3','COD'),(4,'2024-12-05 17:00:00','Completed',19.94,34,18,'Note for order 4','COD'),(5,'2024-02-08 17:00:00','Completed',14.97,23,12,'Note for order 5','COD'),(6,'2024-10-30 17:00:00','Completed',17.06,29,13,'Note for order 6','Paypal'),(7,'2024-07-09 17:00:00','Completed',12.87,11,3,'Note for order 7','COD'),(8,'2024-12-18 17:00:00','Completed',18.24,12,4,'Note for order 8','COD'),(9,'2024-12-23 17:00:00','Completed',24.98,32,16,'Note for order 9','Paypal'),(10,'2024-06-10 17:00:00','Completed',114.23,15,7,'Note for order 10','COD'),(11,'2024-10-06 17:00:00','Completed',51.57,14,6,'Note for order 11','COD'),(12,'2024-06-05 17:00:00','Completed',33.89,25,9,'Note for order 12','Paypal'),(13,'2024-11-02 17:00:00','Completed',23.76,26,10,'Note for order 13','Paypal'),(14,'2024-03-02 17:00:00','Completed',54.09,16,7,'Note for order 14','COD'),(15,'2024-07-25 17:00:00','Completed',11.40,13,5,'Note for order 15','COD'),(16,'2024-06-29 17:00:00','Completed',12.86,20,9,'Note for order 16','Paypal'),(17,'2024-09-20 17:00:00','Completed',8.63,19,13,'Note for order 17','Paypal'),(18,'2024-03-11 17:00:00','Completed',5.72,32,16,'Note for order 18','Paypal'),(19,'2024-09-04 17:00:00','Completed',18.63,12,4,'Note for order 19','COD'),(20,'2024-08-15 17:00:00','Completed',50.67,31,15,'Note for order 20','COD'),(21,'2024-03-03 17:00:00','Completed',4.89,32,16,'Note for order 21','Paypal'),(22,'2024-02-27 17:00:00','Completed',11.08,16,7,'Note for order 22','Paypal'),(23,'2024-02-19 17:00:00','Completed',15.80,14,6,'Note for order 23','Paypal'),(24,'2024-11-21 17:00:00','Completed',5.35,31,15,'Note for order 24','COD'),(25,'2024-07-08 17:00:00','Completed',86.93,32,16,'Note for order 25','Paypal'),(26,'2024-03-10 17:00:00','Completed',8.91,12,4,'Note for order 26','COD'),(27,'2024-09-23 17:00:00','Completed',14.28,16,7,'Note for order 27','COD'),(28,'2024-07-08 17:00:00','Completed',76.05,30,14,'Note for order 28','COD'),(29,'2024-05-19 17:00:00','Completed',82.33,27,11,'Note for order 29','COD'),(30,'2024-04-21 17:00:00','Completed',54.19,23,12,'Note for order 30','Paypal'),(31,'2024-03-25 17:00:00','Completed',14.08,15,7,'Note for order 31','Paypal'),(32,'2024-11-05 17:00:00','Completed',8.51,9,2,'Note for order 32','COD'),(33,'2024-01-21 17:00:00','Completed',24.90,26,10,'Note for order 33','COD'),(34,'2024-08-20 17:00:00','Completed',11.49,24,13,'Note for order 34','COD'),(35,'2024-06-27 17:00:00','Completed',19.00,33,17,'Note for order 35','Paypal'),(36,'2024-06-12 17:00:00','Cancelled',4.89,10,2,'Note for order 36','Paypal'),(37,'2024-12-03 17:00:00','Cancelled',55.58,26,10,'Note for order 37','Paypal'),(38,'2024-06-04 17:00:00','Cancelled',135.51,9,2,'Note for order 38','Paypal'),(39,'2024-02-24 17:00:00','Cancelled',33.94,29,13,'Note for order 39','Paypal'),(40,'2024-02-16 17:00:00','Cancelled',16.38,25,9,'Note for order 40','Paypal'),(41,'2025-01-09 17:00:00','Shipped',26.75,24,13,'Note for order 41','COD'),(42,'2025-01-09 17:00:00','Shipped',11.46,33,17,'Note for order 42','COD'),(43,'2025-01-09 17:00:00','Shipped',14.53,13,5,'Note for order 43','Paypal'),(44,'2025-01-10 17:00:00','Processing',12.67,33,17,'Note for order 44','COD'),(45,'2025-01-10 17:00:00','Processing',2.59,15,7,'Note for order 45','Paypal'),(46,'2025-01-10 17:00:00','Processing',8.51,32,16,'Note for order 46','Paypal'),(47,'2025-01-12 17:00:00','Pending',26.43,27,11,'Note for order 47','Paypal'),(48,'2025-01-12 17:00:00','Pending',16.69,24,13,'Note for order 48','Paypal'),(49,'2025-01-12 17:00:00','Pending',8.51,9,2,'Note for order 49','Paypal'),(50,'2024-06-10 17:00:00','Cancelled',23.81,32,16,'Note for order 50','COD');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `publishers`
+--
+
+DROP TABLE IF EXISTS `publishers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `publishers` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `publisher_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK86rbulstali2f0pdguulfyn40` (`publisher_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `publishers`
+--
+
+LOCK TABLES `publishers` WRITE;
+/*!40000 ALTER TABLE `publishers` DISABLE KEYS */;
+INSERT INTO `publishers` VALUES (7,'Nhà xuất bản Chính trị Quốc gia - Sự thật'),(11,'Nhà xuất bản Đà Nẵng'),(5,'Nhà xuất bản Đại học Quốc gia Hà Nội'),(3,'Nhà xuất bản Hội Nhà văn'),(12,'Nhà xuất bản Hồng Đức'),(2,'Nhà xuất bản Kim Đồng'),(6,'Nhà xuất bản Lao động'),(9,'Nhà xuất bản Phụ Nữ'),(10,'Nhà xuất bản Quân đội Nhân dân'),(8,'Nhà xuất bản Thế giới'),(1,'Nhà xuất bản Trẻ'),(4,'Nhà xuất bản Văn Hóa Thông Tin');
+/*!40000 ALTER TABLE `publishers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews`
+--
+
+DROP TABLE IF EXISTS `reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reviews` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `comment` text,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rating` int NOT NULL,
+  `id_book` bigint NOT NULL,
+  `id_user` bigint NOT NULL,
+  `checked` bit(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKi1lak1i1dxrgfvbdxvy7w00md` (`id_book`),
+  KEY `FK2ep6x0b0wotn5ik1djjfxblk5` (`id_user`),
+  CONSTRAINT `FK2ep6x0b0wotn5ik1djjfxblk5` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  CONSTRAINT `FKi1lak1i1dxrgfvbdxvy7w00md` FOREIGN KEY (`id_book`) REFERENCES `books` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews`
+--
+
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK716hgxp60ym1lifrdgp67xt5k` (`role_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'ADMIN'),(2,'USER');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `avatar_url` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `email` varchar(50) NOT NULL,
+  `enabled` bit(1) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone_number` varchar(15) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `id_role` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK6dotkott2kjsp8vw4d0m25fb7` (`email`),
+  UNIQUE KEY `UK9q63snka3mdh91as4io72espi` (`phone_number`),
+  UNIQUE KEY `UKr43af9ap4edm43mmtq01oddj6` (`username`),
+  KEY `FKt92dgi4412ywy3u8tm9jwdya5` (`id_role`),
+  CONSTRAINT `FKt92dgi4412ywy3u8tm9jwdya5` FOREIGN KEY (`id_role`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'/upload-dir/default-image/admin-avatar.jpeg','2023-12-31 17:00:00','jobhere.22t.nhat1@gmail.com',_binary '','$2a$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0793250130','admin',1),(2,'/upload-dir/20250111_152810_20241228_151626_9.jpg','2023-12-31 17:00:00','tuanloc782004@gmail.com',_binary '','$2a$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0772910452','leo_tulo_6',2),(3,'/upload-dir/20241031_233710_user1.jfif','2023-12-31 17:00:00','loccavlog@gmail.com',_binary '\0','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0123456789','test',2),(4,'/upload-dir/20250111_152832_20241228_151454_8.jpg','2023-12-31 17:00:00','quangtran1106@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0987654321','hydric',2),(5,'/upload-dir/20250111_152842_20241228_151535_4.jpg','2023-12-31 17:00:00','phuongsuga333@gmail',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0868921062','TranThiThanhPhuong',2),(6,'/upload-dir/20241228_151041_1.jpg','2023-12-31 17:00:00','volequyen11042005@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0789654123','quyen',2),(7,'/upload-dir/20241101_000022_download.jfif','2023-12-31 17:00:00','cuem782004@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0321654779','temp',2),(9,'/upload-dir/20250111_152442_20241228_151342_6.jpg','2023-12-31 17:00:00','namnguyenba148@gmail',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0987654123','namnguyenba',2),(10,'/upload-dir/20250111_152504_20241228_150519_9.jpg','2023-12-31 17:00:00','thanhlongtivip@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0789615243','pham_phan_thanh',2),(11,'/upload-dir/20250111_152524_20241228_150800_4.jpg','2023-12-31 17:00:00','nguyenvanchuongwind@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0321789465','nguyen_van_chuong',2),(12,'/upload-dir/20250111_152542_20241228_150856_3.jpg','2023-12-31 17:00:00','hosithao1622004@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0789456324','hoSiThao',2),(13,'/upload-dir/20250111_162609_20241228_151113_3.jpg','2023-12-31 17:00:00','supersaza219@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0987612354','vutuandoanconga',2),(14,'/upload-dir/20250111_162640_20241228_151230_3.jpg','2023-12-31 17:00:00','toanledinh76@gmail',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0912436587','toanledinh',2),(15,'/upload-dir/20250111_162653_20241228_150637_8.jpg','2023-12-31 17:00:00','hothanhhuy24062004@gmail',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0123987666','huythanh',2),(16,'/upload-dir/20250111_163249_Sơn Tùng M-TP Singer_Music Producer_Musician_Businessman_Actor_Rapper.jpg','2023-12-31 17:00:00','sontungmtp@gmail.com',_binary '\0','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0111222333','mtp',2),(17,'/upload-dir/20250111_163300_download.jpg','2023-12-31 17:00:00','hieuthuhai@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0999888111','HIEUTHUHAI',2),(18,'/upload-dir/20250111_163308_download (1).jpg','2023-12-31 17:00:00','jennyhuynh@gmail.com',_binary '','$10$idi8zDNzOE31HYy9iXYFzuz3gsPoJ8KS7rFfOBgcIFLbjBZf/1CmG','0123789444','JennyHuynh',2);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-01-15 21:02:13

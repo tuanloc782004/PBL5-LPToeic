@@ -1,5 +1,19 @@
 package com.pbl5.service;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+
+import com.pbl5.model.Vocabulary;
+
 public interface VocabularyService {
+
+	public List<Vocabulary> findByKeyword(String keyword);
+
+	public Page<Vocabulary> findAll(Integer pageno);
+
+	public Page<Vocabulary> findByKeyword(String keyword, Integer pageNo);
+
+	public void deleteById(Long id);
 
 }

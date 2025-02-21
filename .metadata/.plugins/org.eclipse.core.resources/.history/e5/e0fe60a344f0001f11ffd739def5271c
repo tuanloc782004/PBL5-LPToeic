@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" th:href="@{/login-form/style.css}">
+<!-- Font Awesome -->
+<!-- CSS chung -->
+<link rel="stylesheet" th:href="@{/user-asset/style.css}">
+<title>LPToeic</title>
+</head>
+<body>
+	<header class="menu-bar" th:fragment="header">
+		<div class="menu-right">
+			<h1 class="logo">
+				LPT<span>oeic.</span>
+			</h1>
+			<ul>
+				<li><a href="#">Trang chủ </a></li>
+				<li><a href="#">Tự học <i class="fas fa-caret-down"></i></a>
+					<div class="dropdown-menu">
+						<ul>
+							<li><a href="#">Từ vựng</a></li>
+							<li><a href="#">Ngữ pháp</a></li>
+							<li><a href="#">Nghe</a></li>
+							<li><a href="#">Đọc</a></li>
+						</ul>
+					</div></li>
+				<li><a href="#">Thi thử</a></li>
+			</ul>
+		</div>
+
+		<div th:if="${#authorization.expression('isAuthenticated()')}"
+			class="user-info">
+			<img th:src="${currentUserAvatarUrl}" alt="Avatar"> <a href="#"><span
+				th:text="${currentUserUsername}">Username</span></a>
+		</div>
+
+		<div th:unless="${#authorization.expression('isAuthenticated()')}"
+			class="user">
+			<a href="/login">Đăng nhập</a> <span></span> <a href="/register">Đăng
+				kí</a>
+		</div>
+
+	</header>
+	<div class="container" id="container">
+		<div class="form-container sign-up">
+			<form>
+				<h1>Tạo tài khoản</h1>
+				<input type="text" placeholder="Tên"> <input type="email"
+					placeholder="Email"> <input type="password"
+					placeholder="Mật khẩu">
+				<button>Đăng ký</button>
+			</form>
+		</div>
+		<div class="form-container sign-in">
+			<form th:action="@{/login}" method="post">
+				<h1>Đăng nhập</h1>
+				<input type="username" name="username" placeholder="Username">
+				<input type="password" name="password" placeholder="Mật khẩu">
+				<a href="#">Quên mật khẩu?</a>
+				<button>Đăng nhập</button>
+			</form>
+		</div>
+		<div class="toggle-container">
+			<div class="toggle">
+				<div class="toggle-panel toggle-left">
+					<h1>Chào mừng trở lại!</h1>
+					<p>Nhập thông tin cá nhân của bạn để sử dụng tất cả các tính
+						năng của trang web</p>
+					<button class="hidden" id="login">Đăng nhập</button>
+				</div>
+				<div class="toggle-panel toggle-right">
+					<h1>Chào bạn!</h1>
+					<p>Đăng ký thông tin cá nhân của bạn để sử dụng tất cả các tính
+						năng của trang web</p>
+					<button class="hidden" id="register">Đăng ký</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/login-form/script.js}"></script>
+</body>
+</html>

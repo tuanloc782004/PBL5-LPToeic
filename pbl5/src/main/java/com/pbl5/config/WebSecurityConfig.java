@@ -36,7 +36,7 @@ public class WebSecurityConfig {
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
 
-		return (web) -> web.ignoring().requestMatchers("/login-form/**", "/image/**", "/admin-asset/**", "/user-asset/**");
+		return (web) -> web.ignoring().requestMatchers("/login-form-asset/**", "/upload-dir/**", "/admin-asset/**", "/user-asset/**");
 
 	}
 

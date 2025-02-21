@@ -1,0 +1,11 @@
+<div class="container" th:fragment="users-pagination">
+	<div class="row">
+		<div class="col-12 d-flex justify-content-center mt-3">
+			<div class="btn-group" role="group" aria-label="Pagination">
+				<button type="button" class="btn btn-outline-secondary">1</button>
+				<button type="button" class="btn btn-outline-secondary">2</button>
+				<button type="button" class="btn btn-outline-secondary">3</button>
+			</div>
+		</div>
+	</div>
+</div>

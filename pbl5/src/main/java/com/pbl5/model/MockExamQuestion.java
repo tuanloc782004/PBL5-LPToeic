@@ -2,6 +2,7 @@ package com.pbl5.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -56,7 +57,7 @@ public class MockExamQuestion {
 	@Column(name = "question_text", length = 255)
 	private String questionText;
 
-	@OneToMany(mappedBy = "mockExamQuestion", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "mockExamQuestion", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<UserAnswer> userAnswers;
 	
 	public MockExamQuestion() {

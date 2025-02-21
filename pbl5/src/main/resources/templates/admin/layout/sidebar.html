@@ -12,11 +12,11 @@
 						th:text="${currentUserUsername}">admin</span>
 				</div>
 		</a></li>
-		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+		<li class="nav-item"><a class="nav-link" th:href="@{/admin}"> <i
 				class="mdi mdi-chart-line menu-icon"></i> <span class="menu-title">Thống
 					kê</span>
 		</a></li>
-		<li class="nav-item active"><a class="nav-link" th:href="@{/}">
+		<li class="nav-item active"><a class="nav-link" th:href="@{/admin/user}">
 				<i class="mdi mdi-account-multiple menu-icon"></i> <span
 				class="menu-title">Quản lý tài khoản</span>
 		</a></li>
@@ -27,15 +27,15 @@
 		</a>
 			<div class="collapse" id="ui-basic">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" th:href="@{/}">Từ
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/vocabulary}">Từ
 							vựng</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/}">Ngữ
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/grammar}">Ngữ
 							pháp</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/}">Nghe</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/}">Đọc</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/listening}">Nghe</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/admin/reading}">Đọc</a></li>
 				</ul>
 			</div></li>
-		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+		<li class="nav-item"><a class="nav-link" th:href="@{/admin/mock-exam}"> <i
 				class="mdi mdi-note-text menu-icon"></i> <span class="menu-title">Quản
 					lý bài thi thử</span>
 		</a></li>

@@ -19,3 +19,20 @@
 1739982988806	Rename type 'PartService'
 1739983206661	Rename type 'UserService'
 1740059286292	Delete element
+1740137182824	Rename type 'HomeController'
+1740142230313	Rename resource 'image'
+1740142243625	Rename resource 'image-upload-dir'
+1740142258137	Rename resource 'login-form'
+1740142451662	Rename resource 'admin_ava.jpg'
+1740142458316	Rename resource 'mock_exam.jpg'
+1740142468748	Rename resource 'avatar.jpg'
+1740144770384	Rename resource 'PortfolioAvatar.jpeg'
+1740145524155	Delete element
+1740145532253	Delete element
+1740145537921	Rename resource 'download.jpg'
+1740149567007	Rename resource 'users.html'
+1740149621166	Move 'vocabulary.html' to 'admin'
+1740149632668	Copy file
+1740150822886	Rename resource 'users-pagination.html'
+1740155407095	Delete element
+1740155454952	Move 13 resources to 'avatar'

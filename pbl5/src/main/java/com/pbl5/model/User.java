@@ -31,7 +31,7 @@ public class User {
 	@Column(name = "email", nullable = false, unique = true, length = 50)
 	private String email;
 	
-	@Column(name = "avatar_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/image/avatar.jpg'")
+	@Column(name = "avatar_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/upload-dir/avatar.jpg'")
 	private String avatarUrl;
 
 	public User() {

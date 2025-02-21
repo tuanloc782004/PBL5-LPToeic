@@ -2,6 +2,7 @@ package com.pbl5.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Role {
 	@Column(name = "role_name", length = 5, columnDefinition = "VARCHAR(5) DEFAULT 'USER'")
 	private String roleName;
 
-	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<User> users;
 
 	public Role() {

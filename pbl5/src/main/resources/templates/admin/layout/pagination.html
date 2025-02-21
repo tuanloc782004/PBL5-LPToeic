@@ -1,0 +1,17 @@
+<div class="container" th:fragment="pagination">
+	<div class="row">
+		<div class="col-12 d-flex justify-content-center mt-3">
+			<div class="btn-group" role="group" aria-label="Pagination">
+				<a class="btn btn-outline-secondary" th:if="${currentPage > 1}"
+					th:href="@{${keyword != null && keyword != ''? '?keyword='+keyword+'&':'?'} + 'pageNo='+${currentPage - 1}}">«</a>
+				<a class="btn btn-outline-secondary"
+					th:each="i:${#numbers.sequence(1, totalPage)}"
+					th:classappend="${currentPage == i ? 'active' : ''}"
+					th:href="@{${keyword != null && keyword != ''? '?keyword='+keyword+'&':'?'} + 'pageNo=' + ${i}}"
+					th:text="${i}"></a> <a class="btn btn-outline-secondary"
+					th:if="${currentPage < totalPage}"
+					th:href="@{${keyword != null && keyword != ''? '?keyword='+keyword+'&':'?'} + 'pageNo='+${currentPage + 1}}">»</a>
+			</div>
+		</div>
+	</div>
+</div>
