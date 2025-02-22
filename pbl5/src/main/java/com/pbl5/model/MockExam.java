@@ -21,7 +21,7 @@ public class MockExam {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "image_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/image/mock_exam.jpg'")
+	@Column(name = "image_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/upload-dir/image/mock-exam.jpeg'")
 	private String imageUrl;
 	
 	@Column(name = "mock_exam_name", nullable = false, length = 255)

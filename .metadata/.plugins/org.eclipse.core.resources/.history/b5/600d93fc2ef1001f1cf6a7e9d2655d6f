@@ -1,0 +1,102 @@
+package com.pbl5.excel;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.pbl5.model.ListeningQuestion;
+import com.pbl5.model.MockExamQuestion;
+import com.pbl5.model.ReadingQuestion;
+import com.pbl5.model.VocabularyContent;
+import com.pbl5.repository.VocabularyContentRepository;
+
+@Service
+public class ExcelServiceImpl implements ExcelService {
+
+	private static final Logger logger = LoggerFactory.getLogger(ExcelService.class);
+
+	@Autowired
+	private VocabularyContentRepository vocabularyContentRepository;
+
+	@Override
+	public List<VocabularyContent> readVocabularyExcelFile(MultipartFile file) {
+		// TODO Auto-generated method stub
+		List<VocabularyContent> vocabularyContentList = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				VocabularyContent vocabularyContent = new VocabularyContent();
+				vocabularyContent.setNumber(row.getCell(0).getStringCellValue());
+				vocabularyContent.setContent(row.getCell(1).getStringCellValue());
+				vocabularyContent.setTranscribe(row.getCell(2).getStringCellValue());
+				vocabularyContent.setImageUrl(row.getCell(3).getStringCellValue());
+				vocabularyContent.setAudioUrl(row.getCell(4).getStringCellValue());
+				vocabularyContent.setMeaning(row.getCell(5).getStringCellValue());
+				vocabularyContent.setSentence(row.getCell(6).getStringCellValue());
+
+				vocabularyList.add(vocab);
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return vocabularyList;
+	}
+
+	@Override
+	public List<ReadingQuestion> readReadingExcelFile(MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ListeningQuestion> readListeningExcelFile(MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MockExamQuestion> readMockExamExcelFile(MultipartFile file) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void saveVocabularyContentFromExcel(MultipartFile file) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void saveReadingQuestionFromExcel(MultipartFile file) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void saveListeningQuestionFromExcel(MultipartFile file) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void saveMockExamQuestionFromExcel(MultipartFile file) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

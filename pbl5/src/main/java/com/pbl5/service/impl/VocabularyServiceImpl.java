@@ -80,4 +80,14 @@ public class VocabularyServiceImpl implements VocabularyService {
         }
     }
     
+    @Override
+    public Vocabulary save(Vocabulary vocabulary) {
+        try {
+            return this.vocabularyRepository.save(vocabulary);
+        } catch (Exception e) {
+            logger.error("Lỗi khi lưu bài học từ vựng: " + vocabulary, e);
+            throw new RuntimeException("Không thể lưu bài học từ vựng", e);
+        }
+    }
+    
 }

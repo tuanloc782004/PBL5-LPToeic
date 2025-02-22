@@ -22,7 +22,7 @@ public class Vocabulary {
 	@Column(name = "vocabulary_name", nullable = false, length = 255)
 	private String vocabularyName;
 
-	@Column(name = "image_url", length = 255)
+	@Column(name = "image_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/upload-dir/image/default-vocabulary.jpeg'")
 	private String imageUrl;
 
 	@OneToMany(mappedBy = "vocabulary", cascade = CascadeType.ALL, orphanRemoval = true)

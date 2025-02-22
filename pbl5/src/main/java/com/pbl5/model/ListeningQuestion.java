@@ -44,6 +44,9 @@ public class ListeningQuestion {
 
 	@Column(name = "image_url", length = 255)
 	private String imageUrl;
+	
+	@Column(name = "audio_url", length = 255)
+	private String audioUrl;
 
 	public ListeningQuestion() {
 		super();

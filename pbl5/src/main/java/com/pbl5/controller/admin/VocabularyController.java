@@ -1,5 +1,8 @@
 package com.pbl5.controller.admin;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,19 +11,30 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.pbl5.excel.ExcelService;
 import com.pbl5.model.Vocabulary;
 import com.pbl5.service.VocabularyService;
+import com.pbl5.storage.StorageService;
 
 @Controller
 @RequestMapping("/admin/vocabulary")
 public class VocabularyController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
+	@Autowired
+	private StorageService storageService;
+
+	@Autowired
+	private ExcelService excelService;
 
 	@Autowired
 	private VocabularyService vocabularyService;
@@ -60,5 +74,70 @@ public class VocabularyController {
 		}
 		return "redirect:/admin/vocabulary";
 	}
-	
+
+	@GetMapping("/create")
+	public String create(Model model, RedirectAttributes redirectAttributes) {
+		try {
+			Vocabulary vocabulary = new Vocabulary();
+			model.addAttribute("vocabulary", vocabulary);
+		} catch (Exception e) {
+			logger.error("Lỗi khi khởi tạo form thêm từ vựng: ", e);
+			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi mở form thêm từ vựng!");
+			return "redirect:/admin/vocabulary";
+		}
+		return "admin/vocabulary-form";
+	}
+
+	@PostMapping("/create")
+	public String create(@ModelAttribute("vocabulary") Vocabulary vocabulary,
+			@RequestParam("imageFile") MultipartFile imageFile, @RequestParam("excelFile") MultipartFile excelFile,
+			@RequestParam("imageFiles") MultipartFile[] imageFiles,
+			@RequestParam("audioFiles") MultipartFile[] audioFiles, RedirectAttributes redirectAttributes) {
+
+		try {
+			// Tạo mã định danh duy nhất cho file
+			String myCode = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_";
+
+			// Kiểm tra file ảnh đại diện có rỗng không
+			if (imageFile != null && !imageFile.isEmpty()) {
+				// Gán URL ảnh đại diện vào Vocabulary
+				vocabulary.setImageUrl("/upload-dir/image/" + myCode + imageFile.getOriginalFilename());
+				// Lưu ảnh đại diện vào hệ thống
+				this.storageService.storage(imageFile, "image/" + myCode + imageFile.getOriginalFilename());
+			}
+
+			// Lưu Vocabulary vào DB
+			this.vocabularyService.save(vocabulary);
+
+			// Kiểm tra file Excel có rỗng không trước khi xử lý
+			if (excelFile != null && !excelFile.isEmpty()) {
+				this.excelService.saveVocabularyContentFromExcel(excelFile, vocabulary, myCode);
+			} else {
+				logger.warn("File Excel trống, bỏ qua quá trình xử lý nội dung từ vựng.");
+			}
+
+			// Lưu các file hình ảnh
+			for (MultipartFile file : imageFiles) {
+				if (file != null && !file.isEmpty()) {
+					this.storageService.storage(file, "image/" + myCode + file.getOriginalFilename());
+				}
+			}
+
+			// Lưu các file âm thanh
+			for (MultipartFile file : audioFiles) {
+				if (file != null && !file.isEmpty()) {
+					this.storageService.storage(file, "audio/" + myCode + file.getOriginalFilename());
+				}
+			}
+
+			redirectAttributes.addFlashAttribute("successMessage", "Tạo danh sách bài học từ vựng thành công!");
+			return "redirect:/admin/vocabulary";
+
+		} catch (Exception e) {
+			logger.error("Lỗi khi tạo danh sách bài học từ vựng: ", e);
+			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi tạo danh sách bài học từ vựng!");
+			return "redirect:/admin/vocabulary/create";
+		}
+	}
+
 }

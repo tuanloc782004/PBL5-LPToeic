@@ -8,7 +8,7 @@ import com.pbl5.model.User;
 
 public interface UserService {
 
-	User findByUsername(String username); 
+	public User findByUsername(String username); 
 		
 	public List<User> findByKeyword(String keyword);
 	

@@ -18,7 +18,7 @@ public class Grammar {
 	@Column(name = "grammar_name", nullable = false, length = 255)
 	private String grammarName;
 
-	@Column(name = "image_url", length = 255)
+	@Column(name = "image_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/upload-dir/image/default-grammar.jpeg'")
 	private String imageUrl;
 
 	@Column(name = "content_html", columnDefinition = "TEXT")
