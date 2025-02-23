@@ -1,0 +1,56 @@
+package com.pbl5.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+
+import com.pbl5.model.Grammar;
+import com.pbl5.repository.GrammarRepository;
+import com.pbl5.service.GrammarService;
+
+public class GrammarServiceImpl implements GrammarService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+	
+	@Autowired
+	private GrammarRepository grammarRepository;
+
+	@Override
+	public List<Grammar> findByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		try {
+            return this.grammarRepository.findByKeyword(keyword);
+        } catch (Exception e) {
+            logger.error("Lỗi khi tìm bài học ngữ pháp với keyword: " + keyword, e);
+            return List.of(); // Trả về danh sách rỗng nếu có lỗi
+        }
+	}
+
+	@Override
+	public Page<Grammar> findAll(Integer pageno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Grammar> findByKeyword(String keyword, Integer pageNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Grammar save(Grammar grammar) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -27,7 +27,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("")
-    public String user(Model model, @Param("keyword") String keyword,
+    public String list(Model model, @Param("keyword") String keyword,
             @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, RedirectAttributes redirectAttributes) {
 
         try {

@@ -40,7 +40,7 @@ public class VocabularyController {
 	private VocabularyService vocabularyService;
 
 	@RequestMapping("")
-	public String user(Model model, @Param("keyword") String keyword,
+	public String list(Model model, @Param("keyword") String keyword,
 			@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, RedirectAttributes redirectAttributes) {
 
 		try {

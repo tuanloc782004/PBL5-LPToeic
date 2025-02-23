@@ -17,4 +17,5 @@ public interface VocabularyService {
 	public void deleteById(Long id);
 
 	public Vocabulary save(Vocabulary vocabulary);
+	
 }
