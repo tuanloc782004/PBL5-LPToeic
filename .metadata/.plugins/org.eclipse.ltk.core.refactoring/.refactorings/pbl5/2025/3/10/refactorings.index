@@ -16,3 +16,28 @@
 1740932216535	Rename compilation unit 'VocabularyRepository.java'
 1740932250605	Rename type 'VocabularyService'
 1740932937259	Delete elements
+1740994451863	Delete element
+1740994465554	Delete element
+1740994470692	Delete element
+1740994474656	Delete element
+1740994489600	Delete element
+1740994497118	Delete element
+1740994516104	Delete element
+1740994522206	Delete element
+1740994527515	Delete element
+1740994532223	Delete element
+1740994535269	Delete element
+1740994540421	Delete element
+1740994549045	Delete elements
+1740994553550	Delete element
+1741003685068	Rename resource 'vocabulary.html'
+1741003695724	Rename resource 'vocabulary-form.html'
+1741009174149	Rename resource 'grammar.html'
+1741009180421	Rename resource 'grammar-form.html'
+1741009451002	Rename type 'VocabularyController'
+1741009468765	Rename compilation unit 'GrammarController.java'
+1741009563597	Rename type 'GrammarService'
+1741009614333	Rename type 'VocabularyServiceImpl'
+1741009623690	Rename compilation unit 'GrammarServiceImpl.java'
+1741011513489	Copy file
+1741015446103	Rename resource 'vocabulary-lesson-view.html'

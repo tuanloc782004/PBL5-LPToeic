@@ -22,7 +22,7 @@ public class VocabularyLesson {
 	@Column(name = "lesson_name", nullable = false, length = 255)
 	private String lessonName;
 	
-	@OneToMany(mappedBy = "vocabulary", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "vocabularyLesson", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<VocabularyLessonContent> vocabularyLessonContents;
 
 	public VocabularyLesson() {

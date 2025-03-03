@@ -1,0 +1,192 @@
+package com.pbl5.excel;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.poi.ooxml.POIXMLDocumentPart;
+import org.apache.poi.openxml4j.opc.PackagePart;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
+import org.apache.poi.xssf.usermodel.XSSFPicture;
+import org.apache.poi.xssf.usermodel.XSSFShape;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.mock.web.MockMultipartFile;
+
+import com.pbl5.model.VocabularyLesson;
+import com.pbl5.model.VocabularyLessonContent;
+import com.pbl5.repository.VocabularyLessonContentRepository;
+import com.pbl5.storage.StorageService;
+
+@Service
+public class ExcelServiceImpl implements ExcelService {
+
+	private static final Logger logger = LoggerFactory.getLogger(ExcelService.class);
+
+	@Autowired
+	private VocabularyLessonContentRepository vocabularyLessonContentRepository;
+
+	@Autowired
+	private StorageService storageService;
+
+	@Override
+	public List<VocabularyLessonContent> readVocabularyLessonExcelFile(MultipartFile file,
+			VocabularyLesson vocabularyLesson) {
+		List<VocabularyLessonContent> vocabularyLessonContentList = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				try {
+					VocabularyLessonContent vocabularyLessonContent = new VocabularyLessonContent();
+					vocabularyLessonContent.setNumber(getLongValue(row.getCell(0)));
+					vocabularyLessonContent.setContent(getStringValue(row.getCell(1)));
+					vocabularyLessonContent.setTranscribe(getStringValue(row.getCell(2)));
+					vocabularyLessonContent.setImageUrl("/upload-dir/image/" + myCode + getStringValue(row.getCell(3)));
+					vocabularyLessonContent.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(row.getCell(4)));
+
+					String imagePath = extractImageFromCell(sheet, row.getRowNum(), 3);
+					vocabularyLessonContent.setImageUrl(imagePath);
+
+					String audioPath = extractFileFromCell(sheet, row.getRowNum(), 4);
+					vocabularyLessonContent.setAudioUrl(audioPath);
+
+					vocabularyLessonContent.setMeaning(getStringValue(row.getCell(5)));
+					vocabularyLessonContent.setSentence(getStringValue(row.getCell(6)));
+					vocabularyLessonContent.setVocabulary(vocabularyLesson);
+
+					vocabularyLessonContentList.add(vocabularyLessonContent);
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return vocabularyLessonContentList;
+	}
+
+	@Override
+	public void saveVocabularyLessonContentFromExcel(MultipartFile file, VocabularyLesson vocabulary, String myCode) {
+		try {
+			List<VocabularyLessonContent> list = readVocabularyLessonExcelFile(file, vocabulary, myCode);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.vocabularyLessonContentRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	private String extractImageFromCell(Sheet sheet, int rowNum, int colNum) {
+		try {
+			// Tạo mã định danh duy nhất cho file
+			String myCode = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_";
+
+			for (POIXMLDocumentPart dr : ((XSSFSheet) sheet).getRelations()) {
+				if (dr instanceof XSSFDrawing) {
+					XSSFDrawing drawing = (XSSFDrawing) dr;
+					for (XSSFShape shape : drawing.getShapes()) {
+						if (shape instanceof XSSFPicture) {
+							XSSFPicture picture = (XSSFPicture) shape;
+							XSSFClientAnchor anchor = picture.getPreferredSize();
+
+							if (anchor.getRow1() == rowNum && anchor.getCol1() == colNum) {
+								byte[] imageData = picture.getPictureData().getData();
+								String extension = picture.getPictureData().suggestFileExtension();
+								String fileName = System.currentTimeMillis() + "." + extension;
+
+								MultipartFile multipartFile = new MockMultipartFile(fileName, fileName,
+										"image/" + extension, imageData);
+
+								this.storageService.storage(multipartFile, "image/" + myCode + fileName);
+								return "/upload-dir/image/" + myCode + fileName;
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error("Lỗi khi lưu hình ảnh", e);
+		}
+		return null;
+	}
+
+	private String extractFileFromCell(Sheet sheet, int rowNum, int colNum) {
+		try {
+			// Tạo mã định danh duy nhất cho file
+			String myCode = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_";
+
+			XSSFSheet xssfSheet = (XSSFSheet) sheet;
+			for (POIXMLDocumentPart dr : xssfSheet.getRelations()) {
+				if (dr instanceof PackagePart) {
+					PackagePart packagePart = (PackagePart) dr;
+					if (packagePart.getContentType().startsWith("audio/")) {
+						byte[] fileData = IOUtils.toByteArray(packagePart.getInputStream());
+						String extension = packagePart.getContentType().split("/")[1];
+						String fileName = System.currentTimeMillis() + "." + extension;
+
+						MultipartFile multipartFile = new MockMultipartFile(fileName, fileName, "audio/" + extension,
+								fileData);
+
+						this.storageService.storage(multipartFile, "audio/" + myCode + fileName);
+						return "/upload-dir/audio/" + myCode + fileName;
+					}
+				}
+			}
+		} catch (Exception e) {
+			logger.error("Lỗi khi lưu file âm thanh", e);
+		}
+		return null;
+	}
+
+	private Long getLongValue(Cell cell) {
+		if (cell == null)
+			return null;
+		try {
+			if (cell.getCellType() == CellType.STRING) {
+				return Long.parseLong(cell.getStringCellValue().trim());
+			} else if (cell.getCellType() == CellType.NUMERIC) {
+				return (long) cell.getNumericCellValue();
+			}
+		} catch (NumberFormatException e) {
+			logger.warn("Lỗi chuyển đổi số: {}", cell.getStringCellValue());
+		}
+		return null;
+	}
+
+	private String getStringValue(Cell cell) {
+		if (cell == null)
+			return "";
+		return switch (cell.getCellType()) {
+		case STRING -> cell.getStringCellValue().trim();
+		case NUMERIC -> String.valueOf((long) cell.getNumericCellValue());
+		case BOOLEAN -> String.valueOf(cell.getBooleanCellValue());
+		default -> "";
+		};
+	}
+
+}

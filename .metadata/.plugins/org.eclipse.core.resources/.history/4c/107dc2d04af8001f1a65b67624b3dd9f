@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/layout/head::head}"></head>
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_sidebar.html -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar"
+			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<!-- partial:partials/_navbar.html -->
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="~{admin/layout/navbar::navbar}"></nav>
+		<!-- partial -->
+		<div class="main-panel">
+			<div class="content-wrapper pb-0">
+				<!-- Hiển thị thông báo thành công -->
+				<div th:if="${successMessage}" class="alert alert-success">
+					<p th:text="${successMessage}"></p>
+				</div>
+				<!-- Hiển thị thông báo lỗi -->
+				<div th:if="${errorMessage}" class="alert alert-danger">
+					<p th:text="${errorMessage}"></p>
+				</div>
+				<h4 class="card-title"
+					th:text="${grammarLesson.id == null} ? 'Thêm mới bài học ngữ pháp' : 'Chỉnh sửa bài học ngữ pháp'"></h4>
+				<!-- first row starts here -->
+				<div class="row">
+					<div class="col-12 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body">
+								<form class="forms-sample" method="post"
+									th:action="|${grammarLesson.id == null ? '/admin/grammar-lesson/create' : '/admin/grammar-lesson/update'}|"
+									th:object="${grammarLesson}" enctype="multipart/form-data">
+									<div class="form-group">
+										<input type="text" class="form-control" id="exampleInputName1"
+											th:field="*{id}" th:value="${grammarLesson.id}"  type="hidden">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputName1">Chủ đề bài học</label> <input
+											type="text" class="form-control" id="exampleInputName1"
+											placeholder="Nhập tên chủ đề bài học"
+											th:field="*{lessonName}"
+											th:value="${grammarLesson.lessonName}">
+									</div>
+									<div class="form-group">
+										<label for="exampleTextarea1">Nội dung bài học
+											(Markdown)</label>
+										<textarea class="form-control" id="exampleTextarea1" rows="25"
+											placeholder="Nhập nội dung bài học" th:field="*{content}"
+											th:value="${grammarLesson.content}"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary mr-2">Xác
+										nhận</button>
+									<a class="btn btn-light" th:href="@{/admin/grammar-lesson}">Hủy
+										bỏ</a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- content-wrapper ends -->
+			<!-- partial:partials/_footer.html -->
+			<footer class="footer" th:replace="~{admin/layout/footer::footer}">
+			</footer>
+			<!-- partial -->
+		</div>
+		<!-- main-panel ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	<!-- container-scroller -->
+	<div th:replace="~{admin/layout/script::script}"></div>
+	<!-- End custom js for this page -->
+</body>
+</html>

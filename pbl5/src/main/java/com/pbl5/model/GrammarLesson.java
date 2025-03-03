@@ -16,7 +16,7 @@ public class GrammarLesson {
 	private Long id;
 
 	@Column(name = "lesson_name", nullable = false, length = 255)
-	private String grammarName;
+	private String lessonName;
 
 	@Column(name = "content", columnDefinition = "TEXT", nullable = false)
 	private String content;
@@ -26,10 +26,10 @@ public class GrammarLesson {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GrammarLesson(Long id, String grammarName, String content) {
+	public GrammarLesson(Long id, String lessonName, String content) {
 		super();
 		this.id = id;
-		this.grammarName = grammarName;
+		this.lessonName = lessonName;
 		this.content = content;
 	}
 
@@ -41,12 +41,12 @@ public class GrammarLesson {
 		this.id = id;
 	}
 
-	public String getGrammarName() {
-		return grammarName;
+	public String getLessonName() {
+		return lessonName;
 	}
 
-	public void setGrammarName(String grammarName) {
-		this.grammarName = grammarName;
+	public void setLessonName(String lessonName) {
+		this.lessonName = lessonName;
 	}
 
 	public String getContent() {
@@ -55,6 +55,6 @@ public class GrammarLesson {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
+	}	
 
 }

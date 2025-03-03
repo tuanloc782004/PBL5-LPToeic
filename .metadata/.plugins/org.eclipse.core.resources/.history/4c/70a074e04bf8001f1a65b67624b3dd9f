@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/layout/head::head}"></head>
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_sidebar.html -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar"
+			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<!-- partial:partials/_navbar.html -->
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="~{admin/layout/navbar::navbar}"></nav>
+		<!-- partial -->
+		<div class="main-panel">
+			<div class="content-wrapper pb-0">
+				<!-- Hiển thị thông báo thành công -->
+				<div th:if="${successMessage}" class="alert alert-success">
+					<p th:text="${successMessage}"></p>
+				</div>
+				<!-- Hiển thị thông báo lỗi -->
+				<div th:if="${errorMessage}" class="alert alert-danger">
+					<p th:text="${errorMessage}"></p>
+				</div>
+				<div>
+					<div class="header-left">
+						<a class="btn btn-light" th:href="@{/admin/grammar-lesson}">Quay
+							lại</a>
+					</div>
+					<div class="header-right">
+						<a th:href="@{|/admin/grammar-lesson/update/${grammarLesson.id}|}"
+							class="btn btn-success"> Cập nhật </a>
+					</div>
+				</div>
+				<!-- first row starts here -->
+				<h4 class="card-title" th:text="${grammarLesson.lessonName}">lessonName</h4>
+				<div class="row">
+					<div class="col-12 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body">
+								<div th:utext="${grammarLesson.content}">content</div>
+								<a
+									th:href="@{|/admin/grammar-lesson/update/${grammarLesson.id}|}"
+									class="btn btn-success"> Cập nhật </a> <a class="btn btn-light"
+									th:href="@{/admin/grammar-lesson}">Quay lại</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- content-wrapper ends -->
+			<!-- partial:partials/_footer.html -->
+			<footer class="footer" th:replace="~{admin/layout/footer::footer}">
+			</footer>
+			<!-- partial -->
+		</div>
+		<!-- main-panel ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	<!-- container-scroller -->
+	<div th:replace="~{admin/layout/script::script}"></div>
+	<!-- End custom js for this page -->
+</body>
+</html>

@@ -1,0 +1,99 @@
+# Thì Trong Tiếng Anh (Tenses in English)
+
+## 1. Định nghĩa
+Thì trong tiếng Anh (*Tenses in English*) là hệ thống ngữ pháp giúp chúng ta diễn đạt thời gian của hành động hoặc trạng thái. Tiếng Anh có **12 thì cơ bản**, được chia thành 3 nhóm chính:
+
+- **Thì hiện tại (Present Tenses)**
+- **Thì quá khứ (Past Tenses)**
+- **Thì tương lai (Future Tenses)**
+
+---
+
+## 2. Bảng tóm tắt 12 thì trong tiếng Anh
+
+| Thì | Công thức | Cách dùng | Ví dụ |
+|------|----------|-----------|-------|
+| **Hiện tại đơn (Present Simple)** | S + V(s/es) | Thói quen, sự thật hiển nhiên | She **drinks** coffee every morning. |
+| **Hiện tại tiếp diễn (Present Continuous)** | S + am/is/are + V-ing | Hành động đang diễn ra | I **am studying** now. |
+| **Hiện tại hoàn thành (Present Perfect)** | S + have/has + V3/ed | Hành động đã xảy ra và còn liên quan đến hiện tại | They **have visited** Japan twice. |
+| **Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous)** | S + have/has been + V-ing | Hành động kéo dài từ quá khứ đến hiện tại | She **has been working** here for 5 years. |
+| **Quá khứ đơn (Past Simple)** | S + V2/ed | Hành động xảy ra trong quá khứ | He **went** to Paris last year. |
+| **Quá khứ tiếp diễn (Past Continuous)** | S + was/were + V-ing | Hành động đang diễn ra tại một thời điểm quá khứ | They **were watching** TV at 8 PM. |
+| **Quá khứ hoàn thành (Past Perfect)** | S + had + V3/ed | Hành động xảy ra trước một hành động khác trong quá khứ | I **had finished** my homework before he arrived. |
+| **Quá khứ hoàn thành tiếp diễn (Past Perfect Continuous)** | S + had been + V-ing | Hành động kéo dài trước một thời điểm trong quá khứ | She **had been waiting** for 2 hours before the train came. |
+| **Tương lai đơn (Future Simple)** | S + will + V | Dự đoán, lời hứa | I **will help** you tomorrow. |
+| **Tương lai tiếp diễn (Future Continuous)** | S + will be + V-ing | Hành động đang diễn ra ở tương lai | This time next week, I **will be traveling**. |
+| **Tương lai hoàn thành (Future Perfect)** | S + will have + V3/ed | Hành động hoàn thành trước một thời điểm tương lai | By 2025, he **will have graduated**. |
+| **Tương lai hoàn thành tiếp diễn (Future Perfect Continuous)** | S + will have been + V-ing | Hành động đã kéo dài đến một thời điểm tương lai | By next month, she **will have been working** here for 10 years. |
+
+---
+
+## 3. Cách sử dụng chi tiết từng thì
+
+### 3.1. **Thì Hiện Tại Đơn (Present Simple)**
+📌 **Công thức:**  
+- **Khẳng định:** S + V(s/es)  
+- **Phủ định:** S + do/does + not + V  
+- **Nghi vấn:** Do/Does + S + V?  
+
+📌 **Cách dùng:**  
+✅ Diễn tả thói quen, sự thật hiển nhiên, lịch trình cố định.  
+🔹 **Ví dụ:**  
+- The sun **rises** in the east.  
+- She **does not like** spicy food.  
+- **Does** he **play** football?  
+
+---
+
+### 3.2. **Thì Hiện Tại Tiếp Diễn (Present Continuous)**
+📌 **Công thức:**  
+- **Khẳng định:** S + am/is/are + V-ing  
+- **Phủ định:** S + am/is/are + not + V-ing  
+- **Nghi vấn:** Am/Is/Are + S + V-ing?  
+
+📌 **Cách dùng:**  
+✅ Hành động đang diễn ra tại thời điểm nói hoặc tương lai gần.  
+🔹 **Ví dụ:**  
+- She **is studying** English now.  
+- They **are not working** today.  
+- **Is** he **coming** to the party?  
+
+---
+
+### 3.3. **Thì Quá Khứ Đơn (Past Simple)**
+📌 **Công thức:**  
+- **Khẳng định:** S + V2/ed  
+- **Phủ định:** S + did + not + V  
+- **Nghi vấn:** Did + S + V?  
+
+📌 **Cách dùng:**  
+✅ Hành động xảy ra và kết thúc trong quá khứ.  
+🔹 **Ví dụ:**  
+- I **visited** New York last summer.  
+- He **did not call** me.  
+- **Did** they **watch** the movie?  
+
+---
+
+## 4. Video hướng dẫn
+[![Học 12 Thì Tiếng Anh](https://img.youtube.com/vi/8F3gOFCsdFY/0.jpg)](https://www.youtube.com/watch?v=8F3gOFCsdFY)
+
+---
+
+## 5. Bài tập thực hành
+✍ **Chia động từ đúng dạng cho các câu sau:**  
+1. She (go) __________ to school every day.  
+2. They (watch) __________ TV when I arrived.  
+3. By next year, he (graduate) __________.  
+
+### 🔥 Đáp án
+<details>
+<summary>Bấm để xem đáp án</summary>
+
+1. She **goes** to school every day.  
+2. They **were watching** TV when I arrived.  
+3. By next year, he **will have graduated**.  
+
+</details>
+
+---

@@ -1,0 +1,108 @@
+# 📖 Câu Bị Động (Passive Voice) Trong Tiếng Anh
+
+## 📌 1. Định Nghĩa  
+**Câu bị động (Passive Voice)** được sử dụng khi chúng ta muốn nhấn mạnh vào hành động hoặc đối tượng chịu tác động, thay vì người thực hiện hành động.  
+
+🔹 **Ví dụ:**  
+- **Chủ động:** *She wrote a book last year.* *(Cô ấy đã viết một cuốn sách năm ngoái.)*  
+- **Bị động:** *A book was written (by her) last year.* *(Một cuốn sách đã được viết vào năm ngoái.)*  
+
+---
+
+## 📌 2. Công Thức Chung  
+S + be + V3/ed (+ by O)
+
+- Chủ ngữ **S** (người/vật chịu tác động).  
+- **Be** chia theo thì của câu chủ động.  
+- Động từ chính chia ở dạng **V3/ed**.  
+- **"by O"** (người thực hiện hành động) có thể lược bỏ nếu không cần thiết.  
+
+---
+
+## 📌 3. Các Thì Trong Câu Bị Động  
+| **Thì**                          | **Câu Chủ Động**                          | **Câu Bị Động**                            |
+|----------------------------------|--------------------------------|--------------------------------|
+| **Hiện tại đơn** (Present Simple)  | She **writes** a letter. | A letter **is written**. |
+| **Hiện tại tiếp diễn** (Present Continuous) | She **is writing** a letter. | A letter **is being written**. |
+| **Hiện tại hoàn thành** (Present Perfect) | She **has written** a letter. | A letter **has been written**. |
+| **Quá khứ đơn** (Past Simple) | She **wrote** a letter. | A letter **was written**. |
+| **Quá khứ tiếp diễn** (Past Continuous) | She **was writing** a letter. | A letter **was being written**. |
+| **Quá khứ hoàn thành** (Past Perfect) | She **had written** a letter. | A letter **had been written**. |
+| **Tương lai đơn** (Future Simple) | She **will write** a letter. | A letter **will be written**. |
+| **Tương lai gần** (Near Future) | She **is going to write** a letter. | A letter **is going to be written**. |
+
+---
+
+## 📌 4. Cách Chuyển Đổi Câu Chủ Động → Câu Bị Động  
+✅ **Bước 1:** Xác định **tân ngữ** trong câu chủ động để chuyển thành **chủ ngữ** trong câu bị động.  
+✅ **Bước 2:** Xác định thì của câu chủ động, chia động từ **"to be"** theo thì đó.  
+✅ **Bước 3:** Chuyển động từ chính sang **quá khứ phân từ (V3/ed)**.  
+✅ **Bước 4:** Nếu cần thiết, thêm **"by + O"** để chỉ người thực hiện hành động.  
+
+🔹 **Ví dụ:**  
+- **Chủ động:** *They clean the room every day.* *(Họ dọn phòng mỗi ngày.)*  
+- **Bị động:** *The room is cleaned every day.* *(Căn phòng được dọn mỗi ngày.)*  
+
+---
+
+## 📌 5. Một Số Trường Hợp Đặc Biệt  
+
+### 📍 5.1. Động từ có 2 tân ngữ  
+🔹 Khi động từ có 2 tân ngữ, ta có thể viết câu bị động theo **2 cách**:  
+**Chủ động:**  
+S + V + O1 + O2
+
+🔹 **Ví dụ:**  
+- **They gave me a present.** *(Họ đã tặng tôi một món quà.)*  
+
+🔹 **Bị động:**  
+- *I was given a present (by them).*  
+- *A present was given to me (by them).*  
+
+---
+
+### 📍 5.2. Động từ không dùng ở bị động  
+Một số động từ **không có tân ngữ trực tiếp**, **không thể chuyển sang bị động**, ví dụ:  
+✅ **Happen, seem, appear, exist, belong, consist of, lack, resemble...**  
+
+🔹 **Ví dụ:**  
+- ❌ *A mistake was happened.* (*SAI*)  
+- ✅ *A mistake happened.* (*ĐÚNG*)  
+
+---
+
+### 📍 5.3. Động từ nguyên mẫu trong câu bị động  
+🔹 Nếu câu chủ động có động từ khuyết thiếu (**can, must, should, have to, need to**...), công thức chuyển sang bị động như sau:  
+S + modal verb + be + V3/ed
+
+🔹 **Ví dụ:**  
+- *You must finish this task today.* → *This task must be finished today.*  
+- *She can do it.* → *It can be done.*  
+
+---
+
+## 📌 6. Bài Tập Luyện Tập 🎯  
+### ✏️ Bài Tập 1: Chuyển câu chủ động sang bị động  
+1. They **painted** the house last week.  
+2. She **has finished** the report.  
+3. They **are making** a cake now.  
+4. People **speak** English worldwide.  
+
+✍ **Đáp Án:**  
+1. The house **was painted** last week.  
+2. The report **has been finished**.  
+3. A cake **is being made** now.  
+4. English **is spoken** worldwide.  
+
+---
+
+## 📌 7. Video Hướng Dẫn 🎥  
+🎬 **Xem video dưới đây để hiểu rõ hơn:**  
+[![Passive Voice](https://img.youtube.com/vi/6xXDXlB8hsg/0.jpg)](https://www.youtube.com/watch?v=6xXDXlB8hsg)
+
+---
+
+## 📌 8. Kết Luận  
+Câu bị động giúp câu văn trở nên linh hoạt hơn, đặc biệt khi muốn nhấn mạnh vào **kết quả của hành động** thay vì **người thực hiện hành động**. Hãy luyện tập thường xuyên để sử dụng thành thạo nhé! 🚀
+
+---

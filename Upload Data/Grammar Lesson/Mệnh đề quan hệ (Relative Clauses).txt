@@ -1,0 +1,104 @@
+# Mệnh Đề Quan Hệ (Relative Clauses)
+
+## 1. Định nghĩa
+Mệnh đề quan hệ (*Relative Clauses*) là một mệnh đề phụ dùng để bổ nghĩa cho danh từ hoặc đại từ trong câu. Nó giúp cung cấp thêm thông tin về người hoặc vật mà không cần bắt đầu một câu mới.
+
+🔹 **Ví dụ:**  
+- The girl **who is standing over there** is my sister.  
+- This is the book **that I bought yesterday**.  
+
+---
+
+## 2. Các đại từ quan hệ phổ biến
+
+| Đại từ quan hệ | Dùng để thay thế cho | Ví dụ |
+|---------------|---------------------|-------|
+| **Who** | Người (chủ ngữ) | The teacher **who teaches us English** is very kind. |
+| **Whom** | Người (tân ngữ) | The girl **whom you met yesterday** is my friend. |
+| **Which** | Vật hoặc động vật | The car **which I bought** is very expensive. |
+| **That** | Người hoặc vật | The book **that I read** was amazing. |
+| **Whose** | Sở hữu (của ai đó) | The boy **whose father is a doctor** is my classmate. |
+| **Where** | Nơi chốn | The house **where I was born** is very old. |
+| **When** | Thời gian | The day **when we met** was unforgettable. |
+| **Why** | Lý do | The reason **why he left** is still unknown. |
+
+---
+
+## 3. Phân loại mệnh đề quan hệ
+
+### 3.1. **Mệnh đề quan hệ xác định (Defining Relative Clause)**
+✅ Là loại mệnh đề cần thiết để làm rõ nghĩa của danh từ, **không thể bỏ đi**.  
+❌ Không có dấu phẩy trước mệnh đề.  
+
+🔹 **Ví dụ:**  
+- The man **who lives next door** is a doctor.  
+- The book **that I borrowed** is very interesting.  
+
+---
+
+### 3.2. **Mệnh đề quan hệ không xác định (Non-defining Relative Clause)**
+✅ Cung cấp thêm thông tin về danh từ, **có thể bỏ đi** mà không làm mất ý nghĩa chính của câu.  
+✅ Luôn có dấu phẩy trước mệnh đề quan hệ.  
+
+🔹 **Ví dụ:**  
+- My mother, **who is 50 years old**, loves gardening.  
+- Paris, **which is the capital of France**, is a beautiful city.  
+
+---
+
+## 4. Rút gọn mệnh đề quan hệ
+
+### 4.1. **Dùng V-ing (Khi động từ ở thể chủ động)**
+📌 **Công thức:**  
+> N + who/which/that + V → N + V-ing  
+
+🔹 **Ví dụ:**  
+- The man **who is talking** to my father is my uncle. → The man **talking** to my father is my uncle.  
+- The book **that lies** on the table is mine. → The book **lying** on the table is mine.  
+
+---
+
+### 4.2. **Dùng V-ed (Khi động từ ở thể bị động)**
+📌 **Công thức:**  
+> N + who/which/that + be + V3 → N + V3/ed  
+
+🔹 **Ví dụ:**  
+- The house **which was built** last year is very modern. → The house **built** last year is very modern.  
+- The song **which was sung** by Taylor Swift is amazing. → The song **sung** by Taylor Swift is amazing.  
+
+---
+
+### 4.3. **Dùng "to V" (Khi có từ "the first", "the last", "the only", hoặc so sánh nhất)**
+📌 **Công thức:**  
+> The first/last/only + N + who/which/that + V → The first/last/only + N + to V  
+
+🔹 **Ví dụ:**  
+- He was the first person **who arrived** at the party. → He was the first person **to arrive** at the party.  
+- This is the only book **that I have**. → This is the only book **to have**.  
+
+---
+
+## 5. Video hướng dẫn
+[![Mệnh đề quan hệ trong tiếng Anh](https://img.youtube.com/vi/JbnXva_RM6I/0.jpg)](https://www.youtube.com/watch?v=JbnXva_RM6I)
+
+---
+
+## 6. Bài tập thực hành
+✍ **Điền đại từ quan hệ thích hợp vào chỗ trống:**  
+1. This is the boy ______ won the competition.  
+2. The book ______ I borrowed from you is very interesting.  
+3. The woman ______ son is studying abroad is my neighbor.  
+4. That is the hospital ______ I was born.  
+
+### 🔥 Đáp án
+<details>
+<summary>Bấm để xem đáp án</summary>
+
+1. This is the boy **who** won the competition.  
+2. The book **which/that** I borrowed from you is very interesting.  
+3. The woman **whose** son is studying abroad is my neighbor.  
+4. That is the hospital **where** I was born.  
+
+</details>
+
+---

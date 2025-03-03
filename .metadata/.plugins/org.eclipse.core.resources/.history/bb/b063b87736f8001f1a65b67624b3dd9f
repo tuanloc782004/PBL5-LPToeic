@@ -1,0 +1,9 @@
+package com.pbl5.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.pbl5.model.GrammarLesson;
+
+public interface GrammarLessonRepository extends JpaRepository<GrammarLesson, Long> {
+
+}

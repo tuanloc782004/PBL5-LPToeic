@@ -8,7 +8,7 @@ import com.pbl5.model.VocabularyLesson;
 
 public interface VocabularyLessonRepository extends JpaRepository<VocabularyLesson, Long> {
 
-	@Query("SELECT v FROM Vocabulary v WHERE v.vocabularyName LIKE %?1%")
+	@Query("SELECT vl FROM VocabularyLesson vl WHERE vl.lessonName LIKE %?1%")
 	List<VocabularyLesson> findByKeyword(String keyword);
 
 }
