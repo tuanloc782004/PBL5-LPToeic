@@ -1,0 +1,77 @@
+package com.pbl5.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "part6")
+public class Part6 {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mock_exam_id", nullable = false)
+    private MockExam mockExam;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reading_exercise_id", nullable = false)
+    private ReadingExercise readingExercise;
+
+    @Column(name = "script", nullable = false, columnDefinition = "TEXT")
+    private String script;
+
+	public Part6() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Part6(int id, MockExam mockExam, ReadingExercise readingExercise, String script) {
+		super();
+		this.id = id;
+		this.mockExam = mockExam;
+		this.readingExercise = readingExercise;
+		this.script = script;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public MockExam getMockExam() {
+		return mockExam;
+	}
+
+	public void setMockExam(MockExam mockExam) {
+		this.mockExam = mockExam;
+	}
+
+	public ReadingExercise getReadingExercise() {
+		return readingExercise;
+	}
+
+	public void setReadingExercise(ReadingExercise readingExercise) {
+		this.readingExercise = readingExercise;
+	}
+
+	public String getScript() {
+		return script;
+	}
+
+	public void setScript(String script) {
+		this.script = script;
+	}
+    
+}

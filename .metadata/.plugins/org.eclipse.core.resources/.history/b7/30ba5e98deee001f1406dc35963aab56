@@ -1,5 +1,0 @@
-package com.pbl5.service.impl;
-
-public interface Grammar {
-
-}

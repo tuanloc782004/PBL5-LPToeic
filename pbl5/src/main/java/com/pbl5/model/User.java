@@ -1,5 +1,8 @@
 package com.pbl5.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,29 +21,33 @@ public class User {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
-    private Role role;
-	
+	@JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+	private Role role;
+
 	@Column(name = "username", nullable = false, unique = true, length = 50)
 	private String username;
-	
+
 	@Column(name = "password", nullable = false, length = 255)
 	private String password;
-	
+
 	@Column(name = "email", nullable = false, unique = true, length = 50)
 	private String email;
-	
+
 	@Column(name = "avatar_url", length = 255, columnDefinition = "VARCHAR(255) DEFAULT '/upload-dir/avatar.jpg'")
 	private String avatarUrl;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<TestResult> testResults;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Long id, Role role, String username, String password, String email, String avatarUrl) {
+	public User(Long id, Role role, String username, String password, String email, String avatarUrl,
+			List<TestResult> testResults) {
 		super();
 		this.id = id;
 		this.role = role;
@@ -47,6 +55,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.avatarUrl = avatarUrl;
+		this.testResults = testResults;
 	}
 
 	public Long getId() {
@@ -96,5 +105,13 @@ public class User {
 	public void setAvatarUrl(String avatarUrl) {
 		this.avatarUrl = avatarUrl;
 	}
-	
+
+	public List<TestResult> getTestResults() {
+		return testResults;
+	}
+
+	public void setTestResults(List<TestResult> testResults) {
+		this.testResults = testResults;
+	}
+
 }

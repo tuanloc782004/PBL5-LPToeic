@@ -2,6 +2,7 @@ package com.pbl5.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,53 +14,44 @@ import jakarta.persistence.Table;
 @Table(name = "test_result")
 public class TestResult {
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User user;
-	
-	@ManyToOne
-    @JoinColumn(name = "mock_exam_id", referencedColumnName = "id", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mock_exam_id", nullable = false)
     private MockExam mockExam;
-	
-	@Column(name = "correct_answers", nullable = false)
-	private Long correctAnswers;
-	
-	@Column(name = "incorrect_answers", nullable = false)
-	private Long incorrectAnswers;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(name = "correct_answers", nullable = false)
+    private int correctAnswers;
+
+    @Column(name = "incorrect_answers", nullable = false)
+    private int incorrectAnswers;
 
 	public TestResult() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TestResult(Long id, User user, MockExam mockExam, Long correctAnswers, Long incorrectAnswers) {
+	public TestResult(int id, MockExam mockExam, User user, int correctAnswers, int incorrectAnswers) {
 		super();
 		this.id = id;
-		this.user = user;
 		this.mockExam = mockExam;
+		this.user = user;
 		this.correctAnswers = correctAnswers;
 		this.incorrectAnswers = incorrectAnswers;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public MockExam getMockExam() {
@@ -70,20 +62,28 @@ public class TestResult {
 		this.mockExam = mockExam;
 	}
 
-	public Long getCorrectAnswers() {
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public int getCorrectAnswers() {
 		return correctAnswers;
 	}
 
-	public void setCorrectAnswers(Long correctAnswers) {
+	public void setCorrectAnswers(int correctAnswers) {
 		this.correctAnswers = correctAnswers;
 	}
 
-	public Long getIncorrectAnswers() {
+	public int getIncorrectAnswers() {
 		return incorrectAnswers;
 	}
 
-	public void setIncorrectAnswers(Long incorrectAnswers) {
+	public void setIncorrectAnswers(int incorrectAnswers) {
 		this.incorrectAnswers = incorrectAnswers;
 	}
-	
+    
 }

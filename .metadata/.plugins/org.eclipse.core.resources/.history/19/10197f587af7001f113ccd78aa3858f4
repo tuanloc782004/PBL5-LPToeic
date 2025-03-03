@@ -1,0 +1,15 @@
+package com.pbl5.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.pbl5.model.GrammarLesson;
+
+public interface GrammarRepository extends JpaRepository<GrammarLesson, Long> {
+
+	@Query("SELECT g FROM Grammar g WHERE g.grammarName LIKE %?1%")
+    List<GrammarLesson> findByKeyword(String keyword);
+	
+}

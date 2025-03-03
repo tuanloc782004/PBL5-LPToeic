@@ -1,0 +1,49 @@
+package com.pbl5.model;
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "mock_exam")
+public class MockExam {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name = "mock_exam_name", nullable = false, length = 255)
+	private String mockExamName;
+	
+	@OneToMany(mappedBy = "test_result", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<TestResult> testResult;
+	
+	@OneToMany(mappedBy = "part1", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part1> part1s;
+	
+	@OneToMany(mappedBy = "part2", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part2> part2s;
+	
+	@OneToMany(mappedBy = "part3", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part3> part3s;
+	
+	@OneToMany(mappedBy = "part4", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part4> part4s;
+	
+	@OneToMany(mappedBy = "part5", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part5> part5s;
+	
+	@OneToMany(mappedBy = "part6", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part6> part6s;
+	
+	@OneToMany(mappedBy = "part7", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Part7> part7s;
+
+}
