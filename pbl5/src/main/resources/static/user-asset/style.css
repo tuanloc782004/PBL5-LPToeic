@@ -183,6 +183,7 @@ body {
     z-index: 1;
     position: absolute;
     background-color: var(--color-bgmain);
+    top: 100%;
 }
 
 .menu-bar .user-menu ul li:hover .dropdown-user ul {

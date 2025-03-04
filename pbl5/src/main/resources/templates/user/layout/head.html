@@ -5,13 +5,21 @@
 <title th:text="LPToeic"></title>
 
 <!-- Font Awesome -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
 
 <!-- CSS chung -->
 <link rel="stylesheet" th:href="@{/user-asset/style.css}">
 <link rel="stylesheet" th:href="@{/user-asset/style2.css}">
 <link rel="stylesheet" th:href="@{/user-asset/style3.css}">
+
+<script>
+      function showSection(section) {
+        document.querySelector('.user-info').style.display = 'none';
+        document.querySelector('.user-password').style.display = 'none';
+        document.querySelector(section).style.display = 'block';
+      }
+</script>
 
 <!-- Thêm các file CSS khác nếu cần -->
 <!--<th:block th:insert="~{::${extraHead}}"></th:block>-->
