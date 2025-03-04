@@ -23,11 +23,11 @@ public class Part4 {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "mock_exam_id", nullable = false)
+	@JoinColumn(name = "mock_exam_id")
 	private MockExam mockExam;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "listening_exercise_id", nullable = false)
+	@JoinColumn(name = "listening_exercise_id")
 	private ListeningExercise listeningExercise;
 
 	@Column(name = "audio_url", nullable = false, length = 255)

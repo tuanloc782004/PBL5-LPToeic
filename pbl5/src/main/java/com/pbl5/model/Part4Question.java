@@ -21,6 +21,9 @@ public class Part4Question {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "part4_id", nullable = false)
 	private Part4 part4;
+	
+	@Column(name = "number", nullable = false)
+	private Long number;
 
 	@Column(name = "question", nullable = false, length = 255)
 	private String question;
@@ -48,11 +51,12 @@ public class Part4Question {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Part4Question(Long id, Part4 part4, String question, String optionA, String optionB, String optionC,
-			String optionD, char correctAnswer, String explanation) {
+	public Part4Question(Long id, Part4 part4, Long number, String question, String optionA, String optionB,
+			String optionC, String optionD, char correctAnswer, String explanation) {
 		super();
 		this.id = id;
 		this.part4 = part4;
+		this.number = number;
 		this.question = question;
 		this.optionA = optionA;
 		this.optionB = optionB;
@@ -76,6 +80,14 @@ public class Part4Question {
 
 	public void setPart4(Part4 part4) {
 		this.part4 = part4;
+	}
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	public String getQuestion() {

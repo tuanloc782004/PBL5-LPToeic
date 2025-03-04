@@ -1,0 +1,44 @@
+package com.pbl5.service.impl;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+
+import com.pbl5.model.ReadingExercise;
+import com.pbl5.service.ReadingExerciseService;
+
+@Service
+public class ReadingExerciseServiceImpl implements ReadingExerciseService {
+
+	@Override
+	public List<ReadingExercise> findByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<ReadingExercise> findAll(Integer pageno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<ReadingExercise> findByKeyword(String keyword, Integer pageNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ReadingExercise save(ReadingExercise readingExercise) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

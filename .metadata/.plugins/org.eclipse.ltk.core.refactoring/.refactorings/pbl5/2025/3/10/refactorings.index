@@ -41,3 +41,18 @@
 1741009623690	Rename compilation unit 'GrammarServiceImpl.java'
 1741011513489	Copy file
 1741015446103	Rename resource 'vocabulary-lesson-view.html'
+1741050908276	Copy file
+1741074509256	Rename type 'Part5ReadingExerciseService'
+1741074516231	Rename type 'Part5ReadingExerciseServiceImpl'
+1741080311683	Rename type 'GrammarLessonController'
+1741083450717	Rename type 'UserController'
+1741083462076	Rename type 'VocabularyLessonController'
+1741095835862	Copy file
+1741095839858	Copy file
+1741095851412	Move 'part5-reading-exercise-form.html' to 'admin'
+1741095872104	Copy file
+1741097458885	Rename type 'Part5ReadingExerciseController'
+1741097470388	Copy compilation unit
+1741097874959	Rename compilation unit 'Part5ServiceImpl.java'
+1741101880773	Delete elements
+1741101893421	Delete elements

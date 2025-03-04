@@ -1,0 +1,16 @@
+package com.pbl5.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.pbl5.model.ReadingExercise;
+import com.pbl5.model.VocabularyLesson;
+
+public interface ReadingExerciseRepository extends JpaRepository<ReadingExercise, Long> {
+
+	@Query("SELECT re FROM ReadingExercise re WHERE re.exerciseName LIKE %?1%AND re.part5s IS NOT EMPTY")
+	List<VocabularyLesson> findByKeyword(String keyword);
+	
+}

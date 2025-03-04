@@ -20,14 +20,14 @@ public class Part6 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mock_exam_id", nullable = false)
+    @JoinColumn(name = "mock_exam_id")
     private MockExam mockExam;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reading_exercise_id", nullable = false)
+    @JoinColumn(name = "reading_exercise_id")
     private ReadingExercise readingExercise;
 
     @Column(name = "script", nullable = false, columnDefinition = "TEXT")
@@ -41,7 +41,7 @@ public class Part6 {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Part6(int id, MockExam mockExam, ReadingExercise readingExercise, String script,
+	public Part6(Long id, MockExam mockExam, ReadingExercise readingExercise, String script,
 			List<Part6Question> questions) {
 		super();
 		this.id = id;
@@ -51,11 +51,11 @@ public class Part6 {
 		this.questions = questions;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -19,12 +19,15 @@ public class Part2 {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "mock_exam_id", nullable = false)
+	@JoinColumn(name = "mock_exam_id")
 	private MockExam mockExam;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "listening_exercise_id", nullable = false)
+	@JoinColumn(name = "listening_exercise_id")
 	private ListeningExercise listeningExercise;
+	
+	@Column(name = "number", nullable = false)
+	private Long number;
 
 	@Column(name = "audio_url", nullable = false, length = 255)
 	private String audioUrl;
@@ -49,12 +52,13 @@ public class Part2 {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Part2(Long id, MockExam mockExam, ListeningExercise listeningExercise, String audioUrl, String optionA,
-			String optionB, String optionC, String correctAnswer, String explanation) {
+	public Part2(Long id, MockExam mockExam, ListeningExercise listeningExercise, Long number, String audioUrl,
+			String optionA, String optionB, String optionC, String correctAnswer, String explanation) {
 		super();
 		this.id = id;
 		this.mockExam = mockExam;
 		this.listeningExercise = listeningExercise;
+		this.number = number;
 		this.audioUrl = audioUrl;
 		this.optionA = optionA;
 		this.optionB = optionB;
@@ -85,6 +89,14 @@ public class Part2 {
 
 	public void setListeningExercise(ListeningExercise listeningExercise) {
 		this.listeningExercise = listeningExercise;
+	}
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	public String getAudioUrl() {

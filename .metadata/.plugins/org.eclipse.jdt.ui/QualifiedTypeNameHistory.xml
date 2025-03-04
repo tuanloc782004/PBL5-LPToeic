@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
-    <fullyQualifiedTypeName name="java.lang.System.Logger"/>
-    <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
-    <fullyQualifiedTypeName name="com.pbl5.repository.VocabularyContentRepository"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.VocabularyContent"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.ListeningQuestion"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.MockExamQuestion"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.ReadingQuestion"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.io.InputStream"/>
-    <fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Row"/>
-    <fullyQualifiedTypeName name="java.io.IOException"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.Vocabulary"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.Reading"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.Listening"/>
     <fullyQualifiedTypeName name="com.pbl5.model.MockExam"/>
     <fullyQualifiedTypeName name="com.pbl5.excel.ExcelService"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.GrammarRepository"/>
     <fullyQualifiedTypeName name="com.pbl5.service.GrammarService"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Grammar"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="ch.qos.logback.core.pattern.parser.Parser"/>
     <fullyQualifiedTypeName name="com.vladsch.flexmark.html.HtmlRenderer"/>
     <fullyQualifiedTypeName name="com.vladsch.flexmark.parser.Parser"/>
@@ -54,10 +38,26 @@
     <fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Sheet"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="com.pbl5.storage.StorageService"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.GrammarLessonRepository"/>
     <fullyQualifiedTypeName name="com.pbl5.service.GrammarLessonService"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.pbl5.markdown.MarkdownService"/>
     <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part5ReadingExerciseService"/>
+    <fullyQualifiedTypeName name="com.pbl5.repository.ReadingExerciseRepository"/>
+    <fullyQualifiedTypeName name="org.hibernate.query.Page"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.ReadingExerciseService"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.ReadingExercise"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part5"/>
+    <fullyQualifiedTypeName name="com.pbl5.repository.Part5Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.pbl5.controller.admin.Part6ReadingExerciseAdminController"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part6Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.pbl5.repository.Part6Repository"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part6"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part6Question"/>
+    <fullyQualifiedTypeName name="com.pbl5.repository.Part6QuestionRepository"/>
 </qualifiedTypeNameHistroy>

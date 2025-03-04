@@ -16,15 +16,18 @@ public class Part5 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mock_exam_id", nullable = false)
+    @JoinColumn(name = "mock_exam_id")
     private MockExam mockExam;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reading_exercise_id", nullable = false)
+    @JoinColumn(name = "reading_exercise_id")
     private ReadingExercise readingExercise;
+    
+    @Column(name = "number", nullable = false)
+	private Long number;
 
     @Column(name = "question", nullable = false, length = 255)
     private String question;
@@ -37,6 +40,9 @@ public class Part5 {
 
     @Column(name = "option_c", nullable = false, length = 255)
     private String optionC;
+    
+    @Column(name = "option_d", nullable = false, length = 255)
+    private String optionD;
 
     @Column(name = "correct_answer", nullable = false, length = 1)
     private String correctAnswer;
@@ -49,25 +55,27 @@ public class Part5 {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Part5(int id, MockExam mockExam, ReadingExercise readingExercise, String question, String optionA,
-			String optionB, String optionC, String correctAnswer, String explanation) {
+	public Part5(Long id, MockExam mockExam, ReadingExercise readingExercise, Long number, String question,
+			String optionA, String optionB, String optionC, String optionD, String correctAnswer, String explanation) {
 		super();
 		this.id = id;
 		this.mockExam = mockExam;
 		this.readingExercise = readingExercise;
+		this.number = number;
 		this.question = question;
 		this.optionA = optionA;
 		this.optionB = optionB;
 		this.optionC = optionC;
+		this.optionD = optionD;
 		this.correctAnswer = correctAnswer;
 		this.explanation = explanation;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -85,6 +93,14 @@ public class Part5 {
 
 	public void setReadingExercise(ReadingExercise readingExercise) {
 		this.readingExercise = readingExercise;
+	}
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	public String getQuestion() {
@@ -117,6 +133,14 @@ public class Part5 {
 
 	public void setOptionC(String optionC) {
 		this.optionC = optionC;
+	}
+
+	public String getOptionD() {
+		return optionD;
+	}
+
+	public void setOptionD(String optionD) {
+		this.optionD = optionD;
 	}
 
 	public String getCorrectAnswer() {

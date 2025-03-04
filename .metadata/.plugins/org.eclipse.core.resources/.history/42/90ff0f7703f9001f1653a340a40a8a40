@@ -1,0 +1,10 @@
+package com.pbl5.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.pbl5.service.Part6Service;
+
+@Service
+public class Part6ServiceImpl implements Part6Service {
+
+}

@@ -16,6 +16,6 @@ public interface VocabularyLessonService {
 
 	public void deleteById(Long id);
 
-	public VocabularyLesson save(VocabularyLesson vocabulary);
+	public VocabularyLesson save(VocabularyLesson vocabularyLesson);
 	
 }

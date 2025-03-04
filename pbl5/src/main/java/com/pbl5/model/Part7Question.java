@@ -16,11 +16,14 @@ public class Part7Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "part7_id", nullable = false)
     private Part7 part7;
+    
+    @Column(name = "number", nullable = false)
+	private Long number;
 
     @Column(name = "option_a", nullable = false, length = 255)
     private String optionA;
@@ -45,11 +48,12 @@ public class Part7Question {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Part7Question(int id, Part7 part7, String optionA, String optionB, String optionC, String optionD,
-			String correctAnswer, String explanation) {
+	public Part7Question(Long id, Part7 part7, Long number, String optionA, String optionB, String optionC,
+			String optionD, String correctAnswer, String explanation) {
 		super();
 		this.id = id;
 		this.part7 = part7;
+		this.number = number;
 		this.optionA = optionA;
 		this.optionB = optionB;
 		this.optionC = optionC;
@@ -58,11 +62,11 @@ public class Part7Question {
 		this.explanation = explanation;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -72,6 +76,14 @@ public class Part7Question {
 
 	public void setPart7(Part7 part7) {
 		this.part7 = part7;
+	}
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	public String getOptionA() {
