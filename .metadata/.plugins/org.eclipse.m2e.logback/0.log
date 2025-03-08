@@ -3699,3 +3699,6 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.vladsch.f
 2025-03-04 22:50:52,992 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-03-04 22:50:53,093 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1060 resources from src\main\resources to target\classes
 2025-03-04 22:50:53,650 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\pbl5\src\test\resources
+2025-03-05 08:06:57,211 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-03-05 09:19:36,102 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-03-05 09:20:00,365 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Updating Gradle version information cache failed. Using outdated cache.

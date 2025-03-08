@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.pbl5.model.ListeningExercise;
+import com.pbl5.model.Part1;
 import com.pbl5.model.Part5;
 import com.pbl5.model.Part6;
 import com.pbl5.model.Part6Question;
@@ -16,6 +18,10 @@ public interface ExcelService {
 	public List<VocabularyLessonContent> readVocabularyLessonContentExcelFile(MultipartFile file, VocabularyLesson vocabularyLesson, String myCode);
 
 	public void saveVocabularyLessonContentFromExcel(MultipartFile file, VocabularyLesson vocabularyLesson, String myCode);
+	
+	public List<Part1> readPart1ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, String myCode);
+
+	public void savePart1ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, String myCode);
 	
 	public List<Part5> readPart5ReadingExerciseExcelFile(MultipartFile file, ReadingExercise readingExercise);
 
