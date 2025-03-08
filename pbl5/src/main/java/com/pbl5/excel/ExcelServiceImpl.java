@@ -16,11 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.pbl5.model.Part5;
 import com.pbl5.model.Part6;
 import com.pbl5.model.Part6Question;
+import com.pbl5.model.Part7;
+import com.pbl5.model.Part7Question;
 import com.pbl5.model.ReadingExercise;
 import com.pbl5.model.VocabularyLesson;
 import com.pbl5.model.VocabularyLessonContent;
 import com.pbl5.repository.Part5Repository;
 import com.pbl5.repository.Part6QuestionRepository;
+import com.pbl5.repository.Part7QuestionRepository;
 import com.pbl5.repository.VocabularyLessonContentRepository;
 
 @Service
@@ -36,6 +39,9 @@ public class ExcelServiceImpl implements ExcelService {
 	
 	@Autowired
 	private Part6QuestionRepository part6QuestionRepository;
+	
+	@Autowired
+	private Part7QuestionRepository part7QuestionRepository;
 
 	@Override
 	public List<VocabularyLessonContent> readVocabularyLessonContentExcelFile(MultipartFile file,
@@ -233,4 +239,60 @@ public class ExcelServiceImpl implements ExcelService {
 		}
 	}
 
+	@Override
+	public List<Part7Question> readPart7ReadingExerciseExcelFile(MultipartFile file, Part7 part7) {
+		// TODO Auto-generated method stub
+		List<Part7Question> part7QuestionList = new ArrayList<>();
+		Long i = 1L;
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				try {
+					Part7Question part7Question = new Part7Question();
+					part7Question.setNumber(i);
+					part7Question.setOptionA(getStringValue(row.getCell(0)));
+					part7Question.setOptionB(getStringValue(row.getCell(1)));
+					part7Question.setOptionC(getStringValue(row.getCell(2)));
+					part7Question.setOptionD(getStringValue(row.getCell(3)));
+					part7Question.setCorrectAnswer(getStringValue(row.getCell(4)));
+					part7Question.setExplanation(getStringValue(row.getCell(5)));
+					part7Question.setPart7(part7);
+
+					part7QuestionList.add(part7Question);
+					i++;
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part7QuestionList;
+	}
+
+	@Override
+	public void savePart7ReadingExerciseFromExcel(MultipartFile file, Part7 part7) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part7Question> list = readPart7ReadingExerciseExcelFile(file, part7);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part7QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
 }
