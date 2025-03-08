@@ -19,9 +19,15 @@ public interface ReadingExerciseService {
 	public ReadingExercise save(ReadingExercise readingExercise);
 	
 	public List<ReadingExercise> findByKeywordAndPart6sIsNotEmpty(String keyword);
+	
+	public List<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword);
 
 	public Page<ReadingExercise> findByPart6sIsNotEmpty(Integer pageno);
+	
+	public Page<ReadingExercise> findByPart7sIsNotEmpty(Integer pageno);
 
 	public Page<ReadingExercise> findByKeywordAndPart6sIsNotEmpty(String keyword, Integer pageNo);
+	
+	public Page<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword, Integer pageNo);
 	
 }

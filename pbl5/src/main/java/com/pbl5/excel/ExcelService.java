@@ -9,6 +9,8 @@ import com.pbl5.model.Part1;
 import com.pbl5.model.Part5;
 import com.pbl5.model.Part6;
 import com.pbl5.model.Part6Question;
+import com.pbl5.model.Part7;
+import com.pbl5.model.Part7Question;
 import com.pbl5.model.ReadingExercise;
 import com.pbl5.model.VocabularyLesson;
 import com.pbl5.model.VocabularyLessonContent;
@@ -30,5 +32,9 @@ public interface ExcelService {
 	public List<Part6Question> readPart6ReadingExerciseExcelFile(MultipartFile file, Part6 part6);
 
 	public void savePart6ReadingExerciseFromExcel(MultipartFile file, Part6 part6);
+	
+	public List<Part7Question> readPart7ReadingExerciseExcelFile(MultipartFile file, Part7 part7);
+
+	public void savePart7ReadingExerciseFromExcel(MultipartFile file, Part7 part7);
 	
 }

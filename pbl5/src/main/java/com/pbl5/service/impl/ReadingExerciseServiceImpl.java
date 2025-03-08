@@ -138,5 +138,47 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			return Page.empty();
 		}
 	}
+	@Override
+	public List<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword) {
+		// TODO Auto-generated method stub
+		try {
+			return this.readingExerciseRepository.findByKeywordAndPart7sIsNotEmpty(keyword);
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài luyện nghe phần 7 với keyword: " + keyword, e);
+			return List.of(); // Trả về danh sách rỗng nếu có lỗi
+		}
+	}
 
+	@Override
+	public Page<ReadingExercise> findByPart7sIsNotEmpty(Integer pageno) {
+		// TODO Auto-generated method stub
+		try {
+			Pageable pageable = PageRequest.of(pageno - 1, 5);
+			return this.readingExerciseRepository.findByPart6sIsNotEmpty(pageable);
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 7 trang " + pageno, e);
+			return Page.empty(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
+	@Override
+	public Page<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword, Integer pageNo) {
+		// TODO Auto-generated method stub
+		try {
+			List<ReadingExercise> list = this.readingExerciseRepository.findByKeywordAndPart7sIsNotEmpty(keyword);
+			Pageable pageable = PageRequest.of(pageNo - 1, 5);
+			int start = (int) pageable.getOffset();
+			int end = Math.min(start + pageable.getPageSize(), list.size());
+
+			if (start > list.size()) {
+				return Page.empty();
+			}
+
+			List<ReadingExercise> sublist = list.subList(start, end);
+			return new PageImpl<>(sublist, pageable, list.size());
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài bài luyện nghe phần 7 theo keyword: " + keyword + " trang " + pageNo, e);
+			return Page.empty();
+		}
+	}
 }

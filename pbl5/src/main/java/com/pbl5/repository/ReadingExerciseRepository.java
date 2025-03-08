@@ -28,5 +28,14 @@ public interface ReadingExerciseRepository extends JpaRepository<ReadingExercise
 
     @Query("SELECT r FROM ReadingExercise r WHERE r.exerciseName LIKE %:keyword% AND SIZE(r.part6s) > 0")
     List<ReadingExercise> findByKeywordAndPart6sIsNotEmpty(String keyword);
+    
+    @Query("SELECT r FROM ReadingExercise r WHERE SIZE(r.part7s) > 0")
+    List<ReadingExercise> findByPart7sIsNotEmpty();
+
+    @Query("SELECT r FROM ReadingExercise r WHERE SIZE(r.part7s) > 0")
+    Page<ReadingExercise> findByPart7sIsNotEmpty(Pageable pageable);
+
+    @Query("SELECT r FROM ReadingExercise r WHERE r.exerciseName LIKE %:keyword% AND SIZE(r.part7s) > 0")
+    List<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword);
 	
 }
