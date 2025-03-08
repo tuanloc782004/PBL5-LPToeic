@@ -28,7 +28,8 @@
 								th:each="vocabularyLessonContent : ${vocabularyLesson.vocabularyLessonContents}">
 								<div class="vocal-detail">
 									<div class="head-img">
-										<b th:text="${vocabularyLessonContent.number} + '. ' + ${vocabularyLessonContent.content}"></b> <img
+										<b th:text="${vocabularyLessonContent.content} + '. '"><span
+											th:text="${vocabularyLessonContent.content}"></span></b> <img
 											th:src="${vocabularyLessonContent.imageUrl}" alt="">
 									</div>
 									<div class="vocal-content">
