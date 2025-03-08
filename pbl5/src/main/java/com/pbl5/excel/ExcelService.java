@@ -16,25 +16,29 @@ import com.pbl5.model.VocabularyLesson;
 import com.pbl5.model.VocabularyLessonContent;
 
 public interface ExcelService {
-		
-	public List<VocabularyLessonContent> readVocabularyLessonContentExcelFile(MultipartFile file, VocabularyLesson vocabularyLesson, String myCode);
 
-	public void saveVocabularyLessonContentFromExcel(MultipartFile file, VocabularyLesson vocabularyLesson, String myCode);
-	
-	public List<Part1> readPart1ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, String myCode);
+	public List<VocabularyLessonContent> readVocabularyLessonContentExcelFile(MultipartFile file,
+			VocabularyLesson vocabularyLesson, String myCode);
 
-	public void savePart1ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, String myCode);
-	
+	public void saveVocabularyLessonContentFromExcel(MultipartFile file, VocabularyLesson vocabularyLesson,
+			String myCode);
+
+	public List<Part1> readPart1ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise,
+			String myCode);
+
+	public void savePart1ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise,
+			String myCode);
+
 	public List<Part5> readPart5ReadingExerciseExcelFile(MultipartFile file, ReadingExercise readingExercise);
 
 	public void savePart5ReadingExerciseFromExcel(MultipartFile file, ReadingExercise readingExercise);
-	
+
 	public List<Part6Question> readPart6ReadingExerciseExcelFile(MultipartFile file, Part6 part6);
 
 	public void savePart6ReadingExerciseFromExcel(MultipartFile file, Part6 part6);
-	
+
 	public List<Part7Question> readPart7ReadingExerciseExcelFile(MultipartFile file, Part7 part7);
 
 	public void savePart7ReadingExerciseFromExcel(MultipartFile file, Part7 part7);
-	
+
 }

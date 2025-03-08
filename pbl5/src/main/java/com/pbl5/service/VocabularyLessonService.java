@@ -18,4 +18,10 @@ public interface VocabularyLessonService {
 
 	public VocabularyLesson save(VocabularyLesson vocabularyLesson);
 	
+	public List<VocabularyLesson> findAll();
+	
+	public VocabularyLesson findById(Long id);
+	
+	public VocabularyLesson findFirstLesson();
+	
 }

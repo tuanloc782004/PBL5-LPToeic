@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.pbl5.model.MockExam"/>
     <fullyQualifiedTypeName name="com.pbl5.excel.ExcelService"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.GrammarRepository"/>
     <fullyQualifiedTypeName name="com.pbl5.service.GrammarService"/>
@@ -9,7 +8,6 @@
     <fullyQualifiedTypeName name="com.vladsch.flexmark.html.HtmlRenderer"/>
     <fullyQualifiedTypeName name="com.vladsch.flexmark.parser.Parser"/>
     <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part1"/>
     <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
@@ -23,7 +21,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
     <fullyQualifiedTypeName name="com.pbl5.model.TestResult"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.VocabularyLessonRepository"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.VocabularyLesson"/>
     <fullyQualifiedTypeName name="com.pbl5.service.VocabularyLessonService"/>
     <fullyQualifiedTypeName name="com.pbl5.model.VocabularyLessonContent"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.VocabularyLessonContentRepository"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="com.pbl5.model.Part6"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part6Question"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.Part6QuestionRepository"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.VocabularyLesson"/>
 </qualifiedTypeNameHistroy>

@@ -22,7 +22,7 @@ public class WebSecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/login", "/register", "/vocabulary/**", "/grammar/**", "/listening").permitAll()
+				.requestMatchers("/", "/login", "/register", "/vocabulary-lesson/**", "/grammar-lesson/**", "/listening").permitAll()
 				.requestMatchers("/admin/**").hasAuthority("ADMIN").requestMatchers("/user/**").hasAuthority("USER")
 				.anyRequest().authenticated() // Các yêu cầu khác cần xác thực
 		).formLogin((form) -> form.loginPage("/login") // Trang đăng nhập tùy chỉnh

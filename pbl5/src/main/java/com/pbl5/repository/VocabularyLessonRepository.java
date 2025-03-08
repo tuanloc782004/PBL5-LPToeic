@@ -10,5 +10,8 @@ public interface VocabularyLessonRepository extends JpaRepository<VocabularyLess
 
 	@Query("SELECT vl FROM VocabularyLesson vl WHERE vl.lessonName LIKE %?1%")
 	List<VocabularyLesson> findByKeyword(String keyword);
+	
+	@Query("SELECT v FROM VocabularyLesson v ORDER BY v.id ASC LIMIT 1")
+    VocabularyLesson findFirstLesson();
 
 }
