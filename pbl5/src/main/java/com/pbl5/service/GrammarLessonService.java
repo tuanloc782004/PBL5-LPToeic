@@ -20,4 +20,6 @@ public interface GrammarLessonService {
 	
 	public GrammarLesson findById(Long id);
 	
+	public List<GrammarLesson> findAll(); 
+
 }
