@@ -36,9 +36,6 @@
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="com.pbl5.storage.StorageService"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.GrammarLessonRepository"/>
-    <fullyQualifiedTypeName name="com.pbl5.service.GrammarLessonService"/>
-    <fullyQualifiedTypeName name="com.pbl5.markdown.MarkdownService"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part5ReadingExerciseService"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.ReadingExerciseRepository"/>
     <fullyQualifiedTypeName name="org.hibernate.query.Page"/>
@@ -52,7 +49,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.pbl5.controller.admin.Part6ReadingExerciseAdminController"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part6Service"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.Part6Repository"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part6"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part6Question"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.pbl5.model.VocabularyLesson"/>
+    <fullyQualifiedTypeName name="com.pbl5.markdown.MarkdownService"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.GrammarLessonService"/>
 </qualifiedTypeNameHistroy>
