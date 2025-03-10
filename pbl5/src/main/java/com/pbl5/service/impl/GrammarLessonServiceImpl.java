@@ -104,4 +104,29 @@ public class GrammarLessonServiceImpl implements GrammarLessonService {
         }
     }
     
+    
+    @Override
+    public List<GrammarLesson> findAll() {
+        try {
+            return this.grammarLessonRepository.findAll();  
+        } catch (Exception e) {
+            logger.error("Lỗi khi lấy tất cả bài học ngữ pháp", e);
+            return List.of(); 
+        }
+    }
+
+	@Override
+	public GrammarLesson findFirstLesson() {
+		// TODO Auto-generated method stub
+		try {
+			return this.grammarLessonRepository.findFirstLesson();
+		} catch (EntityNotFoundException e) {
+			logger.warn(e.getMessage());
+			return null; // Hoặc có thể throw lại exception nếu muốn
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài học ngữ pháp: " + e);
+			return null;
+		}
+	}
+    
 }

@@ -31,7 +31,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		try {
 			return this.readingExerciseRepository.findByKeywordAndPart5sIsNotEmpty(keyword);
 		} catch (Exception e) {
-			logger.error("Lỗi khi tìm bài luyện nghe phần 5 với keyword: " + keyword, e);
+			logger.error("Lỗi khi tìm bài luyện đọc phần 5 với keyword: " + keyword, e);
 			return List.of(); // Trả về danh sách rỗng nếu có lỗi
 		}
 	}
@@ -43,7 +43,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			Pageable pageable = PageRequest.of(pageno - 1, 5);
 			return this.readingExerciseRepository.findByPart5sIsNotEmpty(pageable);
 		} catch (Exception e) {
-			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 5 trang " + pageno, e);
+			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 5 trang " + pageno, e);
 			return Page.empty(); // Trả về trang rỗng nếu có lỗi
 		}
 	}
@@ -64,7 +64,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			List<ReadingExercise> sublist = list.subList(start, end);
 			return new PageImpl<>(sublist, pageable, list.size());
 		} catch (Exception e) {
-			logger.error("Lỗi khi tìm bài bài luyện nghe phần 5 theo keyword: " + keyword + " trang " + pageNo, e);
+			logger.error("Lỗi khi tìm bài bài luyện đọc phần 5 theo keyword: " + keyword + " trang " + pageNo, e);
 			return Page.empty();
 		}
 	}
@@ -74,13 +74,13 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		// TODO Auto-generated method stub
 		try {
 			if (!readingExerciseRepository.existsById(id)) {
-				throw new EntityNotFoundException("Bài luyện nghe phần 5 với ID " + id + " không tồn tại.");
+				throw new EntityNotFoundException("Bài luyện đọc phần 5 với ID " + id + " không tồn tại.");
 			}
 			this.readingExerciseRepository.deleteById(id);
 		} catch (EntityNotFoundException e) {
 			logger.warn(e.getMessage());
 		} catch (Exception e) {
-			logger.error("Lỗi khi xóa bài luyện nghe phần 5 với ID: " + id, e);
+			logger.error("Lỗi khi xóa bài luyện đọc phần 5 với ID: " + id, e);
 		}
 	}
 
@@ -90,8 +90,8 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		try {
 			return this.readingExerciseRepository.save(readingExercise);
 		} catch (Exception e) {
-			logger.error("Lỗi khi lưu bài bài luyện nghe phần 5: " + readingExercise, e);
-			throw new RuntimeException("Không thể lưu bài bài luyện nghe phần 5", e);
+			logger.error("Lỗi khi lưu bài bài luyện đọc phần 5: " + readingExercise, e);
+			throw new RuntimeException("Không thể lưu bài luyện đọc phần 5", e);
 		}
 	}
 
@@ -101,7 +101,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		try {
 			return this.readingExerciseRepository.findByKeywordAndPart6sIsNotEmpty(keyword);
 		} catch (Exception e) {
-			logger.error("Lỗi khi tìm bài luyện nghe phần 6 với keyword: " + keyword, e);
+			logger.error("Lỗi khi tìm bài luyện đọc phần 6 với keyword: " + keyword, e);
 			return List.of(); // Trả về danh sách rỗng nếu có lỗi
 		}
 	}
@@ -113,7 +113,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			Pageable pageable = PageRequest.of(pageno - 1, 5);
 			return this.readingExerciseRepository.findByPart6sIsNotEmpty(pageable);
 		} catch (Exception e) {
-			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 6 trang " + pageno, e);
+			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 6 trang " + pageno, e);
 			return Page.empty(); // Trả về trang rỗng nếu có lỗi
 		}
 	}
@@ -134,7 +134,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			List<ReadingExercise> sublist = list.subList(start, end);
 			return new PageImpl<>(sublist, pageable, list.size());
 		} catch (Exception e) {
-			logger.error("Lỗi khi tìm bài bài luyện nghe phần 6 theo keyword: " + keyword + " trang " + pageNo, e);
+			logger.error("Lỗi khi tìm bài bài luyện đọc phần 6 theo keyword: " + keyword + " trang " + pageNo, e);
 			return Page.empty();
 		}
 	}
@@ -144,7 +144,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		try {
 			return this.readingExerciseRepository.findByKeywordAndPart7sIsNotEmpty(keyword);
 		} catch (Exception e) {
-			logger.error("Lỗi khi tìm bài luyện nghe phần 7 với keyword: " + keyword, e);
+			logger.error("Lỗi khi tìm bài luyện đọc phần 7 với keyword: " + keyword, e);
 			return List.of(); // Trả về danh sách rỗng nếu có lỗi
 		}
 	}
@@ -154,7 +154,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		// TODO Auto-generated method stub
 		try {
 			Pageable pageable = PageRequest.of(pageno - 1, 5);
-			return this.readingExerciseRepository.findByPart6sIsNotEmpty(pageable);
+			return this.readingExerciseRepository.findByPart7sIsNotEmpty(pageable);
 		} catch (Exception e) {
 			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 7 trang " + pageno, e);
 			return Page.empty(); // Trả về trang rỗng nếu có lỗi
@@ -177,7 +177,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			List<ReadingExercise> sublist = list.subList(start, end);
 			return new PageImpl<>(sublist, pageable, list.size());
 		} catch (Exception e) {
-			logger.error("Lỗi khi tìm bài bài luyện nghe phần 7 theo keyword: " + keyword + " trang " + pageNo, e);
+			logger.error("Lỗi khi tìm bài bài luyện đọc phần 7 theo keyword: " + keyword + " trang " + pageNo, e);
 			return Page.empty();
 		}
 	}

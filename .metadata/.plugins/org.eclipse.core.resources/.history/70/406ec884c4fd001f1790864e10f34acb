@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+
+    <!-- Header -->
+    <header th:replace="~{user/layout/header::header}"></header>
+
+    <main>
+        <div class="main-section">
+           
+
+            <section class="main-content">
+                <div class="main-gramm-search">
+                    
+                    <div class="search-grammar">
+                        <form action="/user/grammar-lesson" method="get">
+                            <input type="text" name="keyword" value="${keyword}" placeholder="Tìm kiếm bài học ngữ pháp..." />
+                            <button type="submit">Tìm kiếm</button>
+                        </form>
+                    </div>
+
+                    <!-- Hiển thị thông báo lỗi nếu có -->
+                    <div th:if="${errorMessage}" class="error-message">
+                        <p th:text="${errorMessage}"></p>
+                    </div>
+
+                    <!-- Hiển thị danh sách bài học ngữ pháp -->
+                    <div class="list-gramm">
+                        <h3>Danh sách bài học ngữ pháp</h3>
+                        
+                        
+                        <div class="list-topic">
+                            <ul>
+                                <li><a href="#">Kinh doanh và phát triển phần 1</a></li>
+                                <li><a href="#">Kinh doanh và phát triển phần 2</a></li>
+                                <li><a href="#">Gia đình và bạn bè phần 1</a></li>
+                                <li><a href="#">Gia đình và bạn bè phần 2</a></li>
+                                <li><a href="#">Trường học phần 1</a></li>
+                                <li><a href="#">Trường học phần 2</a></li>
+                                <li><a href="#">Cuộc sống quanh ta phần 1</a></li>
+                                <li><a href="#">Cuộc sống quanh ta phần 2</a></li>
+                                <li><a href="#">Yêu và hận thù phần 1</a></li>
+                                <li><a href="#">Yêu và hận thù phần 2</a></li>
+                                <li><a href="#">Đi học cà phê xuyên đêm</a></li>
+                            </ul>
+                        </div>
+
+                        
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Chủ đề bài học</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="lesson : ${list}">
+                                    <td th:text="${lesson.id}">ID</td>
+                                    <td th:text="${lesson.lessonName}">Tên bài học</td>
+                                    <td>
+                                        <a th:href="@{/user/grammar-lesson/view/{id}(id=${lesson.id})}" class="btn btn-primary btn-sm">Xem</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer th:replace="~{user/layout/footer::footer}"></footer>
+
+    <div th:replace="~{user/layout/script::script}"></div>
+
+</body>
+</html>

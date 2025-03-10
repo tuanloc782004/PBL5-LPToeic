@@ -12,4 +12,7 @@ public interface GrammarLessonRepository extends JpaRepository<GrammarLesson, Lo
 	@Query("SELECT gl FROM GrammarLesson gl WHERE gl.lessonName LIKE %?1%")
 	List<GrammarLesson> findByKeyword(String keyword);
 	
+	@Query("SELECT gl FROM GrammarLesson gl ORDER BY gl.id ASC LIMIT 1")
+	GrammarLesson findFirstLesson();
+	
 }
