@@ -20,4 +20,13 @@ public interface ListeningExerciseRepository extends JpaRepository<ListeningExer
     @Query("SELECT l FROM ListeningExercise l WHERE l.exerciseName LIKE %:keyword% AND SIZE(l.part1s) > 0")
     List<ListeningExercise> findByKeywordAndPart1sIsNotEmpty(String keyword);
     
+    @Query("SELECT l FROM ListeningExercise l WHERE SIZE(l.part3s) > 0")
+    List<ListeningExercise> findByPart3sIsNotEmpty();
+
+    @Query("SELECT l FROM ListeningExercise l WHERE SIZE(l.part3s) > 0")
+    Page<ListeningExercise> findByPart3sIsNotEmpty(Pageable pageable);
+
+    @Query("SELECT l FROM ListeningExercise l WHERE l.exerciseName LIKE %:keyword% AND SIZE(l.part3s) > 0")
+    List<ListeningExercise> findByKeywordAndPart3sIsNotEmpty(String keyword);
+    
 }

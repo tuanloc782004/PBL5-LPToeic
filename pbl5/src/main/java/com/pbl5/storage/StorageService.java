@@ -9,3 +9,6 @@ public interface StorageService {
 	public void storage(MultipartFile file, String url);
 	
 }
+
+
+// StorageService là một interface trong Java được sử dụng để quản lý lưu trữ tệp tin (file storage) trong một ứng dụng Spring Boot.

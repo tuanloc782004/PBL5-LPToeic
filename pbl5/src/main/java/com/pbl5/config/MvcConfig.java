@@ -13,3 +13,5 @@ public class MvcConfig implements WebMvcConfigurer {
 	}
 	
 }
+
+// MvcConfig này dùng để định tuyến (mapping) một số URL đến view mà không cần tạo controller riêng.
