@@ -61,3 +61,7 @@ public class StorageServiceImpl implements StorageService {
     }
     
 }
+
+
+// StorageServiceImpl là một triển khai cụ thể của interface StorageService, 
+// chịu trách nhiệm lưu trữ file trong một thư mục trên hệ thống tệp.

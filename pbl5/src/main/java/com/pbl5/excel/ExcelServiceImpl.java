@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pbl5.model.ListeningExercise;
 import com.pbl5.model.Part1;
+import com.pbl5.model.Part3;
+import com.pbl5.model.Part3Question;
 import com.pbl5.model.Part5;
 import com.pbl5.model.Part6;
 import com.pbl5.model.Part6Question;
@@ -24,6 +26,7 @@ import com.pbl5.model.ReadingExercise;
 import com.pbl5.model.VocabularyLesson;
 import com.pbl5.model.VocabularyLessonContent;
 import com.pbl5.repository.Part1Repository;
+import com.pbl5.repository.Part3QuestionRepository;
 import com.pbl5.repository.Part5Repository;
 import com.pbl5.repository.Part6QuestionRepository;
 import com.pbl5.repository.Part7QuestionRepository;
@@ -39,6 +42,9 @@ public class ExcelServiceImpl implements ExcelService {
 
 	@Autowired
 	private Part1Repository part1Repository;
+	
+	@Autowired
+	private Part3QuestionRepository part3QuestionRepository;
 
 	@Autowired
 	private Part5Repository part5Repository;
@@ -129,7 +135,135 @@ public class ExcelServiceImpl implements ExcelService {
 		default -> "";
 		};
 	}
+	
+	// ========== PART1 ===========
+	
+	@Override
+	public List<Part1> readPart1ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, String myCode) {
+	    List<Part1> part1List = new ArrayList<>();
+	    Long i = 1L;
 
+	    try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+	        Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+	        for (Row row : sheet) {
+	            if (row.getRowNum() == 0) {
+	                continue; // Bỏ qua dòng tiêu đề
+	            }
+
+	            try {
+	                Part1 part1 = new Part1();
+	                part1.setNumber(i);
+	                part1.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(row.getCell(0)));
+	                part1.setImageUrl("/upload-dir/image/" + myCode + getStringValue(row.getCell(1)));
+	                part1.setOptionA(getStringValue(row.getCell(2)));
+	                part1.setOptionB(getStringValue(row.getCell(3)));
+	                part1.setOptionC(getStringValue(row.getCell(4)));
+	                part1.setOptionD(getStringValue(row.getCell(5)));
+	                part1.setCorrectAnswer(getStringValue(row.getCell(6)));
+	                part1.setExplanation(getStringValue(row.getCell(7)));
+	                part1.setListeningExercise(listeningExercise);
+
+	                part1List.add(part1);
+	                i++;
+	            } catch (Exception e) {
+	                logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+	            }
+	        }
+	    } catch (IOException e) {
+	        logger.error("Lỗi khi đọc file Excel", e);
+	        throw new RuntimeException("Không thể đọc file Excel", e);
+	    }
+
+	    return part1List;
+	}
+
+
+	@Override
+	public void savePart1ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, String myCode) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part1> list = readPart1ListeningExerciseExcelFile(file, listeningExercise, myCode);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part1Repository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+	
+	// ========== PART2 ===========
+	
+	// ========== PART3 ===========
+	
+	@Override
+	public List<Part3Question> readPart3ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, Part3 part3) {
+		// TODO Auto-generated method stub
+		List<Part3Question> part3QuestionList = new ArrayList<>();
+		Long i = 1L;
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				try {
+					Part3Question part3Question = new Part3Question();
+					part3Question.setNumber(i);
+					part3Question.setOptionA(getStringValue(row.getCell(0)));
+					part3Question.setOptionB(getStringValue(row.getCell(1)));
+					part3Question.setOptionC(getStringValue(row.getCell(2)));
+					part3Question.setOptionD(getStringValue(row.getCell(3)));
+					part3Question.setCorrectAnswer(getStringValue(row.getCell(4)));
+					part3Question.setQuestion(getStringValue(row.getCell(5)));
+					part3Question.setPart3(part3);
+
+					part3QuestionList.add(part3Question);
+					i++;
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part3QuestionList;
+	}
+
+	@Override
+	public void savePart3ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, Part3 part3) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part3Question> list = readPart3ListeningExerciseExcelFile(file, listeningExercise, part3);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part3QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+	
+	// ========== PART4 ===========
+	
+	// ========== PART5 ===========
+	
 	@Override
 	public List<Part5> readPart5ReadingExerciseExcelFile(MultipartFile file, ReadingExercise readingExercise) {
 		// TODO Auto-generated method stub
@@ -188,6 +322,8 @@ public class ExcelServiceImpl implements ExcelService {
 		}
 	}
 
+	// ========== PART6 ===========
+	
 	@Override
 	public List<Part6Question> readPart6ReadingExerciseExcelFile(MultipartFile file, Part6 part6) {
 		// TODO Auto-generated method stub
@@ -244,47 +380,9 @@ public class ExcelServiceImpl implements ExcelService {
 			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
 		}
 	}
-
-	@Override
-	public List<Part1> readPart1ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, String myCode) {
-	    List<Part1> part1List = new ArrayList<>();
-	    Long i = 1L;
-
-	    try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
-	        Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
-
-	        for (Row row : sheet) {
-	            if (row.getRowNum() == 0) {
-	                continue; // Bỏ qua dòng tiêu đề
-	            }
-
-	            try {
-	                Part1 part1 = new Part1();
-	                part1.setNumber(i);
-	                part1.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(row.getCell(0)));
-	                part1.setImageUrl("/upload-dir/image/" + myCode + getStringValue(row.getCell(1)));
-	                part1.setOptionA(getStringValue(row.getCell(2)));
-	                part1.setOptionB(getStringValue(row.getCell(3)));
-	                part1.setOptionC(getStringValue(row.getCell(4)));
-	                part1.setOptionD(getStringValue(row.getCell(5)));
-	                part1.setCorrectAnswer(getStringValue(row.getCell(6)));
-	                part1.setExplanation(getStringValue(row.getCell(7)));
-	                part1.setListeningExercise(listeningExercise);
-
-	                part1List.add(part1);
-	                i++;
-	            } catch (Exception e) {
-	                logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
-	            }
-	        }
-	    } catch (IOException e) {
-	        logger.error("Lỗi khi đọc file Excel", e);
-	        throw new RuntimeException("Không thể đọc file Excel", e);
-	    }
-
-	    return part1List;
-	}
-
+	
+	// ========== PART7 ===========
+	
 	@Override
 	public List<Part7Question> readPart7ReadingExerciseExcelFile(MultipartFile file, Part7 part7) {
 	    List<Part7Question> part7QuestionList = new ArrayList<>();
@@ -307,6 +405,7 @@ public class ExcelServiceImpl implements ExcelService {
 	                part7Question.setOptionD(getStringValue(row.getCell(3)));
 	                part7Question.setCorrectAnswer(getStringValue(row.getCell(4)));
 	                part7Question.setExplanation(getStringValue(row.getCell(5)));
+	                part7Question.setQuestion(getStringValue(row.getCell(6)));
 	                part7Question.setPart7(part7);
 
 	                part7QuestionList.add(part7Question);
@@ -323,26 +422,6 @@ public class ExcelServiceImpl implements ExcelService {
 	    return part7QuestionList;
 	}
 
-
-	@Override
-	public void savePart1ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, String myCode) {
-		// TODO Auto-generated method stub
-		try {
-			List<Part1> list = readPart1ListeningExerciseExcelFile(file, listeningExercise, myCode);
-
-			if (list.isEmpty()) {
-				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
-				return;
-			}
-
-			this.part1Repository.saveAll(list);
-			logger.info("Đã lưu thành công {} mục vào database.", list.size());
-
-		} catch (RuntimeException e) {
-			logger.error("Lỗi khi lưu dữ liệu vào database", e);
-			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
-		}
-	}
 
 	@Override
 	public void savePart7ReadingExerciseFromExcel(MultipartFile file, Part7 part7) {

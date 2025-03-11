@@ -40,8 +40,8 @@ public class Part3Question {
 	@Column(name = "option_d", nullable = false, length = 255)
 	private String optionD;
 
-	@Column(name = "correct_answer", nullable = false, length = 1)
-	private char correctAnswer;
+	@Column(name = "correct_answer", nullable = false, length = 255)
+	private String correctAnswer;
 
 	@Column(name = "explanation", nullable = false, length = 255)
 	private String explanation;
@@ -52,7 +52,7 @@ public class Part3Question {
 	}
 
 	public Part3Question(Long id, Part3 part3, Long number, String question, String optionA, String optionB,
-			String optionC, String optionD, char correctAnswer, String explanation) {
+			String optionC, String optionD, String correctAnswer, String explanation) {
 		super();
 		this.id = id;
 		this.part3 = part3;
@@ -130,11 +130,11 @@ public class Part3Question {
 		this.optionD = optionD;
 	}
 
-	public char getCorrectAnswer() {
+	public String getCorrectAnswer() {
 		return correctAnswer;
 	}
 
-	public void setCorrectAnswer(char correctAnswer) {
+	public void setCorrectAnswer(String correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
 

@@ -42,6 +42,9 @@ public class Part7Question {
 
     @Column(name = "explanation", nullable = false, length = 255)
     private String explanation;
+    
+    @Column(name = "question", nullable = false, length = 255)
+	private String question;
 
 	public Part7Question() {
 		super();
@@ -132,6 +135,14 @@ public class Part7Question {
 
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
+	}
+	
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
     
 }
