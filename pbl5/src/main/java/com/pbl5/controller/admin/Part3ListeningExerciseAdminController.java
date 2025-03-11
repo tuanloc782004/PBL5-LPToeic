@@ -1,5 +1,8 @@
 package com.pbl5.controller.admin;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,9 +98,12 @@ public class Part3ListeningExerciseAdminController {
 	@PostMapping("/create")
 	public String create(@ModelAttribute("listeningExercise") ListeningExercise listeningExercise,
 			@RequestParam("excelFile") MultipartFile excelFile,
-			@RequestParam("audioFiles") MultipartFile[] audioFiles, RedirectAttributes redirectAttributes) {
+			@RequestParam("audioFile") MultipartFile audioFile, RedirectAttributes redirectAttributes) {
 
 		try {
+			// Tạo mã định danh duy nhất cho file
+			String myCode = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_";
+
 			Part3 part3 = new Part3();
 			part3.setListeningExercise(listeningExercise);
 			this.part3Service.save(part3);
@@ -108,16 +114,16 @@ public class Part3ListeningExerciseAdminController {
 
 			// Kiểm tra file Excel có rỗng không trước khi xử lý
 			if (excelFile != null && !excelFile.isEmpty()) {
-				this.excelService.savePart3ListeningExerciseFromExcel(excelFile, listeningExercise, part3);
+				this.excelService.savePart3ListeningExerciseFromExcel(excelFile, listeningExercise, part3, myCode);
 			} else {
 				logger.warn("File Excel trống, bỏ qua quá trình xử lý nội dung bài luyện nghe phần 3.");
 			}
 
 			// Lưu các file âm thanh
-			for (MultipartFile file : audioFiles) {
-				if (file != null && !file.isEmpty()) {
-					this.storageService.storage(file, "audio/" + file.getOriginalFilename());
-				}
+			if (audioFile != null && !audioFile.isEmpty()) {
+				this.storageService.storage(audioFile, "audio/" + myCode + audioFile.getOriginalFilename());
+			} else {
+				logger.warn("File Audio trống, bỏ qua quá trình xử lý nội dung bài luyện nghe phần 3.");
 			}
 
 			redirectAttributes.addFlashAttribute("successMessage", "Tạo danh sách bài luyện nghe phần 3 thành công!");
@@ -126,6 +132,8 @@ public class Part3ListeningExerciseAdminController {
 		} catch (Exception e) {
 			logger.error("Lỗi khi tạo bài luyện nghe phần 3: ", e);
 			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi tạo bài luyện nghe phần 3!");
+			logger.info("Tên file Excel: " + excelFile.getOriginalFilename());
+			logger.info("Tên file Audio: " + audioFile.getOriginalFilename());
 			return "redirect:/admin/part3-listening-exercise/create";
 		}
 	}
