@@ -204,7 +204,7 @@ public class ExcelServiceImpl implements ExcelService {
 	// ========== PART3 ===========
 	
 	@Override
-	public List<Part3Question> readPart3ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, Part3 part3) {
+	public List<Part3Question> readPart3ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, Part3 part3, String myCode) {
 		// TODO Auto-generated method stub
 		List<Part3Question> part3QuestionList = new ArrayList<>();
 		Long i = 1L;
@@ -217,14 +217,20 @@ public class ExcelServiceImpl implements ExcelService {
 					continue; // Bỏ qua dòng tiêu đề
 
 				try {
+					if (row.getCell(0) == null) {
+					    logger.warn("Ô dữ liệu bị trống ở hàng " + row.getRowNum());
+					    continue;
+					}
+
 					Part3Question part3Question = new Part3Question();
 					part3Question.setNumber(i);
-					part3Question.setOptionA(getStringValue(row.getCell(0)));
-					part3Question.setOptionB(getStringValue(row.getCell(1)));
-					part3Question.setOptionC(getStringValue(row.getCell(2)));
-					part3Question.setOptionD(getStringValue(row.getCell(3)));
-					part3Question.setCorrectAnswer(getStringValue(row.getCell(4)));
-					part3Question.setQuestion(getStringValue(row.getCell(5)));
+					part3.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(sheet.getRow(1).getCell(0)));
+					part3Question.setOptionA(getStringValue(row.getCell(1)));
+					part3Question.setOptionB(getStringValue(row.getCell(2)));
+					part3Question.setOptionC(getStringValue(row.getCell(3)));
+					part3Question.setOptionD(getStringValue(row.getCell(4)));
+					part3Question.setCorrectAnswer(getStringValue(row.getCell(5)));
+					part3Question.setQuestion(getStringValue(row.getCell(6)));
 					part3Question.setPart3(part3);
 
 					part3QuestionList.add(part3Question);
@@ -242,10 +248,10 @@ public class ExcelServiceImpl implements ExcelService {
 	}
 
 	@Override
-	public void savePart3ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, Part3 part3) {
+	public void savePart3ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, Part3 part3, String myCode) {
 		// TODO Auto-generated method stub
 		try {
-			List<Part3Question> list = readPart3ListeningExerciseExcelFile(file, listeningExercise, part3);
+			List<Part3Question> list = readPart3ListeningExerciseExcelFile(file, listeningExercise, part3, myCode);
 
 			if (list.isEmpty()) {
 				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
