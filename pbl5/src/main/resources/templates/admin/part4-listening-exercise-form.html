@@ -21,14 +21,14 @@
 				<div th:if="${errorMessage}" class="alert alert-danger">
 					<p th:text="${errorMessage}"></p>
 				</div>
-				<h4 class="card-title">Thêm mới bài luyện nghe Phần 3 - Đoạn hội thoại</h4>
+				<h4 class="card-title">Thêm mới bài luyện nghe Phần 4 - Bài nói ngắn</h4>
 				<!-- first row starts here -->
 				<div class="row">
 					<div class="col-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
 								<form class="forms-sample" method="post"
-									th:action="@{/admin/part3-listening-exercise/create}"
+									th:action="@{/admin/part4-listening-exercise/create}"
 									th:object="${listeningExercise}" enctype="multipart/form-data">
 									<div class="form-group">
 										<label for="exampleInputName1">Tiêu đề</label> <input
@@ -64,7 +64,7 @@
 									<button type="submit" class="btn btn-primary mr-2">Xác
 										nhận</button>
 									<a class="btn btn-light"
-										th:href="@{/admin/part3-listening-exercise}">Hủy bỏ</a>
+										th:href="@{/admin/part4-listening-exercise}">Hủy bỏ</a>
 								</form>
 							</div>
 						</div>

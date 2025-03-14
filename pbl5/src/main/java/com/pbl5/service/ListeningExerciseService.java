@@ -19,6 +19,12 @@ public interface ListeningExerciseService {
 	public Page<ListeningExercise> findByPart3sIsNotEmpty(Integer pageno);
 
 	public Page<ListeningExercise> findByKeywordAndPart3sIsNotEmpty(String keyword, Integer pageNo);
+	
+	public List<ListeningExercise> findByKeywordAndPart4sIsNotEmpty(String keyword);
+
+	public Page<ListeningExercise> findByPart4sIsNotEmpty(Integer pageno);
+
+	public Page<ListeningExercise> findByKeywordAndPart4sIsNotEmpty(String keyword, Integer pageNo);
 
 	public void deleteById(Long id);
 

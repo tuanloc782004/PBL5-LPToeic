@@ -8,6 +8,8 @@ import com.pbl5.model.ListeningExercise;
 import com.pbl5.model.Part1;
 import com.pbl5.model.Part3;
 import com.pbl5.model.Part3Question;
+import com.pbl5.model.Part4;
+import com.pbl5.model.Part4Question;
 import com.pbl5.model.Part5;
 import com.pbl5.model.Part6;
 import com.pbl5.model.Part6Question;
@@ -36,6 +38,12 @@ public interface ExcelService {
 
 	public void savePart3ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise,
 			Part3 part3, String myCode);
+	
+	public List<Part4Question> readPart4ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise,
+			Part4 part4, String myCode);
+
+	public void savePart4ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise,
+			Part4 part4, String myCode);
 	
 	public List<Part5> readPart5ReadingExerciseExcelFile(MultipartFile file, ReadingExercise readingExercise);
 

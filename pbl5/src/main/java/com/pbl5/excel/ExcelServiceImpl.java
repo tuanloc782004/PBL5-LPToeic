@@ -17,6 +17,8 @@ import com.pbl5.model.ListeningExercise;
 import com.pbl5.model.Part1;
 import com.pbl5.model.Part3;
 import com.pbl5.model.Part3Question;
+import com.pbl5.model.Part4;
+import com.pbl5.model.Part4Question;
 import com.pbl5.model.Part5;
 import com.pbl5.model.Part6;
 import com.pbl5.model.Part6Question;
@@ -27,6 +29,7 @@ import com.pbl5.model.VocabularyLesson;
 import com.pbl5.model.VocabularyLessonContent;
 import com.pbl5.repository.Part1Repository;
 import com.pbl5.repository.Part3QuestionRepository;
+import com.pbl5.repository.Part4QuestionRepository;
 import com.pbl5.repository.Part5Repository;
 import com.pbl5.repository.Part6QuestionRepository;
 import com.pbl5.repository.Part7QuestionRepository;
@@ -45,6 +48,9 @@ public class ExcelServiceImpl implements ExcelService {
 	
 	@Autowired
 	private Part3QuestionRepository part3QuestionRepository;
+	
+	@Autowired
+	private Part4QuestionRepository part4QuestionRepository;
 
 	@Autowired
 	private Part5Repository part5Repository;
@@ -224,13 +230,12 @@ public class ExcelServiceImpl implements ExcelService {
 
 					Part3Question part3Question = new Part3Question();
 					part3Question.setNumber(i);
-					part3.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(sheet.getRow(1).getCell(0)));
-					part3Question.setOptionA(getStringValue(row.getCell(1)));
-					part3Question.setOptionB(getStringValue(row.getCell(2)));
-					part3Question.setOptionC(getStringValue(row.getCell(3)));
-					part3Question.setOptionD(getStringValue(row.getCell(4)));
-					part3Question.setCorrectAnswer(getStringValue(row.getCell(5)));
-					part3Question.setQuestion(getStringValue(row.getCell(6)));
+					part3Question.setOptionA(getStringValue(row.getCell(0)));
+					part3Question.setOptionB(getStringValue(row.getCell(1)));
+					part3Question.setOptionC(getStringValue(row.getCell(2)));
+					part3Question.setOptionD(getStringValue(row.getCell(3)));
+					part3Question.setCorrectAnswer(getStringValue(row.getCell(4)));
+					part3Question.setQuestion(getStringValue(row.getCell(5)));
 					part3Question.setPart3(part3);
 
 					part3QuestionList.add(part3Question);
@@ -267,6 +272,69 @@ public class ExcelServiceImpl implements ExcelService {
 	}
 	
 	// ========== PART4 ===========
+	
+	@Override
+	public List<Part4Question> readPart4ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise, Part4 part4, String myCode) {
+		// TODO Auto-generated method stub
+		List<Part4Question> part4QuestionList = new ArrayList<>();
+		Long i = 1L;
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				try {
+					if (row.getCell(0) == null) {
+					    logger.warn("Ô dữ liệu bị trống ở hàng " + row.getRowNum());
+					    continue;
+					}
+
+					Part4Question part4Question = new Part4Question();
+					part4Question.setNumber(i);
+					part4Question.setOptionA(getStringValue(row.getCell(0)));
+					part4Question.setOptionB(getStringValue(row.getCell(1)));
+					part4Question.setOptionC(getStringValue(row.getCell(2)));
+					part4Question.setOptionD(getStringValue(row.getCell(3)));
+					part4Question.setCorrectAnswer(getStringValue(row.getCell(4)));
+					part4Question.setQuestion(getStringValue(row.getCell(5)));
+					part4Question.setExplanation(getStringValue(row.getCell(6)));
+					part4Question.setPart4(part4);
+
+					part4QuestionList.add(part4Question);
+					i++;
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part4QuestionList;
+	}
+
+	@Override
+	public void savePart4ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise, Part4 part4, String myCode) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part4Question> list = readPart4ListeningExerciseExcelFile(file, listeningExercise, part4, myCode);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part4QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
 	
 	// ========== PART5 ===========
 	
