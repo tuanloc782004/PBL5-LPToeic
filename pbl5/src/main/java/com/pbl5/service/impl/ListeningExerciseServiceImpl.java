@@ -116,6 +116,51 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 			return Page.empty();
 		}
 	}
+	
+	// ========== PART4 ===========
+	@Override
+	public List<ListeningExercise> findByKeywordAndPart4sIsNotEmpty(String keyword) {
+		// TODO Auto-generated method stub
+		try {
+			return this.listeningExerciseRepository.findByKeywordAndPart4sIsNotEmpty(keyword);
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài luyện nghe phần 4 với keyword: " + keyword, e);
+			return List.of(); // Trả về danh sách rỗng nếu có lỗi
+		}
+	}
+
+	@Override
+	public Page<ListeningExercise> findByPart4sIsNotEmpty(Integer pageno) {
+		// TODO Auto-generated method stub
+		try {
+			Pageable pageable = PageRequest.of(pageno - 1, 5);
+			return this.listeningExerciseRepository.findByPart4sIsNotEmpty(pageable);
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 4 trang " + pageno, e);
+			return Page.empty(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
+	@Override
+	public Page<ListeningExercise> findByKeywordAndPart4sIsNotEmpty(String keyword, Integer pageNo) {
+		// TODO Auto-generated method stub
+		try {
+			List<ListeningExercise> list = this.listeningExerciseRepository.findByKeywordAndPart4sIsNotEmpty(keyword);
+			Pageable pageable = PageRequest.of(pageNo - 1, 5);
+			int start = (int) pageable.getOffset();
+			int end = Math.min(start + pageable.getPageSize(), list.size());
+
+			if (start > list.size()) {
+				return Page.empty();
+			}
+
+			List<ListeningExercise> sublist = list.subList(start, end);
+			return new PageImpl<>(sublist, pageable, list.size());
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài bài luyện nghe phần 4 theo keyword: " + keyword + " trang " + pageNo, e);
+			return Page.empty();
+		}
+	}
 
 	@Override
 	public void deleteById(Long id) {
