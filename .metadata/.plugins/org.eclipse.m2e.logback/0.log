@@ -4027,3 +4027,32 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.vladsch.f
 2025-03-13 15:04:28,263 [Worker-5: Launching pbl5 - Pbl5Application (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-03-13 15:04:28,306 [Worker-5: Launching pbl5 - Pbl5Application (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1346 resources from src\main\resources to target\classes
 2025-03-13 15:04:29,482 [Worker-5: Launching pbl5 - Pbl5Application (1)] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-14 20:49:49,440 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-03-15 23:03:33,176 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-03-15 23:45:11,727 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-15 23:45:11,804 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1346 resources from src\main\resources to target\classes
+2025-03-15 23:45:12,286 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-15 23:45:52,508 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-15 23:45:52,663 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-15 23:45:52,671 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-15 23:46:24,082 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-15 23:46:24,166 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1346 resources from src\main\resources to target\classes
+2025-03-15 23:46:24,508 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-16 00:15:41,721 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:15:41,864 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:15:41,868 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-16 00:17:58,991 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:17:59,119 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:17:59,125 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-16 00:18:18,583 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:18:18,678 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:18:18,682 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-16 00:18:23,891 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:18:24,003 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-03-16 00:18:24,008 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-16 00:35:37,520 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-16 00:35:37,616 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1346 resources from src\main\resources to target\classes
+2025-03-16 00:35:37,856 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
+2025-03-16 00:36:44,931 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-03-16 00:36:44,984 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1346 resources from src\main\resources to target\classes
+2025-03-16 00:36:45,209 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\PBL5\PBL5-LPToeic\pbl5\src\test\resources
