@@ -34,7 +34,6 @@ INDEX VERSION 1.134+D:\PBL5\PBL5-LPToeic\.metadata\.plugins\org.eclipse.jdt.core
 1007929003.index
 3413725848.index
 2279627664.index
-2220264077.index
 2894048980.index
 2176744925.index
 3026835564.index
