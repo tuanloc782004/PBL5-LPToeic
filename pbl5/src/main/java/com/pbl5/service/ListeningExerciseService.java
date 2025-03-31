@@ -29,5 +29,9 @@ public interface ListeningExerciseService {
 	public void deleteById(Long id);
 
 	public ListeningExercise save(ListeningExercise listeningExercise);
+	
+	public List<ListeningExercise> findByPart1sIsNotEmpty();
+	
+	public ListeningExercise findById(Long id);
 
 }

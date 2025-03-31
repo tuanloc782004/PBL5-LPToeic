@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}">
+<style>
+.correct {
+	color: green;
+	font-weight: bold;
+}
+
+.wrong {
+	color: red;
+	font-weight: bold;
+}
+
+.highlight {
+	border: 2px solid green;
+	padding: 5px;
+}
+
+.explanation {
+	display: none;
+}
+</style>
+<script>
+    function checkAnswerFromData(input) {
+        let questionIndex = input.getAttribute("data-question-index");
+        let correctAnswer = input.getAttribute("data-correct-answer");
+        checkAnswer(questionIndex, correctAnswer);
+    }
+
+    function checkAnswer(questionIndex, correctAnswer) {
+        let radios = document.getElementsByName("answer" + questionIndex);
+        let explanation = document.getElementById("explanation" + questionIndex);
+        let correctLabel = document.getElementById("labelanswer" + questionIndex + "-" + correctAnswer);
+
+        radios.forEach(radio => {
+            let label = document.getElementById("label" + radio.id);
+            label.classList.remove("correct", "wrong", "highlight");
+        });
+
+        let selectedRadio = document.querySelector("input[name='answer" + questionIndex + "']:checked");
+        if (selectedRadio) {
+            let selectedLabel = document.getElementById("labelanswer" + questionIndex + "-" + selectedRadio.value);
+            if (selectedRadio.value === correctAnswer) {
+                selectedLabel.classList.add("correct");
+            } else {
+                selectedLabel.classList.add("wrong");
+                correctLabel.classList.add("highlight");
+            }
+        }
+        explanation.style.display = "block";
+    }
+</script>
+</head>
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main>
+		<div class="main-container">
+			<div class="main-section">
+				<section class="sidebar-list">
+					<div class="header-topic">
+						<h3>Phần 1: Mô tả tranh</h3>
+					</div>
+					<div class="list-topic">
+						<ul th:each="part1ListeningExerciseOfList : ${list}">
+							<li><a
+								th:href="@{|/user/part1-listening-exercise/${part1ListeningExerciseOfList.id}|}"
+								th:text="${part1ListeningExerciseOfList.exerciseName}"></a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="main-content">
+					<div class="main-list-question">
+						<div class="question-detail"
+							th:each="part1, part1Stat : ${part1ListeningExercise.part1s}">
+							<div class="ques-audio">
+								<h3 th:text="'Câu hỏi ' + ${part1Stat.count}"></h3>
+								<audio controls>
+									<source th:src="${part1.audioUrl}" type="audio/mpeg">
+								</audio>
+							</div>
+							<div class="ques-photo">
+								<img th:src="${part1.imageUrl}" alt="">
+							</div>
+							<div class="main-answer">
+								<div class="choose-ans">
+									<div
+										th:each="option, optionStat : ${#arrays.asList('A','B','C','D')}">
+										<input type="radio"
+											th:id="'answer' + ${part1Stat.count} + '-' + ${option}"
+											th:name="'answer' + ${part1Stat.count}" th:value="${option}"
+											th:data-question-index="${part1Stat.count}"
+											th:data-correct-answer="${part1.correctAnswer}"
+											onclick="checkAnswerFromData(this)"> <label
+											th:id="'labelanswer' + ${part1Stat.count} + '-' + ${option}"
+											th:for="'answer' + ${part1Stat.count} + '-' + ${option}"
+											th:text="${part1['option' + option]}">(A)</label>
+									</div>
+								</div>
+
+								<div class="check-ans">
+									<div class="ans-detail explanation"
+										th:id="'explanation' + ${part1Stat.count}">
+										<div>
+											<h3>Đáp án đúng:</h3>
+											<span th:text="${part1.correctAnswer}"></span>
+										</div>
+										<div>
+											<span>Bản dịch: </span>
+											<p th:text="${part1.explanation}"></p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

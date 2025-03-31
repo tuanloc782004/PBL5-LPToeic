@@ -19,15 +19,15 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ListeningExerciseServiceImpl implements ListeningExerciseService {
-	
-	// private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
-	
-	private static final Logger logger = LoggerFactory.getLogger(ListeningExerciseServiceImpl.class);
 
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(UserServiceImpl.class);
+
+	private static final Logger logger = LoggerFactory.getLogger(ListeningExerciseServiceImpl.class);
 
 	@Autowired
 	private ListeningExerciseRepository listeningExerciseRepository;
-	
+
 	@Override
 	public List<ListeningExercise> findByKeywordAndPart1sIsNotEmpty(String keyword) {
 		// TODO Auto-generated method stub
@@ -71,7 +71,7 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 			return Page.empty();
 		}
 	}
-	
+
 	// ========== PART3 ===========
 	@Override
 	public List<ListeningExercise> findByKeywordAndPart3sIsNotEmpty(String keyword) {
@@ -116,7 +116,7 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 			return Page.empty();
 		}
 	}
-	
+
 	// ========== PART4 ===========
 	@Override
 	public List<ListeningExercise> findByKeywordAndPart4sIsNotEmpty(String keyword) {
@@ -186,6 +186,31 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 			logger.error("Lỗi khi lưu bài bài luyện nghe phần 1: " + listeningExercise, e);
 			throw new RuntimeException("Không thể lưu bài bài luyện nghe phần 1", e);
 		}
+	}
+
+	@Override
+	public List<ListeningExercise> findByPart1sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.listeningExerciseRepository.findByPart1sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 1: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
+	@Override
+	public ListeningExercise findById(Long id) {
+	    try {
+	        return this.listeningExerciseRepository.findById(id)
+	                .orElseThrow(() -> new EntityNotFoundException("Bài luyện nghe với ID " + id + " không tồn tại."));
+	    } catch (EntityNotFoundException e) {
+	        logger.warn(e.getMessage());
+	        return null;
+	    } catch (Exception e) {
+	        logger.error("Lỗi khi tìm bài luyện nghe với ID: " + id, e);
+	        return null;
+	    }
 	}
 
 }
