@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pbl5.model.ListeningExercise;
 import com.pbl5.model.Part1;
+import com.pbl5.model.Part2;
 import com.pbl5.model.Part3;
 import com.pbl5.model.Part3Question;
 import com.pbl5.model.Part4;
@@ -32,6 +33,13 @@ public interface ExcelService {
 
 	public void savePart1ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise,
 			String myCode);
+	
+	public List<Part2> readPart2ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise,
+			String myCode);
+
+	public void savePart2ListeningExerciseFromExcel(MultipartFile file, ListeningExercise listeningExercise,
+			String myCode);
+
 
 	public List<Part3Question> readPart3ListeningExerciseExcelFile(MultipartFile file, ListeningExercise listeningExercise,
 			Part3 part3, String myCode);

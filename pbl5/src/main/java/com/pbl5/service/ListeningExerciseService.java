@@ -14,6 +14,12 @@ public interface ListeningExerciseService {
 
 	public Page<ListeningExercise> findByKeywordAndPart1sIsNotEmpty(String keyword, Integer pageNo);
 	
+	public List<ListeningExercise> findByKeywordAndPart2sIsNotEmpty(String keyword);
+
+	public Page<ListeningExercise> findByPart2sIsNotEmpty(Integer pageno);
+
+	public Page<ListeningExercise> findByKeywordAndPart2sIsNotEmpty(String keyword, Integer pageNo);
+	
 	public List<ListeningExercise> findByKeywordAndPart3sIsNotEmpty(String keyword);
 
 	public Page<ListeningExercise> findByPart3sIsNotEmpty(Integer pageno);
