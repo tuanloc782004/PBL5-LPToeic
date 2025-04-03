@@ -7,4 +7,6 @@
     <fullyQualifiedTypeName name="com.pbl5.service.Part6Service"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part6"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part7Service"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part7"/>
 </qualifiedTypeNameHistroy>
