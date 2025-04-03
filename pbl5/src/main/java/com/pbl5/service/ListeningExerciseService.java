@@ -32,6 +32,8 @@ public interface ListeningExerciseService {
 	
 	public List<ListeningExercise> findByPart1sIsNotEmpty();
 	
+	public List<ListeningExercise> findByPart2sIsNotEmpty();
+	
 	public ListeningExercise findById(Long id);
 
 }

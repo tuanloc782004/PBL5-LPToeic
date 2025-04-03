@@ -188,6 +188,7 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 		}
 	}
 
+	// ====== USER ======
 	@Override
 	public List<ListeningExercise> findByPart1sIsNotEmpty() {
 		// TODO Auto-generated method stub
@@ -200,17 +201,28 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 	}
 
 	@Override
+	public List<ListeningExercise> findByPart2sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.listeningExerciseRepository.findByPart2sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 2: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
+	@Override
 	public ListeningExercise findById(Long id) {
-	    try {
-	        return this.listeningExerciseRepository.findById(id)
-	                .orElseThrow(() -> new EntityNotFoundException("Bài luyện nghe với ID " + id + " không tồn tại."));
-	    } catch (EntityNotFoundException e) {
-	        logger.warn(e.getMessage());
-	        return null;
-	    } catch (Exception e) {
-	        logger.error("Lỗi khi tìm bài luyện nghe với ID: " + id, e);
-	        return null;
-	    }
+		try {
+			return this.listeningExerciseRepository.findById(id)
+					.orElseThrow(() -> new EntityNotFoundException("Bài luyện nghe với ID " + id + " không tồn tại."));
+		} catch (EntityNotFoundException e) {
+			logger.warn(e.getMessage());
+			return null;
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài luyện nghe với ID: " + id, e);
+			return null;
+		}
 	}
 
 }

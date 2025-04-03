@@ -51,10 +51,6 @@ ul, li {
     list-style: none;
 }
 
-.sidebar-user ul li:first-child {
-    padding: 20px 10px;
-}
-
 .sidebar-user ul li {
     padding: 25px 10px;
     border-bottom: 1px solid #f0ede6;
