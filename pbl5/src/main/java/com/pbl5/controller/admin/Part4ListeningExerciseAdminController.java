@@ -109,7 +109,7 @@ public class Part4ListeningExerciseAdminController {
 			
 			Part4 part4 = new Part4();
 			part4.setListeningExercise(listeningExercise);
-			part4.setAudioUrl("audio/" + myCode + audioFile.getOriginalFilename());
+			part4.setAudioUrl("/upload-dir/audio/" + myCode + audioFile.getOriginalFilename());
 			this.part4Service.save(part4);
 
 			// Kiểm tra file Excel có rỗng không trước khi xử lý
@@ -121,7 +121,7 @@ public class Part4ListeningExerciseAdminController {
 
 			// Lưu các file âm thanh
 			if (audioFile != null && !audioFile.isEmpty()) {
-				this.storageService.storage(audioFile, "audio/" + myCode + audioFile.getOriginalFilename());
+				this.storageService.storage(audioFile, "/upload-dir/audio/" + myCode + audioFile.getOriginalFilename());
 			} else {
 				logger.warn("File Audio trống, bỏ qua quá trình xử lý nội dung bài luyện nghe phần 4.");
 			}

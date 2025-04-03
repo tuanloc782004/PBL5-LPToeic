@@ -301,6 +301,7 @@ public class ExcelServiceImpl implements ExcelService {
 					part4Question.setCorrectAnswer(getStringValue(row.getCell(4)));
 					part4Question.setQuestion(getStringValue(row.getCell(5)));
 					part4Question.setExplanation(getStringValue(row.getCell(6)));
+					part4.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(row.getCell(0)));
 					part4Question.setPart4(part4);
 
 					part4QuestionList.add(part4Question);
