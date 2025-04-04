@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main>
+		<div class="main-container">
+			<div class="main-section">
+				<section class="sidebar-list">
+					<div class="header-topic">
+						<h3>Phần 6: Hoàn thành đoạn văn</h3>
+					</div>
+					<div class="list-topic">
+						<ul th:each="part6ReadingExerciseOfList : ${list}">
+							<li><a
+								th:href="@{|/user/part6-reading-exercise/${part6ReadingExerciseOfList.id}|}"
+								th:text="${part6ReadingExerciseOfList.readingExercise.exerciseName}"></a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="main-content">
+					<div class="main-list-question">
+						<div class="part6-script">
+							<p th:text="${part6ReadingExercise.script}"></p>
+						</div>
+						<div class="question-detail">
+							<div class="ques-list">
+
+								<div class="question-detail"
+									th:each="part6, part6Stat : ${part6ReadingExercise.questions}">
+									<div class="ques-audio">
+										<h3 th:text="'Câu hỏi ' + ${part6Stat.count}"></h3>
+									</div>
+									<div class="main-answer">
+										<div class="choose-ans">
+											<div>
+												<input type="radio" name="answer1" id="answer1-1"> <label
+													for="answer1-1" th:text="${part6.optionA}"></label>
+											</div>
+											<div>
+												<input type="radio" name="answer1" id="answer1-2"> <label
+													for="answer1-2" th:text="${part6.optionB}"></label>
+											</div>
+											<div>
+												<input type="radio" name="answer1" id="answer1-3"> <label
+													for="answer1-3" th:text="${part6.optionC}"></label>
+											</div>
+											<div>
+												<input type="radio" name="answer1" id="answer1-4"> <label
+													for="answer1-4" th:text="${part6.optionD}"></label>
+											</div>
+										</div>
+										<div class="check-ans" style="display: none;">
+											<div class="ans-detail">
+												<div>
+													<h3>Đáp án đúng:</h3>
+													<span th:text="${part6.correctAnswer}"></span>
+												</div>
+												<div>
+													<span>Giải thích: </span>
+													<p
+														th:utext="${#strings.replace(part6.explanation, '.', '.<br>')}"></p>
+												</div>
+											</div>
+											<button class="hide-explanation">Ẩn giải thích</button>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</section>
+
+			</div>
+		</div>
+	</main>
+
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+	    document.querySelectorAll(".question-detail").forEach((question) => {
+	        const answers = question.querySelectorAll("input[type='radio']");
+	        const checkAns = question.querySelector(".check-ans");
+	        const correctAnswer = question.querySelector(".ans-detail span").textContent.trim();
+	        const hideButton = question.querySelector(".hide-explanation");
+
+	        checkAns.style.display = "none"; // Ẩn ban đầu
+
+	        answers.forEach((answer, index) => {
+	            answer.addEventListener("change", function () {
+	                checkAns.style.display = "block"; // Hiện phần check-ans
+
+	                const labels = question.querySelectorAll(".choose-ans label");
+	                labels.forEach((label) => {
+	                    label.style.color = "";
+	                    label.innerHTML = label.innerHTML.replace("✔️", "").replace("❌", "");
+	                });
+
+	                const selectedLabel = labels[index];
+	                const selectedAnswer = String.fromCharCode(65 + index); // Chuyển index thành 'A', 'B', 'C', 'D'
+	                
+	                if (selectedAnswer === correctAnswer) {
+	                    selectedLabel.style.color = "green";
+	                    selectedLabel.innerHTML += " ✔️";
+	                } else {
+	                    selectedLabel.style.color = "red";
+	                    selectedLabel.innerHTML += " ❌";
+
+	                    // Hiển thị đáp án đúng
+	                    labels[[...labels].findIndex(l => l.textContent.trim().startsWith(correctAnswer))].style.color = "green";
+	                    labels[[...labels].findIndex(l => l.textContent.trim().startsWith(correctAnswer))].innerHTML += " ✔️";
+	                }
+	            });
+	        });
+
+	        // Ẩn phần giải thích khi nhấn nút "Ẩn giải thích"
+	        hideButton.addEventListener("click", function () {
+	            checkAns.style.display = "none";
+	        });
+	    });
+	});
+	</script>
+
+</body>
+</html>

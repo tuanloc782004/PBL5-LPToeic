@@ -21,7 +21,8 @@
 				<div th:if="${errorMessage}" class="alert alert-danger">
 					<p th:text="${errorMessage}"></p>
 				</div>
-				<h4 class="card-title">Thêm mới bài luyện đọc Phần 7 - Chọn câu trả lời đúng</h4>
+				<h4 class="card-title">Thêm mới bài luyện đọc Phần 7 - Chọn câu
+					trả lời đúng</h4>
 				<!-- first row starts here -->
 				<div class="row">
 					<div class="col-12 grid-margin stretch-card">
@@ -34,12 +35,6 @@
 										<label for="exampleInputName1">Tiêu đề</label> <input
 											type="text" class="form-control" id="exampleInputName1"
 											placeholder="Nhập tiêu đề" th:field="*{exerciseName}">
-									</div>
-									<div class="form-group">
-										<label for="exampleTextarea1">Nội dung đoạn văn</label>
-										<textarea class="form-control" id="exampleTextarea1" rows="10"
-											placeholder="Nhập nội dung đoạn văn"
-											name="script"></textarea>
 									</div>
 									<div class="form-group">
 										<label>File nội dung bài luyện đọc (Excel)</label>

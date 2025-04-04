@@ -3,10 +3,18 @@
     <fullyQualifiedTypeName name="com.pbl5.service.ListeningExerciseService"/>
     <fullyQualifiedTypeName name="com.pbl5.model.ListeningExercise"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-    <fullyQualifiedTypeName name="com.pbl5.service.ReadingExerciseService"/>
-    <fullyQualifiedTypeName name="com.pbl5.service.Part6Service"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part6"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.pbl5.service.Part7Service"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part7"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part2"/>
+    <fullyQualifiedTypeName name="com.pbl5.repository.Part2Repository"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.ReadingExerciseService"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.ReadingExercise"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part3Service"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part3"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part4Service"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.Part4"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part6Service"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.Part7Service"/>
 </qualifiedTypeNameHistroy>

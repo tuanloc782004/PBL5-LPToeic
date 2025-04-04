@@ -40,8 +40,8 @@ public class Part6Question {
     @Column(name = "correct_answer", nullable = false, length = 1)
     private String correctAnswer;
 
-    @Column(name = "explanation", nullable = false, length = 255)
-    private String explanation;
+    @Column(name = "explanation", columnDefinition = "TEXT", nullable = false)
+	private String explanation;
 
 	public Part6Question() {
 		super();

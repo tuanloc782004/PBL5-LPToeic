@@ -26,6 +26,10 @@ public class Part5 {
     @JoinColumn(name = "reading_exercise_id")
     private ReadingExercise readingExercise;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "grammar_lesson")
+    private GrammarLesson grammarLesson;
+    
     @Column(name = "number", nullable = false)
 	private Long number;
 
@@ -47,20 +51,22 @@ public class Part5 {
     @Column(name = "correct_answer", nullable = false, length = 1)
     private String correctAnswer;
 
-    @Column(name = "explanation", nullable = false, length = 255)
-    private String explanation;
+    @Column(name = "explanation", columnDefinition = "TEXT", nullable = false)
+	private String explanation;
 
 	public Part5() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Part5(Long id, MockExam mockExam, ReadingExercise readingExercise, Long number, String question,
-			String optionA, String optionB, String optionC, String optionD, String correctAnswer, String explanation) {
+	public Part5(Long id, MockExam mockExam, ReadingExercise readingExercise, GrammarLesson grammarLesson, Long number,
+			String question, String optionA, String optionB, String optionC, String optionD, String correctAnswer,
+			String explanation) {
 		super();
 		this.id = id;
 		this.mockExam = mockExam;
 		this.readingExercise = readingExercise;
+		this.grammarLesson = grammarLesson;
 		this.number = number;
 		this.question = question;
 		this.optionA = optionA;
@@ -93,6 +99,14 @@ public class Part5 {
 
 	public void setReadingExercise(ReadingExercise readingExercise) {
 		this.readingExercise = readingExercise;
+	}
+
+	public GrammarLesson getGrammarLesson() {
+		return grammarLesson;
+	}
+
+	public void setGrammarLesson(GrammarLesson grammarLesson) {
+		this.grammarLesson = grammarLesson;
 	}
 
 	public Long getNumber() {

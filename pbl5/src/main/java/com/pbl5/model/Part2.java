@@ -44,7 +44,7 @@ public class Part2 {
 	@Column(name = "correct_answer", nullable = false, length = 1)
 	private String correctAnswer;
 
-	@Column(name = "explanation", nullable = false, length = 255)
+	@Column(name = "explanation", columnDefinition = "TEXT", nullable = false)
 	private String explanation;
 
 	public Part2() {

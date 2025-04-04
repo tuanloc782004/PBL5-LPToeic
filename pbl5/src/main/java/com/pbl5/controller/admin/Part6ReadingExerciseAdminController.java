@@ -33,7 +33,7 @@ public class Part6ReadingExerciseAdminController {
 
 	@Autowired
 	private ReadingExerciseService readingExerciseService;
-	
+
 	@Autowired
 	private Part6Service part6Service;
 
@@ -90,16 +90,14 @@ public class Part6ReadingExerciseAdminController {
 
 	@PostMapping("/create")
 	public String create(@ModelAttribute("readingExercise") ReadingExercise readingExercise,
-			@RequestParam("script") String script, @RequestParam("excelFile") MultipartFile excelFile,
-			RedirectAttributes redirectAttributes) {
+			@RequestParam("excelFile") MultipartFile excelFile, RedirectAttributes redirectAttributes) {
 
 		try {
 			// Lưu ReadingExercise vào DB
 			this.readingExerciseService.save(readingExercise);
-			
+
 			Part6 part6 = new Part6();
 			part6.setReadingExercise(readingExercise);
-			part6.setScript(script);
 			this.part6Service.save(part6);
 
 			// Kiểm tra file Excel có rỗng không trước khi xử lý

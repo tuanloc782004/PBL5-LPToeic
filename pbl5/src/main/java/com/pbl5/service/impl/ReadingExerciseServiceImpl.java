@@ -138,6 +138,7 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			return Page.empty();
 		}
 	}
+
 	@Override
 	public List<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword) {
 		// TODO Auto-generated method stub
@@ -179,6 +180,31 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 		} catch (Exception e) {
 			logger.error("Lỗi khi tìm bài bài luyện đọc phần 7 theo keyword: " + keyword + " trang " + pageNo, e);
 			return Page.empty();
+		}
+	}
+
+	@Override
+	public ReadingExercise findById(Long id) {
+		try {
+			return this.readingExerciseRepository.findById(id)
+					.orElseThrow(() -> new EntityNotFoundException("Bài luyện đọc với ID " + id + " không tồn tại."));
+		} catch (EntityNotFoundException e) {
+			logger.warn(e.getMessage());
+			return null;
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài luyện đọc với ID: " + id, e);
+			return null;
+		}
+	}
+
+	@Override
+	public List<ReadingExercise> findByPart5sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.readingExerciseRepository.findByPart5sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 5: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
 		}
 	}
 }

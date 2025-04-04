@@ -25,7 +25,7 @@ public class Part1 {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "listening_exercise_id")
 	private ListeningExercise listeningExercise;
-	
+
 	@Column(name = "number", nullable = false)
 	private Long number;
 
@@ -50,7 +50,7 @@ public class Part1 {
 	@Column(name = "correct_answer", nullable = false, length = 1)
 	private String correctAnswer;
 
-	@Column(name = "explanation", nullable = false, length = 255)
+	@Column(name = "explanation", columnDefinition = "TEXT", nullable = false)
 	private String explanation;
 
 	public Part1() {
@@ -171,5 +171,5 @@ public class Part1 {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
-	
+
 }
