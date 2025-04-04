@@ -109,7 +109,7 @@ public class Part4ListeningExerciseAdminController {
 			
 			Part4 part4 = new Part4();
 			part4.setListeningExercise(listeningExercise);
-			part4.setAudioUrl("audio/" + myCode + audioFile.getOriginalFilename());
+			part4.setAudioUrl("/upload-dir/audio/" + myCode + audioFile.getOriginalFilename());
 			this.part4Service.save(part4);
 
 			// Kiểm tra file Excel có rỗng không trước khi xử lý

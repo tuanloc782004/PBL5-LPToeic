@@ -32,7 +32,7 @@
 								<div class="question-detail"
 									th:each="part7, part7Stat : ${part7ReadingExercise.questions}">
 									<div class="ques-audio">
-										<h3 th:text="'Câu hỏi ' + ${part7Stat.count}"></h3>
+										<h3 th:text="|Câu hỏi ${part7Stat.count}: ${part7.question}|"></h3>
 									</div>
 									<div class="main-answer">
 										<div class="choose-ans">

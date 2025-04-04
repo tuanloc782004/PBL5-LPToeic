@@ -30,7 +30,7 @@ public class Part6 {
     @JoinColumn(name = "reading_exercise_id")
     private ReadingExercise readingExercise;
 
-    @Column(name = "script", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "script", nullable = true, columnDefinition = "TEXT")
     private String script;
     
     @OneToMany(mappedBy = "part6", cascade = CascadeType.ALL, orphanRemoval = true)

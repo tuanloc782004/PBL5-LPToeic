@@ -84,5 +84,5 @@ public class ReadingExercise {
 	public void setPart7s(List<Part7> part7s) {
 		this.part7s = part7s;
 	}
-	
+
 }
