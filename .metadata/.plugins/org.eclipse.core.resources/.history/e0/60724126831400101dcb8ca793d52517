@@ -1,0 +1,51 @@
+<header class="menu-bar" th:fragment="header">
+	<div class="menu-right">
+		<h1 class="logo">
+			LPT<span>oeic.</span>
+		</h1>
+		<ul>
+			<li><a th:href="@{/}">Trang chủ </a></li>
+			<li><a href="#">Tự học <i class="fas fa-caret-down"></i></a>
+				<div class="dropdown-menu">
+					<ul>
+						<li><a th:href="@{/user/vocabulary-lesson}">Từ vựng</a></li>
+						<li><a th:href="@{/user/grammar-lesson}">Ngữ pháp</a></li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#">Luyện<i class="fas fa-caret-down"></i></a>
+				<div class="dropdown-menu">
+					<ul>
+						<li><a th:href="@{/user/listening-exercise-card}">Listening</a></li>
+						<li><a th:href="@{/user/reading-exercise-card}">Reading</a></li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#">Thi thử</a></li>
+		</ul>
+	</div>
+
+	<div th:if="${#authorization.expression('isAuthenticated()')}"
+		class="user-menu">
+		<ul>
+			<li><img th:src="${currentUserAvatarUrl}" alt="Avatar"> </li>
+
+			<li>
+				<a href="#"><span th:text="${currentUserUsername}">Username</span></a>
+				<div class="dropdown-user">
+          			<ul>
+            			<li><a href="#"><i class="fa fa-circle-info"></i>Thông tin tài khoản</a></li>
+            			<li><a href="#"><i class="fa fa-right-from-bracket"></i>Đăng xuất</a></li>
+          			</ul>
+        		</div>
+			</li>
+		</ul>
+	</div>
+
+	<div th:unless="${#authorization.expression('isAuthenticated()')}"
+		class="user">
+		<a href="/login">Đăng nhập</a> <span></span> <a href="/register">Đăng
+			kí</a>
+	</div>
+
+</header>
