@@ -10,10 +10,15 @@
 			<span class="font-weight-bold">LPToeic</span>
 		</div>
 		<ul class="navbar-nav navbar-nav-right">
-			<li class="nav-item nav-logout d-none d-md-block mr-3"><a
-				class="nav-link" href="#">Logout</a></li>
+			<li class="nav-item nav-logout d-none d-md-block mr-3">
+				<form th:action="@{/logout}" method="post" style="display: inline;">
+					<button type="submit" class="nav-link btn btn-link"
+						style="padding: 0; border: none; background: none;">
+						Logout</button>
+				</form>
+			</li>
 			<li class="nav-item nav-logout d-none d-lg-block"><a
-				class="nav-link" href="index.html"> <i
+				class="nav-link" th:href="@{/}"> <i
 					class="mdi mdi-home-circle"></i>
 			</a></li>
 		</ul>
