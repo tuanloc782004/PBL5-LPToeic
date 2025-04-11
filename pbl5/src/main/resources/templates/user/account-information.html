@@ -2,13 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{user/layout/head::head}"></head>
 <script>
-	function showSection(section) {
-		document.querySelector('.user-info').style.display = 'none';
-		document.querySelector('.user-history-test').style.display = 'none';
-		document.querySelector('.user-password').style.display = 'none';
-		document.querySelector(section).style.display = 'block';
-	}
+	document
+			.addEventListener(
+					"DOMContentLoaded",
+					function() {
+						function showSection(section) {
+							document.querySelector('.user-info').style.display = 'none';
+							document.querySelector('.user-history-test').style.display = 'none';
+							document.querySelector('.user-password').style.display = 'none';
+							document.querySelector(section).style.display = 'block';
+						}
+
+						window.showSection = showSection; // Đảm bảo hàm có thể gọi từ HTML
+					});
 </script>
+
 <body>
 
 	<header th:replace="~{user/layout/header::header}"></header>
@@ -19,27 +27,27 @@
 				<section class="sidebar-user">
 					<ul>
 						<li><a th:href="@{/user/account-information?information}"
-							onclick="showSection('.user-info')"return false;><i class="fa fa-user"></i>Thông
-								tin tài khoản</a></li>
+							onclick=" event.preventDefault(); showSection('.user-info')"><i
+								class="fa fa-user"></i>Thông tin tài khoản</a></li>
 						<li><a th:href="@{/user/account-information?history-test}"
-							onclick="showSection('.user-history-test')"return false;><i
+							onclick="event.preventDefault(); showSection('.user-history-test')"><i
 								class="fa fa-clock"></i>Lịch sử học tập</a></li>
 						<li><a th:href="@{/user/account-information?changepass}"
-							onclick="showSection('.user-password')"return false;><i class="fa fa-key"></i>Đổi
-								mật khẩu</a></li>
+							onclick=" event.preventDefault(); showSection('.user-password')"><i
+								class="fa fa-key"></i>Đổi mật khẩu</a></li>
 					</ul>
 				</section>
 
-				<section class="user-info">
+				<section class="user-info user-maincontent">
 					<div class="user-info-container">
 						<div class="user-info-header">
 							<h3>Thông tin tài khoản</h3>
 						</div>
 						<form action="">
 							<div>
-								<label for="username">Username</label> <input type="text"
-									id="username" name="username" placeholder="Nhập username"
-									required>
+								<label for="username">Username</label> 
+								<input type="text" th:text="${currentUserUsername}"
+									id="username" name="username">
 							</div>
 							<div>
 								<label for="email">Email</label> <input type="email" id="email"
@@ -52,12 +60,13 @@
 					</div>
 				</section>
 
-				<section class="user-history-test" style="display: none">
+				<section class="user-history-test user-maincontent"
+					style="display: none">
 					<div class="user-info-container">
 						<div class="user-info-header">
 							<h3>Lịch sử làm bài</h3>
 						</div>
-						<div class="card-custom mt-4">
+						<div class="card-custom">
 							<div class="search-box">
 								<input type="text" class="form-control"
 									placeholder="🔍 Tìm kiếm..."> <select
@@ -111,9 +120,10 @@
 					</div>
 				</section>
 
-				<section class="user-password" style="display: none;">
-					<div class="user-password-container">
-						<div class="user-password-header">
+				<section class="user-password user-maincontent"
+					style="display: none;">
+					<div class="user-info-container">
+						<div class="user-info-header">
 							<h3>Đổi mật khẩu</h3>
 						</div>
 						<form action="">
@@ -141,10 +151,9 @@
 
 				<section class="user-avatar">
 					<div>
-						<h3>Avatar public</h3>
 						<div>
 							<div class="avatar-edit">
-								<img th:src="@{/asset/image/user/avatar.jpg}" alt="avatar">
+								<img th:src="${currentUserAvatarUrl}" alt="avatar">
 								<!-- <button class="edit" type="submit">Edit <i class="fa fa-user-edit"></i></button> -->
 								<input type="file" id="avatarInput" accept="image/*"
 									style="display: none;"> <label for="avatarInput"
