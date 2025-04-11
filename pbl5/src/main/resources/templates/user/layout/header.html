@@ -28,10 +28,10 @@
 		<ul>
 			<li><img th:src="${currentUserAvatarUrl}" alt="Avatar"></li>
 
-			<li><a href="#"><span th:text="${currentUserUsername}">Username</span></a>
+			<li><a th:href="@{/user/account-information}"><span th:text="${currentUserUsername}">Username</span></a>
 				<div class="dropdown-user">
 					<ul>
-						<li><a href="#"><i class="fa fa-circle-info"></i>Thông
+						<li><a th:href="@{/user/account-information}"><i class="fa fa-circle-info"></i>Thông
 								tin tài khoản</a></li>
 						<li>
 							<form th:action="@{/logout}" method="post"
