@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import com.pbl5.model.Part3;
 import com.pbl5.model.User;
 
 public interface UserService {
@@ -17,5 +18,9 @@ public interface UserService {
 	public Page<User> findByKeyword(String keyword, Integer pageNo);
 	
 	public void deleteById(Long id);
+	
+	public User findByEmail(String email); 
+	
+	public User save(User user);
 
 }
