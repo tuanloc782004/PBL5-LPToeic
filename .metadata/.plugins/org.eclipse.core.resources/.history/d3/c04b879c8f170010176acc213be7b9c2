@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Nhập mã OTP</title>
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}">
+<style>
+.otp-inputs input {
+	width: 40px;
+	height: 50px;
+	margin: 0 5px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.timer {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.resend-btn {
+	display: none;
+	color: blue;
+	cursor: pointer;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+	<form id="otpForm" th:action="@{/verify-otp}" method="post">
+		<h2>Nhập mã OTP</h2>
+		<p th:text="${error}" style="color: red;"></p>
+		<p th:text="${resendSuccess} ? 'Đã gửi lại mã OTP!' : ''"
+			style="color: green;"></p>
+
+		<input type="hidden" name="email" th:value="${email}">
+		<div class="otp-inputs">
+			<input type="text" maxlength="1" class="otp" name="otp" required
+				autofocus> <input type="text" maxlength="1" class="otp">
+			<input type="text" maxlength="1" class="otp"> <input
+				type="text" maxlength="1" class="otp"> <input type="text"
+				maxlength="1" class="otp"> <input type="text" maxlength="1"
+				class="otp">
+		</div>
+
+		<input type="hidden" id="fullOtp" name="otp" />
+		<div class="timer" id="timer">
+			Thời gian còn lại: <span id="countdown">60</span>s
+		</div>
+		<button type="submit">Xác nhận</button>
+
+		<form id="resendForm" th:action="@{/resend-otp}" method="post">
+			<input type="hidden" name="email" th:value="${email}" />
+			<button type="submit" class="resend-btn" id="resendBtn">Gửi
+				lại mã</button>
+		</form>
+	</form>
+
+	<script>
+    const otpInputs = document.querySelectorAll('.otp');
+    const fullOtp = document.getElementById('fullOtp');
+    const countdown = document.getElementById('countdown');
+    const resendBtn = document.getElementById('resendBtn');
+
+    otpInputs.forEach((input, i) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && i < otpInputs.length - 1) {
+          otpInputs[i + 1].focus();
+        }
+        fullOtp.value = [...otpInputs].map(i => i.value).join('');
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && !input.value && i > 0) {
+          otpInputs[i - 1].focus();
+        }
+      });
+    });
+
+    let timeLeft = 60;
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdown.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        document.getElementById('timer').textContent = "Hết thời gian.";
+        resendBtn.style.display = "inline";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

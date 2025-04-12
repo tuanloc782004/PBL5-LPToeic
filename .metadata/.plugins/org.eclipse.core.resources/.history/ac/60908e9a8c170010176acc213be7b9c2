@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nhập OTP</title>
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}">
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container sign-in">
+			<form th:action="@{/verify-otp}" method="post">
+				<h1>Nhập mã OTP</h1>
+				<input type="hidden" name="email" th:value="${email}"> <input
+					type="text" name="otp" placeholder="Nhập mã OTP">
+				<p style="color: red" th:text="${error}"></p>
+				<button>Xác nhận</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

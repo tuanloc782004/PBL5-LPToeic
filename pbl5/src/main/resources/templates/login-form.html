@@ -11,20 +11,25 @@
 <body>
 	<div class="container" id="container">
 		<div class="form-container sign-up">
-			<form>
+			<form th:action="@{/register}" method="post" th:object="${user}">
 				<h1>Tạo tài khoản</h1>
-				<input type="text" placeholder="Tên"> <input type="email"
-					placeholder="Email"> <input type="password"
-					placeholder="Mật khẩu">
+				<input type="text" th:field="*{username}" placeholder="Username"
+					required> <input type="email" th:field="*{email}"
+					placeholder="Email" required> <input type="password"
+					th:field="*{password}" placeholder="Mật khẩu" required> <input
+					type="password" th:field="*{confirmPassword}"
+					placeholder="Nhập lại mật khẩu" required>
+				<p th:text="${error}" style="color: red;"></p>
 				<button>Đăng ký</button>
 			</form>
 		</div>
 		<div class="form-container sign-in">
 			<form th:action="@{/login}" method="post">
 				<h1>Đăng nhập</h1>
-				<input type="username" name="username" placeholder="Username">
-				<input type="password" name="password" placeholder="Mật khẩu">
-				<a href="#">Quên mật khẩu?</a>
+				<p th:text="${success}" style="color: green;"></p>
+				<input type="text" name="username" placeholder="Username"> <input
+					type="password" name="password" placeholder="Mật khẩu"> <a
+					href="#">Quên mật khẩu?</a>
 				<button>Đăng nhập</button>
 			</form>
 		</div>
@@ -47,5 +52,6 @@
 	</div>
 
 	<script th:src="@{/login-form-asset/script.js}"></script>
+
 </body>
 </html>
