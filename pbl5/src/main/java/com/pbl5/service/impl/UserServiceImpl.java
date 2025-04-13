@@ -89,4 +89,13 @@ public class UserServiceImpl implements UserService {
             logger.error("Lỗi khi xóa user với ID: " + id, e);
         }
     }
+    
+    @Override
+    public void save(User user) {
+    	try {
+    		userRepository.save(user);
+    	} catch (Exception e) {
+            logger.error("Lỗi khi lưu thông tin của user: " + user.getUsername(), e);
+        }
+    }
 }

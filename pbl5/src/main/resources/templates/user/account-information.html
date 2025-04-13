@@ -43,17 +43,17 @@
 						<div class="user-info-header">
 							<h3>Thông tin tài khoản</h3>
 						</div>
-						<form action="">
-							<div>
-								<label for="username">Username</label> 
-								<input type="text" th:text="${currentUserUsername}"
-									id="username" name="username">
+						<form method="post" action="/user/account-information/update"
+							th:action="@{/user/account-information/update}">
+							<div class="div">
+								<label for="username">Username</label> <input type="text"
+									th:value="${currentUserUsername}" id="username" name="username">
 							</div>
-							<div>
-								<label for="email">Email</label> <input type="email" id="email"
-									name="email" placeholder="Nhập email" required>
+							<div class="div">
+								<label for="email">Email</label> <input type="email"
+									th:value="${currentUserEmail}" id="email" name="email">
 							</div>
-							<div>
+							<div class="div">
 								<button class="update" type="submit">Cập nhật</button>
 							</div>
 						</form>
@@ -69,13 +69,8 @@
 						<div class="card-custom">
 							<div class="search-box">
 								<input type="text" class="form-control"
-									placeholder="🔍 Tìm kiếm..."> <select
-									class="form-control">
-									<option value="">📅 Lọc theo ngày</option>
-									<option value="2025-04-01">01/04/2025</option>
-									<option value="2025-04-02">02/04/2025</option>
-									<option value="2025-04-03">03/04/2025</option>
-								</select>
+									placeholder="🔍 Tìm kiếm..."> <input type="date"
+									class="form-control" placeholder="📅 Lọc theo ngày">
 							</div>
 							<table class="table table-bordered text-center">
 								<thead>
@@ -84,7 +79,7 @@
 										<th>📅 Ngày Giờ</th>
 										<th>✅ Số Câu Đúng</th>
 										<th>❌ Số Câu Sai</th>
-										<th>📋 Tổng Số Câu</th>
+										<th>📋 Tổng Số Câu Đúng</th>
 										<th>🎯 Điểm TOEIC</th>
 									</tr>
 								</thead>
@@ -113,6 +108,14 @@
 										<td>100</td>
 										<td><span class="highlight text-score">850</span></td>
 									</tr>
+									<tr>
+										<td>3</td>
+										<td>03/04/2025 - 18:45</td>
+										<td><span class="highlight text-correct">90</span></td>
+										<td><span class="highlight text-wrong">10</span></td>
+										<td>100</td>
+										<td><span class="highlight text-score">850</span></td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -127,38 +130,42 @@
 							<h3>Đổi mật khẩu</h3>
 						</div>
 						<form action="">
-							<div>
+							<div class="div">
 								<label for="old-password">Mật khẩu cũ</label> <input
 									type="password" id="old-password" name="old-password"
 									placeholder="Nhập mật khẩu cũ" required>
 							</div>
-							<div>
+							<div class="div">
 								<label for="new-password">Mật khẩu mới</label> <input
 									type="password" id="new-password" name="new-password"
 									placeholder="Nhập mật khẩu mới" required>
 							</div>
-							<div>
+							<div class="div">
 								<label for="confirm-password">Xác nhận mật khẩu</label> <input
 									type="password" id="confirm-password" name="confirm-password"
 									placeholder="Nhập lại mật khẩu mới" required>
 							</div>
-							<div>
+							<div class="div">
 								<button class="update" type="submit">Cập nhật</button>
 							</div>
 						</form>
 					</div>
 				</section>
+				<form id="avatarForm"
+					th:action="@{/user/account-information/update-avatar}"
+					method="post" enctype="multipart/form-data" style="display: none;">
+					<input type="file" name="avatarFile" id="avatarInput"
+						accept="image/*" onchange="uploadAvatar()">
+				</form>
 
 				<section class="user-avatar">
 					<div>
 						<div>
 							<div class="avatar-edit">
-								<img th:src="${currentUserAvatarUrl}" alt="avatar">
-								<!-- <button class="edit" type="submit">Edit <i class="fa fa-user-edit"></i></button> -->
-								<input type="file" id="avatarInput" accept="image/*"
-									style="display: none;"> <label for="avatarInput"
-									class="edit">Edit<i class="fa fa-user-edit"></i></label>
-
+								<img th:src="${currentUserAvatarUrl}" alt="avatar"
+									id="userAvatar">
+								<label for="avatarInput" class="edit">Edit <i
+									class="fa fa-user-edit"></i></label>
 							</div>
 						</div>
 					</div>
@@ -167,5 +174,10 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		function uploadAvatar() {
+			document.getElementById("avatarForm").submit();
+		}
+	</script>
 </body>
 </html>

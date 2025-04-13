@@ -42,5 +42,4 @@ public class WebSecurityConfig {
 		return (web) -> web.ignoring().requestMatchers("/login-form-asset/**", "/upload-dir/**", "/admin-asset/**", "/user-asset/**");
 
 	}
-
 }
