@@ -17,5 +17,7 @@ public interface UserService {
 	public Page<User> findByKeyword(String keyword, Integer pageNo);
 	
 	public void deleteById(Long id);
+	
+	public void save(User user);
 
 }
