@@ -19,15 +19,13 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	
 	// Phan quyen truy cap
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/login", "/register").permitAll()
-				.requestMatchers("/admin/**").hasAuthority("ADMIN")
-				.requestMatchers("/user/**").hasAuthority("USER")
-				.anyRequest().authenticated() // Các yêu cầu khác cần xác thực
+		http.authorizeHttpRequests(
+				(requests) -> requests.requestMatchers("/", "/login", "/register", "/resend-otp", "/verify-otp")
+						.permitAll().requestMatchers("/admin/**").hasAuthority("ADMIN").requestMatchers("/user/**")
+						.hasAuthority("USER").anyRequest().authenticated() // Các yêu cầu khác cần xác thực
 		).formLogin((form) -> form.loginPage("/login") // Trang đăng nhập tùy chỉnh
 				.loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password")
 				.successHandler(new CustomAuthenticationSuccessHandler()))
@@ -39,7 +37,8 @@ public class WebSecurityConfig {
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
 
-		return (web) -> web.ignoring().requestMatchers("/login-form-asset/**", "/upload-dir/**", "/admin-asset/**", "/user-asset/**");
+		return (web) -> web.ignoring().requestMatchers("/login-form-asset/**", "/upload-dir/**", "/admin-asset/**",
+				"/user-asset/**");
 
 	}
 
