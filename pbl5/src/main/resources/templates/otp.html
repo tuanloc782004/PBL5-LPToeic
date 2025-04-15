@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Nhập mã OTP</title>
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}">
+<style>
+.button {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	font-size: 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: #0056b3;
+}
+
+#timer, #attempts {
+	text-align: center;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<form id="otpForm" th:action="@{/verify-otp}" method="post">
+			<h2 id="formTitle">Nhập mã OTP</h2>
+			<p id="formMessage">OTP đã được gửi về email của bạn, hãy kiểm
+				tra email !!!</p>
+
+			<p th:if="${error}" th:text="${error}" style="color: red;"></p>
+			<p th:if="${resendSuccess}" style="color: green;">Đã gửi lại mã
+				OTP!</p>
+
+			<input type="hidden" name="email" th:value="${email}"> <input
+				type="hidden" id="fullOtp" name="otp" />
+
+			<div
+				style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+				<input type="text" maxlength="1" class="otp-input" required
+					autofocus> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input">
+			</div>
+
+			<div class="timer" id="timer">
+				Thời gian còn lại: <span id="countdown">60</span>s
+			</div>
+
+			<div id="attempts" style="color: red;">
+				Số lần còn lại: <span id="remainingAttempts">3</span>
+			</div>
+
+			<button class="button" id="submitBtn" type="submit">Xác nhận</button>
+		</form>
+	</div>
+
+	<!-- JavaScript OTP -->
+	<script th:inline="javascript">
+        const otpForm = document.getElementById("otpForm");
+        const otpInputs = document.querySelectorAll('.otp-input');
+        const fullOtp = document.getElementById('fullOtp');
+        const countdown = document.getElementById('countdown');
+        const remainingAttemptsSpan = document.getElementById('remainingAttempts');
+        const submitBtn = document.getElementById('submitBtn');
+        const formTitle = document.getElementById('formTitle');
+        const formMessage = document.getElementById('formMessage');
+
+        let remainingTime = Number(/*[[${remainingTime}]]*/ 60);
+        let remainingAttempts = Number(/*[[${remainingAttempts}]]*/ 3);
+
+        if (isNaN(remainingTime) || remainingTime < 0) remainingTime = 60;
+        if (isNaN(remainingAttempts) || remainingAttempts < 0) remainingAttempts = 3;
+
+        remainingAttemptsSpan.textContent = remainingAttempts;
+
+        const interval = setInterval(() => {
+            if (remainingTime > 0) {
+                remainingTime--;
+                countdown.textContent = remainingTime;
+            } else {
+                clearInterval(interval);
+
+                // Đổi action form
+                otpForm.setAttribute("action", /*[[${'/resend-otp'}]]*/ '/resend-otp');
+                
+                // Đổi text nút
+                submitBtn.textContent = "Gửi lại mã";
+
+                // Đổi tiêu đề
+                formTitle.textContent = "Gửi lại mã OTP";
+
+                // Ẩn các ô nhập OTP
+                otpInputs.forEach(input => input.disabled = true);
+
+                // Ẩn message cũ
+                formMessage.textContent = "Bạn chưa nhận được mã? Hãy gửi lại.";
+            }
+        }, 1000);
+
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+                fullOtp.value = Array.from(otpInputs).map(i => i.value).join('');
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && input.value === '' && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

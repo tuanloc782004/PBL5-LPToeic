@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Nhập mã OTP</title>
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}">
+</head>
+<body>
+	<div class="container">
+		<form id="otpForm" th:action="@{/verify-otp}" method="post">
+			<h2>Nhập mã OTP</h2>
+			<p>OTP đã được gởi về email của bạn, hãy kiểm tra email !!!</p>
+			<p th:text="${error}" style="color: red;"></p>
+			<p th:text="${resendSuccess} ? 'Đã gửi lại mã OTP!' : ''"
+				style="color: green;"></p>
+
+			<input type="hidden" name="email" th:value="${email}">
+			<div
+				style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+				<input type="text" maxlength="1" class="otp-input" required
+					autofocus> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input"> <input type="text" maxlength="1"
+					class="otp-input">
+			</div>
+
+			<input type="hidden" id="fullOtp" name="otp" />
+
+			<div class="timer" id="timer">
+				Thời gian còn lại: <span id="countdown">60</span>s
+			</div>
+			<div id="attempts" style="color: red;">
+				Số lần còn lại: <span id="remainingAttempts">3</span>
+			</div>
+
+			<button class="button" type="submit">Xác nhận</button>
+		</form>
+
+		<form id="resendForm" th:action="@{/resend-otp}" method="post">
+			<input type="hidden" name="email" th:value="${email}" />
+			<button type="submit" class="button hidden" id="resendBtn"
+				style="margin-top: 10px;">Gửi lại mã</button>
+		</form>
+	</div>
+
+	<script>
+    const otpInputs = document.querySelectorAll('.otp-input');
+    const fullOtp = document.getElementById('fullOtp');
+    const countdown = document.getElementById('countdown');
+    const resendBtn = document.getElementById('resendBtn');
+    const attemptsDisplay = document.getElementById('remainingAttempts');
+    let timeLeft = 60;
+    let remainingAttempts = 3;  // Số lần còn lại
+
+    otpInputs.forEach((input, i) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && i < otpInputs.length - 1) {
+          otpInputs[i + 1].focus();
+        }
+        fullOtp.value = [...otpInputs].map(i => i.value).join('');
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && !input.value && i > 0) {
+          otpInputs[i - 1].focus();
+        }
+      });
+    });
+
+    // Đồng hồ đếm ngược
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdown.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        document.getElementById('timer').textContent = "Hết thời gian.";
+        resendBtn.classList.remove("hidden");
+      }
+    }, 1000);
+
+    // Cập nhật số lần còn lại để nhập OTP
+    function updateAttempts(attemptsLeft) {
+      remainingAttempts = attemptsLeft;
+      attemptsDisplay.textContent = remainingAttempts;
+    }
+
+    // Lưu trạng thái thời gian còn lại và số lần nhập sai khi gửi lại mã OTP
+    if (sessionStorage.getItem('remainingAttempts')) {
+      remainingAttempts = parseInt(sessionStorage.getItem('remainingAttempts'));
+      updateAttempts(remainingAttempts);
+    }
+
+    if (sessionStorage.getItem('timeLeft')) {
+      timeLeft = parseInt(sessionStorage.getItem('timeLeft'));
+      countdown.textContent = timeLeft;
+    }
+  </script>
+</body>
+</html>
