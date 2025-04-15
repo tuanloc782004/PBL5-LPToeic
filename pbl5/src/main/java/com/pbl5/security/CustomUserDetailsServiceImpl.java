@@ -14,7 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pbl5.model.User;
 import com.pbl5.service.UserService;
@@ -63,6 +65,18 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
             String username = authentication.getName();
             User user = userService.findByUsername(username);
             return user != null ? user.getUsername() : null;
+        }
+        return null;
+    }
+	
+	@ModelAttribute("currentUserEmail")
+    public String getEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() &&
+            !(authentication instanceof AnonymousAuthenticationToken)) {
+            String username = authentication.getName();
+            User user = userService.findByUsername(username);
+            return user != null ? user.getEmail() : null;
         }
         return null;
     }
