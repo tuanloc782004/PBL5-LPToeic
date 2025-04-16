@@ -21,6 +21,10 @@ public class CustomUserDetails implements UserDetails {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public User getUser() {
+		return this.user;
+	}
 
 	public CustomUserDetails(User user, Collection<? extends GrantedAuthority> authorities) {
 		super();
@@ -44,10 +48,6 @@ public class CustomUserDetails implements UserDetails {
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return user.getUsername();
-	}
-	
-	public User getUser() {
-		return this.user;
 	}
 
 }

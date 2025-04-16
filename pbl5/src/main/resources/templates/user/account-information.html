@@ -48,6 +48,16 @@
 							<div class="div">
 								<label for="username">Username</label> <input type="text"
 									th:value="${currentUserUsername}" id="username" name="username">
+<<<<<<< HEAD
+=======
+							</div>
+							<div class="div">
+								<label for="email">Email</label> <input type="email"
+									th:value="${currentUserEmail}" id="email" name="email">
+							</div>
+							<div class="div">
+								<button class="update" type="submit">Cập nhật</button>
+>>>>>>> a8755e57852d2dc2355883a42ba175e5d3d53231
 							</div>
 							<div class="div">
 								<label for="email">Email</label> <input type="email"
@@ -78,7 +88,7 @@
 										<th>📅 Ngày Giờ</th>
 										<th>✅ Số Câu Đúng</th>
 										<th>❌ Số Câu Sai</th>
-										<th>📋 Tổng Số Câu</th>
+										<th>📋 Tổng Số Câu Đúng</th>
 										<th>🎯 Điểm TOEIC</th>
 									</tr>
 								</thead>
@@ -98,6 +108,14 @@
 										<td><span class="highlight text-wrong">15</span></td>
 										<td>100</td>
 										<td><span class="highlight text-score">800</span></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>03/04/2025 - 18:45</td>
+										<td><span class="highlight text-correct">90</span></td>
+										<td><span class="highlight text-wrong">10</span></td>
+										<td>100</td>
+										<td><span class="highlight text-score">850</span></td>
 									</tr>
 									<tr>
 										<td>3</td>
@@ -152,11 +170,10 @@
 					<div>
 						<div>
 							<div class="avatar-edit">
-								<img th:src="${currentUserAvatarUrl}" alt="avatar"
+								<img th:src="${currentUserAvatarUrl}" alt="avatar">
 									id="userAvatar"> <label for="avatarInput" class="edit">Edit
 									<i class="fa fa-user-edit"></i>
 								</label>
-
 							</div>
 						</div>
 					</div>

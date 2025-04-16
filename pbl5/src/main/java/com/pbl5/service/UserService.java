@@ -18,7 +18,7 @@ public interface UserService {
 	public Page<User> findByKeyword(String keyword, Integer pageNo);
 	
 	public void deleteById(Long id);
-	
+  
 	public User findByEmail(String email); 
 	
 	public User save(User user);

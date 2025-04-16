@@ -187,6 +187,7 @@ ul, li {
 .card-custom .table td {
 	padding: 12px;
 	vertical-align: middle;
+	text-align: center; 
 }
 
 .card-custom .table-bordered th,
@@ -194,22 +195,21 @@ ul, li {
 	border: 1px solid #ddd;
 }
 
-.highlight {
+.card-custom .highlight {
 	font-weight: bold;
 }
 
-.text-correct {
+.card-custom .text-correct {
 	color: #28a745;
 }
 
-.text-wrong {
+.card-custom .text-wrong {
 	color: #dc3545;
 }
 
-.text-score {
+.card-custom .text-score {
 	color: #007bff;
 }
-
 
 .user-avatar {
 	flex: 0 0 24%;
