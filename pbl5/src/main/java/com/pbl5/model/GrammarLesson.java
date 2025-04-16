@@ -24,7 +24,7 @@ public class GrammarLesson {
 
 	@Column(name = "content", columnDefinition = "TEXT", nullable = false)
 	private String content;
-	
+
 	@OneToMany(mappedBy = "grammarLesson", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Part5> part5s;
 
@@ -33,11 +33,12 @@ public class GrammarLesson {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GrammarLesson(Long id, String lessonName, String content) {
+	public GrammarLesson(Long id, String lessonName, String content, List<Part5> part5s) {
 		super();
 		this.id = id;
 		this.lessonName = lessonName;
 		this.content = content;
+		this.part5s = part5s;
 	}
 
 	public Long getId() {
@@ -62,6 +63,14 @@ public class GrammarLesson {
 
 	public void setContent(String content) {
 		this.content = content;
-	}	
+	}
+
+	public List<Part5> getPart5s() {
+		return part5s;
+	}
+
+	public void setPart5s(List<Part5> part5s) {
+		this.part5s = part5s;
+	}
 
 }

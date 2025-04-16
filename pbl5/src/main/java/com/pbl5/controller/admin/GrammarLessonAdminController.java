@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.pbl5.excel.ExcelService;
 import com.pbl5.markdown.MarkdownService;
 import com.pbl5.model.GrammarLesson;
 import com.pbl5.service.GrammarLessonService;
@@ -27,6 +29,9 @@ public class GrammarLessonAdminController {
 
 	@Autowired
 	private GrammarLessonService grammarLessonService;
+	
+	@Autowired
+	private ExcelService excelService;
 
 	@Autowired
 	private MarkdownService markdownService;
@@ -102,11 +107,18 @@ public class GrammarLessonAdminController {
 
 	@PostMapping("/create")
 	public String create(@ModelAttribute("grammarLesson") GrammarLesson grammarLesson,
-			RedirectAttributes redirectAttributes) {
+			@RequestParam("excelFile") MultipartFile excelFile, RedirectAttributes redirectAttributes) {
 
 		try {
 			// Lưu Grammar Lesson vào DB
 			this.grammarLessonService.save(grammarLesson);
+
+			// Kiểm tra file Excel có rỗng không trước khi xử lý
+			if (excelFile != null && !excelFile.isEmpty()) {
+				this.excelService.savePart5GrammarLessonFromExcel(excelFile, grammarLesson);
+			} else {
+				logger.warn("File Excel trống, bỏ qua quá trình xử lý nội dung bài test ngữ pháp.");
+			}
 
 			redirectAttributes.addFlashAttribute("successMessage", "Tạo bài học ngữ pháp thành công!");
 			return "redirect:/admin/grammar-lesson";

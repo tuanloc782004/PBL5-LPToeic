@@ -63,8 +63,8 @@
 												<td th:text="${vocabularyLesson.id}">id</td>
 												<td th:text="${vocabularyLesson.lessonName}">lessonName</td>
 												<td><a
-													th:href="@{|/vocabulary/view/${vocabularyLesson.id}|}"
-													class="btn btn-primary btn-sm"> Xem </a> <a
+													th:href="@{|/admin/vocabulary-lesson/update/${vocabularyLesson.id}|}"
+													class="btn btn-success btn-sm"> Cập nhật </a> <a
 													th:href="@{|/admin/vocabulary-lesson/delete/${vocabularyLesson.id}|}"
 													class="btn btn-danger btn-sm"> Xóa </a></td>
 											</tr>
