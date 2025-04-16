@@ -94,7 +94,7 @@ ul, li {
 	flex-direction: column;
 }
 
-.user-maincontent .user-info-container div {
+.user-maincontent .user-info-container .div {
 	padding: 14px 0;
 	display: flex;
 	flex-direction: column;
@@ -135,6 +135,10 @@ ul, li {
 	transition: all 0.3s;
 }
 
+.user-history-test {
+	overflow-y: scroll;
+}
+
 .user-maincontent .user-info-container div button:hover {
 	background-color: var(--color-primary);
 }
@@ -162,9 +166,12 @@ ul, li {
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	font-size: 14px;
+	padding: 8px 12px !important; 
+	border: 1px solid #ccc !important;
+	border-radius: 8px !important;
 }
 
-.table {
+.card-custom .table {
 	background-color: #fff;
 	border-collapse: collapse;
 	width: 100%;
@@ -172,18 +179,18 @@ ul, li {
 	overflow: hidden;
 }
 
-.table thead {
+.card-custom .table thead {
 	background-color: #f0f0f0;
 }
 
-.table th,
-.table td {
+.card-custom .table th,
+.card-custom .table td {
 	padding: 12px;
 	vertical-align: middle;
 }
 
-.table-bordered th,
-.table-bordered td {
+.card-custom .table-bordered th,
+.card-custom .table-bordered td {
 	border: 1px solid #ddd;
 }
 
@@ -241,7 +248,7 @@ ul, li {
 
 .user-avatar .avatar-edit img {
 	width: 180px;
-	height: 200px;
+	height: 190px;
 	border-radius: 50%;
 	margin-bottom: 5px;
 	cursor: pointer;
