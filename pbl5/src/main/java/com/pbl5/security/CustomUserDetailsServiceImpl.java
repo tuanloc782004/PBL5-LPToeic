@@ -66,5 +66,17 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
         }
         return null;
     }
+	
+	@ModelAttribute("currentUserEmail")
+    public String getEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() &&
+            !(authentication instanceof AnonymousAuthenticationToken)) {
+            String username = authentication.getName();
+            User user = userService.findByUsername(username);
+            return user != null ? user.getEmail() : null;
+        }
+        return null;
+    }
 
 }
