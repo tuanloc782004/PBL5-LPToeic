@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+
+	<!-- Header -->
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main>
+		<div class="main-container">
+			<div class="main-section">
+				<section class="sidebar-list">
+					<div class="header-topic">
+						<h3>Ngữ pháp theo chủ đề</h3>
+					</div>
+					<div class="list-topic">
+						<ul th:each="grammarLessonOfList : ${list}">
+							<li><a
+								th:href="@{|/user/grammar-lesson/${grammarLessonOfList.id}|}"
+								th:text="${grammarLessonOfList.lessonName}"></a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="main-content">
+					<div class="main-gramm-search">
+						<div class="gramm">
+							<div class="gramm-detail">
+								<div th:utext="${grammarLesson.content}"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="main-content">
+					<div class="main-list-question">
+
+						<div class="question-detail"
+							th:each="part5, part5Stat : ${part5GrammarLesson.part5s}">
+							<div class="ques-audio">
+								<h3 th:text="'Câu hỏi ' + ${part5Stat.count}"></h3>
+							</div>
+							<div class="part6-script">
+								<p th:text="${part5.question}"></p>
+							</div>
+							<div class="main-answer">
+								<div class="choose-ans">
+									<div>
+										<input type="radio" name="answer1" id="answer1-1"> <label
+											for="answer1-1" th:text="${part5.optionA}"></label>
+									</div>
+									<div>
+										<input type="radio" name="answer1" id="answer1-2"> <label
+											for="answer1-2" th:text="${part5.optionB}"></label>
+									</div>
+									<div>
+										<input type="radio" name="answer1" id="answer1-3"> <label
+											for="answer1-3" th:text="${part5.optionC}"></label>
+									</div>
+									<div>
+										<input type="radio" name="answer1" id="answer1-4"> <label
+											for="answer1-4" th:text="${part5.optionD}"></label>
+									</div>
+								</div>
+								<div class="check-ans" style="display: none;">
+									<div class="ans-detail">
+										<div>
+											<h3>Đáp án đúng:</h3>
+											<span th:text="${part5.correctAnswer}"></span>
+										</div>
+										<div>
+											<span>Bản dịch: </span>
+											<p
+												th:utext="${#strings.replace(part5.explanation, '.', '.<br>')}"></p>
+										</div>
+									</div>
+									<button class="hide-explanation">Ẩn giải thích</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

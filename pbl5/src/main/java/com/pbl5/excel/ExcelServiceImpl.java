@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.pbl5.model.GrammarLesson;
 import com.pbl5.model.ListeningExercise;
 import com.pbl5.model.Part1;
 import com.pbl5.model.Part2;
@@ -61,13 +62,13 @@ public class ExcelServiceImpl implements ExcelService {
 
 	@Autowired
 	private Part5Repository part5Repository;
-	
+
 	@Autowired
 	private Part6Service part6Service;
 
 	@Autowired
 	private Part6QuestionRepository part6QuestionRepository;
-	
+
 	@Autowired
 	private Part7Service part7Service;
 
@@ -483,15 +484,15 @@ public class ExcelServiceImpl implements ExcelService {
 
 		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
 			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
-			
+
 			Row scriptRow = sheet.getRow(1);
-	        if (scriptRow != null) {
-	            Cell scriptCell = scriptRow.getCell(0);
-	            if (scriptCell != null) {
-	                String script = getStringValue(scriptCell);
-	                part6.setScript(script); // Gán vào Part6
-	            }
-	        }
+			if (scriptRow != null) {
+				Cell scriptCell = scriptRow.getCell(0);
+				if (scriptCell != null) {
+					String script = getStringValue(scriptCell);
+					part6.setScript(script); // Gán vào Part6
+				}
+			}
 
 			for (Row row : sheet) {
 				if (row.getRowNum() == 0)
@@ -532,7 +533,7 @@ public class ExcelServiceImpl implements ExcelService {
 				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
 				return;
 			}
-			
+
 			this.part6Service.save(part6);
 
 			this.part6QuestionRepository.saveAll(list);
@@ -552,15 +553,15 @@ public class ExcelServiceImpl implements ExcelService {
 
 		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
 			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
-			
+
 			Row scriptRow = sheet.getRow(1);
-	        if (scriptRow != null) {
-	            Cell scriptCell = scriptRow.getCell(0);
-	            if (scriptCell != null) {
-	                String script = getStringValue(scriptCell);
-	                part7.setScript(script); // Gán vào Part7
-	            }
-	        }
+			if (scriptRow != null) {
+				Cell scriptCell = scriptRow.getCell(0);
+				if (scriptCell != null) {
+					String script = getStringValue(scriptCell);
+					part7.setScript(script); // Gán vào Part7
+				}
+			}
 
 			for (Row row : sheet) {
 				if (row.getRowNum() == 0) {
@@ -603,12 +604,70 @@ public class ExcelServiceImpl implements ExcelService {
 				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
 				return;
 			}
-			
+
 			this.part7Service.save(part7);
 
 			this.part7QuestionRepository.saveAll(list);
 			logger.info("Đã lưu thành công {} mục vào database.", list.size());
 
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part5> readPart5GrammarLessonExcelFile(MultipartFile file, GrammarLesson grammarLesson) {
+		// TODO Auto-generated method stub
+		List<Part5> part5List = new ArrayList<>();
+		Long i = 1L;
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				try {
+					Part5 part5 = new Part5();
+					part5.setNumber(i);
+					part5.setQuestion(getStringValue(row.getCell(0)));
+					part5.setOptionA(getStringValue(row.getCell(1)));
+					part5.setOptionB(getStringValue(row.getCell(2)));
+					part5.setOptionC(getStringValue(row.getCell(3)));
+					part5.setOptionD(getStringValue(row.getCell(4)));
+					part5.setCorrectAnswer(getStringValue(row.getCell(5)));
+					part5.setExplanation(getStringValue(row.getCell(6)));
+					part5.setGrammarLesson(grammarLesson);
+
+					part5List.add(part5);
+					i++;
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part5List;
+	}
+
+	@Override
+	public void savePart5GrammarLessonFromExcel(MultipartFile file, GrammarLesson grammarLesson) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part5> list = readPart5GrammarLessonExcelFile(file, grammarLesson);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part5Repository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
 		} catch (RuntimeException e) {
 			logger.error("Lỗi khi lưu dữ liệu vào database", e);
 			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);

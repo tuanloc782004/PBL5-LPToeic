@@ -13,7 +13,6 @@
     <fullyQualifiedTypeName name="com.pbl5.model.Part3"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part4Service"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Part4"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part6Service"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part7Service"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
@@ -33,9 +32,11 @@
     <fullyQualifiedTypeName name="com.pbl5.model.User"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="com.pbl5.model.Role"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.RoleRepository"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.pbl5.service.RoleService"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.MockExamService"/>
 </qualifiedTypeNameHistroy>
