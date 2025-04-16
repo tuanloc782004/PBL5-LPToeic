@@ -48,23 +48,14 @@
 							<div class="div">
 								<label for="username">Username</label> <input type="text"
 									th:value="${currentUserUsername}" id="username" name="username">
-<<<<<<< HEAD
-=======
 							</div>
 							<div class="div">
 								<label for="email">Email</label> <input type="email"
-									th:value="${currentUserEmail}" id="email" name="email">
+									th:value="${currentUserEmail}" id="email" name="email" readonly>
 							</div>
 							<div class="div">
 								<button class="update" type="submit">Cập nhật</button>
->>>>>>> a8755e57852d2dc2355883a42ba175e5d3d53231
 							</div>
-							<div class="div">
-								<label for="email">Email</label> <input type="email"
-									th:value="${currentUserEmail}" id="email" name="email">
-								<div  class="div">
-									<button class="update" type="submit">Cập nhật</button>
-								</div>
 						</form>
 					</div>
 				</section>
@@ -170,9 +161,9 @@
 					<div>
 						<div>
 							<div class="avatar-edit">
-								<img th:src="${currentUserAvatarUrl}" alt="avatar">
-									id="userAvatar"> <label for="avatarInput" class="edit">Edit
-									<i class="fa fa-user-edit"></i>
+								<img th:src="${currentUserAvatarUrl}" alt="avatar"><label
+									for="avatarInput" class="edit">Edit <i
+									class="fa fa-user-edit"></i>
 								</label>
 							</div>
 						</div>
