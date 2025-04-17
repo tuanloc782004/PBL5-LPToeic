@@ -1,18 +1,23 @@
 <header class="menu-bar" th:fragment="header">
 	<div class="menu-right">
-		<h1 class="logo">
-			LPT<span>oeic.</span>
-		</h1>
+		<div>
+            <h1 class="logo">
+                <span class="logo-icon">
+                    <span class="fa fa-globe"></span>
+                </span>
+                <p class="logo-text">LPT</p><span class="logo-text2">oeic.</span>
+            </h1>
+        </div>
 		<ul>
 			<li><a th:href="@{/}">Trang chủ </a></li>
-			<li><a href="#">Tự học <i class="fas fa-caret-down"></i></a>
+			<li><a href="">Tự học <i class="fas fa-caret-down"></i></a>
 				<div class="dropdown-menu">
 					<ul>
 						<li><a th:href="@{/user/vocabulary-lesson}">Từ vựng</a></li>
 						<li><a th:href="@{/user/grammar-lesson}">Ngữ pháp</a></li>
 					</ul>
 				</div></li>
-			<li><a href="#">Luyện<i class="fas fa-caret-down"></i></a>
+			<li><a href="">Luyện<i class="fas fa-caret-down"></i></a>
 				<div class="dropdown-menu">
 					<ul>
 						<li><a th:href="@{/user/listening-exercise-card}">Listening</a></li>
