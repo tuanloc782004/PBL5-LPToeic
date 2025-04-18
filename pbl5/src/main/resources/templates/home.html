@@ -11,9 +11,7 @@
 				<div class="bg-section video-content">
 					<video class="video-bg" preload="" playsinline="" autoplay=""
 						muted="" loop="">
-						<source
-							src="https://tienganh1.vnwordpress.net/wp-content/uploads/2023/03/nasao_banner-hoc-tieng-anh.mp4"
-							type="video/mp4">
+						<source th:src="@{/user-asset/image/banner.mp4}" type="video/mp4">
 					</video>
 					<div class="overlay-content">
 						<h4>tự học toeic qua bài trắc nghiệm</h4>
@@ -30,13 +28,12 @@
 							<div class="card-each ">
 								<div class="card-detail">
 									<p class="card-title">
-										<a>Từ vựng</a>
+										<a th:href="@{/user/vocabulary-lesson}">Từ vựng</a>
 									</p>
-									<a class="plain">
+									<a th:href="@{/user/vocabulary-lesson}" class="plain">
 										<div class="icon-box">
 											<div class="icon-inner">
-												<img
-													th:src="https://tienganh1.vnwordpress.net/wp-content/uploads/2020/12/nasao_vocabulary.png">
+												<img th:src="@{/user-asset/image/vocabulary.png}">
 												<noscript></noscript>
 											</div>
 										</div>
@@ -47,103 +44,86 @@
 							<div class="card-each ">
 								<div class="card-detail">
 									<p class="card-title">
-										<a>Ngữ pháp</a>
+										<a th:href="@{/user/grammar-lesson}">Ngữ pháp</a>
 									</p>
-									<a class="plain">
+									<a th:href="@{/user/grammar-lesson}" class="plain">
 										<div class="icon-box">
 											<div class="icon-inner">
-												<img
-													th:src="https://tienganh1.vnwordpress.net/wp-content/uploads/2020/12/nasao_grammar.png">
+												<img th:src="@{/user-asset/image/grammar.png}">
 												<noscript></noscript>
 											</div>
 										</div>
 									</a>
 								</div>
 							</div>
-							</a>
-						</div>
-					</div>
 
-					<div class="card-each ">
-						<div class="card-detail">
-							<p class="card-title">
-								<a>Trắc nghiệm</a>
-							</p>
-							<a class="plain">
+							<div class="card-each ">
+								<div class="card-detail">
+									<p class="card-title">
+										<a>Trắc nghiệm</a>
+									</p>
+									<a class="plain">
 										<div class="icon-box">
 											<div class="icon-inner">
-												<img
-													th:src="https://tienganh1.vnwordpress.net/wp-content/uploads/2020/12/nasao_test.png">
+												<img th:src="@{/user-asset/image/testchosse.png}">
 												<noscript></noscript>
 											</div>
 										</div>
 									</a>
-						</div>
-					</div>
+								</div>
+							</div>
 
-					<div class="card-each ">
-						<div class="card-detail">
-							<p class="card-title">
-								<a>Luyện nghe</a>
-							</p>
-							<a class="plain">
-								<div class="icon-box">
-									<div class="icon-box-img">
-										<div class="icon">
+							<div class="card-each ">
+								<div class="card-detail">
+									<p class="card-title">
+										<a th:href="@{/user/listening-exercise-card}">Luyện nghe</a>
+									</p>
+									<a th:href="@{/user/listening-exercise-card}" class="plain">
+										<div class="icon-box">
 											<div class="icon-inner">
-												<img>
+												<img th:src="@{/user-asset/image/listening.png}">
 												<noscript></noscript>
 											</div>
 										</div>
-									</div>
+									</a>
 								</div>
-							</a>
-						</div>
-					</div>
+							</div>
 
-					<div class="card-each ">
-						<div class="card-detail">
-							<p class="card-title">
-								<a>Luyện đọc</a>
-							</p>
-							<a class="plain">
-								<div class="icon-box">
-									<div class="icon-box-img">
-										<div class="icon">
+							<div class="card-each ">
+								<div class="card-detail">
+									<p class="card-title">
+										<a th:href="@{/user/reading-exercise-card}">Luyện đọc</a>
+									</p>
+									<a  th:href="@{/user/reading-exercise-card}"class="plain">
+										<div class="icon-box">
 											<div class="icon-inner">
-												<img>
+												<img th:src="@{/user-asset/image/reading.png}">
 												<noscript></noscript>
 											</div>
 										</div>
-									</div>
+									</a>
 								</div>
-							</a>
-						</div>
-					</div>
+							</div>
 
-					<div class="card-each ">
-						<div class="card-detail">
-							<p class="card-title">
-								<a>Thi thử</a>
-							</p>
-							<a class="plain">
-								<div class="icon-box">
-									<div class="icon-box-img">
-										<div class="icon">
+							<div class="card-each ">
+								<div class="card-detail">
+									<p class="card-title">
+										<a>Thi thử</a>
+									</p>
+									<a class="plain">
+										<div class="icon-box">
 											<div class="icon-inner">
-												<img>
+												<img th:src="@{/user-asset/image/testtoeic.png}">
 												<noscript></noscript>
 											</div>
 										</div>
-									</div>
+									</a>
 								</div>
-							</a>
+							</div>
 						</div>
 					</div>
 				</div>
-		</div>
-		</div>
-		</section>
+			</section>
 		</div>
 	</main>
 
