@@ -32,6 +32,10 @@ body {
 	font-weight: 400;
 }
 
+a {
+    text-decoration: none;
+}
+
 .menu-bar {
 	background-color: var(--color-white);
 	height: 70px;
@@ -308,7 +312,7 @@ body {
 	display: flex;
 	overflow: visible;
 	flex-direction: column;
-	/* height: 100vh; */
+	height: auto;
 }
 
 .max-width .section {
@@ -394,16 +398,15 @@ body {
 */
 
 /* CARD */
-.list-card-chosse-practice {
+.card-chosse {
 	background-color: #bcd6ee;
-	
 }
 
 .cards-practice {
 	margin: 50px 200px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	box-shadow: 0 6px 7px rgba(0, 0, 0, 0); 
+	box-shadow: 2px 6px 7px rgba(0, 0, 0, 0); 
 	padding: 10px 0;
 	border-radius: 5px;
 }
@@ -411,14 +414,15 @@ body {
 .card-each {
 	padding-top: 10px;
 	box-shadow: 0 1px 3px -2px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+	height: 270px;
 }
 
 .card-each .card-detail {
-	height: 270px;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	align-items: center;
+	padding: 15px;
 }
 
 .card-title {
@@ -435,4 +439,34 @@ body {
 	color: var(--color-primary);
 	font-family: "Robioo", sans-serif;
 	font-weight: 500;
+}
+
+.plain {
+	padding: 20px;
+	width: 100%;
+	height: 100%;
+}
+
+.icon-box {
+	
+}
+
+.icon-inner {
+	padding: auto;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+
+.icon-inner img {
+	width: 150px;
+	height: auto;	
+	transition: transform 0.8s ease-in-out;
+	transform-origin: center;
+}
+
+.icon-inner:hover img {
+	transform: rotateY(360deg);
 }
