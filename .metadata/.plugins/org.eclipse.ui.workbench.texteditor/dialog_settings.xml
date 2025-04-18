@@ -5,4 +5,10 @@
 	<list key="searchhistory">
 		<item value="part5"/>
 	</list>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value=""/>
+		<list key="findhistory">
+			<item value=""/>
+		</list>
+	</section>
 </section>

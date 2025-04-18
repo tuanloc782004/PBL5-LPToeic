@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main>
+		<div class="main-container">
+			<div class="main-content-card">
+				<div class="header-title">
+					<h1>Bài thi thử</h1>
+				</div>
+				<div class="cards">
+					<div class="card">
+						<a th:href="@{/user/mock-exam}">
+							<div class="part-img">
+								<img th:src="@{/user-asset/image/part-5.jpg}" alt="">
+							</div>
+							<div class="part-title">
+								<h3>Phần 5</h3>
+								<h5>Hoàn thành câu</h5>
+								<p>Chọn đáp án đúng nhất trong 4 câu đáp án để hoàn thành
+									câu.</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

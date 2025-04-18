@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.poi.ss.usermodel.*;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pbl5.model.GrammarLesson;
 import com.pbl5.model.ListeningExercise;
+import com.pbl5.model.MockExam;
 import com.pbl5.model.Part1;
 import com.pbl5.model.Part2;
 import com.pbl5.model.Part3;
@@ -37,6 +39,8 @@ import com.pbl5.repository.Part5Repository;
 import com.pbl5.repository.Part6QuestionRepository;
 import com.pbl5.repository.Part7QuestionRepository;
 import com.pbl5.repository.VocabularyLessonContentRepository;
+import com.pbl5.service.Part3Service;
+import com.pbl5.service.Part4Service;
 import com.pbl5.service.Part6Service;
 import com.pbl5.service.Part7Service;
 
@@ -55,7 +59,13 @@ public class ExcelServiceImpl implements ExcelService {
 	private Part2Repository part2Repository;
 
 	@Autowired
+	private Part3Service part3Service;
+
+	@Autowired
 	private Part3QuestionRepository part3QuestionRepository;
+
+	@Autowired
+	private Part4Service part4Service;
 
 	@Autowired
 	private Part4QuestionRepository part4QuestionRepository;
@@ -668,6 +678,459 @@ public class ExcelServiceImpl implements ExcelService {
 
 			this.part5Repository.saveAll(list);
 			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	// ========== MOCK EXAM ===========
+
+	@Override
+	public List<Part1> readPart1MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part1> part1List = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0) {
+					continue; // Bỏ qua dòng tiêu đề
+				}
+
+				try {
+					Part1 part1 = new Part1();
+					part1.setNumber(Long.valueOf(number.getAndIncrement()));
+					part1.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(row.getCell(0)));
+					part1.setImageUrl("/upload-dir/image/" + myCode + getStringValue(row.getCell(1)));
+					part1.setOptionA(getStringValue(row.getCell(2)));
+					part1.setOptionB(getStringValue(row.getCell(3)));
+					part1.setOptionC(getStringValue(row.getCell(4)));
+					part1.setOptionD(getStringValue(row.getCell(5)));
+					part1.setCorrectAnswer(getStringValue(row.getCell(6)));
+					part1.setExplanation(getStringValue(row.getCell(7)));
+					part1.setMockExam(mockExam);
+
+					part1List.add(part1);
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part1List;
+	}
+
+	@Override
+	public void savePart1MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part1> list = readPart1MockExamExcelFile(file, mockExam, myCode, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part1Repository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part2> readPart2MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part2> part2List = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0) {
+					continue; // Bỏ qua dòng tiêu đề
+				}
+
+				try {
+					Part2 part2 = new Part2();
+					part2.setNumber(Long.valueOf(number.getAndIncrement()));
+					part2.setAudioUrl("/upload-dir/audio/" + myCode + getStringValue(row.getCell(0)));
+					part2.setOptionA(getStringValue(row.getCell(1)));
+					part2.setOptionB(getStringValue(row.getCell(2)));
+					part2.setOptionC(getStringValue(row.getCell(3)));
+					part2.setCorrectAnswer(getStringValue(row.getCell(4)));
+					part2.setExplanation(getStringValue(row.getCell(5)));
+					part2.setMockExam(mockExam);
+					part2List.add(part2);
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part2List;
+	}
+
+	@Override
+	public void savePart2MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part2> list = readPart2MockExamExcelFile(file, mockExam, myCode, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part2Repository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part3Question> readPart3MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part3Question> allQuestions = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0);
+			int rowCount = sheet.getPhysicalNumberOfRows();
+
+			for (int i = 1; i < rowCount; i += 3) { // Mỗi nhóm 3 dòng là 1 audio
+				Row row1 = sheet.getRow(i);
+				Row row2 = sheet.getRow(i + 1);
+				Row row3 = sheet.getRow(i + 2);
+
+				if (row1 == null || row2 == null || row3 == null)
+					continue;
+
+				// Lấy tên file audio (ô đầu tiên của row1)
+				String audioFileName = getStringValue(row1.getCell(0));
+
+				// Tạo Part3 mới cho nhóm 3 câu
+				Part3 part3 = new Part3();
+				part3.setMockExam(mockExam);
+				part3.setAudioUrl("/upload-dir/audio/" + myCode + audioFileName);
+				this.part3Service.save(part3);
+
+				for (Row row : List.of(row1, row2, row3)) {
+					Part3Question question = new Part3Question();
+					question.setNumber(Long.valueOf(number.getAndIncrement()));
+					question.setQuestion(getStringValue(row.getCell(1)));
+					question.setOptionA(getStringValue(row.getCell(2)));
+					question.setOptionB(getStringValue(row.getCell(3)));
+					question.setOptionC(getStringValue(row.getCell(4)));
+					question.setOptionD(getStringValue(row.getCell(5)));
+					question.setCorrectAnswer(getStringValue(row.getCell(6)));
+					question.setExplanation(getStringValue(row.getCell(7)));
+					question.setPart3(part3);
+
+					allQuestions.add(question);
+				}
+			}
+
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return allQuestions;
+	}
+
+	@Override
+	public void savePart3MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part3Question> list = readPart3MockExamExcelFile(file, mockExam, myCode, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part3QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} câu hỏi vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part4Question> readPart4MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part4Question> allQuestions = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0);
+			int rowCount = sheet.getPhysicalNumberOfRows();
+
+			for (int i = 1; i < rowCount; i += 3) { // Mỗi nhóm 3 dòng là 1 audio
+				Row row1 = sheet.getRow(i);
+				Row row2 = sheet.getRow(i + 1);
+				Row row3 = sheet.getRow(i + 2);
+
+				if (row1 == null || row2 == null || row3 == null)
+					continue;
+
+				// Lấy tên file audio (ô đầu tiên của row1)
+				String audioFileName = getStringValue(row1.getCell(0));
+
+				// Tạo Part4 mới cho nhóm 3 câu
+				Part4 part4 = new Part4();
+				part4.setMockExam(mockExam);
+				part4.setAudioUrl("/upload-dir/audio/" + myCode + audioFileName);
+				this.part4Service.save(part4);
+
+				for (Row row : List.of(row1, row2, row3)) {
+					Part4Question question = new Part4Question();
+					question.setNumber(Long.valueOf(number.getAndIncrement()));
+					question.setQuestion(getStringValue(row.getCell(1)));
+					question.setOptionA(getStringValue(row.getCell(2)));
+					question.setOptionB(getStringValue(row.getCell(3)));
+					question.setOptionC(getStringValue(row.getCell(4)));
+					question.setOptionD(getStringValue(row.getCell(5)));
+					question.setCorrectAnswer(getStringValue(row.getCell(6)));
+					question.setExplanation(getStringValue(row.getCell(7)));
+					question.setPart4(part4);
+
+					allQuestions.add(question);
+				}
+			}
+
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return allQuestions;
+	}
+
+	@Override
+	public void savePart4MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part4Question> list = readPart4MockExamExcelFile(file, mockExam, myCode, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part4QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} câu hỏi vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part5> readPart5MockExamExcelFile(MultipartFile file, MockExam mockExam, AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part5> part5List = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0); // Lấy sheet đầu tiên
+
+			for (Row row : sheet) {
+				if (row.getRowNum() == 0)
+					continue; // Bỏ qua dòng tiêu đề
+
+				try {
+					Part5 part5 = new Part5();
+					part5.setNumber(Long.valueOf(number.getAndIncrement()));
+					part5.setQuestion(getStringValue(row.getCell(0)));
+					part5.setOptionA(getStringValue(row.getCell(1)));
+					part5.setOptionB(getStringValue(row.getCell(2)));
+					part5.setOptionC(getStringValue(row.getCell(3)));
+					part5.setOptionD(getStringValue(row.getCell(4)));
+					part5.setCorrectAnswer(getStringValue(row.getCell(5)));
+					part5.setExplanation(getStringValue(row.getCell(6)));
+					part5.setMockExam(mockExam);
+
+					part5List.add(part5);
+				} catch (Exception e) {
+					logger.warn("Bỏ qua dòng {} do lỗi xử lý dữ liệu: {}", row.getRowNum(), e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return part5List;
+	}
+
+	@Override
+	public void savePart5MockExamFromExcel(MultipartFile file, MockExam mockExam, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part5> list = readPart5MockExamExcelFile(file, mockExam, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part5Repository.saveAll(list);
+			logger.info("Đã lưu thành công {} mục vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part6Question> readPart6MockExamExcelFile(MultipartFile file, MockExam mockExam, AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part6Question> allQuestions = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0);
+			int rowCount = sheet.getPhysicalNumberOfRows();
+
+			for (int i = 1; i < rowCount; i += 4) { // Mỗi nhóm 4 dòng là 1 script
+				Row row1 = sheet.getRow(i);
+				Row row2 = sheet.getRow(i + 1);
+				Row row3 = sheet.getRow(i + 2);
+				Row row4 = sheet.getRow(i + 3);
+
+				if (row1 == null || row2 == null || row3 == null || row4 == null)
+					continue;
+
+				// Lấy tên script (ô đầu tiên của row1)
+				String script = getStringValue(row1.getCell(0));
+
+				// Tạo Part6 mới cho nhóm 4 câu
+				Part6 part6 = new Part6();
+				part6.setMockExam(mockExam);
+				part6.setScript(script);
+				this.part6Service.save(part6);
+
+				for (Row row : List.of(row1, row2, row3, row4)) {
+					Part6Question question = new Part6Question();
+					question.setNumber(Long.valueOf(number.getAndIncrement()));
+					question.setOptionA(getStringValue(row.getCell(1)));
+					question.setOptionB(getStringValue(row.getCell(2)));
+					question.setOptionC(getStringValue(row.getCell(3)));
+					question.setOptionD(getStringValue(row.getCell(4)));
+					question.setCorrectAnswer(getStringValue(row.getCell(5)));
+					question.setExplanation(getStringValue(row.getCell(6)));
+					question.setPart6(part6);
+
+					allQuestions.add(question);
+				}
+			}
+
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return allQuestions;
+	}
+
+	@Override
+	public void savePart6MockExamFromExcel(MultipartFile file, MockExam mockExam, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part6Question> list = readPart6MockExamExcelFile(file, mockExam, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part6QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} câu hỏi vào database.", list.size());
+		} catch (RuntimeException e) {
+			logger.error("Lỗi khi lưu dữ liệu vào database", e);
+			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
+		}
+	}
+
+	@Override
+	public List<Part7Question> readPart7MockExamExcelFile(MultipartFile file, MockExam mockExam, AtomicLong number) {
+		// TODO Auto-generated method stub
+		List<Part7Question> allQuestions = new ArrayList<>();
+
+		try (InputStream inputStream = file.getInputStream(); Workbook workbook = new XSSFWorkbook(inputStream)) {
+			Sheet sheet = workbook.getSheetAt(0);
+			int rowCount = sheet.getPhysicalNumberOfRows();
+
+			for (int i = 1; i < rowCount; i += 3) { // Mỗi nhóm 3 dòng là 1 script
+				Row row1 = sheet.getRow(i);
+				Row row2 = sheet.getRow(i + 1);
+				Row row3 = sheet.getRow(i + 2);
+
+				if (row1 == null || row2 == null || row3 == null)
+					continue;
+
+				// Lấy script (ô đầu tiên của row1)
+				String script = getStringValue(row1.getCell(0));
+
+				// Tạo Part7 mới cho nhóm 3 câu
+				Part7 part7 = new Part7();
+				part7.setMockExam(mockExam);
+				part7.setScript(script);
+				this.part7Service.save(part7);
+
+				for (Row row : List.of(row1, row2, row3)) {
+					Part7Question question = new Part7Question();
+					question.setNumber(Long.valueOf(number.getAndIncrement()));
+					question.setQuestion(getStringValue(row.getCell(1)));
+					question.setOptionA(getStringValue(row.getCell(2)));
+					question.setOptionB(getStringValue(row.getCell(3)));
+					question.setOptionC(getStringValue(row.getCell(4)));
+					question.setOptionD(getStringValue(row.getCell(5)));
+					question.setCorrectAnswer(getStringValue(row.getCell(6)));
+					question.setExplanation(getStringValue(row.getCell(7)));
+					question.setPart7(part7);
+
+					allQuestions.add(question);
+				}
+			}
+
+		} catch (IOException e) {
+			logger.error("Lỗi khi đọc file Excel", e);
+			throw new RuntimeException("Không thể đọc file Excel", e);
+		}
+
+		return allQuestions;
+	}
+
+	@Override
+	public void savePart7MockExamFromExcel(MultipartFile file, MockExam mockExam, AtomicLong number) {
+		// TODO Auto-generated method stub
+		try {
+			List<Part7Question> list = readPart7MockExamExcelFile(file, mockExam, number);
+
+			if (list.isEmpty()) {
+				logger.warn("Không có dữ liệu hợp lệ để lưu vào database.");
+				return;
+			}
+
+			this.part7QuestionRepository.saveAll(list);
+			logger.info("Đã lưu thành công {} câu hỏi vào database.", list.size());
 		} catch (RuntimeException e) {
 			logger.error("Lỗi khi lưu dữ liệu vào database", e);
 			throw new RuntimeException("Không thể lưu dữ liệu vào database", e);
