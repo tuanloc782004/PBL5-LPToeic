@@ -21,7 +21,7 @@ ul, li {
 
 .sidebar-user {
 	flex: 0 0 23%;
-	background-color: #fff;
+	background-color: var(--color-white);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border-right: 1px solid #f0ede6;
 }
@@ -40,11 +40,11 @@ ul, li {
 }
 
 .sidebar-user ul li:hover {
-	background-color: var(--color-bgmain);
+	background-color: var(--color-primary);
 }
 
 .sidebar-user ul li a {
-	color: #000;
+	color: var(--color-text);
 	font-size: 15px;
 	font-weight: 500;
 	text-decoration: none;
@@ -53,6 +53,7 @@ ul, li {
 
 .sidebar-user ul li:hover a {
 	color: var(--color-white);
+	background-color: var(--color-primary);
 }
 
 .sidebar-user ul li a i {
@@ -104,7 +105,7 @@ ul, li {
 	padding: 10px;
 	border: none;
 	border-radius: 5px;
-	background-color: var(--color-bgmain);
+	background-color: var(--color-btn);
 	color: var(--color-white);
 	cursor: pointer;
 	transition: all 0.3s;
@@ -115,7 +116,7 @@ ul, li {
 }
 
 .user-maincontent .user-info-container div button:hover {
-	background-color: var(--color-primary);
+	box-shadow: 0 4px 10px var(--color-btn-hover);
 }
 
 .card-custom {
