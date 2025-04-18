@@ -43,7 +43,7 @@ public class Part7Question {
     @Column(name = "explanation", columnDefinition = "TEXT", nullable = false)
 	private String explanation;
     
-    @Column(name = "question", nullable = false, length = 255)
+    @Column(name = "question", nullable = false, columnDefinition = "TEXT")
 	private String question;
 
 	public Part7Question() {

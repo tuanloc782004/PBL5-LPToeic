@@ -1,11 +1,13 @@
 package com.pbl5.excel;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pbl5.model.GrammarLesson;
 import com.pbl5.model.ListeningExercise;
+import com.pbl5.model.MockExam;
 import com.pbl5.model.Part1;
 import com.pbl5.model.Part2;
 import com.pbl5.model.Part3;
@@ -68,5 +70,41 @@ public interface ExcelService {
 	public List<Part5> readPart5GrammarLessonExcelFile(MultipartFile file, GrammarLesson grammarLesson);
 
 	public void savePart5GrammarLessonFromExcel(MultipartFile file, GrammarLesson grammarLesson);
+
+	// ============= Quản lý bài thi thử - Start =============
+
+	public List<Part1> readPart1MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number);
+
+	public void savePart1MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number);
+
+	public List<Part2> readPart2MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number);
+
+	public void savePart2MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number);
+
+	public List<Part3Question> readPart3MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number);
+
+	public void savePart3MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number);
+
+	public List<Part4Question> readPart4MockExamExcelFile(MultipartFile file, MockExam mockExam, String myCode,
+			AtomicLong number);
+
+	public void savePart4MockExamFromExcel(MultipartFile file, MockExam mockExam, String myCode, AtomicLong number);
+
+	public List<Part5> readPart5MockExamExcelFile(MultipartFile file, MockExam mockExam, AtomicLong number);
+
+	public void savePart5MockExamFromExcel(MultipartFile file, MockExam mockExam, AtomicLong number);
+
+	public List<Part6Question> readPart6MockExamExcelFile(MultipartFile file, MockExam mockExam, AtomicLong number);
+
+	public void savePart6MockExamFromExcel(MultipartFile file, MockExam mockExam, AtomicLong number);
+
+	public List<Part7Question> readPart7MockExamExcelFile(MultipartFile file, MockExam mockExam, AtomicLong number);
+
+	public void savePart7MockExamFromExcel(MultipartFile file, MockExam mockExam, AtomicLong number);
+
+	// ============= Quản lý bài thi thử - End ===============
 
 }

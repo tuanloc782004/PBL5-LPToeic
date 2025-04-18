@@ -25,7 +25,7 @@ public class Part4Question {
 	@Column(name = "number", nullable = false)
 	private Long number;
 
-	@Column(name = "question", nullable = false, length = 255)
+	@Column(name = "question", nullable = false, columnDefinition = "TEXT")
 	private String question;
 
 	@Column(name = "option_a", nullable = false, length = 255)
