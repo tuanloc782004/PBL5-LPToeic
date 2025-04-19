@@ -268,9 +268,13 @@
 
 /* ====== LISTENING READING - CARD PART ====== */
 .main-content-card {
+	width: 100%;
 	padding: 20px 60px;
 	display: inline-block;
 	justify-content: center;
+	height: 100vh;
+	background-color: var(--color-bgsecond);
+	overflow: visible;
 }
 
 .main-content-card .header-title {
