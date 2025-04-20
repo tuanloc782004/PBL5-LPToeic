@@ -21,6 +21,7 @@
 	--color-bgsecond: #e8f3f9;
 	--color-card: #f57235;
 	--color-btn2: linear-gradient(90deg, #ff6600, #ff9900);
+	--color-border: #e0d8d8;
 }
 
 * {
@@ -407,7 +408,7 @@ ul, li {
 
 /* CARD */
 .card-chosse {
-	background-color: #d3eaf8;
+	background-color: var(--color-bgsecond);
 }
 
 .cards-practice {

@@ -47,6 +47,12 @@
 	transition: all 0.1s;
 }
 
+.sidebar-user ul li a.active {
+	color: var(--color-white);
+	background-color: var(--color-primary);
+}
+
+
 .sidebar-user ul li:hover a {
 	color: var(--color-white);
 	background-color: var(--color-primary);
@@ -249,97 +255,3 @@
 .user-avatar .avatar-edit .edit:hover {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
-
-/* ====== MOCK-EXAM ====== */
-
-/* ====== MOCK-EXAM-CARD ====== */
-
-.main-card-test {
-	padding: 20px;
-}
-
-.main-card-test .cards-test {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 20px 40px;
-}
-
-.cards-test .card-test-each {
-	background: #4fa1e8;
-	border-radius: 16px;
-	padding: 20px;
-	width: 250px;
-	height: 300px;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cards-test .card-test-each:hover {
-	transform: translateY(-10px);
-	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-	cursor: pointer;
-}
-
-.card-test-each a {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 100%;
-	text-decoration: none;
-	color: #333;
-}
-
-.card-title h3 {
-	font-size: 1.5rem;
-	margin: 0;
-	text-align: center;
-	color: #1e3a8a;
-}
-
-.card-score .point-box {
-	background: #fff;
-	border-radius: 8px;
-	padding: 10px;
-	text-align: center;
-	color: #111;
-	font-weight: bold;
-	box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.card-detail {
-	display: flex;
-	flex-direction: column;
-	
-	margin-top: 20px;
-	padding: 10px 0;
-}
-
-.card-detail .info {
-	display: flex;
-	justify-content: start;
-	align-items: center;
-	font-size: 0.9rem;
-	color: #555;
-}
-
-.card-detail .info i {
-	font-size: 1.2rem;
-	margin-bottom: 5px;
-	color: #3b82f6;
-}
-
-.card-action .action-box {
-	margin-top: 20px;
-	background-color: #3b82f6;
-	color: white;
-	text-align: center;
-	padding: 10px;
-	border-radius: 8px;
-	transition: background 0.3s;
-}
-
-.card-action .action-box:hover {
-	background-color: #2563eb;
-}
-
-

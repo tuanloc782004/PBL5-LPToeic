@@ -8,6 +8,7 @@
 	height: calc(100vh - 80px);
 	border-radius: 3px;
 	overflow: hidden;
+	background-color: var(--color-beige);
 }
 
 .main-section section {
@@ -81,7 +82,7 @@
 
 .main-content {
 	flex: 0 0 75%;
-	background-color: #fff;
+	background-color: var(--color-white);
 	overflow-y: scroll;
 	margin-right: -50px;
 	height: 100%;
@@ -353,6 +354,7 @@
 }
 
 /* ====== LISTENING-PART 1 AND 2 ====== */
+
 .main-list-question {
 	width: 100%;
 	height: 100%;
@@ -363,12 +365,12 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 20px;
+	gap: 30px;
 	border-bottom: solid 1px #e0d8d8;
-	border-radius: 10px;
+	/* border-radius: 10px;
 	border: solid 1px #d4cccc;
+	margin-bottom: 20px; */
 	padding: 10px 20px;
-	margin-bottom: 20px;
 }
 
 .question-detail .ques-audio {
@@ -410,19 +412,19 @@
 	justify-content: center;
 }
 
-.question-detail .main-answer .choose-ans {
+.choose-ans {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
-.question-detail .main-answer .choose-ans div {
+.choose-ans div {
 	display: flex;
 	justify-content: first baseline;
 	padding: 10px;
 }
 
-.question-detail .main-answer .choose-ans div input {
+.choose-ans div input {
 	margin-right: 7px;
 	width: 22px;
 	height: 22px;
@@ -430,50 +432,50 @@
 	fill: none;
 }
 
-.question-detail .main-answer .choose-ans div label {
+.choose-ans div label {
 	color: #505050;
 	font-size: 16px;
 }
 
-.question-detail .main-answer .check-ans {
+.check-ans {
 	display: flex;
-	padding: 10px;
+	padding: 10px 10px 17px 10px;
 	border: solid 1px #eddfdf;
 	width: 100%;
-	height: 250px;
+	height: auto;
 	border-radius: 10px;
 	margin-bottom: 10px;
 }
 
-.question-detail .main-answer .check-ans .ans-detail div {
+.check-ans .ans-detail div {
 	display: flex;
 	align-items: center;
 	padding: 5px 0;
 }
 
-.question-detail .main-answer .check-ans .ans-detail div h3 {
+.check-ans .ans-detail div h3 {
 	font-size: 17px;
 	font-weight: 600;
 	margin-right: 10px;
 }
 
-.question-detail .main-answer .check-ans .ans-detail div span {
+.check-ans .ans-detail div span {
 	font-size: 16px;
 	font-weight: 500;
 	color: #000;
 }
 
-.question-detail .main-answer .check-ans .ans-detail div:last-child {
+.check-ans .ans-detail div:last-child {
 	display: block;
 }
 
-.question-detail .main-answer .check-ans .ans-detail div:last-child span
+.check-ans .ans-detail div:last-child span
 	{
 	color: #512da8;
 	margin-bottom: 10px;
 }
 
-.question-detail .main-answer .check-ans .ans-detail div:last-child p {
+.check-ans .ans-detail div:last-child p {
 	font-size: 16px;
 	font-weight: 400;
 	color: #000;
@@ -481,6 +483,7 @@
 }
 
 /* ====== LISTENING - PART 34 ====== */
+
 .ques-list {
 	display: flex;
 	flex-direction: column;
@@ -525,6 +528,7 @@
 }
 
 /* ====== READING - PART 567 ====== */
+
 .question.part567 {
 	padding: 0;
 }
@@ -539,42 +543,38 @@
 	padding-top: 15px;
 }
 
-.part6-script {
+.part67-script {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	gap: 20px;
-	border-bottom: solid 1px #e0d8d8;
-	border-radius: 10px;
-	border: solid 1px #d4cccc;
+	border-bottom: solid 1px var(--color-border);
 	padding: 15px 25px;
 	margin-bottom: 20px;
-	/* Kiểu chữ phù hợp */
-	font-size: 18px; /* Cỡ chữ vừa phải để dễ đọc */
-	font-family: "Times New Roman", serif;
-	/* Phù hợp với bài kiểm tra tiếng Anh */
-	line-height: 1.6; /* Tăng khoảng cách dòng để dễ đọc */
-	text-align: justify; /* Căn đều hai bên cho văn bản */
-	background-color: #f9f9f9; /* Màu nền nhẹ để đọc dễ hơn */
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.6; 
+	text-align: justify;
+	background-color: var(--color-beige); 
 }
 
 .hide-explanation {
-	background-color: #ff6b6b; /* Màu đỏ nhạt */
-	color: white;
+	background-color: var(--color-primary);
+	color: var(--color-white);
 	border: none;
 	padding: 8px 16px;
 	font-size: 14px;
 	font-weight: bold;
-	border-radius: 5px; /* Bo tròn góc */
+	border-radius: 5px;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 }
 
 .hide-explanation:hover {
-	background-color: #e63946; /* Màu đỏ đậm hơn khi hover */
-	transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+	background-color: var(--color-main);
+	transform: scale(1.05); 
 }
 
 .hide-explanation:active {
-	transform: scale(0.95); /* Nhấn vào sẽ thu nhỏ một chút */
+	transform: scale(0.95);
 }
