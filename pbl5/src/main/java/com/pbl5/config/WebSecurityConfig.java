@@ -2,6 +2,7 @@ package com.pbl5.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -15,7 +16,7 @@ import com.pbl5.security.CustomAuthenticationSuccessHandler;
 public class WebSecurityConfig {
 
 	@Bean
-	BCryptPasswordEncoder passwordEncoder() {
+	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
@@ -25,7 +26,7 @@ public class WebSecurityConfig {
 		http.authorizeHttpRequests(
 				(requests) -> requests.requestMatchers("/", "/login", "/register", "/resend-otp", "/verify-otp")
 						.permitAll().requestMatchers("/admin/**").hasAuthority("ADMIN").requestMatchers("/user/**")
-						.hasAuthority("USER").anyRequest().authenticated() // Các yêu cầu khác cần xác thực
+						.hasAuthority("USER").requestMatchers(HttpMethod.POST,"/user/account-information/update-password").permitAll().anyRequest().authenticated() // Các yêu cầu khác cần xác thực
 		).formLogin((form) -> form.loginPage("/login") // Trang đăng nhập tùy chỉnh
 				.loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password")
 				.successHandler(new CustomAuthenticationSuccessHandler()))
@@ -41,4 +42,5 @@ public class WebSecurityConfig {
 				"/user-asset/**");
 
 	}
+	
 }
