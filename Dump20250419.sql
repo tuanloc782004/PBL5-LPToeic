@@ -27,7 +27,7 @@ CREATE TABLE `grammar_lesson` (
   `content` text NOT NULL,
   `lesson_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `listening_exercise` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `exercise_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `mock_exam` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `mock_exam_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +113,7 @@ CREATE TABLE `part1` (
   KEY `FKqk1qensmp0w4ldggfrrnvkqrx` (`mock_exam_id`),
   CONSTRAINT `FKqk1qensmp0w4ldggfrrnvkqrx` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`),
   CONSTRAINT `FKr4un0ixr7srb8f9k8drp04c3t` FOREIGN KEY (`listening_exercise_id`) REFERENCES `listening_exercise` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +149,7 @@ CREATE TABLE `part2` (
   KEY `FKte049aug3q84xd51yx1rm786h` (`mock_exam_id`),
   CONSTRAINT `FK7qy6y80vv2n6qainykdg9gyos` FOREIGN KEY (`listening_exercise_id`) REFERENCES `listening_exercise` (`id`),
   CONSTRAINT `FKte049aug3q84xd51yx1rm786h` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +179,7 @@ CREATE TABLE `part3` (
   KEY `FK19fu4gqhsck8gmibw7u1ei7lw` (`mock_exam_id`),
   CONSTRAINT `FK19fu4gqhsck8gmibw7u1ei7lw` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`),
   CONSTRAINT `FKyp6t3qvrfq8wljohct4rrgci` FOREIGN KEY (`listening_exercise_id`) REFERENCES `listening_exercise` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `part3_question` (
   PRIMARY KEY (`id`),
   KEY `FKafo45qxu6kpbq7f37dr1tbtyf` (`part3_id`),
   CONSTRAINT `FKafo45qxu6kpbq7f37dr1tbtyf` FOREIGN KEY (`part3_id`) REFERENCES `part3` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,7 @@ CREATE TABLE `part4` (
   KEY `FK9t8mebwiqgp1qhiv5by76962x` (`mock_exam_id`),
   CONSTRAINT `FK9t8mebwiqgp1qhiv5by76962x` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`),
   CONSTRAINT `FKj2y737fi0vonn71psa1a0l0wq` FOREIGN KEY (`listening_exercise_id`) REFERENCES `listening_exercise` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +277,7 @@ CREATE TABLE `part4_question` (
   PRIMARY KEY (`id`),
   KEY `FKancopar58rinns8xy1yueyw15` (`part4_id`),
   CONSTRAINT `FKancopar58rinns8xy1yueyw15` FOREIGN KEY (`part4_id`) REFERENCES `part4` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,7 +317,7 @@ CREATE TABLE `part5` (
   CONSTRAINT `FK4c95h0v0u6o28q5fjkohn55d7` FOREIGN KEY (`reading_exercise_id`) REFERENCES `reading_exercise` (`id`),
   CONSTRAINT `FKp11c1xt3m5r69glxjiq3dnmc9` FOREIGN KEY (`grammar_lesson`) REFERENCES `grammar_lesson` (`id`),
   CONSTRAINT `FKplvex7h3bh12u9bfunmbkhr03` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +347,7 @@ CREATE TABLE `part6` (
   KEY `FKoayyfwr3j7xqu90opynt1h965` (`reading_exercise_id`),
   CONSTRAINT `FKoayyfwr3j7xqu90opynt1h965` FOREIGN KEY (`reading_exercise_id`) REFERENCES `reading_exercise` (`id`),
   CONSTRAINT `FKorbj4xonq4hx2hdsv3tsqdpti` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,7 +380,7 @@ CREATE TABLE `part6_question` (
   PRIMARY KEY (`id`),
   KEY `FKocn9nbkeycv1w3g2ku5n40agj` (`part6_id`),
   CONSTRAINT `FKocn9nbkeycv1w3g2ku5n40agj` FOREIGN KEY (`part6_id`) REFERENCES `part6` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -410,7 +410,7 @@ CREATE TABLE `part7` (
   KEY `FKc52lmo9k3ei1jdrjau3m4wu6s` (`reading_exercise_id`),
   CONSTRAINT `FKc52lmo9k3ei1jdrjau3m4wu6s` FOREIGN KEY (`reading_exercise_id`) REFERENCES `reading_exercise` (`id`),
   CONSTRAINT `FKr67s64xifda5qtcpnychr3ocj` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -444,7 +444,7 @@ CREATE TABLE `part7_question` (
   PRIMARY KEY (`id`),
   KEY `FKqnbpcfia4797cql26n8qxwsaq` (`part7_id`),
   CONSTRAINT `FKqnbpcfia4797cql26n8qxwsaq` FOREIGN KEY (`part7_id`) REFERENCES `part7` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -468,7 +468,7 @@ CREATE TABLE `reading_exercise` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `exercise_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -492,7 +492,7 @@ CREATE TABLE `role` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `role_name` varchar(5) DEFAULT 'USER',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -523,7 +523,7 @@ CREATE TABLE `test_result` (
   KEY `FKmu7x4i4r6swolpxwqx0n21lnn` (`user_id`),
   CONSTRAINT `FKmm0ojhmejwfjojqxhd7gtttng` FOREIGN KEY (`mock_exam_id`) REFERENCES `mock_exam` (`id`),
   CONSTRAINT `FKmu7x4i4r6swolpxwqx0n21lnn` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,7 +554,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `UKsb8bbouer5wak8vyiiy4pf2bx` (`username`),
   KEY `FKn82ha3ccdebhokx3a8fgdqeyy` (`role_id`),
   CONSTRAINT `FKn82ha3ccdebhokx3a8fgdqeyy` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -578,7 +578,7 @@ CREATE TABLE `vocabulary_lesson` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `lesson_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -611,7 +611,7 @@ CREATE TABLE `vocabulary_lesson_content` (
   PRIMARY KEY (`id`),
   KEY `FK659xbx88984vbxtha128ro4du` (`vocabulary_id`),
   CONSTRAINT `FK659xbx88984vbxtha128ro4du` FOREIGN KEY (`vocabulary_id`) REFERENCES `vocabulary_lesson` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
