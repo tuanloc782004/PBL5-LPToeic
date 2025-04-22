@@ -18,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.pbl5.security.CustomUserDetails;
 
@@ -43,6 +44,9 @@ public class AccountInformationController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping("")
 	public String UserProfile() {
@@ -128,4 +132,41 @@ public class AccountInformationController {
 
 		return "redirect:/user/account-information";
 	}
+	
+	
+	
+	
+	@PostMapping("/update-password")
+	public String updatePassword(@RequestParam("oldPassword") String oldPassword,
+	                              @RequestParam("newPassword") String newPassword,
+	                              @RequestParam("confirmPassword") String confirmPassword,
+	                              RedirectAttributes redirectAttributes) {
+		System.out.println(">>> Đã nhận request đổi mật khẩu <<<");
+
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String currentUsername = auth.getName();
+	    User currentUser = userService.findByUsername(currentUsername);
+
+
+	    if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+	        redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
+	        return "redirect:/user/account-information?changepass";
+	    }
+
+
+	    if (!newPassword.equals(confirmPassword)) {
+	        redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
+	        return "redirect:/user/account-information?changepass";
+	    }
+
+
+	    currentUser.setPassword(passwordEncoder.encode(newPassword));  
+	    userService.save(currentUser);
+
+	    redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
+	    return "redirect:/user/account-information?changepass";
+	}
+
+
+	
 }
