@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main class="main-container">
+		<div class="main-content-test">
+			<div class="header-title">
+				<h3>TOEIC Test 1</h3>
+				<a>Thoát</a>
+			</div>
+			<form class="test-form">
+				<div class="wrapper-test">
+
+					<!-- SIDEBAR-QUESTION -->
+					<div class="sidebar-question-sum">
+						<div class="sidebar-question-inner">
+							<div class="div time-test">
+								Thời gian còn lại: <span class="time-sum">1:59:59</span>
+							</div>
+							<div class="div div-submit">
+								<button class="btn-submit-test">NỘP BÀI</button>
+							</div>
+							<div class="div test-question-list">
+								<div class="test-question-list-part">
+									<a class="part-list">Phần 1</a>
+									<div class="list-question">
+										<span class="item-question">1</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- TEST-QUESTION -->
+					<div class="test-content">
+						<div class="test-inner">
+
+							<div class="part-test show">
+								<div class="part-title">
+									<span>Phần 1 - Mô tả tranh</span>
+								</div>
+								<div class="list-question-wrapper">
+									<!-- bat dau 1 cau -->
+									<div class="each-question question-detail"
+										th:each="part1 : ${mockExam.part1s}">
+										<div class="ques-audio">
+											<audio controls>
+												<source th:src="${part1.audioUrl}" type="audio/mpeg">
+											</audio>
+										</div>
+										<div class="ques-photo">
+											<img th:src="${part1.imageUrl}" alt="">
+										</div>
+										<div class="test-number">
+											<div class="number-question marked">
+												<strong th:text="${part1.number}">number</strong>
+											</div>
+											<div class="choose-ans">
+												<div class="choose-ans">
+													<div>
+														<input type="radio" name="answer1" id="answer1-1">
+														<label for="answer1-1" th:text="${part1.optionA}"></label>
+													</div>
+													<div>
+														<input type="radio" name="answer1" id="answer1-2">
+														<label for="answer1-2" th:text="${part1.optionB}"></label>
+													</div>
+													<div>
+														<input type="radio" name="answer1" id="answer1-3">
+														<label for="answer1-3" th:text="${part1.optionC}"></label>
+													</div>
+													<div>
+														<input type="radio" name="answer1" id="answer1-4">
+														<label for="answer1-4" th:text="${part1.optionD}"></label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="part-test" style="display: none">
+								<div class="part-title">
+									<span>Part 2</span>
+								</div>
+								<div class="list-question-wrapper">
+									<!-- bat dau 1 cau -->
+									<div class="each-question question-detail">
+										<div class="ques-audio">
+											<audio controls>
+												<source type="audio/mpeg">
+											</audio>
+										</div>
+										<div class="test-number">
+											<div class="number-question marked">
+												<strong>1</strong>
+											</div>
+											<div class="choose-ans">
+												<div>
+													<input type="radio" name="answer1" id="answer1-1">
+													<label for="answer1-1"></label>
+												</div>
+												<div>
+													<input type="radio" name="answer1" id="answer1-2">
+													<label for="answer1-2"></label>
+												</div>
+												<div>
+													<input type="radio" name="answer1" id="answer1-3">
+													<label for="answer1-3"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- ket thuc 1 cau -->
+
+								</div>
+							</div>
+
+							<div class="part-test" style="display: none">
+								<div class="part-title">
+									<span>Part 3</span>
+								</div>
+								<div class="list-question-wrapper">
+									<div class="list-each-audio">
+										<!-- bat dau 1 cau chung audio -->
+										<div class="each-question-audio">
+											<div class="question-common">
+												<div class="ques-audio">
+													<audio controls>
+														<source type="audio/mpeg">
+													</audio>
+												</div>
+											</div>
+											<div class="ques-list">
+												<!-- bat dau 1 cau -->
+												<div class="each-question question-detail part34">
+													<div class="test-number have-question">
+														<div class="number-question-text">
+															<div class="number-question marked">
+																<strong>1</strong>
+															</div>
+															<div class="question-part345">
+																<p>Where most likely does the speaker work?</p>
+															</div>
+														</div>
+														<div class="choose-ans">
+															<div>
+																<input type="radio" name="answer1" id="answer1-1">
+																<label for="answer1-1"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-2">
+																<label for="answer1-2"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-3">
+																<label for="answer1-3"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-4">
+																<label for="answer1-4"></label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- ket thuc 1 cau -->
+
+											</div>
+										</div>
+										<!-- ket thuc 1 cau chung audio -->
+
+									</div>
+
+								</div>
+							</div>
+
+							<div class="part-test" style="display: none">
+								<div class="part-title">
+									<span>Part 4</span>
+								</div>
+								<div class="list-question-wrapper">
+									<div class="list-each-audio">
+										<!-- bat dau 1 cau chung audio -->
+										<div class="each-question-audio">
+											<div class="question-common">
+												<div class="ques-audio">
+													<audio controls>
+														<source type="audio/mpeg">
+													</audio>
+												</div>
+											</div>
+											<div class="ques-list">
+												<!-- bat dau 1 cau -->
+												<div class="each-question question-detail part34">
+													<div class="test-number have-question">
+														<div class="number-question-text">
+															<div class="number-question marked">
+																<strong>1</strong>
+															</div>
+															<div class="question-part345">
+																<p>Where most likely does the speaker work?</p>
+															</div>
+														</div>
+														<div class="choose-ans">
+															<div>
+																<input type="radio" name="answer1" id="answer1-1">
+																<label for="answer1-1"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-2">
+																<label for="answer1-2"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-3">
+																<label for="answer1-3"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-4">
+																<label for="answer1-4"></label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- ket thuc 1 cau -->
+
+											</div>
+										</div>
+										<!-- ket thuc 1 cau chung audio -->
+
+									</div>
+
+								</div>
+							</div>
+
+							<div class="part-test" style="display: none">
+								<div class="part-title">
+									<span>Part 5</span>
+								</div>
+								<div class="test-question-wrapper">
+									<!-- bat dau 1 cau -->
+									<div class="each-question question-detail">
+										<div class="test-number have-question">
+											<div class="number-question-text">
+												<div class="number-question marked">
+													<strong>1</strong>
+												</div>
+												<div class="question-part345">
+													<p>Where most likely does the speaker work?</p>
+												</div>
+											</div>
+											<div class="choose-ans">
+												<div>
+													<input type="radio" name="answer1" id="answer1-1">
+													<label for="answer1-1"></label>
+												</div>
+												<div>
+													<input type="radio" name="answer1" id="answer1-2">
+													<label for="answer1-2"></label>
+												</div>
+												<div>
+													<input type="radio" name="answer1" id="answer1-3">
+													<label for="answer1-3"></label>
+												</div>
+												<div>
+													<input type="radio" name="answer1" id="answer1-4">
+													<label for="answer1-4"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- ket thuc 1 cau -->
+
+								</div>
+							</div>
+
+							<div class="part-test" style="display: none">
+								<div class="part-title">
+									<span>Part 6</span>
+								</div>
+								<div class="test-question-wrapper">
+									<div class="list-each-script">
+										<!-- bat dau 1 script -->
+										<div class="each-question-script">
+											<div class="part67-script script-common">
+												<p></p>
+											</div>
+											<div class="ques-list part67-wrapper">
+												<!-- bat dau 1 cau -->
+												<div class="each-question question-detail part34">
+													<div class="test-number">
+														<div class="number-question marked">
+															<strong>1</strong>
+														</div>
+														<div class="choose-ans">
+															<div>
+																<input type="radio" name="answer1" id="answer1-1">
+																<label for="answer1-1"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-2">
+																<label for="answer1-2"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-3">
+																<label for="answer1-3"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-4">
+																<label for="answer1-4"></label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- ket thuc 1 cau -->
+
+											</div>
+										</div>
+										<!-- ket thuc 1 script -->
+
+									</div>
+								</div>
+							</div>
+
+							<div class="part-test" style="display: none">
+								<div class="part-title">
+									<span>Part 7</span>
+								</div>
+								<div class="test-question-wrapper">
+									<div class="list-each-script">
+										<!-- bat dau 1 script -->
+										<div class="each-question-script">
+											<div class="part67-script script-common">
+												<p></p>
+											</div>
+											<div class="ques-list part67-wrapper">
+												<!-- bat dau 1 cau -->
+												<div class="each-question question-detail part34">
+													<div class="test-number have-question">
+														<div class="number-question-text">
+															<div class="number-question marked">
+																<strong>1</strong>
+															</div>
+															<div class="question-part345">
+																<p>Where most likely does the speaker work?</p>
+															</div>
+														</div>
+														<div class="choose-ans">
+															<div>
+																<input type="radio" name="answer1" id="answer1-1">
+																<label for="answer1-1"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-2">
+																<label for="answer1-2"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-3">
+																<label for="answer1-3"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-4">
+																<label for="answer1-4"></label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- ket thuc 1 cau -->
+
+											</div>
+										</div>
+										<!-- ket thuc 1 script -->
+
+									</div>
+								</div>
+							</div>
+							<!-- END PART -->
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</main>
+
+	<script>
+		let timerElement = document.querySelector(".time-sum");
+		let duration = 2 * 60 * 60; // 2 tiếng = 7200 giây
+
+		function updateTimer() {
+			const hours = Math.floor(duration / 3600);
+			const minutes = Math.floor((duration % 3600) / 60);
+			const seconds = duration % 60;
+
+			timerElement.textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+			if (duration > 0) {
+				duration--;
+				setTimeout(updateTimer, 1000);
+			} else {
+				alert("Hết giờ!");
+				document.querySelector(".btn-submit-test").click();
+			}
+		}
+
+		updateTimer();
+	</script>
+
+</body>
+</html>

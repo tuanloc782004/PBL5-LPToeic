@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main class="main-container">
+		<div class="main-content-card">
+			<div class="header-title">
+				<h1>Kiểm tra mini test TOEIC®</h1>
+			</div>
+			<div class="main-card-test">
+				<div class="cards-test" th:each="mockExam : ${list}">
+					<div class="card-test-each">
+						<div class="div card-title">
+							<h3 th:text="${mockExam.mockExamName}">Test</h3>
+						</div>
+						<div class="div card-score">
+							<div class="score-box" onclick="event.stopPropagation();">Your
+								score</div>
+						</div>
+						<div class="div card-detail">
+							<div class="info">
+								<i class="fa fa-question"></i>
+								<div></div>
+								200 questions
+							</div>
+							<div class="info">
+								<i class="fa fa-users"></i>
+								<div></div>
+								participants
+							</div>
+						</div>
+
+						<a th:href="@{/user/mock-exam}">
+							<div class="div card-action">
+								<div class="action-box">Bắt đầu</div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

@@ -52,62 +52,73 @@ public class MockExamServiceImpl implements MockExamService {
 	public Page<MockExam> findByKeyword(String keyword, Integer pageNo) {
 		// TODO Auto-generated method stub
 		try {
-            List<MockExam> list = this.mockExamRepository.findByKeyword(keyword);
-            Pageable pageable = PageRequest.of(pageNo - 1, 5);
-            int start = (int) pageable.getOffset();
-            int end = Math.min(start + pageable.getPageSize(), list.size());
+			List<MockExam> list = this.mockExamRepository.findByKeyword(keyword);
+			Pageable pageable = PageRequest.of(pageNo - 1, 5);
+			int start = (int) pageable.getOffset();
+			int end = Math.min(start + pageable.getPageSize(), list.size());
 
-            if (start > list.size()) {
-                return Page.empty();
-            }
+			if (start > list.size()) {
+				return Page.empty();
+			}
 
-            List<MockExam> sublist = list.subList(start, end);
-            return new PageImpl<>(sublist, pageable, list.size());
-        } catch (Exception e) {
-            logger.error("Lỗi khi tìm bài thi thử theo keyword: " + keyword + " trang " + pageNo, e);
-            return Page.empty();
-        }
+			List<MockExam> sublist = list.subList(start, end);
+			return new PageImpl<>(sublist, pageable, list.size());
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài thi thử theo keyword: " + keyword + " trang " + pageNo, e);
+			return Page.empty();
+		}
 	}
 
 	@Override
 	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-            if (!mockExamRepository.existsById(id)) {
-                throw new EntityNotFoundException("Bài thi thử với ID " + id + " không tồn tại.");
-            }
-            this.mockExamRepository.deleteById(id);
-        } catch (EntityNotFoundException e) {
-            logger.warn(e.getMessage());
-        } catch (Exception e) {
-            logger.error("Lỗi khi xóa bài thi thử với ID: " + id, e);
-        }
+			if (!mockExamRepository.existsById(id)) {
+				throw new EntityNotFoundException("Bài thi thử với ID " + id + " không tồn tại.");
+			}
+			this.mockExamRepository.deleteById(id);
+		} catch (EntityNotFoundException e) {
+			logger.warn(e.getMessage());
+		} catch (Exception e) {
+			logger.error("Lỗi khi xóa bài thi thử với ID: " + id, e);
+		}
 	}
 
 	@Override
 	public MockExam save(MockExam mockExam) {
 		// TODO Auto-generated method stub
 		try {
-            return this.mockExamRepository.save(mockExam);
-        } catch (Exception e) {
-            logger.error("Lỗi khi lưu bài thi thử: " + mockExam, e);
-            throw new RuntimeException("Không thể lưu bài thi thử", e);
-        }
+			return this.mockExamRepository.save(mockExam);
+		} catch (Exception e) {
+			logger.error("Lỗi khi lưu bài thi thử: " + mockExam, e);
+			throw new RuntimeException("Không thể lưu bài thi thử", e);
+		}
 	}
 
 	@Override
 	public MockExam findById(Long id) {
 		// TODO Auto-generated method stub
 		try {
-            return this.mockExamRepository.findById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy bài thi thử với ID: " + id));
-        } catch (EntityNotFoundException e) {
-            logger.warn(e.getMessage());
-            return null; // Hoặc có thể throw lại exception nếu muốn
-        } catch (Exception e) {
-            logger.error("Lỗi khi tìm bài thi thử với ID: " + id, e);
-            return null;
-        }
+			return this.mockExamRepository.findById(id)
+					.orElseThrow(() -> new EntityNotFoundException("Không tìm thấy bài thi thử với ID: " + id));
+		} catch (EntityNotFoundException e) {
+			logger.warn(e.getMessage());
+			return null; // Hoặc có thể throw lại exception nếu muốn
+		} catch (Exception e) {
+			logger.error("Lỗi khi tìm bài thi thử với ID: " + id, e);
+			return null;
+		}
+	}
+
+	@Override
+	public List<MockExam> findAll() {
+		// TODO Auto-generated method stub
+		try {
+			return this.mockExamRepository.findAll();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài thi thử", e);
+			throw new RuntimeException("Không thể lấy danh sách bài thi thử", e);
+		}
 	}
 
 }

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pbl5.controller.admin.UserAdminController;
-import com.pbl5.model.Part7;
-import com.pbl5.service.Part7Service;
+import com.pbl5.model.ReadingExercise;
+import com.pbl5.service.ReadingExerciseService;
 
 @Controller
 @RequestMapping("/user/part7-reading-exercise")
@@ -22,18 +22,18 @@ public class Part7ReadingExerciseController {
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
 	@Autowired
-	private Part7Service part7Service;
+	private ReadingExerciseService readingExerciseService;
 
 	@RequestMapping("")
 	public String list(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			List<Part7> list = this.part7Service.findAll();
+			List<ReadingExercise> list = this.readingExerciseService.findByPart7sIsNotEmpty();
 
 			// Kiểm tra nếu danh sách không rỗng thì lấy phần tử đầu tiên
-			Part7 part7ReadingExercise = list.isEmpty() ? null : list.get(0);
+			ReadingExercise part7ReadingExercise = list.isEmpty() ? null : list.get(0);
 
 			model.addAttribute("list", list);
-			model.addAttribute("part7ReadingExercise", part7ReadingExercise);
+			model.addAttribute("part7ReadingExercise", part7ReadingExercise.getPart7s().get(0));
 
 		} catch (Exception e) {
 			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 7: ", e);
@@ -47,12 +47,12 @@ public class Part7ReadingExerciseController {
 	public String list(Model model, @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 
 		try {
-			List<Part7> list = this.part7Service.findAll();
+			List<ReadingExercise> list = this.readingExerciseService.findByPart7sIsNotEmpty();
 
-			Part7 part7ReadingExercise = this.part7Service.findById(id);
+			ReadingExercise part7ReadingExercise = this.readingExerciseService.findById(id);
 
 			model.addAttribute("list", list);
-			model.addAttribute("part7ReadingExercise", part7ReadingExercise);
+			model.addAttribute("part7ReadingExercise", part7ReadingExercise.getPart7s().get(0));
 
 		} catch (Exception e) {
 			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 7: ", e);

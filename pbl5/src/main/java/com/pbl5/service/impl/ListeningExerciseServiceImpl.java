@@ -266,4 +266,26 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 		}
 	}
 
+	@Override
+	public List<ListeningExercise> findByPart3sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.listeningExerciseRepository.findByPart3sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 3: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
+	@Override
+	public List<ListeningExercise> findByPart4sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.listeningExerciseRepository.findByPart4sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 4: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
 }

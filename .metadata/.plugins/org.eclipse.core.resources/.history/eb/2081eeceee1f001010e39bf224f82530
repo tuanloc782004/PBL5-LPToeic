@@ -1,0 +1,15 @@
+package com.pbl5.controller.user;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("")
+public class CardController {
+	
+	@RequestMapping("")
+	public String cardTests () {
+		return "user/mock-exam-card"; 
+	}
+	
+}

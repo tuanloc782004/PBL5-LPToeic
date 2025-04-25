@@ -34,17 +34,17 @@
     <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
     <fullyQualifiedTypeName name="com.pbl5.model.GrammarLesson"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.pbl5.service.MockExamService"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="com.pbl5.repository.MockExamRepository"/>
     <fullyQualifiedTypeName name="org.hibernate.cache.spi.support.StorageAccess"/>
     <fullyQualifiedTypeName name="com.pbl5.storage.StorageService"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part3Service"/>
     <fullyQualifiedTypeName name="com.pbl5.service.Part4Service"/>
-    <fullyQualifiedTypeName name="com.pbl5.model.MockExam"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.function.Consumer"/>
     <fullyQualifiedTypeName name="java.util.concurrent.atomic.AtomicLong"/>
     <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
+    <fullyQualifiedTypeName name="com.pbl5.model.MockExam"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.pbl5.service.MockExamService"/>
 </qualifiedTypeNameHistroy>
