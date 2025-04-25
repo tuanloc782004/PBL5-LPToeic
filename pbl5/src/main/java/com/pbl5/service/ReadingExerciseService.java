@@ -33,5 +33,9 @@ public interface ReadingExerciseService {
 	public ReadingExercise findById(Long id);
 
 	public List<ReadingExercise> findByPart5sIsNotEmpty();
+	
+	public List<ReadingExercise> findByPart6sIsNotEmpty();
+	
+	public List<ReadingExercise> findByPart7sIsNotEmpty();
 
 }

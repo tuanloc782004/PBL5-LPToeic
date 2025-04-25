@@ -25,26 +25,13 @@ import com.pbl5.security.CustomUserDetails;
 import com.pbl5.model.User;
 import com.pbl5.service.UserService;
 
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import com.pbl5.security.CustomUserDetails;
-
-import com.pbl5.model.User;
-import com.pbl5.service.UserService;
-
 @Controller
 @RequestMapping("/user/account-information")
 public class AccountInformationController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -97,11 +84,11 @@ public class AccountInformationController {
 		if (user != null && !avatarFile.isEmpty()) {
 			try {
 
-				String uploadDir = "src/main/resources/static/upload-dir/avatar/"; 
+				String uploadDir = "src/main/resources/static/upload-dir/avatar/";
 
 				File uploadPath = new File(uploadDir);
 				if (!uploadPath.exists()) {
-				    uploadPath.mkdirs();
+					uploadPath.mkdirs();
 				}
 
 				String filename = System.currentTimeMillis() + "_" + avatarFile.getOriginalFilename();
@@ -111,10 +98,10 @@ public class AccountInformationController {
 
 				String oldAvatarUrl = user.getAvatarUrl();
 				if (oldAvatarUrl != null && !oldAvatarUrl.equals("/upload-dir/avatar.jpg")) {
-				    File oldFile = new File("src/main/resources/static" + oldAvatarUrl);
-				    if (oldFile.exists()) {
-				        oldFile.delete();
-				    }
+					File oldFile = new File("src/main/resources/static" + oldAvatarUrl);
+					if (oldFile.exists()) {
+						oldFile.delete();
+					}
 				}
 
 				user.setAvatarUrl("/upload-dir/avatar/" + filename);
@@ -132,41 +119,32 @@ public class AccountInformationController {
 
 		return "redirect:/user/account-information";
 	}
-	
-	
-	
-	
+
 	@PostMapping("/update-password")
 	public String updatePassword(@RequestParam("oldPassword") String oldPassword,
-	                              @RequestParam("newPassword") String newPassword,
-	                              @RequestParam("confirmPassword") String confirmPassword,
-	                              RedirectAttributes redirectAttributes) {
+			@RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword,
+			RedirectAttributes redirectAttributes) {
 		System.out.println(">>> Đã nhận request đổi mật khẩu <<<");
 
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String currentUsername = auth.getName();
-	    User currentUser = userService.findByUsername(currentUsername);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String currentUsername = auth.getName();
+		User currentUser = userService.findByUsername(currentUsername);
 
+		if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+			redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
+			return "redirect:/user/account-information?changepass";
+		}
 
-	    if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
-	        redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
-	        return "redirect:/user/account-information?changepass";
-	    }
+		if (!newPassword.equals(confirmPassword)) {
+			redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
+			return "redirect:/user/account-information?changepass";
+		}
 
+		currentUser.setPassword(passwordEncoder.encode(newPassword));
+		userService.save(currentUser);
 
-	    if (!newPassword.equals(confirmPassword)) {
-	        redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
-	        return "redirect:/user/account-information?changepass";
-	    }
-
-
-	    currentUser.setPassword(passwordEncoder.encode(newPassword));  
-	    userService.save(currentUser);
-
-	    redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
-	    return "redirect:/user/account-information?changepass";
+		redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
+		return "redirect:/user/account-information?changepass";
 	}
 
-
-	
 }

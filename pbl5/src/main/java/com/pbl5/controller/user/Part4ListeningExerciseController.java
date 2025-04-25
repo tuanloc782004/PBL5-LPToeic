@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pbl5.controller.admin.UserAdminController;
-import com.pbl5.model.Part4;
-import com.pbl5.service.Part4Service;
+import com.pbl5.model.ListeningExercise;
+import com.pbl5.service.ListeningExerciseService;
 
 @Controller
 @RequestMapping("/user/part4-listening-exercise")
@@ -22,18 +22,18 @@ public class Part4ListeningExerciseController {
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
 	@Autowired
-	private Part4Service part4Service;
+	private ListeningExerciseService listeningExerciseService;
 
 	@RequestMapping("")
 	public String list(Model model, RedirectAttributes redirectAttributes) {
 		try {
-			List<Part4> list = this.part4Service.findAll();
+			List<ListeningExercise> list = this.listeningExerciseService.findByPart4sIsNotEmpty();
 
 			// Kiểm tra nếu danh sách không rỗng thì lấy phần tử đầu tiên
-			Part4 part4ListeningExercise = list.isEmpty() ? null : list.get(0);
+			ListeningExercise part4ListeningExercise = list.isEmpty() ? null : list.get(0);
 
 			model.addAttribute("list", list);
-			model.addAttribute("part4ListeningExercise", part4ListeningExercise);
+			model.addAttribute("part4ListeningExercise", part4ListeningExercise.getPart4s().get(0));
 
 		} catch (Exception e) {
 			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 4: ", e);
@@ -47,16 +47,17 @@ public class Part4ListeningExerciseController {
 	public String list(Model model, @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 
 		try {
-			List<Part4> list = this.part4Service.findAll();
+			List<ListeningExercise> list = this.listeningExerciseService.findByPart4sIsNotEmpty();
 
-			Part4 part4ListeningExercise = this.part4Service.findById(id);
+			ListeningExercise part4ListeningExercise = this.listeningExerciseService.findById(id);
 
 			model.addAttribute("list", list);
-			model.addAttribute("part4ListeningExercise", part4ListeningExercise);
+			model.addAttribute("part4ListeningExercise", part4ListeningExercise.getPart4s().get(0));
 
 		} catch (Exception e) {
 			logger.error("Lỗi khi lấy danh sách bài luyện nghe phần 4: ", e);
-			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi khi tải danh sách bài luyện nghe phần 4!");
+			redirectAttributes.addFlashAttribute("errorMessage",
+					"Có lỗi khi tải danh sách danh sách bài luyện nghe phần 4!");
 		}
 
 		return "user/part4-listening-exercise";

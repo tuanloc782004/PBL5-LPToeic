@@ -11,10 +11,10 @@
 				<h1>Kiểm tra mini test TOEIC®</h1>
 			</div>
 			<div class="main-card-test">
-				<div class="cards-test">
+				<div class="cards-test" th:each="mockExam : ${list}">
 					<div class="card-test-each">
 						<div class="div card-title">
-							<h3>Test</h3>
+							<h3 th:text="${mockExam.mockExamName}">Test</h3>
 						</div>
 						<div class="div card-score">
 							<div class="score-box" onclick="event.stopPropagation();">Your
@@ -24,16 +24,16 @@
 							<div class="info">
 								<i class="fa fa-question"></i>
 								<div></div>
-								questions
+								200 questions
 							</div>
 							<div class="info">
 								<i class="fa fa-users"></i>
 								<div></div>
-								participants
+								... participants
 							</div>
 						</div>
 
-						<a th:href="@{/user/mock-exam}">
+						<a th:href="@{|/user/mock-exam/${mockExam.id}|}">
 							<div class="div card-action">
 								<div class="action-box">Bắt đầu</div>
 							</div>

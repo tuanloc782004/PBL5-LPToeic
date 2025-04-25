@@ -1,0 +1,25 @@
+package com.pbl5.controller.user;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("")
+public class CardController {
+
+	@RequestMapping("user/mock-exam-card")
+	public String cardMockExam() {
+		return "user/mock-exam-card";
+	}
+
+	@RequestMapping("user/listening-exercise-card")
+	public String cardListeningExercise() {
+		return "user/listening-exercise-card";
+	}
+
+	@RequestMapping("user/reading-exercise-card")
+	public String cardReadingExercise() {
+		return "user/reading-exercise-card";
+	}
+
+}

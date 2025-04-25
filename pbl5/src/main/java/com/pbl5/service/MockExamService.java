@@ -19,5 +19,7 @@ public interface MockExamService {
 	public MockExam save(MockExam mockExam);
 
 	public MockExam findById(Long id);
+	
+	public List<MockExam> findAll();
 
 }

@@ -8,7 +8,7 @@
 	<main class="main-container">
 		<div class="main-content-test">
 			<div class="header-title">
-				<h3>TOEIC Test 1</h3>
+				<h3 th:text="'TOEIC ' + ${mockExam.mockExamName}">TOEIC Test</h3>
 				<a>Thoát</a>
 			</div>
 			<form class="test-form">
@@ -18,16 +18,66 @@
 					<div class="sidebar-question-sum">
 						<div class="sidebar-question-inner">
 							<div class="div time-test">
-								Thời gian còn lại: <span class="time-sum">36:12</span>
+								Thời gian còn lại: <span class="time-sum">2:00:00</span>
 							</div>
 							<div class="div div-submit">
 								<button class="btn-submit-test">NỘP BÀI</button>
 							</div>
 							<div class="div test-question-list">
 								<div class="test-question-list-part">
-									<a class="part-list">Part 1</a>
+									<a class="part-list" href="#part-1">Phần 1</a>
 									<div class="list-question">
-										<span class="item-question">1</span>
+										<a class="item-question" th:each="part1 : ${mockExam.part1s}"
+											th:text="${part1.number}"
+											th:href="'#question-' + ${part1.number}">1</a>
+									</div>
+									<a class="part-list" href="#part-2">Phần 2</a>
+									<div class="list-question">
+										<a class="item-question" th:each="part2 : ${mockExam.part2s}"
+											th:text="${part2.number}"
+											th:href="'#question-' + ${part2.number}">1</a>
+									</div>
+									<a class="part-list" href="#part-3">Phần 3</a>
+									<div class="list-question">
+										<div th:each="part3 : ${mockExam.part3s}">
+											<a class="item-question"
+												th:each="part3Question : ${part3.questions}"
+												th:text="${part3Question.number}"
+												th:href="'#question-' + ${part3Question.number}">number</a>
+										</div>
+									</div>
+									<a class="part-list" href="#part-4">Phần 4</a>
+									<div class="list-question">
+										<div th:each="part4 : ${mockExam.part4s}">
+											<a class="item-question"
+												th:each="part4Question : ${part4.questions}"
+												th:text="${part4Question.number}"
+												th:href="'#question-' + ${part4Question.number}">number</a>
+										</div>
+									</div>
+									<a class="part-list" href="#part-5">Phần 5</a>
+									<div class="list-question">
+										<a class="item-question" th:each="part5 : ${mockExam.part5s}"
+											th:text="${part5.number}"
+											th:href="'#question-' + ${part5.number}">1</a>
+									</div>
+									<a class="part-list" href="#part-6">Phần 6</a>
+									<div class="list-question">
+										<div th:each="part6 : ${mockExam.part6s}">
+											<a class="item-question"
+												th:each="part6Question : ${part6.questions}"
+												th:text="${part6Question.number}"
+												th:href="'#question-' + ${part6Question.number}">number</a>
+										</div>
+									</div>
+									<a class="part-list" href="#part-7">Phần 7</a>
+									<div class="list-question">
+										<div th:each="part7 : ${mockExam.part7s}">
+											<a class="item-question"
+												th:each="part7Question : ${part7.questions}"
+												th:text="${part7Question.number}"
+												th:href="'#question-' + ${part7Question.number}">number</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -38,41 +88,45 @@
 					<div class="test-content">
 						<div class="test-inner">
 
-							<div class="part-test show" style="display: none">
+							<div class="part-test show" id="part-1">
 								<div class="part-title">
-									<span>Part 1</span>
+									<span>Phần 1 - Mô tả tranh</span>
 								</div>
 								<div class="list-question-wrapper">
 									<!-- bat dau 1 cau -->
-									<div class="each-question question-detail">
+									<div class="each-question question-detail"
+										th:each="part1 : ${mockExam.part1s}"
+										th:attr="id='question-' + ${part1.number}">
 										<div class="ques-audio">
 											<audio controls>
-												<source type="audio/mpeg">
+												<source th:src="${part1.audioUrl}" type="audio/mpeg">
 											</audio>
 										</div>
 										<div class="ques-photo">
-											<img alt="">
+											<img th:src="${part1.imageUrl}" alt="">
 										</div>
 										<div class="test-number">
 											<div class="number-question marked">
-												<strong>1</strong>
+												<strong th:text="${part1.number}">number</strong>
 											</div>
 											<div class="choose-ans">
-												<div>
-													<input type="radio" name="answer1" id="answer1-1">
-													<label for="answer1-1"></label>
-												</div>
-												<div>
-													<input type="radio" name="answer1" id="answer1-2">
-													<label for="answer1-2"></label>
-												</div>
-												<div>
-													<input type="radio" name="answer1" id="answer1-3">
-													<label for="answer1-3"></label>
-												</div>
-												<div>
-													<input type="radio" name="answer1" id="answer1-4">
-													<label for="answer1-4"></label>
+												<div class="choose-ans">
+													<div>
+														<input type="radio" name="answer1" id="answer1-1">
+														<label for="answer1-1" th:text="${part1.optionA}"></label>
+													</div>
+													<div>
+														<input type="radio" name="answer1" id="answer1-2">
+														<label for="answer1-2" th:text="${part1.optionB}"></label>
+													</div>
+													<div>
+														<input type="radio" name="answer1" id="answer1-3">
+														<label for="answer1-3" th:text="${part1.optionC}"></label>
+													</div>
+													<div>
+														<input type="radio" name="answer1" id="answer1-4">
+														<label for="answer1-4" th:text="${part1.optionD}"></label>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -80,34 +134,36 @@
 								</div>
 							</div>
 
-							<div class="part-test" style="display: none">
+							<div class="part-test" id="part-2">
 								<div class="part-title">
-									<span>Part 2</span>
+									<span>Phần 2 - Hỏi đáp</span>
 								</div>
 								<div class="list-question-wrapper">
 									<!-- bat dau 1 cau -->
-									<div class="each-question question-detail">
+									<div class="each-question question-detail"
+										th:each="part2 : ${mockExam.part2s}"
+										th:attr="id='question-' + ${part2.number}">
 										<div class="ques-audio">
 											<audio controls>
-												<source type="audio/mpeg">
+												<source th:src="${part2.audioUrl}" type="audio/mpeg">
 											</audio>
 										</div>
 										<div class="test-number">
 											<div class="number-question marked">
-												<strong>1</strong>
+												<strong th:text="${part2.number}">number</strong>
 											</div>
 											<div class="choose-ans">
 												<div>
 													<input type="radio" name="answer1" id="answer1-1">
-													<label for="answer1-1"></label>
+													<label for="answer1-1" th:text="${part2.optionA}"></label>
 												</div>
 												<div>
 													<input type="radio" name="answer1" id="answer1-2">
-													<label for="answer1-2"></label>
+													<label for="answer1-2" th:text="${part2.optionB}"></label>
 												</div>
 												<div>
 													<input type="radio" name="answer1" id="answer1-3">
-													<label for="answer1-3"></label>
+													<label for="answer1-3" th:text="${part2.optionC}"></label>
 												</div>
 											</div>
 										</div>
@@ -117,49 +173,117 @@
 								</div>
 							</div>
 
-							<div class="part-test" style="display: none">
+							<div class="part-test" id="part-3">
 								<div class="part-title">
-									<span>Part 3</span>
+									<span>Phần 3 - Đoạn hội thoại</span>
 								</div>
 								<div class="list-question-wrapper">
-									<div class="list-each-audio">
-										<!-- bat dau 1 cau chung audio -->
+									<div class="list-each-audio"
+										th:each="part3 : ${mockExam.part3s}">
 										<div class="each-question-audio">
 											<div class="question-common">
 												<div class="ques-audio">
 													<audio controls>
-														<source type="audio/mpeg">
+														<source th:src="${part3.audioUrl}" type="audio/mpeg">
 													</audio>
 												</div>
 											</div>
 											<div class="ques-list">
-												<!-- bat dau 1 cau -->
-												<div class="each-question question-detail part34">
+												<div class="each-question question-detail part34"
+													th:each="part3Question : ${part3.questions}"
+													th:attr="id='question-' + ${part3Question.number}">
 													<div class="test-number have-question">
 														<div class="number-question-text">
 															<div class="number-question marked">
-																<strong>1</strong>
+																<strong th:text="${part3Question.number}">number</strong>
 															</div>
 															<div class="question-part345">
-																<p>Where most likely does the speaker work?</p>
+																<p th:text="${part3Question.question}">question</p>
 															</div>
 														</div>
 														<div class="choose-ans">
 															<div>
 																<input type="radio" name="answer1" id="answer1-1">
-																<label for="answer1-1"></label>
+																<label for="answer1-1"
+																	th:text="${part3Question.optionA}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-2">
-																<label for="answer1-2"></label>
+																<label for="answer1-2"
+																	th:text="${part3Question.optionB}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-3">
-																<label for="answer1-3"></label>
+																<label for="answer1-3"
+																	th:text="${part3Question.optionC}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-4">
-																<label for="answer1-4"></label>
+																<label for="answer1-4"
+																	th:text="${part3Question.optionD}"></label>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+
+							<div class="part-test" id="part-4">
+								<div class="part-title">
+									<span>Phần 4 - Bài nói ngắn</span>
+								</div>
+								<div class="list-question-wrapper">
+									<div class="list-each-audio"
+										th:each="part4 : ${mockExam.part4s}">
+										<!-- bat dau 1 cau chung audio -->
+										<div class="each-question-audio">
+											<div class="question-common">
+												<div class="ques-audio">
+													<audio controls>
+														<source th:src="${part4.audioUrl}" type="audio/mpeg">
+													</audio>
+												</div>
+											</div>
+											<div class="ques-list">
+												<!-- bat dau 1 cau -->
+												<div class="each-question question-detail part34"
+													th:each="part4Question : ${part4.questions}"
+													th:attr="id='question-' + ${part4Question.number}">
+													<div class="test-number have-question">
+														<div class="number-question-text">
+															<div class="number-question marked">
+																<strong th:text="${part4Question.number}">number</strong>
+															</div>
+															<div class="question-part345">
+																<p th:text="${part4Question.question}">question</p>
+															</div>
+														</div>
+														<div class="choose-ans">
+															<div>
+																<input type="radio" name="answer1" id="answer1-1">
+																<label for="answer1-1"
+																	th:text="${part4Question.optionA}"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-2">
+																<label for="answer1-2"
+																	th:text="${part4Question.optionB}"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-3">
+																<label for="answer1-3"
+																	th:text="${part4Question.optionC}"></label>
+															</div>
+															<div>
+																<input type="radio" name="answer1" id="answer1-4">
+																<label for="answer1-4"
+																	th:text="${part4Question.optionD}"></label>
 															</div>
 														</div>
 													</div>
@@ -175,96 +299,40 @@
 								</div>
 							</div>
 
-							<div class="part-test" style="display: none">
+							<div class="part-test" id="part-5">
 								<div class="part-title">
-									<span>Part 4</span>
-								</div>
-								<div class="list-question-wrapper">
-									<div class="list-each-audio">
-										<!-- bat dau 1 cau chung audio -->
-										<div class="each-question-audio">
-											<div class="question-common">
-												<div class="ques-audio">
-													<audio controls>
-														<source type="audio/mpeg">
-													</audio>
-												</div>
-											</div>
-											<div class="ques-list">
-												<!-- bat dau 1 cau -->
-												<div class="each-question question-detail part34">
-													<div class="test-number have-question">
-														<div class="number-question-text">
-															<div class="number-question marked">
-																<strong>1</strong>
-															</div>
-															<div class="question-part345">
-																<p>Where most likely does the speaker work?</p>
-															</div>
-														</div>
-														<div class="choose-ans">
-															<div>
-																<input type="radio" name="answer1" id="answer1-1">
-																<label for="answer1-1"></label>
-															</div>
-															<div>
-																<input type="radio" name="answer1" id="answer1-2">
-																<label for="answer1-2"></label>
-															</div>
-															<div>
-																<input type="radio" name="answer1" id="answer1-3">
-																<label for="answer1-3"></label>
-															</div>
-															<div>
-																<input type="radio" name="answer1" id="answer1-4">
-																<label for="answer1-4"></label>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!-- ket thuc 1 cau -->
-
-											</div>
-										</div>
-										<!-- ket thuc 1 cau chung audio -->
-
-									</div>
-
-								</div>
-							</div>
-
-							<div class="part-test" style="display: none">
-								<div class="part-title">
-									<span>Part 5</span>
+									<span>Phần 5: Hoàn thành câu</span>
 								</div>
 								<div class="test-question-wrapper">
 									<!-- bat dau 1 cau -->
-									<div class="each-question question-detail">
+									<div class="each-question question-detail"
+										th:each="part5 : ${mockExam.part5s}"
+										th:attr="id='question-' + ${part5.number}">
 										<div class="test-number have-question">
 											<div class="number-question-text">
 												<div class="number-question marked">
-													<strong>1</strong>
+													<strong th:text="${part5.number}">number</strong>
 												</div>
 												<div class="question-part345">
-													<p>Where most likely does the speaker work?</p>
+													<p th:text="${part5.question}">question</p>
 												</div>
 											</div>
 											<div class="choose-ans">
 												<div>
 													<input type="radio" name="answer1" id="answer1-1">
-													<label for="answer1-1"></label>
+													<label for="answer1-1" th:text="${part5.optionA}"></label>
 												</div>
 												<div>
 													<input type="radio" name="answer1" id="answer1-2">
-													<label for="answer1-2"></label>
+													<label for="answer1-2" th:text="${part5.optionB}"></label>
 												</div>
 												<div>
 													<input type="radio" name="answer1" id="answer1-3">
-													<label for="answer1-3"></label>
+													<label for="answer1-3" th:text="${part5.optionC}"></label>
 												</div>
 												<div>
 													<input type="radio" name="answer1" id="answer1-4">
-													<label for="answer1-4"></label>
+													<label for="answer1-4" th:text="${part5.optionD}"></label>
 												</div>
 											</div>
 										</div>
@@ -274,40 +342,47 @@
 								</div>
 							</div>
 
-							<div class="part-test" style="display: none">
+							<div class="part-test" id="part-6">
 								<div class="part-title">
-									<span>Part 6</span>
+									<span>Phần 6 - Hoàn thành đoạn văn</span>
 								</div>
 								<div class="test-question-wrapper">
-									<div class="list-each-script">
+									<div class="list-each-script"
+										th:each="part6 : ${mockExam.part6s}">
 										<!-- bat dau 1 script -->
 										<div class="each-question-script">
 											<div class="part67-script script-common">
-												<p></p>
+												<p th:text="${part6.script}">script</p>
 											</div>
 											<div class="ques-list part67-wrapper">
 												<!-- bat dau 1 cau -->
-												<div class="each-question question-detail part34">
+												<div class="each-question question-detail part34"
+													th:each="part6Question : ${part6.questions}"
+													th:attr="id='question-' + ${part6Question.number}">
 													<div class="test-number">
 														<div class="number-question marked">
-															<strong>1</strong>
+															<strong th:text="${part6Question.number}">number</strong>
 														</div>
 														<div class="choose-ans">
 															<div>
 																<input type="radio" name="answer1" id="answer1-1">
-																<label for="answer1-1"></label>
+																<label for="answer1-1"
+																	th:text="${part6Question.optionA}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-2">
-																<label for="answer1-2"></label>
+																<label for="answer1-2"
+																	th:text="${part6Question.optionB}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-3">
-																<label for="answer1-3"></label>
+																<label for="answer1-3"
+																	th:text="${part6Question.optionC}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-4">
-																<label for="answer1-4"></label>
+																<label for="answer1-4"
+																	th:text="${part6Question.optionD}"></label>
 															</div>
 														</div>
 													</div>
@@ -322,45 +397,52 @@
 								</div>
 							</div>
 
-							<div class="part-test">
+							<div class="part-test" id="part-7">
 								<div class="part-title">
-									<span>Part 7</span>
+									<span>Phần 7 - Đọc hiểu đoạn văn</span>
 								</div>
 								<div class="test-question-wrapper">
-									<div class="list-each-script">
+									<div class="list-each-script"
+										th:each="part7 : ${mockExam.part7s}">
 										<!-- bat dau 1 script -->
 										<div class="each-question-script">
 											<div class="part67-script script-common">
-												<p></p>
+												<p th:text="${part7.script}"></p>
 											</div>
 											<div class="ques-list part67-wrapper">
 												<!-- bat dau 1 cau -->
-												<div class="each-question question-detail part34">
+												<div class="each-question question-detail part34"
+													th:each="part7Question : ${part7.questions}"
+													th:attr="id='question-' + ${part7Question.number}">
 													<div class="test-number have-question">
 														<div class="number-question-text">
 															<div class="number-question marked">
-																<strong>1</strong>
+																<strong th:text="${part7Question.number}">number</strong>
 															</div>
 															<div class="question-part345">
-																<p>Where most likely does the speaker work?</p>
+																<p th:text="${part7Question.question}">question</p>
 															</div>
 														</div>
 														<div class="choose-ans">
 															<div>
 																<input type="radio" name="answer1" id="answer1-1">
-																<label for="answer1-1"></label>
+																<label for="answer1-1"
+																	th:text="${part7Question.optionA}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-2">
-																<label for="answer1-2"></label>
+																<label for="answer1-2"
+																	th:text="${part7Question.optionB}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-3">
-																<label for="answer1-3"></label>
+																<label for="answer1-3"
+																	th:text="${part7Question.optionC}"></label>
 															</div>
 															<div>
 																<input type="radio" name="answer1" id="answer1-4">
-																<label for="answer1-4"></label>
+																<label for="answer1-4"
+																	th:text="${part7Question.optionD}"></label>
 															</div>
 														</div>
 													</div>
@@ -382,6 +464,39 @@
 
 		</div>
 	</main>
+
+	<script>
+		let timerElement = document.querySelector(".time-sum");
+		let duration = 2 * 60 * 60; // 2 tiếng = 7200 giây
+
+		function updateTimer() {
+			const hours = Math.floor(duration / 3600);
+			const minutes = Math.floor((duration % 3600) / 60);
+			const seconds = duration % 60;
+
+			timerElement.textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+			if (duration > 0) {
+				duration--;
+				setTimeout(updateTimer, 1000);
+			} else {
+				alert("Hết giờ!");
+				document.querySelector(".btn-submit-test").click();
+			}
+		}
+
+		updateTimer();
+		
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>

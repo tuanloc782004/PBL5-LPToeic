@@ -207,4 +207,26 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			return List.of(); // Trả về trang rỗng nếu có lỗi
 		}
 	}
+
+	@Override
+	public List<ReadingExercise> findByPart6sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.readingExerciseRepository.findByPart6sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 6: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
+
+	@Override
+	public List<ReadingExercise> findByPart7sIsNotEmpty() {
+		// TODO Auto-generated method stub
+		try {
+			return this.readingExerciseRepository.findByPart7sIsNotEmpty();
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách bài luyện đọc phần 7: " + e);
+			return List.of(); // Trả về trang rỗng nếu có lỗi
+		}
+	}
 }
