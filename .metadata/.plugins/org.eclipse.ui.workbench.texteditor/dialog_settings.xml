@@ -3,6 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="const hideButton = question.querySelector(&quot;.hide-explanation&quot;);"/>
+		<item value="item-question"/>
+		<item value="show"/>
 		<item value="part5"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">

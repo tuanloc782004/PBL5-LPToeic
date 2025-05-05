@@ -25,9 +25,9 @@
 					<div class="main-list-question">
 
 						<div class="question-detail"
-							th:each="part2, part2Stat : ${part2ListeningExercise.part2s}">
+							th:each="part2 : ${part2ListeningExercise.part2s}">
 							<div class="ques-audio">
-								<h3 th:text="'Câu hỏi ' + ${part2Stat.count}"></h3>
+								<h3 th:text="'Câu hỏi ' + ${part2.number}"></h3>
 								<audio controls>
 									<source th:src="${part2.audioUrl}" type="audio/mpeg">
 								</audio>
@@ -35,16 +35,22 @@
 							<div class="main-answer">
 								<div class="choose-ans">
 									<div>
-										<input type="radio" name="answer1" id="answer1-1"> <label
-											for="answer1-1" th:text="${part2.optionA}"></label>
+										<input type="radio" th:name="'question-' + ${part2.number}"
+											th:id="'optionA-' + ${part2.number}"> <label
+											th:for="'optionA-' + ${part2.number}"
+											th:text="${part2.optionA}"></label>
 									</div>
 									<div>
-										<input type="radio" name="answer1" id="answer1-2"> <label
-											for="answer1-2" th:text="${part2.optionB}"></label>
+										<input type="radio" th:name="'question-' + ${part2.number}"
+											th:id="'optionB-' + ${part2.number}"> <label
+											th:for="'optionB-' + ${part2.number}"
+											th:text="${part2.optionB}"></label>
 									</div>
 									<div>
-										<input type="radio" name="answer1" id="answer1-3"> <label
-											for="answer1-3" th:text="${part2.optionC}"></label>
+										<input type="radio" th:name="'question-' + ${part2.number}"
+											th:id="'optionC-' + ${part2.number}"> <label
+											th:for="'optionC-' + ${part2.number}"
+											th:text="${part2.optionC}"></label>
 									</div>
 								</div>
 								<div class="check-ans" style="display: none;">
@@ -60,6 +66,8 @@
 										</div>
 									</div>
 									<button class="hide-explanation">Ẩn giải thích</button>
+									<button class="show-explanation" style="display: none;">Hiện
+										giải thích</button>
 								</div>
 							</div>
 						</div>
@@ -69,20 +77,29 @@
 			</div>
 		</div>
 	</main>
-
 	<script>
 	document.addEventListener("DOMContentLoaded", function () {
 	    document.querySelectorAll(".question-detail").forEach((question) => {
 	        const answers = question.querySelectorAll("input[type='radio']");
 	        const checkAns = question.querySelector(".check-ans");
+	        const ansDetail = question.querySelector(".ans-detail");
 	        const correctAnswer = question.querySelector(".ans-detail span").textContent.trim();
 	        const hideButton = question.querySelector(".hide-explanation");
+	        const showButton = question.querySelector(".show-explanation");
 
-	        checkAns.style.display = "none"; // Ẩn ban đầu
+	        checkAns.style.display = "none"; // Ẩn phần check-ans ban đầu
 
 	        answers.forEach((answer, index) => {
 	            answer.addEventListener("change", function () {
 	                checkAns.style.display = "block"; // Hiện phần check-ans
+	                ansDetail.style.display = "block"; // Đảm bảo phần lời giải hiển thị
+	                hideButton.style.display = "inline";
+	                showButton.style.display = "none";
+
+	                // Disable các radio button
+	                answers.forEach((radio) => {
+	                    radio.disabled = true;
+	                });
 
 	                const labels = question.querySelectorAll(".choose-ans label");
 	                labels.forEach((label) => {
@@ -91,8 +108,8 @@
 	                });
 
 	                const selectedLabel = labels[index];
-	                const selectedAnswer = String.fromCharCode(65 + index); // Chuyển index thành 'A', 'B', 'C', 'D'
-	                
+	                const selectedAnswer = String.fromCharCode(65 + index);
+
 	                if (selectedAnswer === correctAnswer) {
 	                    selectedLabel.style.color = "green";
 	                    selectedLabel.innerHTML += " ✔️";
@@ -100,16 +117,29 @@
 	                    selectedLabel.style.color = "red";
 	                    selectedLabel.innerHTML += " ❌";
 
-	                    // Hiển thị đáp án đúng
-	                    labels[[...labels].findIndex(l => l.textContent.trim().startsWith(correctAnswer))].style.color = "green";
-	                    labels[[...labels].findIndex(l => l.textContent.trim().startsWith(correctAnswer))].innerHTML += " ✔️";
+	                    const correctIndex = [...labels].findIndex(l =>
+	                        l.textContent.trim().startsWith(correctAnswer)
+	                    );
+	                    if (correctIndex !== -1) {
+	                        labels[correctIndex].style.color = "green";
+	                        labels[correctIndex].innerHTML += " ✔️";
+	                    }
 	                }
 	            });
 	        });
 
-	        // Ẩn phần giải thích khi nhấn nút "Ẩn giải thích"
+	        // Ẩn lời giải
 	        hideButton.addEventListener("click", function () {
-	            checkAns.style.display = "none";
+	            ansDetail.style.display = "none";
+	            hideButton.style.display = "none";
+	            showButton.style.display = "inline";
+	        });
+
+	        // Hiện lại lời giải
+	        showButton.addEventListener("click", function () {
+	            ansDetail.style.display = "block";
+	            hideButton.style.display = "inline";
+	            showButton.style.display = "none";
 	        });
 	    });
 	});

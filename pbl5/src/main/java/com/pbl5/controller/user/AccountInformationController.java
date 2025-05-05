@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Collection;
-
+import java.util.List;
 import java.nio.file.Path;
 import java.nio.file.Files;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,16 +25,23 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.pbl5.security.CustomUserDetails;
-
+import com.pbl5.controller.admin.UserAdminController;
+import com.pbl5.model.TestResult;
 import com.pbl5.model.User;
+import com.pbl5.service.TestResultService;
 import com.pbl5.service.UserService;
 
 @Controller
 @RequestMapping("/user/account-information")
 public class AccountInformationController {
 
+	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
+
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private TestResultService testResultService;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -145,6 +156,26 @@ public class AccountInformationController {
 
 		redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
 		return "redirect:/user/account-information?changepass";
+	}
+
+	@RequestMapping("/history-test")
+	public String cardMockExam(Model model, RedirectAttributes redirectAttributes) {
+
+		try {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String currentUsername = auth.getName();
+
+			User user = this.userService.findByUsername(currentUsername);
+
+			List<TestResult> list = this.testResultService.findByUser(user);
+
+			model.addAttribute("list", list);
+
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách kết quả bài thi thử: ", e);
+			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi khi tải kết quả danh sách bài thi thử!");
+		}
+		return "user/account-information";
 	}
 
 }

@@ -7,7 +7,9 @@
 			<span class="mdi mdi-chevron-double-left"></span>
 		</button>
 		<div class="navbar-nav">
-			<span class="font-weight-bold">LPToeic</span>
+			<li class="nav-item nav-logout d-none d-lg-block"><a
+				class="nav-link" th:href="@{/}"> <i class="mdi mdi-home-circle"></i>
+			</a></li> <span class="font-weight-bold">LPToeic</span>
 		</div>
 		<ul class="navbar-nav navbar-nav-right">
 			<li class="nav-item nav-logout d-none d-md-block mr-3">
@@ -17,10 +19,6 @@
 						Logout</button>
 				</form>
 			</li>
-			<li class="nav-item nav-logout d-none d-lg-block"><a
-				class="nav-link" th:href="@{/}"> <i
-					class="mdi mdi-home-circle"></i>
-			</a></li>
 		</ul>
 		<button
 			class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"

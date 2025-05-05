@@ -121,4 +121,14 @@ public class MockExamServiceImpl implements MockExamService {
 		}
 	}
 
+	@Override
+	public long countAllMockExams() {
+		try {
+			return this.mockExamRepository.count();
+		} catch (Exception e) {
+			logger.error("Lỗi khi đếm tổng số bài thi thử", e);
+			return -1;
+		}
+	}
+
 }

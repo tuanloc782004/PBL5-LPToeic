@@ -111,4 +111,15 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("Không thể lưu user", e);
 		}
 	}
+
+	@Override
+	public long countAllUsers() {
+		try {
+			return userRepository.count();
+		} catch (Exception e) {
+			logger.error("Lỗi khi đếm tổng số user", e);
+			return -1;
+		}
+	}
+	
 }

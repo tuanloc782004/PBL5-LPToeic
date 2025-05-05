@@ -1,0 +1,9 @@
+package com.pbl5.service;
+
+import com.pbl5.model.TestResult;
+
+public interface TestResultService {
+
+	public TestResult save(TestResult testResult);
+	
+}

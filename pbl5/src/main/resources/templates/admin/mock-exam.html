@@ -63,10 +63,8 @@
 												<td th:text="${mockExam.id}">id</td>
 												<td th:text="${mockExam.mockExamName}">mockExamName</td>
 												<td><a
-													th:href="@{|/admin/mock-exam/view/${mockExam.id}|}"
+													th:href="@{|/user/mock-exam/${mockExam.id}|}"
 													class="btn btn-primary btn-sm"> Xem </a> <a
-													th:href="@{|/admin/mock-exam/update/${mockExam.id}|}"
-													class="btn btn-success btn-sm"> Cập nhật </a> <a
 													th:href="@{|/admin/mock-exam/delete/${mockExam.id}|}"
 													class="btn btn-danger btn-sm"> Xóa </a></td>
 											</tr>

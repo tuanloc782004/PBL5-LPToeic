@@ -1,0 +1,56 @@
+package com.pbl5.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pbl5.model.TestResult;
+import com.pbl5.model.User;
+import com.pbl5.repository.TestResultRepository;
+import com.pbl5.service.TestResultService;
+
+@Service
+public class TestResultServiceImpl implements TestResultService {
+
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+	@Autowired
+	private TestResultRepository testResultRepository;
+
+	@Override
+	public TestResult save(TestResult testResult) {
+		// TODO Auto-generated method stub
+		try {
+			return this.testResultRepository.save(testResult);
+		} catch (Exception e) {
+			logger.error("Lỗi khi lưu kết quả test: " + testResult, e);
+			throw new RuntimeException("Không thể lưu kết quả test", e);
+		}
+	}
+
+	@Override
+	public List<TestResult> findByUser(User user) {
+		// TODO Auto-generated method stub
+		try {
+			return this.testResultRepository.findByUser(user);
+		} catch (Exception e) {
+			logger.error("Lỗi khi lấy danh sách kết quả test của user: " + user, e);
+			throw new RuntimeException("Không thể lấy danh sách kết quả test của user", e);
+		}
+	}
+
+	@Override
+	public long countAllTestResults() {
+		// TODO Auto-generated method stub
+		try {
+			return testResultRepository.count();
+		} catch (Exception e) {
+			logger.error("Lỗi khi đếm tổng số kết quả bài thi thử", e);
+			return -1;
+		}
+	}
+
+}
