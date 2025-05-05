@@ -578,3 +578,24 @@
 .hide-explanation:active {
 	transform: scale(0.95);
 }
+
+.show-explanation {
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	border: none;
+	padding: 8px 16px;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+.show-explanation:hover {
+	background-color: var(--color-main);
+	transform: scale(1.05); 
+}
+
+.show-explanation:active {
+	transform: scale(0.95);
+}

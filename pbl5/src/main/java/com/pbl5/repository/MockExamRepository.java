@@ -11,5 +11,7 @@ public interface MockExamRepository extends JpaRepository<MockExam, Long> {
 	
 	@Query("SELECT m FROM MockExam m WHERE m.mockExamName LIKE %?1%")
 	List<MockExam> findByKeyword(String keyword);
+	
+	long count();
 
 }

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/layout/head::head}"></head>
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_sidebar.html -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar"
+			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<!-- partial:partials/_navbar.html -->
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="~{admin/layout/navbar::navbar}"></nav>
+		<!-- partial -->
+		<div class="main-panel">
+			<div class="content-wrapper pb-0">
+				<div class="row">
+					<div class="col-sm-4 stretch-card grid-margin">
+						<div class="card">
+							<div class="card-body p-0">
+								<img class="img-fluid w-100"
+									th:src="@{/admin-asset/images/dashboard/number_of_account.jpeg}"
+									alt="">
+							</div>
+							<div class="card-body px-3 text-dark">
+								<div class="d-flex justify-content-between">
+									<p class="text-muted font-13 mb-0">TÀI KHOẢN</p>
+								</div>
+								<h5 class="font-weight-semibold">99</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 stretch-card grid-margin">
+						<div class="card">
+							<div class="card-body p-0">
+								<img class="img-fluid w-100"
+									th:src="@{/admin-asset/images/dashboard/number_of_mock_exam.jpeg}"
+									alt="">
+							</div>
+							<div class="card-body px-3 text-dark">
+								<div class="d-flex justify-content-between">
+									<p class="text-muted font-13 mb-0">BÀI THI THỬ</p>
+								</div>
+								<h5 class="font-weight-semibold">3</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 stretch-card grid-margin">
+						<div class="card">
+							<div class="card-body p-0">
+								<img class="img-fluid w-100"
+									th:src="@{/admin-asset/images/dashboard/number_of_test.jpeg}"
+									alt="">
+							</div>
+							<div class="card-body px-3 text-dark">
+								<div class="d-flex justify-content-between">
+									<p class="text-muted font-13 mb-0">LƯỢT LÀM BÀI</p>
+								</div>
+								<h5 class="font-weight-semibold">150</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xl-8 stretch-card grid-margin">
+						<div class="card">
+							<div class="card-body pb-0">
+								<h4 class="card-title mb-0">BẢNG VÀNG: 5 NGƯỜI DÙNG DẪN ĐẦU</h4>
+								<h4 class="card-title mb-0"> </h4>
+							</div>
+							<div class="card-body p-0">
+								<div class="table-responsive">
+									<table class="table custom-table text-dark">
+										<thead>
+											<tr>
+												<th>Name</th>
+												<th>Sale Rate</th>
+												<th>Actual</th>
+												<th>Variance</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><img src="../assets/images/faces/face2.jpg"
+													class="mr-2" alt="image"> Jacob Jensen</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">85%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-1" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="4" data-rating-text="4"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="5" data-rating-text="5"
+																	class="br-selected br-current"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>32,435</td>
+												<td>40,234</td>
+											</tr>
+											<tr>
+												<td><img src="../assets/images/faces/face3.jpg"
+													class="mr-2" alt="image"> Cecelia Bradley</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">55%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-2" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected br-current"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"></a><a
+																	href="#" data-rating-value="4" data-rating-text="4"></a><a
+																	href="#" data-rating-value="5" data-rating-text="5"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>4,36780</td>
+												<td>765728</td>
+											</tr>
+											<tr>
+												<td><img src="../assets/images/faces/face4.jpg"
+													class="mr-2" alt="image"> Leah Sherman</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">23%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-3" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="4" data-rating-text="4"
+																	class="br-selected br-current"></a><a href="#"
+																	data-rating-value="5" data-rating-text="5"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>2300</td>
+												<td>22437</td>
+											</tr>
+											<tr>
+												<td><img src="../assets/images/faces/face5.jpg"
+													class="mr-2" alt="image"> Ina Curry</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">44%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-4" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"
+																	class="br-selected br-current"></a><a href="#"
+																	data-rating-value="4" data-rating-text="4"></a><a
+																	href="#" data-rating-value="5" data-rating-text="5"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>53462</td>
+												<td>1,75938</td>
+											</tr>
+											<tr>
+												<td><img src="../assets/images/faces/face7.jpg"
+													class="mr-2" alt="image"> Lida Fitzgerald</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">65%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-5" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="4" data-rating-text="4"
+																	class="br-selected br-current"></a><a href="#"
+																	data-rating-value="5" data-rating-text="5"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>67453</td>
+												<td>765377</td>
+											</tr>
+											<tr>
+												<td><img src="../assets/images/faces/face2.jpg"
+													class="mr-2" alt="image"> Stella Johnson</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">49%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-6" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"
+																	class="br-selected br-current"></a><a href="#"
+																	data-rating-value="4" data-rating-text="4"></a><a
+																	href="#" data-rating-value="5" data-rating-text="5"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>43662</td>
+												<td>96535</td>
+											</tr>
+											<tr>
+												<td><img src="../assets/images/faces/face9.jpg"
+													class="mr-2" alt="image"> Maria Ortiz</td>
+												<td>
+													<div class="d-flex">
+														<span class="pr-2 d-flex align-items-center">65%</span>
+														<div class="br-wrapper br-theme-css-stars">
+															<select id="star-7" name="rating" autocomplete="off"
+																style="display: none;">
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+															</select>
+															<div class="br-widget">
+																<a href="#" data-rating-value="1" data-rating-text="1"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="2" data-rating-text="2"
+																	class="br-selected"></a><a href="#"
+																	data-rating-value="3" data-rating-text="3"
+																	class="br-selected br-current"></a><a href="#"
+																	data-rating-value="4" data-rating-text="4"></a><a
+																	href="#" data-rating-value="5" data-rating-text="5"></a>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td>76555</td>
+												<td>258546</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- content-wrapper ends -->
+			<!-- partial:partials/_footer.html -->
+			<footer class="footer" th:replace="~{admin/layout/footer::footer}">
+			</footer>
+			<!-- partial -->
+		</div>
+		<!-- main-panel ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	<!-- container-scroller -->
+	<div th:replace="~{admin/layout/script::script}"></div>
+	<!-- End custom js for this page -->
+</body>
+</html>

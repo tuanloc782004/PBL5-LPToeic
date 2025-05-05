@@ -1,5 +1,7 @@
 package com.pbl5.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,43 +16,48 @@ import jakarta.persistence.Table;
 @Table(name = "test_result")
 public class TestResult {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mock_exam_id", nullable = false)
-    private MockExam mockExam;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "mock_exam_id", nullable = false)
+	private MockExam mockExam;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
-    @Column(name = "correct_answers", nullable = false)
-    private int correctAnswers;
+	@Column(name = "correct_answers", nullable = false)
+	private Long correctAnswers;
 
-    @Column(name = "incorrect_answers", nullable = false)
-    private int incorrectAnswers;
+	@Column(name = "incorrect_answers", nullable = false)
+	private Long incorrectAnswers;
+
+	@Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDateTime createdAt;
 
 	public TestResult() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TestResult(int id, MockExam mockExam, User user, int correctAnswers, int incorrectAnswers) {
+	public TestResult(Long id, MockExam mockExam, User user, Long correctAnswers, Long incorrectAnswers,
+			LocalDateTime createdAt) {
 		super();
 		this.id = id;
 		this.mockExam = mockExam;
 		this.user = user;
 		this.correctAnswers = correctAnswers;
 		this.incorrectAnswers = incorrectAnswers;
+		this.createdAt = createdAt;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -70,20 +77,28 @@ public class TestResult {
 		this.user = user;
 	}
 
-	public int getCorrectAnswers() {
+	public Long getCorrectAnswers() {
 		return correctAnswers;
 	}
 
-	public void setCorrectAnswers(int correctAnswers) {
+	public void setCorrectAnswers(Long correctAnswers) {
 		this.correctAnswers = correctAnswers;
 	}
 
-	public int getIncorrectAnswers() {
+	public Long getIncorrectAnswers() {
 		return incorrectAnswers;
 	}
 
-	public void setIncorrectAnswers(int incorrectAnswers) {
+	public void setIncorrectAnswers(Long incorrectAnswers) {
 		this.incorrectAnswers = incorrectAnswers;
 	}
-    
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
 }

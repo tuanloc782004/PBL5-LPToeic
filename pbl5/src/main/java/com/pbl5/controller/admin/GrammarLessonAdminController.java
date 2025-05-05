@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pbl5.excel.ExcelService;
-import com.pbl5.markdown.MarkdownService;
 import com.pbl5.model.GrammarLesson;
 import com.pbl5.service.GrammarLessonService;
 
@@ -32,9 +31,6 @@ public class GrammarLessonAdminController {
 	
 	@Autowired
 	private ExcelService excelService;
-
-	@Autowired
-	private MarkdownService markdownService;
 
 	@RequestMapping("")
 	public String list(Model model, @Param("keyword") String keyword,
@@ -73,25 +69,6 @@ public class GrammarLessonAdminController {
 		return "redirect:/admin/grammar-lesson";
 	}
 
-	@GetMapping("/view/{id}")
-	public String view(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
-		try {
-			GrammarLesson grammarLesson = this.grammarLessonService.findById(id);
-			if (grammarLesson == null) {
-				redirectAttributes.addFlashAttribute("errorMessage", "Không tìm thấy bài học ngữ pháp!");
-				return "redirect:/admin/grammar-lesson";
-			}
-
-			grammarLesson.setContent(this.markdownService.convertMarkdownToHtml(grammarLesson.getContent()));
-			model.addAttribute("grammarLesson", grammarLesson);
-			return "admin/grammar-lesson-view";
-		} catch (Exception e) {
-			logger.error("Lỗi khi lấy bài học ngữ pháp với ID: " + id, e);
-			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi lấy thông tin bài học!");
-			return "redirect:/admin/grammar-lesson";
-		}
-	}
-
 	@GetMapping("/create")
 	public String create(Model model, RedirectAttributes redirectAttributes) {
 		try {
@@ -128,36 +105,6 @@ public class GrammarLessonAdminController {
 			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi tạo bài học ngữ pháp!");
 			return "redirect:/admin/grammar-lesson/create";
 		}
-	}
-
-	@GetMapping("/update/{id}")
-	public String edit(Model model, @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
-		try {
-			GrammarLesson grammarLesson = this.grammarLessonService.findById(id);
-			if (grammarLesson == null) {
-				redirectAttributes.addFlashAttribute("errorMessage", "Không tìm thấy bài học ngữ pháp!");
-				return "redirect:/admin/grammar-lesson";
-			}
-			model.addAttribute("grammarLesson", grammarLesson);
-			return "admin/grammar-lesson-form";
-		} catch (Exception e) {
-			logger.error("Lỗi khi lấy thông tin bài học ngữ pháp để cập nhật: ", e);
-			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi mở form cập nhật!");
-			return "redirect:/admin/grammar-lesson";
-		}
-	}
-
-	@PostMapping("/update")
-	public String update(@ModelAttribute("grammarLesson") GrammarLesson grammarLesson,
-			RedirectAttributes redirectAttributes) {
-		try {
-			this.grammarLessonService.save(grammarLesson);
-			redirectAttributes.addFlashAttribute("successMessage", "Cập nhật bài học ngữ pháp thành công!");
-		} catch (Exception e) {
-			logger.error("Lỗi khi cập nhật bài học ngữ pháp: ", e);
-			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi cập nhật bài học!");
-		}
-		return "redirect:/admin/grammar-lesson/view/" + grammarLesson.getId();
 	}
 
 }

@@ -21,5 +21,7 @@ public interface MockExamService {
 	public MockExam findById(Long id);
 	
 	public List<MockExam> findAll();
+	
+	public long countAllMockExams(); 
 
 }
