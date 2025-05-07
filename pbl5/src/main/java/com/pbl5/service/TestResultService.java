@@ -1,6 +1,7 @@
 package com.pbl5.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.pbl5.model.TestResult;
 import com.pbl5.model.User;
@@ -22,5 +23,7 @@ public interface TestResultService {
 	public Long getMinScore();
 
 	public Long getMostAttemptedMockExamId();
+
+	public Map<Integer, Double> getAverageScoresByDayInCurrentMonth();
 
 }

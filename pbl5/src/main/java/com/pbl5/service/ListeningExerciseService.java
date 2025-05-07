@@ -45,5 +45,7 @@ public interface ListeningExerciseService {
 	public List<ListeningExercise> findByPart3sIsNotEmpty();
 	
 	public List<ListeningExercise> findByPart4sIsNotEmpty();
+	
+	public long countAllListeningExercises(); 
 
 }

@@ -15,4 +15,6 @@ public interface GrammarLessonRepository extends JpaRepository<GrammarLesson, Lo
 	@Query("SELECT gl FROM GrammarLesson gl ORDER BY gl.id ASC LIMIT 1")
 	GrammarLesson findFirstLesson();
 	
+	long count();
+	
 }

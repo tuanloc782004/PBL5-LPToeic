@@ -14,7 +14,10 @@
 						<h3>Ngữ pháp theo chủ đề</h3>
 					</div>
 					<div class="list-topic">
-						<ul th:each="grammarLessonOfList : ${list}">
+						<ul th:each="grammarLessonOfList, iterStat : ${list}"
+							th:class="${requestURI == #strings.concat('/user/grammar-lesson/', grammarLessonOfList.id) 
+                          ? 'active' 
+                          : (iterStat.index == 0 && requestURI == '/user/grammar-lesson' ? 'active' : '')}">
 							<li><a
 								th:href="@{|/user/grammar-lesson/${grammarLessonOfList.id}|}"
 								th:text="${grammarLessonOfList.lessonName}"></a></li>

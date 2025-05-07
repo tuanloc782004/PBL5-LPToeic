@@ -23,5 +23,7 @@ public interface GrammarLessonService {
 	public List<GrammarLesson> findAll(); 
 	
 	public GrammarLesson findFirstLesson();
+	
+	public long countAllGrammarLessons(); 
 
 }

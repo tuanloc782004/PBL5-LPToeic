@@ -235,3 +235,29 @@ z-index
 	border-color: #2d9cdb;
 	box-shadow: 0 0 5px rgba(45, 156, 219, 0.5);
 }
+
+.home-button {
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	background-color: #512da8;
+	padding: 10px 15px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: bold;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	transition: background-color 0.3s ease;
+	z-index: 999;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.home-button i {
+	color: white; 
+}
+
+.home-button:hover {
+	background-color: #311b92;
+	color: #fff; 
+}

@@ -13,5 +13,7 @@ public interface VocabularyLessonRepository extends JpaRepository<VocabularyLess
 	
 	@Query("SELECT v FROM VocabularyLesson v ORDER BY v.id ASC LIMIT 1")
     VocabularyLesson findFirstLesson();
+	
+	long count();
 
 }

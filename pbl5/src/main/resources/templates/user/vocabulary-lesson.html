@@ -13,10 +13,13 @@
 						<h3>Từ vựng theo chủ đề</h3>
 					</div>
 					<div class="list-topic">
-						<ul th:each="vocabularyLessonOfList : ${list}">
+						<ul th:each="vocabularyLessonOfList, iterStat : ${list}"
+							th:class="${requestURI == #strings.concat('/user/vocabulary-lesson/', vocabularyLessonOfList.id) 
+                          ? 'active' 
+                          : (iterStat.index == 0 && requestURI == '/user/vocabulary-lesson' ? 'active' : '')}">
 							<li><a
 								th:href="@{|/user/vocabulary-lesson/${vocabularyLessonOfList.id}|}"
-								th:text="${vocabularyLessonOfList.lessonName}"></a></li>
+								th:text="${vocabularyLessonOfList.lessonName}"> </a></li>
 						</ul>
 					</div>
 				</section>
@@ -28,8 +31,9 @@
 								th:each="vocabularyLessonContent : ${vocabularyLesson.vocabularyLessonContents}">
 								<div class="vocal-detail">
 									<div class="head-img">
-										<b th:text="${vocabularyLessonContent.number} + '. ' + ${vocabularyLessonContent.content}"></b> <img
-											th:src="${vocabularyLessonContent.imageUrl}" alt="">
+										<b
+											th:text="${vocabularyLessonContent.number} + '. ' + ${vocabularyLessonContent.content}"></b>
+										<img th:src="${vocabularyLessonContent.imageUrl}" alt="">
 									</div>
 									<div class="vocal-content">
 										<p>
