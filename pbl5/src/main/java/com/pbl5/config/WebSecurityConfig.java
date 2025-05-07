@@ -1,5 +1,6 @@
 package com.pbl5.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,11 +9,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.pbl5.security.CustomAuthenticationFailureHandler;
 import com.pbl5.security.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
+	@Autowired
+	private CustomAuthenticationFailureHandler failureHandler;
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -23,10 +28,11 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(
 				(requests) -> requests.requestMatchers("/", "/login", "/register", "/resend-otp", "/verify-otp")
-						.permitAll().requestMatchers("/admin/**", "/user/**").hasAuthority("ADMIN")
+						.permitAll().requestMatchers("/admin/**").hasAuthority("ADMIN")
 						.requestMatchers("/user/**").hasAuthority("USER").anyRequest().authenticated())
 				.formLogin((form) -> form.loginPage("/login").loginProcessingUrl("/login").usernameParameter("username")
-						.passwordParameter("password").successHandler(new CustomAuthenticationSuccessHandler()))
+						.passwordParameter("password").successHandler(new CustomAuthenticationSuccessHandler())
+						.failureHandler(failureHandler))
 				.logout((logout) -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout"));
 
 		return http.build();

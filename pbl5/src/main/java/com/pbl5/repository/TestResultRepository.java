@@ -1,5 +1,6 @@
 package com.pbl5.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,5 +28,7 @@ public interface TestResultRepository extends JpaRepository<TestResult, Long> {
 
 	@Query("SELECT tr.mockExam.id FROM TestResult tr GROUP BY tr.mockExam.id ORDER BY COUNT(tr.id) DESC")
 	List<Long> findMostAttemptedMockExamIds();
+
+	List<TestResult> findByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
 
 }

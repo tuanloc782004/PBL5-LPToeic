@@ -129,4 +129,15 @@ public class VocabularyLessonServiceImpl implements VocabularyLessonService {
 		}
 	}
 
+	@Override
+	public long countAllVocabularyLessons() {
+		// TODO Auto-generated method stub
+		try {
+			return vocabularyLessonRepository.count();
+		} catch (Exception e) {
+			logger.error("Lỗi khi đếm tổng số bài học từ vựng", e);
+			return -1;
+		}
+	}
+
 }

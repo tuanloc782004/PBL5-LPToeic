@@ -37,5 +37,7 @@ public interface ReadingExerciseRepository extends JpaRepository<ReadingExercise
 
     @Query("SELECT r FROM ReadingExercise r WHERE r.exerciseName LIKE %:keyword% AND SIZE(r.part7s) > 0")
     List<ReadingExercise> findByKeywordAndPart7sIsNotEmpty(String keyword);
+    
+    long count();
 	
 }

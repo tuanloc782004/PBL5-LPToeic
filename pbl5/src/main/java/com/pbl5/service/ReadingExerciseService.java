@@ -37,5 +37,7 @@ public interface ReadingExerciseService {
 	public List<ReadingExercise> findByPart6sIsNotEmpty();
 	
 	public List<ReadingExercise> findByPart7sIsNotEmpty();
+	
+	public long countAllReadingExercises(); 
 
 }

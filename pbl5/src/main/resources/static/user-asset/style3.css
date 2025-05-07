@@ -1,6 +1,4 @@
-
 /* ====== MAIN-SECTION ====== */
-
 .main-section {
 	display: flex;
 	justify-content: space-between;
@@ -80,6 +78,10 @@
 	margin-right: 12px;
 }
 
+.active {
+	background-color: var(--color-primary);
+}
+
 .main-content {
 	flex: 0 0 75%;
 	background-color: var(--color-white);
@@ -89,7 +91,6 @@
 }
 
 /* ====== VOCALBULARY ====== */
-
 .main-vocal-search {
 	display: flex;
 	flex-direction: column;
@@ -354,7 +355,6 @@
 }
 
 /* ====== LISTENING-PART 1 AND 2 ====== */
-
 .main-list-question {
 	width: 100%;
 	height: 100%;
@@ -469,8 +469,7 @@
 	display: block;
 }
 
-.check-ans .ans-detail div:last-child span
-	{
+.check-ans .ans-detail div:last-child span {
 	color: #512da8;
 	margin-bottom: 10px;
 }
@@ -483,7 +482,6 @@
 }
 
 /* ====== LISTENING - PART 34 ====== */
-
 .ques-list {
 	display: flex;
 	flex-direction: column;
@@ -528,7 +526,6 @@
 }
 
 /* ====== READING - PART 567 ====== */
-
 .question.part567 {
 	padding: 0;
 }
@@ -553,9 +550,9 @@
 	margin-bottom: 20px;
 	font-size: 18px;
 	font-family: 'Roboto', sans-serif;
-	line-height: 1.6; 
+	line-height: 1.6;
 	text-align: justify;
-	background-color: var(--color-beige); 
+	background-color: var(--color-beige);
 }
 
 .hide-explanation {
@@ -572,7 +569,7 @@
 
 .hide-explanation:hover {
 	background-color: var(--color-main);
-	transform: scale(1.05); 
+	transform: scale(1.05);
 }
 
 .hide-explanation:active {
@@ -593,7 +590,7 @@
 
 .show-explanation:hover {
 	background-color: var(--color-main);
-	transform: scale(1.05); 
+	transform: scale(1.05);
 }
 
 .show-explanation:active {

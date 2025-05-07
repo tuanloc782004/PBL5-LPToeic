@@ -229,4 +229,15 @@ public class ReadingExerciseServiceImpl implements ReadingExerciseService {
 			return List.of(); // Trả về trang rỗng nếu có lỗi
 		}
 	}
+
+	@Override
+	public long countAllReadingExercises() {
+		// TODO Auto-generated method stub
+		try {
+			return readingExerciseRepository.count();
+		} catch (Exception e) {
+			logger.error("Lỗi khi đếm tổng số bài luyện đọc hiểu", e);
+			return -1;
+		}
+	}
 }

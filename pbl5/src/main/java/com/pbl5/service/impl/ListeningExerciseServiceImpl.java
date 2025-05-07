@@ -288,4 +288,15 @@ public class ListeningExerciseServiceImpl implements ListeningExerciseService {
 		}
 	}
 
+	@Override
+	public long countAllListeningExercises() {
+		// TODO Auto-generated method stub
+		try {
+			return listeningExerciseRepository.count();
+		} catch (Exception e) {
+			logger.error("Lỗi khi đếm tổng số bài luyện nghe", e);
+			return -1;
+		}
+	}
+
 }

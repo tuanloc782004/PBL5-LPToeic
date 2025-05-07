@@ -1,6 +1,12 @@
 package com.pbl5.service.impl;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.YearMonth;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,4 +106,24 @@ public class TestResultServiceImpl implements TestResultService {
 			return null;
 		}
 	}
+
+	@Override
+	public Map<Integer, Double> getAverageScoresByDayInCurrentMonth() {
+		try {
+			LocalDate now = LocalDate.now();
+			YearMonth yearMonth = YearMonth.from(now);
+			LocalDate start = yearMonth.atDay(1);
+			LocalDate end = yearMonth.atEndOfMonth();
+
+			List<TestResult> results = testResultRepository.findByCreatedAtBetween(start.atStartOfDay(),
+					end.atTime(LocalTime.MAX));
+
+			return results.stream().collect(Collectors.groupingBy(r -> r.getCreatedAt().getDayOfMonth(), TreeMap::new,
+					Collectors.averagingDouble(r -> (double) r.getCorrectAnswers())));
+		} catch (Exception e) {
+			logger.error("Lỗi khi tính số câu đúng trung bình theo ngày trong tháng hiện tại", e);
+			return Map.of(); // trả về map rỗng nếu có lỗi
+		}
+	}
+
 }

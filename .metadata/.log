@@ -7356,3 +7356,991 @@ java.util.concurrent.TimeoutException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+!SESSION 2025-05-06 09:13:26.086 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=22.0.2
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-05-06 09:13:38.023
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-05-06 09:48:33.709
+!MESSAGE Logback config file: D:\PBL5\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-05-06 09:48:38.108
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-05-06 09:48:38.108
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-05-06 09:48:39.630
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-05-06 09:48:39.630
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-05-06 09:49:22.263
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Windows 10'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-05-06 09:49:23.933
+!MESSAGE Boot project ADDED: pbl5
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-05-06 09:49:23.933
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-05-06 09:49:23.944
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2025-05-06 09:49:24.017
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Users\Windows 10\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.2.v20240802-1626\jre\bin\javaw.exe
+-Dsts.lsp.client=eclipse
+-Xmx1024m
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-XX:ErrorFile=D:/PBL5/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1746499764010
+-Dlanguageserver.hover-timeout=225
+-jar
+C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.57.0.202409101848\servers\spring-boot-language-server\spring-boot-language-server-1.57.0-SNAPSHOT-exec.jar
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2025-05-06 09:49:24.017
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2025-05-06 09:49:24.033
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 10452
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:13:43.444
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:14:35.298
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:15:28.102
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-05-06 10:16:06.099
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:66)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:16:21.025
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-05-06 10:16:33.619
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:66)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:16:35.619
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:16:49.800
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:16:59.630
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 10:40:49.121
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 16:54:40.869
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 16:54:41.104
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 16:54:41.163
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:14:42.842
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:14:43.053
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:14:43.066
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:14:43.069
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:14:43.258
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:16:17.950
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:16:18.123
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:16:18.132
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:18.134
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:19.559
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-05-06 17:16:21.995
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:66)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:22.526
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:31.113
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:32.367
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:34.339
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:34.553
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:36.700
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:16:38.931
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:24:44.722
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:24:44.933
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:24:44.943
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:24:44.946
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:24:44.973
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:26:14.403
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:26:14.570
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:26:14.577
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:14.580
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:14.592
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:37.111
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:37.129
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:39.375
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:39.389
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:40.361
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:40.372
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:43.324
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:43.337
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:46.587
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:26:46.588
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:27:09.029
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:27:09.038
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 17:28:16.872
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:28:18.695
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:28:18.705
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:28:47.841
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:28:47.846
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:28:50.224
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:28:50.237
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:32:23.452
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:32:23.641
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:32:23.648
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:32:23.650
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:32:23.661
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:32:28.401
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:32:34.601
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:32:34.896
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:32:34.901
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:32:34.904
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:35:03.393
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:35:03.707
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:35:03.711
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:35:03.726
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:35:03.749
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:05.042
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:05.448
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/AuthController.java
+
+!ENTRY org.eclipse.jface.text 4 0 2025-05-06 17:36:35.335
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:332)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:347)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:708)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:204)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:318)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	... 11 more
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:36:36.618
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:36:36.811
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:36:36.817
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:36.820
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:46.253
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:47.293
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:49.183
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:51.560
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:36:52.875
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/controller/auth/LoginFormController.java
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:38:49.282
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:38:49.601
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:38:49.605
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.608
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.637
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.652
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.662
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.671
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.680
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:38:49.690
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:39:09.544
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:40:25.368
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:40:25.552
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:40:25.558
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.560
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.570
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.579
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.591
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.597
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.602
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:25.612
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.161
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.169
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.182
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.208
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.231
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.370
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:40:30.391
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.196
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.199
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.203
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.208
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.213
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.218
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:12.223
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.805
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.811
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.861
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.867
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.876
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.883
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:13.894
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.081
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.099
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.107
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.112
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.130
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.136
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:58.146
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.095
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.102
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.114
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.121
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.130
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.138
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:41:59.145
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.375
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.380
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.385
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.391
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.399
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.406
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:42.411
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.774
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.779
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.783
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.786
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.790
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.796
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:42:46.802
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.770
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.783
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.793
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.816
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.822
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.834
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:35.839
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.374
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.379
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.383
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.387
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.391
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.395
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:46.401
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:48.965
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:48.969
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:48.976
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:48.982
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:48.991
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:48.997
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:49.002
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.342
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.347
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.352
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.355
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.359
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.363
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:43:51.367
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.781
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.797
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.803
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.809
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.819
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.826
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:02.838
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.886
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.902
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.905
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.918
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.924
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.933
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.954
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.968
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:03.974
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.808
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.812
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.817
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.822
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.826
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.829
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:04.833
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:46:32.031
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:46:32.213
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:46:32.220
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.222
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.233
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.241
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.246
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.252
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.257
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:32.263
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.310
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.314
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.319
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.323
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.327
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.332
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:46:46.337
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/resources/static/login-form-asset/style.css
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:50:04.035
+!MESSAGE [Info]	ESLint server running in node v20.16.0
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:50:04.205
+!MESSAGE [Info]	Using Typescript version (user-setting) 5.5.4 from path "C:\Users\Windows 10\eclipse\jee-2024-09\eclipse\..\..\..\.p2\pool\plugins\org.eclipse.wildwebdeveloper_1.2.3.202408270415\node_modules\typescript\lib\tsserver.js"
+
+!ENTRY org.eclipse.lsp4e 1 0 2025-05-06 17:50:04.209
+!MESSAGE [Info]	Typescript Server version info: {version=5.5.4, source=user-setting}
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:50:04.438
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:50:04.471
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:51:00.389
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:51:00.417
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:51:02.306
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-05-06 17:51:02.309
+!MESSAGE [Error]	Unexpected resource file:///D:/PBL5/pbl5/src/main/java/com/pbl5/config/WebSecurityConfig.java

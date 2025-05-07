@@ -24,4 +24,6 @@ public interface VocabularyLessonService {
 	
 	public VocabularyLesson findFirstLesson();
 	
+	public long countAllVocabularyLessons(); 
+	
 }
