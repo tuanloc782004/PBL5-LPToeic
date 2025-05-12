@@ -173,7 +173,6 @@
 .sidebar-question-inner .div {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
 	justify-content: start;
 	padding: 10px 0;
 }
@@ -183,10 +182,12 @@
 	color: var(--color-primary);
 	font-family: "Robioo", sans-serif;
 	font-weight: 600;
+	border-bottom: solid 1px var(--color-border);
 }
 
 .div-submit {
 	width: 100%;
+	align-items: center;
 }
 
 .btn-submit-test {
@@ -266,9 +267,14 @@
 	border-radius: 5px;
 	background-color: var(--color-bgsecond);
 	transition: all 0.3s ease;
-	width: 26px;
-	height: 26px;
+	width: 28px;
+	height: 28px;
 	margin-right: 3px;
+	margin-bottom: 3px;
+}
+
+.test-question-list-part .mockexam34 {
+	display: contents;
 }
 
 .test-question-list-part .item-question:hover {
@@ -305,8 +311,8 @@
 	color: #0c4128;
 }
 
-.test-question-list-part .item-question.wrong, .test-question-list-part .item-question.unanswered
-	{
+.test-question-list-part .item-question.wrong,
+.test-question-list-part .item-question.unanswered {
 	background-color: #f8d7da;
 	color: #721c24;
 	border: 1px solid #f5c6cb;
@@ -314,7 +320,7 @@
 }
 
 .test-question-list-part .item-question.wrong:hover,
-	.test-question-list-part .item-question.unanswered:hover {
+.test-question-list-part .item-question.unanswered:hover {
 	background-color: #f5c6cb;
 	border-color: #f1b0b7;
 	color: #491217;
@@ -331,7 +337,8 @@
 .item-question::after {
 	content: attr(data-tooltip);
 	position: absolute;
-	bottom: 125%; /* Hiển thị tooltip phía trên */
+	bottom: 125%;
+	/* Hiển thị tooltip phía trên */
 	left: 50%;
 	transform: translateX(-50%);
 	background-color: #333;
@@ -394,6 +401,7 @@
 	font-size: 20px;
 	font-weight: 600;
 	color: var(--color-primary);
+	margin-top: 5px;
 }
 
 .test-number {
@@ -418,6 +426,7 @@
 	text-align: center;
 	display: inline-block;
 }
+
 /*
 .number-question.marked strong {
     background-color: var(--color-btn);
@@ -436,7 +445,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	border-bottom: solid 1px #e0d8d8;
+	border-bottom: solid 1px var(--color-border);
 }
 
 .question-common {
@@ -486,6 +495,7 @@
 }
 
 /* ====== MOCKEXAM-PART67 ====== */
+
 .list-each-script {
 	display: flex;
 	flex-direction: column;

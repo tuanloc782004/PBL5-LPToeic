@@ -2,21 +2,22 @@
 	<div class="menu-right">
 		<div>
 			<h1 class="logo">
-				<span class="logo-icon"> <span class="fa fa-globe"></span>
+				<span class="logo-icon">
+					<span class="fa fa-globe"></span>
 				</span>
-				<p class="logo-text">LPT</p>
-				<span class="logo-text2">oeic.</span>
+				<p class="logo-text">LPT</p><span class="logo-text2">oeic.</span>
 			</h1>
 		</div>
-		<ul>
-			<li><a th:href="@{/}">Trang chủ </a></li>
+		<ul class="list-ul">
+<li><a th:href="@{/}">Trang chủ </a></li>
 			<li><a href="">Tự học <i class="fas fa-caret-down"></i></a>
 				<div class="dropdown-menu">
 					<ul>
 						<li><a th:href="@{/vocabulary-lesson}">Từ vựng</a></li>
 						<li><a th:href="@{/grammar-lesson}">Ngữ pháp</a></li>
 					</ul>
-				</div></li>
+				</div>
+			</li>
 			<li><a href="">Luyện<i class="fas fa-caret-down"></i></a>
 				<div class="dropdown-menu">
 					<ul>
@@ -28,32 +29,29 @@
 		</ul>
 	</div>
 
-	<div th:if="${#authorization.expression('isAuthenticated()')}"
-		class="user-menu">
+	<div th:if="${#authorization.expression('isAuthenticated()')}" class="user-menu">
 		<ul>
 			<li><img th:src="${currentUserAvatarUrl}" alt="Avatar"></li>
 
-			<li><a th:href="@{/user/account-information}"><span
-					th:text="${currentUserUsername}">Username</span></a>
+			<li><a th:href="@{/user/account/information}"><span th:text="${currentUserUsername}">Username</span></a>
 				<div class="dropdown-user">
 					<ul>
-						<li><a th:href="@{/user/account-information}"><i
-								class="fa fa-circle-info"></i>Thông tin tài khoản</a></li>
-						<li>
-							<form th:action="@{/logout}" method="post"
-								style="display: inline;">
+						<li><a th:href="@{/user/account/information}"><i class="fa fa-circle-info"></i>Thông
+								tin tài khoản</a></li>
+            <li>
+							<form th:action="@{/logout}" method="post" style="display: inline;">
 								<button type="submit" class="btn btn-link">
 									<i class="fa fa-right-from-bracket"></i> Đăng xuất
 								</button>
 							</form>
 						</li>
 					</ul>
-				</div></li>
+				</div>
+			</li>
 		</ul>
 	</div>
 
-	<div th:unless="${#authorization.expression('isAuthenticated()')}"
-		class="user">
+	<div th:unless="${#authorization.expression('isAuthenticated()')}" class="user">
 		<a href="/login">Đăng nhập</a> <span></span> <a href="/register">Đăng
 			kí</a>
 	</div>
