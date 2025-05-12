@@ -22,17 +22,18 @@
 					type="password" th:field="*{confirmPassword}"
 					placeholder="Nhập lại mật khẩu" required>
 				<button>Đăng ký</button>
-			</form>	
+			</form>
 		</div>
 		<div class="form-container sign-in">
 			<form th:action="@{/login}" method="post">
 				<h1>Đăng nhập</h1>
-				<p th:if="${successMessage}" th:text="${successMessage}" style="color: green;"></p>
+				<p th:if="${successMessage}" th:text="${successMessage}"
+					style="color: green;"></p>
 				<p th:if="${errorMessage}" th:text="${errorMessage}"
 					style="color: red;"></p>
 				<input type="text" name="username" placeholder="Username"> <input
 					type="password" name="password" placeholder="Mật khẩu"> <a
-					href="#">Quên mật khẩu?</a>
+					th:href="@{/forgot-password}">Quên mật khẩu?</a>
 				<button>Đăng nhập</button>
 			</form>
 		</div>
