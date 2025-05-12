@@ -26,10 +26,14 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(
-				(requests) -> requests.requestMatchers("/", "/login", "/register", "/resend-otp", "/verify-otp")
-						.permitAll().requestMatchers("/admin/**").hasAuthority("ADMIN")
-						.requestMatchers("/user/**").hasAuthority("USER").anyRequest().authenticated())
+		http.authorizeHttpRequests((requests) -> requests
+				.requestMatchers("/", "/login", "/register", "/resend-otp", "/verify-otp", "/vocabulary-lesson/**",
+						"/grammar-lesson/**", "/listening-exercise-card", "/reading-exercise-card",
+						"/part1-listening-exercise/**", "/part2-listening-exercise/**", "/part3-listening-exercise/**",
+						"/part4-listening-exercise/**", "/part5-reading-exercise/**", "/part6-reading-exercise/**",
+						"/part7-reading-exercise/**", "/mock-exam-card")
+				.permitAll().requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN").requestMatchers("/**")
+				.hasAuthority("ADMIN").anyRequest().authenticated())
 				.formLogin((form) -> form.loginPage("/login").loginProcessingUrl("/login").usernameParameter("username")
 						.passwordParameter("password").successHandler(new CustomAuthenticationSuccessHandler())
 						.failureHandler(failureHandler))

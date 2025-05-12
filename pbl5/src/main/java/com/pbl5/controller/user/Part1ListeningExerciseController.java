@@ -16,7 +16,7 @@ import com.pbl5.model.ListeningExercise;
 import com.pbl5.service.ListeningExerciseService;
 
 @Controller
-@RequestMapping("/user/part1-listening-exercise")
+@RequestMapping("/part1-listening-exercise")
 public class Part1ListeningExerciseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);

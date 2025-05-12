@@ -3,6 +3,7 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="#512da8"/>
 		<item value="home-button"/>
 		<item value="home button"/>
 		<item value="const hideButton = question.querySelector(&quot;.hide-explanation&quot;);"/>
