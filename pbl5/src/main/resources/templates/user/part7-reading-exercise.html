@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{user/layout/head::head}"></head>
+
 <body>
 
 	<header th:replace="~{user/layout/header::header}"></header>
@@ -13,13 +15,11 @@
 						<h3>Phần 7: Đọc hiểu đoạn văn</h3>
 					</div>
 					<div class="list-topic">
-						<ul th:each="part7ReadingExerciseOfList, iterStat : ${list}"
-							th:class="${requestURI == #strings.concat('/user/part7-reading-exercise/', part7ReadingExerciseOfList.id) 
+						<ul th:each="part7ReadingExerciseOfList, iterStat : ${list}" th:class="${requestURI == #strings.concat('/user/part7-reading-exercise/', part7ReadingExerciseOfList.id) 
                           ? 'active' 
                           : (iterStat.index == 0 && requestURI == '/user/part7-reading-exercise' ? 'active' : '')}">
-							<li><a
-								th:href="@{|/user/part7-reading-exercise/${part7ReadingExerciseOfList.id}|}"
-								th:text="${part7ReadingExerciseOfList.exerciseName}"></a></li>
+							<li><a th:href="@{|/user/part7-reading-exercise/${part7ReadingExerciseOfList.id}|}"
+									th:text="${part7ReadingExerciseOfList.exerciseName}"></a></li>
 						</ul>
 					</div>
 				</section>
@@ -31,8 +31,7 @@
 						</div>
 						<div class="ques-list">
 
-							<div class="question-detail"
-								th:each="part7 : ${part7ReadingExercise.questions}">
+							<div class="question-detail" th:each="part7 : ${part7ReadingExercise.questions}">
 								<div class="ques-audio">
 									<h3 th:text="'Câu hỏi ' + ${part7.number}"></h3>
 								</div>
@@ -71,8 +70,7 @@
 											</div>
 											<div>
 												<span>Giải thích: </span>
-												<p
-													th:utext="${#strings.replace(part7.explanation, '.', '.<br>')}"></p>
+												<p th:utext="${#strings.replace(part7.explanation, '.', '.<br>')}"></p>
 											</div>
 										</div>
 										<button class="hide-explanation">Ẩn giải thích</button>
@@ -92,71 +90,72 @@
 		</div>
 	</main>
 	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-	    document.querySelectorAll(".question-detail").forEach((question) => {
-	        const answers = question.querySelectorAll("input[type='radio']");
-	        const checkAns = question.querySelector(".check-ans");
-	        const ansDetail = question.querySelector(".ans-detail");
-	        const correctAnswer = question.querySelector(".ans-detail span").textContent.trim();
-	        const hideButton = question.querySelector(".hide-explanation");
-	        const showButton = question.querySelector(".show-explanation");
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelectorAll(".question-detail").forEach((question) => {
+				const answers = question.querySelectorAll("input[type='radio']");
+				const checkAns = question.querySelector(".check-ans");
+				const ansDetail = question.querySelector(".ans-detail");
+				const correctAnswer = question.querySelector(".ans-detail span").textContent.trim();
+				const hideButton = question.querySelector(".hide-explanation");
+				const showButton = question.querySelector(".show-explanation");
 
-	        checkAns.style.display = "none"; // Ẩn phần check-ans ban đầu
+				checkAns.style.display = "none"; // Ẩn phần check-ans ban đầu
 
-	        answers.forEach((answer, index) => {
-	            answer.addEventListener("change", function () {
-	                checkAns.style.display = "block"; // Hiện phần check-ans
-	                ansDetail.style.display = "block"; // Đảm bảo phần lời giải hiển thị
-	                hideButton.style.display = "inline";
-	                showButton.style.display = "none";
+				answers.forEach((answer, index) => {
+					answer.addEventListener("change", function () {
+						checkAns.style.display = "block"; // Hiện phần check-ans
+						ansDetail.style.display = "block"; // Đảm bảo phần lời giải hiển thị
+						hideButton.style.display = "inline";
+						showButton.style.display = "none";
 
-	                // Disable các radio button
-	                answers.forEach((radio) => {
-	                    radio.disabled = true;
-	                });
+						// Disable các radio button
+						answers.forEach((radio) => {
+							radio.disabled = true;
+						});
 
-	                const labels = question.querySelectorAll(".choose-ans label");
-	                labels.forEach((label) => {
-	                    label.style.color = "";
-	                    label.innerHTML = label.innerHTML.replace("✔️", "").replace("❌", "");
-	                });
+						const labels = question.querySelectorAll(".choose-ans label");
+						labels.forEach((label) => {
+							label.style.color = "";
+							label.innerHTML = label.innerHTML.replace("✔️", "").replace("❌", "");
+						});
 
-	                const selectedLabel = labels[index];
-	                const selectedAnswer = String.fromCharCode(65 + index);
+						const selectedLabel = labels[index];
+						const selectedAnswer = String.fromCharCode(65 + index);
 
-	                if (selectedAnswer === correctAnswer) {
-	                    selectedLabel.style.color = "green";
-	                    selectedLabel.innerHTML += " ✔️";
-	                } else {
-	                    selectedLabel.style.color = "red";
-	                    selectedLabel.innerHTML += " ❌";
+						if (selectedAnswer === correctAnswer) {
+							selectedLabel.style.color = "green";
+							selectedLabel.innerHTML += " ✔️";
+						} else {
+							selectedLabel.style.color = "red";
+							selectedLabel.innerHTML += " ❌";
 
-	                    const correctIndex = [...labels].findIndex(l =>
-	                        l.textContent.trim().startsWith(correctAnswer)
-	                    );
-	                    if (correctIndex !== -1) {
-	                        labels[correctIndex].style.color = "green";
-	                        labels[correctIndex].innerHTML += " ✔️";
-	                    }
-	                }
-	            });
-	        });
+							const correctIndex = [...labels].findIndex(l =>
+								l.textContent.trim().startsWith(correctAnswer)
+							);
+							if (correctIndex !== -1) {
+								labels[correctIndex].style.color = "green";
+								labels[correctIndex].innerHTML += " ✔️";
+							}
+						}
+					});
+				});
 
-	        // Ẩn lời giải
-	        hideButton.addEventListener("click", function () {
-	            ansDetail.style.display = "none";
-	            hideButton.style.display = "none";
-	            showButton.style.display = "inline";
-	        });
+				// Ẩn lời giải
+				hideButton.addEventListener("click", function () {
+					ansDetail.style.display = "none";
+					hideButton.style.display = "none";
+					showButton.style.display = "inline";
+				});
 
-	        // Hiện lại lời giải
-	        showButton.addEventListener("click", function () {
-	            ansDetail.style.display = "block";
-	            hideButton.style.display = "inline";
-	            showButton.style.display = "none";
-	        });
-	    });
-	});
+				// Hiện lại lời giải
+				showButton.addEventListener("click", function () {
+					ansDetail.style.display = "block";
+					hideButton.style.display = "inline";
+					showButton.style.display = "none";
+				});
+			});
+		});
 	</script>
 </body>
+
 </html>

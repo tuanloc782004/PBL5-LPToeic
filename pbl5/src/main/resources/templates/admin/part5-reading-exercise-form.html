@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{admin/layout/head::head}"></head>
+
 <body>
 	<div class="container-scroller">
 		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar sidebar-offcanvas" id="sidebar"
-			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<nav class="sidebar sidebar-offcanvas" id="sidebar" th:replace="~{admin/layout/sidebar::sidebar}"></nav>
 		<!-- partial:partials/_navbar.html -->
-		<nav
-			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+		<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
 			th:replace="~{admin/layout/navbar::navbar}"></nav>
 		<!-- partial -->
 		<div class="main-panel">
@@ -28,12 +28,11 @@
 						<div class="card">
 							<div class="card-body">
 								<form class="forms-sample" method="post"
-									th:action="@{/admin/part5-reading-exercise/create}"
-									th:object="${readingExercise}" enctype="multipart/form-data">
+									th:action="@{/admin/part5-reading-exercise/create}" th:object="${readingExercise}"
+									enctype="multipart/form-data">
 									<div class="form-group">
-										<label for="exampleInputName1">Tiêu đề</label> <input
-											type="text" class="form-control" id="exampleInputName1"
-											placeholder="Nhập tiêu đề"
+										<label for="exampleInputName1">Tiêu đề</label> <input type="text"
+											class="form-control" id="exampleInputName1" placeholder="Nhập tiêu đề"
 											th:field="*{exerciseName}">
 									</div>
 									<div class="form-group">
@@ -44,8 +43,8 @@
 												class="form-control file-upload-info" disabled
 												placeholder="Tải lên file nội dung bài luyện đọc (Excel)">
 											<span class="input-group-append">
-												<button class="file-upload-browse btn btn-primary"
-													type="button">Tải lên</button>
+												<button class="file-upload-browse btn btn-primary" type="button">Tải
+													lên</button>
 											</span>
 										</div>
 									</div>
@@ -72,4 +71,5 @@
 	<div th:replace="~{admin/layout/script::script}"></div>
 	<!-- End custom js for this page -->
 </body>
+
 </html>
