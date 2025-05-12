@@ -1,5 +1,6 @@
 package com.pbl5.controller.user;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -23,6 +24,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.pbl5.security.CustomUserDetails;
 import com.pbl5.controller.admin.UserAdminController;
@@ -31,10 +33,12 @@ import com.pbl5.model.User;
 import com.pbl5.service.TestResultService;
 import com.pbl5.service.UserService;
 
-@Controller
-@RequestMapping("/user/account-information")
-public class AccountInformationController {
+import jakarta.servlet.http.HttpServletRequest;
 
+@Controller
+@RequestMapping("/user/account")
+public class AccountInformationController {
+	
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
 
 	@Autowired
@@ -45,13 +49,24 @@ public class AccountInformationController {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
-	@RequestMapping("")
-	public String UserProfile() {
-		return "user/account-information";
-	}
-
-	@PostMapping("update")
+    
+	@GetMapping("/information")
+    public String getAccountInformation(Model model, HttpServletRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        
+        User currentUser = userService.findByUsername(currentUsername);
+        
+        if (currentUser != null) {
+            model.addAttribute("currentUserUsername", currentUser.getUsername());
+            model.addAttribute("currentUserEmail", currentUser.getEmail());
+            model.addAttribute("currentUserAvatarUrl", currentUser.getAvatarUrl()); 
+        }
+        
+        return "user/account/information"; 
+    }
+	
+	@PostMapping("/information/update")
 	public String updateUserInfo(@RequestParam("username") String username, @RequestParam("email") String email,
 			@RequestParam(value = "avatarUrl", required = false) String avatarUrl,
 			RedirectAttributes redirectAttributes) {
@@ -62,7 +77,6 @@ public class AccountInformationController {
 
 		if (currentUser != null) {
 			currentUser.setUsername(username);
-			currentUser.setEmail(email);
 			if (avatarUrl != null && !avatarUrl.isEmpty()) {
 				currentUser.setAvatarUrl(avatarUrl);
 			}
@@ -82,10 +96,10 @@ public class AccountInformationController {
 			redirectAttributes.addFlashAttribute("errorMessage", "Không tìm thấy người dùng!");
 		}
 
-		return "redirect:/user/account-information";
+		return "redirect:/user/account/information";
 	}
 
-	@PostMapping("/update-avatar")
+	@PostMapping("/information/update-avatar")
 	public String updateAvatar(@RequestParam("avatarFile") MultipartFile avatarFile,
 			RedirectAttributes redirectAttributes) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -128,10 +142,17 @@ public class AccountInformationController {
 			redirectAttributes.addFlashAttribute("errorMessage", "Không tìm thấy người dùng hoặc file rỗng.");
 		}
 
-		return "redirect:/user/account-information";
+		return "redirect:/user/account/information";
+	}
+	
+	@GetMapping("/change-password")
+	public String showChangePasswordForm(HttpServletRequest request, Model model) {
+	    request.setAttribute("requestURI", "/user/account/change-password");
+	    return "user/account/change-password";  
 	}
 
-	@PostMapping("/update-password")
+	
+	@PostMapping("/change-password")
 	public String updatePassword(@RequestParam("oldPassword") String oldPassword,
 			@RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword,
 			RedirectAttributes redirectAttributes) {
@@ -143,19 +164,19 @@ public class AccountInformationController {
 
 		if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
 			redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
-			return "redirect:/user/account-information?changepass";
+			return "redirect:/user/account/change-password";
 		}
 
 		if (!newPassword.equals(confirmPassword)) {
 			redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
-			return "redirect:/user/account-information?changepass";
+			return "redirect:/user/account/change-password";
 		}
 
 		currentUser.setPassword(passwordEncoder.encode(newPassword));
 		userService.save(currentUser);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
-		return "redirect:/user/account-information?changepass";
+		return "redirect:/user/account/change-password";
 	}
 
 	@RequestMapping("/history-test")
@@ -175,7 +196,8 @@ public class AccountInformationController {
 			logger.error("Lỗi khi lấy danh sách kết quả bài thi thử: ", e);
 			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi khi tải kết quả danh sách bài thi thử!");
 		}
-		return "user/account-information";
+		return "user/account/history-test";
 	}
+
 
 }

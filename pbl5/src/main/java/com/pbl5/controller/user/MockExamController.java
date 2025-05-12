@@ -74,7 +74,7 @@ public class MockExamController {
 
 			this.testResultService.save(result);
 
-			return "redirect:/user/account-information/history-test";
+			return "redirect:/user/account/history-test";
 		} catch (Exception e) {
 			logger.error("Lỗi khi lưu kết quả bài thi thử: ", e);
 			redirectAttributes.addFlashAttribute("errorMessage", "Có lỗi xảy ra khi lưu kết quả bài thi thử!");

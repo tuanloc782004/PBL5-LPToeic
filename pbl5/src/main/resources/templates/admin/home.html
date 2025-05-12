@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{admin/layout/head::head}"></head>
+
 <body>
 	<div class="container-scroller">
 		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar sidebar-offcanvas" id="sidebar"
-			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<nav class="sidebar sidebar-offcanvas" id="sidebar" th:replace="~{admin/layout/sidebar::sidebar}"></nav>
 		<!-- partial:partials/_navbar.html -->
-		<nav
-			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+		<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
 			th:replace="~{admin/layout/navbar::navbar}"></nav>
 		<!-- partial -->
 		<div class="main-panel">
@@ -18,8 +18,7 @@
 						<div class="card">
 							<div class="card-body p-0">
 								<img class="img-fluid w-100"
-									th:src="@{/admin-asset/images/dashboard/number_of_account.jpeg}"
-									alt="">
+									th:src="@{/admin-asset/images/dashboard/number_of_account.jpeg}" alt="">
 							</div>
 							<div class="card-body px-3 text-dark">
 								<div class="d-flex justify-content-between">
@@ -33,8 +32,7 @@
 						<div class="card">
 							<div class="card-body p-0">
 								<img class="img-fluid w-100"
-									th:src="@{/admin-asset/images/dashboard/number_of_mock_exam.jpeg}"
-									alt="">
+									th:src="@{/admin-asset/images/dashboard/number_of_mock_exam.jpeg}" alt="">
 							</div>
 							<div class="card-body px-3 text-dark">
 								<div class="d-flex justify-content-between">
@@ -48,15 +46,13 @@
 						<div class="card">
 							<div class="card-body p-0">
 								<img class="img-fluid w-100"
-									th:src="@{/admin-asset/images/dashboard/number_of_test.jpeg}"
-									alt="">
+									th:src="@{/admin-asset/images/dashboard/number_of_test.jpeg}" alt="">
 							</div>
 							<div class="card-body px-3 text-dark">
 								<div class="d-flex justify-content-between">
 									<p class="text-muted font-13 mb-0">LƯỢT LÀM BÀI</p>
 								</div>
-								<h5 class="font-weight-semibold"
-									th:text="${countAllTestResults}"></h5>
+								<h5 class="font-weight-semibold" th:text="${countAllTestResults}"></h5>
 							</div>
 						</div>
 					</div>
@@ -82,16 +78,16 @@
 										</thead>
 										<tbody>
 											<tr th:each="testResult : ${list}">
-												<td><img th:src="${testResult.user.avatarUrl}"
-													class="mr-2" alt="image"
-													th:text="${testResult.user.username}"></td>
+												<td><img th:src="${testResult.user.avatarUrl}" class="mr-2" alt="image"
+														th:text="${testResult.user.username}"></td>
 												<td><span class="text-success font-weight-bold"
-													th:text="${testResult.correctAnswers} + ' / 200'"></span></td>
+														th:text="${testResult.correctAnswers} + ' / 200'"></span></td>
 												<td><span class="text-danger font-weight-bold"
-													th:text="${testResult.incorrectAnswers} + ' / 200'"></span></td>
+														th:text="${testResult.incorrectAnswers} + ' / 200'"></span></td>
 												<td th:text="${testResult.mockExam.mockExamName}"></td>
 												<td
-													th:text="${#temporals.format(testResult.createdAt, 'dd/MM/yyyy HH:mm:ss')}"></td>
+													th:text="${#temporals.format(testResult.createdAt, 'dd/MM/yyyy HH:mm:ss')}">
+												</td>
 											</tr>
 										</tbody>
 									</table>
@@ -120,8 +116,7 @@
 										cao nhất</h4>
 									<p class="text-muted mb-0">Số câu đúng cao nhất đạt được</p>
 								</div>
-								<h3 class="text-success font-weight-bold"
-									th:text="${maxScore} + ' / 200'">+0</h3>
+								<h3 class="text-success font-weight-bold" th:text="${maxScore} + ' / 200'">+0</h3>
 							</div>
 						</div>
 						<div class="card stretch-card mb-3">
@@ -131,8 +126,7 @@
 										thấp nhất</h4>
 									<p class="text-muted mb-0">Số câu đúng thấp nhất đạt được</p>
 								</div>
-								<h3 class="text-success font-weight-bold"
-									th:text="${minScore} + ' / 200'">+0</h3>
+								<h3 class="text-success font-weight-bold" th:text="${minScore} + ' / 200'">+0</h3>
 							</div>
 						</div>
 						<div class="card stretch-card mb-3">
@@ -142,8 +136,8 @@
 										được làm nhiều nhất</h4>
 									<p class="text-muted mb-0">Đề có lượt làm bài cao nhất</p>
 								</div>
-								<h3 class="text-success font-weight-bold"
-									th:text="${mostAttemptedExamTitle}">Test X</h3>
+								<h3 class="text-success font-weight-bold" th:text="${mostAttemptedExamTitle}">Test X
+								</h3>
 							</div>
 						</div>
 					</div>
@@ -163,9 +157,8 @@
 								</div>
 								<h4 class="card-title">Kết quả trung bình người dùng đạt
 									được theo ngày trong tháng này</h4>
-								<canvas id="lineChart"
-									style="height: 201px; display: block; width: 403px;"
-									width="604" height="301" class="chartjs-render-monitor"></canvas>
+								<canvas id="lineChart" style="height: 201px; display: block; width: 403px;" width="604"
+									height="301" class="chartjs-render-monitor"></canvas>
 							</div>
 						</div>
 					</div>
@@ -184,9 +177,8 @@
 									</div>
 								</div>
 								<h4 class="card-title">Thống kê học liệu hiện có</h4>
-								<canvas id="barChart"
-									style="height: 201px; display: block; width: 403px;"
-									width="604" height="301" class="chartjs-render-monitor"></canvas>
+								<canvas id="barChart" style="height: 201px; display: block; width: 403px;" width="604"
+									height="301" class="chartjs-render-monitor"></canvas>
 							</div>
 						</div>
 					</div>
@@ -217,37 +209,37 @@
 		var ctx = document.getElementById("barChart").getContext("2d");
 
 		var barChartData = {
-			labels : [ "Bài học từ vựng", "Bài học ngữ pháp", "Bài luyện nghe",
-					"Bài luyện đọc hiểu", "Đề thi thử" ],
-			datasets : [ {
-				label : 'Số lượng',
-				data : [ vocabCount, grammarCount, listeningCount,
-						readingCount, mockExamCount ],
-				backgroundColor : [ 'rgba(255, 99, 132, 0.5)',
-						'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)',
-						'rgba(75, 192, 192, 0.5)', 'rgba(153, 102, 255, 0.5)' ],
-				borderColor : [ 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)' ],
-				borderWidth : 1
-			} ]
+			labels: ["Bài học từ vựng", "Bài học ngữ pháp", "Bài luyện nghe",
+				"Bài luyện đọc hiểu", "Đề thi thử"],
+			datasets: [{
+				label: 'Số lượng',
+				data: [vocabCount, grammarCount, listeningCount,
+					readingCount, mockExamCount],
+				backgroundColor: ['rgba(255, 99, 132, 0.5)',
+					'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)',
+					'rgba(75, 192, 192, 0.5)', 'rgba(153, 102, 255, 0.5)'],
+				borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)'],
+				borderWidth: 1
+			}]
 		};
 
 		var barChartOptions = {
-			responsive : true,
-			scales : {
-				yAxes : [ {
-					ticks : {
-						beginAtZero : true
+			responsive: true,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
 					}
-				} ]
+				}]
 			}
 		};
 
 		new Chart(ctx, {
-			type : 'bar',
-			data : barChartData,
-			options : barChartOptions
+			type: 'bar',
+			data: barChartData,
+			options: barChartOptions
 		});
 		/*]]>*/
 
@@ -257,23 +249,23 @@
 
 		var ctx = document.getElementById("lineChart").getContext("2d");
 		new Chart(ctx, {
-			type : 'line',
-			data : {
-				labels : avgScoreLabels.map(String), // ví dụ: ["1", "2", "3",...]
-				datasets : [ {
-					label : 'Số câu đúng',
-					data : avgScoreData,
-					fill : false,
-					borderColor : 'rgba(75, 192, 192, 1)',
-					tension : 0.1
-				} ]
+			type: 'line',
+			data: {
+				labels: avgScoreLabels.map(String), // ví dụ: ["1", "2", "3",...]
+				datasets: [{
+					label: 'Số câu đúng',
+					data: avgScoreData,
+					fill: false,
+					borderColor: 'rgba(75, 192, 192, 1)',
+					tension: 0.1
+				}]
 			},
-			options : {
-				responsive : true,
-				scales : {
-					y : {
-						beginAtZero : true,
-						max : 10
+			options: {
+				responsive: true,
+				scales: {
+					y: {
+						beginAtZero: true,
+						max: 10
 					}
 				}
 			}
@@ -281,4 +273,5 @@
 		/*]]>*/
 	</script>
 </body>
+
 </html>

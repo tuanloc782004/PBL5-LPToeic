@@ -1,21 +1,23 @@
 <head th:fragment="head">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="_csrf" th:content="${_csrf.token}" />
-<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
 
-<title th:text="LPToeic"></title>
+	<title th:text="LPToeic"></title>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
 
-<!-- CSS chung -->
-<link rel="stylesheet" th:href="@{/user-asset/style.css}">
-<link rel="stylesheet" th:href="@{/user-asset/style2.css}">
-<link rel="stylesheet" th:href="@{/user-asset/style3.css}">
-<link rel="stylesheet" th:href="@{/user-asset/style4.css}">
+	<!-- CSS chung -->
+	<link rel="stylesheet" th:href="@{/user-asset/style.css}">
+	<link rel="stylesheet" th:href="@{/user-asset/style2.css}">
+	<link rel="stylesheet" th:href="@{/user-asset/style3.css}">
+	<link rel="stylesheet" th:href="@{/user-asset/style4.css}">
 
-<!-- Thêm các file CSS khác nếu cần -->
-<!--<th:block th:insert="~{::${extraHead}}"></th:block>-->
+	<link rel="icon" th:href="@{/upload-dir/image/globe.png}" type="image/x-icon">
+
+	<!-- Thêm các file CSS khác nếu cần -->
+	<!--<th:block th:insert="~{::${extraHead}}"></th:block>-->
 </head>

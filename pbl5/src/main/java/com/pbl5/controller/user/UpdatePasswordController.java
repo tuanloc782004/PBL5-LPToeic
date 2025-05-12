@@ -23,7 +23,7 @@
 //    @Autowired
 //    private BCryptPasswordEncoder passwordEncoder;
 //
-//    @PostMapping("/user/account-information/update-password")
+//    @PostMapping("/user/account/change-password")
 //    public String updatePassword(@RequestParam("oldPassword") String oldPassword,
 //                                 @RequestParam("newPassword") String newPassword,
 //                                 @RequestParam("confirmPassword") String confirmPassword,
@@ -54,6 +54,6 @@
 //        SecurityContextHolder.getContext().setAuthentication(newAuth);
 //
 //        redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
-//        return "redirect:/user/account-information";
+//        return "redirect:/user/account/change-password";
 //    }
 //}

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{admin/layout/head::head}"></head>
+
 <body>
 	<div class="container-scroller">
 		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar sidebar-offcanvas" id="sidebar"
-			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<nav class="sidebar sidebar-offcanvas" id="sidebar" th:replace="~{admin/layout/sidebar::sidebar}"></nav>
 		<!-- partial:partials/_navbar.html -->
-		<nav
-			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+		<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
 			th:replace="~{admin/layout/navbar::navbar}"></nav>
 		<!-- partial -->
 		<div class="main-panel">
@@ -26,8 +26,7 @@
 						<div class="header-left">
 							<div class="input-group">
 								<input type="text" class="form-control" placeholder="chủ đề"
-									aria-label="Recipient's username"
-									aria-describedby="basic-addon2" name="keyword"
+									aria-label="Recipient's username" aria-describedby="basic-addon2" name="keyword"
 									th:value="${keyword}">
 								<div class="input-group-append">
 									<button class="btn btn-sm btn-primary" type="submit">
@@ -38,8 +37,8 @@
 					</form>
 					<div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
 						<a th:href="@{/admin/vocabulary-lesson/create}"
-							class="btn btn-primary mt-2 mt-sm-0 btn-icon-text"> <i
-							class="mdi mdi-plus-circle"></i> Thêm mới
+							class="btn btn-primary mt-2 mt-sm-0 btn-icon-text"> <i class="mdi mdi-plus-circle"></i> Thêm
+							mới
 						</a>
 					</div>
 				</div>
@@ -62,17 +61,15 @@
 											<tr th:each="vocabularyLesson : ${list}">
 												<td th:text="${vocabularyLesson.id}">id</td>
 												<td th:text="${vocabularyLesson.lessonName}">lessonName</td>
-												<td><a
-													th:href="@{|/user/vocabulary-lesson/${vocabularyLesson.id}|}"
-													class="btn btn-primary btn-sm"> Xem </a> <a
-													th:href="@{|/admin/vocabulary-lesson/delete/${vocabularyLesson.id}|}"
-													class="btn btn-danger btn-sm"> Xóa </a></td>
+												<td><a th:href="@{|/user/vocabulary-lesson/${vocabularyLesson.id}|}"
+														class="btn btn-primary btn-sm"> Xem </a> <a
+														th:href="@{|/admin/vocabulary-lesson/delete/${vocabularyLesson.id}|}"
+														class="btn btn-danger btn-sm"> Xóa </a></td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
-								<div class="container"
-									th:replace="~{admin/layout/pagination::pagination}"></div>
+								<div class="container" th:replace="~{admin/layout/pagination::pagination}"></div>
 							</div>
 						</div>
 					</div>
@@ -91,4 +88,5 @@
 	<div th:replace="~{admin/layout/script::script}"></div>
 	<!-- End custom js for this page -->
 </body>
+
 </html>
