@@ -17,7 +17,7 @@ import com.pbl5.model.GrammarLesson;
 import com.pbl5.service.GrammarLessonService;
 
 @Controller
-@RequestMapping("/user/grammar-lesson")
+@RequestMapping("/grammar-lesson")
 public class GrammarLessonController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
