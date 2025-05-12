@@ -61,10 +61,11 @@
 											<tr th:each="part4ListeningExercise : ${list}">
 												<td th:text="${part4ListeningExercise.id}">id</td>
 												<td th:text="${part4ListeningExercise.exerciseName}">exerciseName</td>
-												<td><a th:href="@{|/user/part4-listening-exercise/${part4ListeningExercise.id}|}"
-														class="btn btn-primary btn-sm"> Xem </a> <a
-														th:href="@{|/admin/part4-listening-exercise/delete/${part4ListeningExercise.id}|}"
-														class="btn btn-danger btn-sm"> Xóa </a></td>
+                        <td><a
+													th:href="@{|/part4-listening-exercise/${part4ListeningExercise.id}|}"
+													class="btn btn-primary btn-sm"> Xem </a> <a
+													th:href="@{|/admin/part4-listening-exercise/delete/${part4ListeningExercise.id}|}"
+													class="btn btn-danger btn-sm"> Xóa </a></td>
 											</tr>
 										</tbody>
 									</table>

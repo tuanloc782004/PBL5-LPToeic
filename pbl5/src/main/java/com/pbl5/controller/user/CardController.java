@@ -23,7 +23,7 @@ public class CardController {
 	@Autowired
 	private MockExamService mockExamService;
 
-	@RequestMapping("user/mock-exam-card")
+	@RequestMapping("mock-exam-card")
 	public String cardMockExam(Model model, RedirectAttributes redirectAttributes) {
 		
 		try {
@@ -38,12 +38,12 @@ public class CardController {
 		return "user/mock-exam-card";
 	}
 
-	@RequestMapping("user/listening-exercise-card")
+	@RequestMapping("listening-exercise-card")
 	public String cardListeningExercise() {
 		return "user/listening-exercise-card";
 	}
 
-	@RequestMapping("user/reading-exercise-card")
+	@RequestMapping("reading-exercise-card")
 	public String cardReadingExercise() {
 		return "user/reading-exercise-card";
 	}

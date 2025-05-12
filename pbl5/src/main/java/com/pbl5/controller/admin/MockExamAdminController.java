@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import org.slf4j.Logger;
@@ -107,7 +108,10 @@ public class MockExamAdminController {
 			@RequestParam("part3AudioFiles") MultipartFile[] part3AudioFiles,
 			@RequestParam("part4AudioFiles") MultipartFile[] part4AudioFiles, RedirectAttributes redirectAttributes) {
 		try {
-			String myCode = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_";
+			String myCodePart1 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_P1_";
+			String myCodePart2 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_P2_";
+			String myCodePart3 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_P3_";
+			String myCodePart4 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss")) + "_P4_";
 
 			// Lưu mock exam
 			this.mockExamService.save(mockExam);
@@ -116,13 +120,13 @@ public class MockExamAdminController {
 
 			Map<MultipartFile, Consumer<MultipartFile>> excelProcessors = new LinkedHashMap<>();
 			excelProcessors.put(part1ExcelFile,
-					file -> this.excelService.savePart1MockExamFromExcel(file, mockExam, myCode, number));
+					file -> this.excelService.savePart1MockExamFromExcel(file, mockExam, myCodePart1, number));
 			excelProcessors.put(part2ExcelFile,
-					file -> this.excelService.savePart2MockExamFromExcel(file, mockExam, myCode, number));
+					file -> this.excelService.savePart2MockExamFromExcel(file, mockExam, myCodePart2, number));
 			excelProcessors.put(part3ExcelFile,
-					file -> this.excelService.savePart3MockExamFromExcel(file, mockExam, myCode, number));
+					file -> this.excelService.savePart3MockExamFromExcel(file, mockExam, myCodePart3, number));
 			excelProcessors.put(part4ExcelFile,
-					file -> this.excelService.savePart4MockExamFromExcel(file, mockExam, myCode, number));
+					file -> this.excelService.savePart4MockExamFromExcel(file, mockExam, myCodePart4, number));
 			excelProcessors.put(part5ExcelFile,
 					file -> this.excelService.savePart5MockExamFromExcel(file, mockExam, number));
 			excelProcessors.put(part6ExcelFile,
@@ -139,23 +143,22 @@ public class MockExamAdminController {
 				}
 			}
 
-			// Xử lý lưu file helper
-			Consumer<MultipartFile[]> saveFiles = files -> {
+			BiConsumer<MultipartFile[], String> saveFilesWithCode = (files, code) -> {
 				for (MultipartFile file : files) {
 					if (file != null && !file.isEmpty()) {
 						String folder = file.getContentType() != null && file.getContentType().startsWith("image")
 								? "image/"
 								: "audio/";
-						this.storageService.storage(file, folder + myCode + file.getOriginalFilename());
+						this.storageService.storage(file, folder + code + file.getOriginalFilename());
 					}
 				}
 			};
 
-			saveFiles.accept(part1ImageFiles);
-			saveFiles.accept(part1AudioFiles);
-			saveFiles.accept(part2AudioFiles);
-			saveFiles.accept(part3AudioFiles);
-			saveFiles.accept(part4AudioFiles);
+			saveFilesWithCode.accept(part1ImageFiles, myCodePart1);
+			saveFilesWithCode.accept(part1AudioFiles, myCodePart1);
+			saveFilesWithCode.accept(part2AudioFiles, myCodePart2);
+			saveFilesWithCode.accept(part3AudioFiles, myCodePart3);
+			saveFilesWithCode.accept(part4AudioFiles, myCodePart4);
 
 			redirectAttributes.addFlashAttribute("successMessage", "Tạo bài học thi thử thành công!");
 			return "redirect:/admin/mock-exam";

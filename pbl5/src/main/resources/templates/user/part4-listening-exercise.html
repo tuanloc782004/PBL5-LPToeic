@@ -15,11 +15,13 @@
 						<h3>Phần 4: Bài nói ngắn</h3>
 					</div>
 					<div class="list-topic">
-						<ul th:each="part4ListeningExerciseOfList, iterStat : ${list}" th:class="${requestURI == #strings.concat('/user/part4-listening-exercise/', part4ListeningExerciseOfList.id) 
+						<ul th:each="part4ListeningExerciseOfList, iterStat : ${list}"
+							th:class="${requestURI == #strings.concat('/part4-listening-exercise/', part4ListeningExerciseOfList.id) 
                           ? 'active' 
-                          : (iterStat.index == 0 && requestURI == '/user/part4-listening-exercise' ? 'active' : '')}">
-							<li><a th:href="@{|/user/part4-listening-exercise/${part4ListeningExerciseOfList.id}|}"
-									th:text="${part4ListeningExerciseOfList.exerciseName}"></a></li>
+                          : (iterStat.index == 0 && requestURI == '/part4-listening-exercise' ? 'active' : '')}">
+							<li><a
+								th:href="@{|/part4-listening-exercise/${part4ListeningExerciseOfList.id}|}"
+								th:text="${part4ListeningExerciseOfList.exerciseName}"></a></li>
 						</ul>
 					</div>
 				</section>
