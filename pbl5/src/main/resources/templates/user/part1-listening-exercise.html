@@ -14,11 +14,11 @@
 					</div>
 					<div class="list-topic">
 						<ul th:each="part1ListeningExerciseOfList, iterStat : ${list}"
-							th:class="${requestURI == #strings.concat('/user/part1-listening-exercise/', part1ListeningExerciseOfList.id) 
+							th:class="${requestURI == #strings.concat('/part1-listening-exercise/', part1ListeningExerciseOfList.id) 
                           ? 'active' 
-                          : (iterStat.index == 0 && requestURI == '/user/part1-listening-exercise' ? 'active' : '')}">
+                          : (iterStat.index == 0 && requestURI == '/part1-listening-exercise' ? 'active' : '')}">
 							<li><a
-								th:href="@{|/user/part1-listening-exercise/${part1ListeningExerciseOfList.id}|}"
+								th:href="@{|/part1-listening-exercise/${part1ListeningExerciseOfList.id}|}"
 								th:text="${part1ListeningExerciseOfList.exerciseName}"></a></li>
 						</ul>
 					</div>

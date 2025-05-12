@@ -16,7 +16,7 @@ import com.pbl5.model.ReadingExercise;
 import com.pbl5.service.ReadingExerciseService;
 
 @Controller
-@RequestMapping("/user/part6-reading-exercise")
+@RequestMapping("/part6-reading-exercise")
 public class Part6ReadingExerciseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);

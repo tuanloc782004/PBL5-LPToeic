@@ -16,7 +16,7 @@ import com.pbl5.model.VocabularyLesson;
 import com.pbl5.service.VocabularyLessonService;
 
 @Controller
-@RequestMapping("/user/vocabulary-lesson")
+@RequestMapping("/vocabulary-lesson")
 public class VocabularyLessonController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
