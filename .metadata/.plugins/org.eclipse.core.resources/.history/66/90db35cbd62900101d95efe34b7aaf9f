@@ -1,0 +1,31 @@
+package com.pbl5.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.pbl5.model.TestResult;
+import com.pbl5.model.User;
+
+public interface TestResultRepository extends JpaRepository<TestResult, Long> {
+
+	List<TestResult> findByUser(User user);
+	
+	long count();
+	
+	List<TestResult> findTop10ByOrderByCorrectAnswersDesc();
+	
+	@Query("SELECT AVG(tr.score) FROM TestResult tr")
+    Double findAverageScore();
+
+    @Query("SELECT MAX(tr.score) FROM TestResult tr")
+    Double findHighestScore();
+
+    @Query("SELECT MIN(tr.score) FROM TestResult tr")
+    Double findLowestScore();
+
+    @Query("SELECT tr.mockExam.title FROM TestResult tr GROUP BY tr.mockExam.title ORDER BY COUNT(tr.id) DESC")
+    java.util.List<String> findMostTakenExamTitle();
+
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{user/layout/head::head}"></head>
+
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main class="main-container">
+		<div class="main-content-card">
+			<div class="header-title">
+				<h1>Thi Thử TOEIC®</h1>
+			</div>
+			<div class="main-card-test">
+				<div class="cards-test" th:each="mockExam : ${list}">
+					<div class="card-test-each">
+						<div class="div card-title">
+							<h3 th:text="${mockExam.mockExamName}">Test</h3>
+						</div>
+						<div class="div card-score">
+							<a th:href="@{/user/account-information/history-test}">
+								<div class="score-box">Điểm của bạn</div>
+							</a>
+						</div>
+						<div class="div card-detail">
+							<div class="info">
+								<i class="fa fa-question"></i>
+								<div></div>
+								200 câu hỏi
+							</div>
+							<div class="info">
+								<i class="fa fa-users"></i>
+								<div></div>
+								<!-- Đã đăng nhập -->
+								<span sec:authorize="isAuthenticated()">Được tham gia</span>
+								<!-- Chưa đăng nhập -->
+								<span sec:authorize="!isAuthenticated()">Hãy đăng nhập</span>
+							</div>
+						</div>
+
+						<a th:href="@{|/user/mock-exam/${mockExam.id}|}">
+							<div class="div card-action">
+								<div class="action-box">Bắt đầu</div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>
