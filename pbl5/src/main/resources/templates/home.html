@@ -18,7 +18,7 @@
 						<h4>tự học toeic qua bài trắc nghiệm</h4>
 						<p>Tự luyện kỹ năng Nghe – Đọc với đề thi chuẩn quốc tế</p>
 						<button class="btn" th:unless="${#authorization.expression('isAuthenticated()')}"><a href="/login">Học ngay</a></button>
-						<button class="btn" th:if="${#authorization.expression('isAuthenticated()')}"><a th:href="@{/user/mock-exam-card}">Làm test</a></button>
+						<button class="btn" th:if="${#authorization.expression('isAuthenticated()')}"><a th:href="@{/mock-exam-card}">Làm test</a></button>
 					</div>
 				</div>
 			</section>
