@@ -4,11 +4,14 @@
 <head th:replace="~{admin/layout/head::head}"></head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 	<div class="container-scroller">
 		<!-- partial:partials/_sidebar.html -->
-		<nav class="sidebar sidebar-offcanvas" id="sidebar" th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<nav class="sidebar sidebar-offcanvas" id="sidebar"
+			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
 		<!-- partial:partials/_navbar.html -->
-		<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
 			th:replace="~{admin/layout/navbar::navbar}"></nav>
 		<!-- partial -->
 		<div class="main-panel">
@@ -33,13 +36,15 @@
 									th:action="|${grammarLesson.id == null ? '/admin/grammar-lesson/create' : '/admin/grammar-lesson/update'}|"
 									th:object="${grammarLesson}" enctype="multipart/form-data">
 									<div class="form-group">
-										<input type="hidden" class="form-control" id="exampleInputName1"
-											th:field="*{id}" th:value="${grammarLesson.id}">
+										<input type="hidden" class="form-control"
+											id="exampleInputName1" th:field="*{id}"
+											th:value="${grammarLesson.id}">
 									</div>
 									<div class="form-group">
-										<label for="exampleInputName1">Chủ đề bài học</label> <input type="text"
-											class="form-control" id="exampleInputName1"
-											placeholder="Nhập tên chủ đề bài học" th:field="*{lessonName}"
+										<label for="exampleInputName1">Chủ đề bài học</label> <input
+											type="text" class="form-control" id="exampleInputName1"
+											placeholder="Nhập tên chủ đề bài học"
+											th:field="*{lessonName}"
 											th:value="${grammarLesson.lessonName}">
 									</div>
 									<div class="form-group">
@@ -57,8 +62,8 @@
 												class="form-control file-upload-info" disabled
 												placeholder="Tải lên file nội dung bài luyện tập (Excel)">
 											<span class="input-group-append">
-												<button class="file-upload-browse btn btn-primary" type="button">Tải
-													lên</button>
+												<button class="file-upload-browse btn btn-primary"
+													type="button">Tải lên</button>
 											</span>
 										</div>
 									</div>

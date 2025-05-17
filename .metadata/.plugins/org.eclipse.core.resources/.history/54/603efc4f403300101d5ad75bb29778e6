@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+	<header th:replace="~{user/layout/header::header}"></header>
+	<main>
+		<div class="main-container">
+			<div class="user-profile">
+				<section th:replace="~{user/account/sidebar-acc::sidebar}"></section>
+				
+				<section class="user-maincontent">
+					<div class="user-info-container">
+						<div class="user-info-header">
+							<h3>Thông tin tài khoản</h3>
+						</div>
+						<form method="post" action="/user/account/information/update"
+							th:action="@{/user/account/information/update}">
+							<div class="div">
+								<label for="username">Username</label> <input type="text"
+									th:value="${currentUserUsername}" id="username" name="username">
+							</div>
+							<div class="div">
+								<label for="email">Email</label> <input type="email"
+									th:value="${currentUserEmail}" id="email" name="email" readonly>
+							</div>
+							<div class="div">
+								<button class="update" type="submit">Cập nhật</button>
+							</div>
+						</form>
+					</div>
+				</section>
+
+				<form id="avatarForm"
+					th:action="@{/user/account/information/update-avatar}"
+					method="post" enctype="multipart/form-data" style="display: none;">
+					<input type="file" name="avatarFile" id="avatarInput"
+						accept="image/*" onchange="uploadAvatar()">
+				</form>
+				<section class="user-avatar">
+					<div>
+						<div>
+							<div class="avatar-edit">
+								<img th:src="${currentUserAvatarUrl}" alt="avatar"><label
+									for="avatarInput" class="edit">Edit <i
+									class="fa fa-user-edit"></i>
+								</label>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</main>
+</body>
+<script>
+	function uploadAvatar() {
+		document.getElementById("avatarForm").submit();
+	}
+</script>
+<script th:src="@{/user-asset/preloader.js}"></script>
+</html>

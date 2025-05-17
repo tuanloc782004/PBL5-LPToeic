@@ -4,6 +4,7 @@
 <head th:replace="~{user/layout/head::head}"></head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
 
@@ -22,14 +23,15 @@
 							<li><a
 								th:href="@{|/part5-reading-exercise/${part5ReadingExerciseOfList.id}|}"
 								th:text="${part5ReadingExerciseOfList.exerciseName}"></a></li>
-            </ul>
+						</ul>
 					</div>
 				</section>
 
 				<section class="main-content">
 					<div class="main-list-question">
 
-						<div class="question-detail" th:each="part5 : ${part5ReadingExercise.part5s}">
+						<div class="question-detail"
+							th:each="part5 : ${part5ReadingExercise.part5s}">
 							<div class="ques-audio">
 								<h3 th:text="'Câu hỏi ' + ${part5.number}"></h3>
 							</div>
@@ -41,22 +43,26 @@
 									<div>
 										<input type="radio" th:name="'question-' + ${part5.number}"
 											th:id="'optionA-' + ${part5.number}"> <label
-											th:for="'optionA-' + ${part5.number}" th:text="${part5.optionA}"></label>
+											th:for="'optionA-' + ${part5.number}"
+											th:text="${part5.optionA}"></label>
 									</div>
 									<div>
 										<input type="radio" th:name="'question-' + ${part5.number}"
 											th:id="'optionB-' + ${part5.number}"> <label
-											th:for="'optionB-' + ${part5.number}" th:text="${part5.optionB}"></label>
+											th:for="'optionB-' + ${part5.number}"
+											th:text="${part5.optionB}"></label>
 									</div>
 									<div>
 										<input type="radio" th:name="'question-' + ${part5.number}"
 											th:id="'optionC-' + ${part5.number}"> <label
-											th:for="'optionC-' + ${part5.number}" th:text="${part5.optionC}"></label>
+											th:for="'optionC-' + ${part5.number}"
+											th:text="${part5.optionC}"></label>
 									</div>
 									<div>
 										<input type="radio" th:name="'question-' + ${part5.number}"
 											th:id="'optionD-' + ${part5.number}"> <label
-											th:for="'optionD-' + ${part5.number}" th:text="${part5.optionD}"></label>
+											th:for="'optionD-' + ${part5.number}"
+											th:text="${part5.optionD}"></label>
 									</div>
 								</div>
 								<div class="check-ans" style="display: none;">
@@ -67,7 +73,8 @@
 										</div>
 										<div>
 											<span>Bản dịch: </span>
-											<p th:utext="${#strings.replace(part5.explanation, '.', '.<br>')}"></p>
+											<p
+												th:utext="${#strings.replace(part5.explanation, '.', '.<br>')}"></p>
 										</div>
 									</div>
 									<button class="hide-explanation">Ẩn giải thích</button>
@@ -151,5 +158,5 @@
 		});
 	</script>
 </body>
-
+<script th:src="@{/user-asset/preloader.js}"></script>
 </html>

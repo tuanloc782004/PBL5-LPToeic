@@ -1,0 +1,12 @@
+<div id="preloader" aria-label="Loading animation: car running" th:fragment="preloader">
+    <div class="road">
+      <div class="road-stripes"></div>
+    </div>
+    <div class="car-container">
+      <div class="car-body">
+        <div class="car-window"></div>
+        <div class="wheel left"></div>
+        <div class="wheel right"></div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,7 @@
+<div id="preloader" th:fragment="preloader" aria-label="Funny runners loading">
+  <div class="runner-track">
+    <img th:src="@{/user-asset/image/trang.png}" alt="Trang" class="runner runner1" />
+    <img th:src="@{/user-asset/image/loc.png}" alt="Loc" class="runner runner2" />
+    <img th:src="@{/user-asset/image/phuong.png}" alt="Phuong" class="runner runner3" />
+  </div>
+</div>

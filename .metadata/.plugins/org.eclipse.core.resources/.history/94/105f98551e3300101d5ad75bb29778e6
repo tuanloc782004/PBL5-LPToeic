@@ -1,0 +1,49 @@
+package com.pbl5.ai;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pbl5.dto.Part5DTO;
+import com.theokanning.openai.service.OpenAiService;
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatMessage;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AiQuestionServiceImpl implements AiQuestionService {
+
+	private final OpenAiService openAiService;
+
+	public AiQuestionServiceImpl(OpenAiService openAiService) {
+		this.openAiService = openAiService;
+	}
+
+	@Override
+	public List<Part5DTO> generatePart5Questions(int quantity) throws Exception {
+		// Tạo prompt gửi tới OpenAI
+		String prompt = "Hãy tạo ra " + quantity + " câu hỏi TOEIC Part 5 chất lượng, chuẩn cấu trúc. "
+				+ "Mỗi câu hỏi cần bao gồm các phần sau: " + "- Nội dung câu hỏi, "
+				+ "- 4 lựa chọn trả lời, mỗi lựa chọn có định dạng: '(A) ...', '(B) ...', '(C) ...', '(D) ...', "
+				+ "- Đáp án đúng chỉ là một ký tự viết hoa: A, B, C hoặc D, "
+				+ "- Phần giải thích chi tiết bằng tiếng Việt, giải thích vì sao đáp án đó đúng và các đáp án còn lại sai, giúp người học hiểu rõ. "
+				+ "Yêu cầu kết quả trả về là mảng JSON, trong đó mỗi phần tử là một đối tượng gồm các trường: "
+				+ "\"question\" (câu hỏi), "
+				+ "\"optionA\", \"optionB\", \"optionC\", \"optionD\" (các lựa chọn có dấu hiệu (A), (B), (C), (D)), "
+				+ "\"answer\" (đáp án đúng là ký tự), " + "\"explanation\" (giải thích chi tiết tiếng Việt).";
+
+		// Gửi request đến OpenAI ChatCompletion
+		ChatCompletionRequest request = ChatCompletionRequest.builder().model("gpt-3.5-turbo")
+				.messages(List.of(new ChatMessage("user", prompt))).maxTokens(1500).build();
+
+		var response = openAiService.createChatCompletion(request);
+		String content = response.getChoices().get(0).getMessage().getContent();
+
+		ObjectMapper mapper = new ObjectMapper();
+		List<Part5DTO> result = mapper.readValue(content, new TypeReference<List<Part5DTO>>() {
+		});
+
+		return result;
+	}
+}

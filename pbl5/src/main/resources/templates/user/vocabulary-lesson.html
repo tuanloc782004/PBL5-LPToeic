@@ -4,6 +4,7 @@
 <head th:replace="~{user/layout/head::head}"></head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
 
@@ -62,5 +63,5 @@
 	</main>
 
 </body>
-
+<script th:src="@{/user-asset/preloader.js}"></script>
 </html>

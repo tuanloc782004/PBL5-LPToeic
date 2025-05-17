@@ -4,6 +4,7 @@
 <head th:replace="~{user/layout/head::head}"></head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
 
@@ -27,10 +28,11 @@
 						</form>
 						<div class="div div-result" style="display: none;">
 							<p id="score-summary" class="score-result"></p>
-							<form th:action="@{/user/mock-exam/save-score}" method="post" id="score-form">
-								<input type="hidden" name="correct" id="correctInput" /> <input type="hidden"
-									name="wrong" id="wrongInput" /> <input type="hidden" name="mockExamId"
-									th:value="${mockExam.id}" />
+							<form th:action="@{/user/mock-exam/save-score}" method="post"
+								id="score-form">
+								<input type="hidden" name="correct" id="correctInput" /> <input
+									type="hidden" name="wrong" id="wrongInput" /> <input
+									type="hidden" name="mockExamId" th:value="${mockExam.id}" />
 								<button type="submit" class="btn-save-score">LƯU ĐIỂM
 									SỐ</button>
 							</form>
@@ -40,19 +42,22 @@
 								<a class="part-list" href="#part-1">Phần 1</a>
 								<div class="list-question">
 									<a class="item-question" th:each="part1 : ${mockExam.part1s}"
-										th:text="${part1.number}" th:href="'#question-' + ${part1.number}"
+										th:text="${part1.number}"
+										th:href="'#question-' + ${part1.number}"
 										th:attr="data-tooltip='Câu số ' + ${part1.number}">number</a>
 								</div>
 								<a class="part-list" href="#part-2">Phần 2</a>
 								<div class="list-question">
 									<a class="item-question" th:each="part2 : ${mockExam.part2s}"
-										th:text="${part2.number}" th:href="'#question-' + ${part2.number}"
+										th:text="${part2.number}"
+										th:href="'#question-' + ${part2.number}"
 										th:attr="data-tooltip='Câu số ' + ${part2.number}">number</a>
 								</div>
 								<a class="part-list" href="#part-3">Phần 3</a>
 								<div class="list-question">
 									<div class="mockexam34" th:each="part3 : ${mockExam.part3s}">
-										<a class="item-question" th:each="part3Question : ${part3.questions}"
+										<a class="item-question"
+											th:each="part3Question : ${part3.questions}"
 											th:text="${part3Question.number}"
 											th:href="'#question-' + ${part3Question.number}"
 											th:attr="data-tooltip='Câu số ' + ${part3Question.number}">number</a>
@@ -61,7 +66,8 @@
 								<a class="part-list" href="#part-4">Phần 4</a>
 								<div class="list-question">
 									<div class="mockexam34" th:each="part4 : ${mockExam.part4s}">
-										<a class="item-question" th:each="part4Question : ${part4.questions}"
+										<a class="item-question"
+											th:each="part4Question : ${part4.questions}"
 											th:text="${part4Question.number}"
 											th:href="'#question-' + ${part4Question.number}"
 											th:attr="data-tooltip='Câu số ' + ${part4Question.number}">number</a>
@@ -70,13 +76,15 @@
 								<a class="part-list" href="#part-5">Phần 5</a>
 								<div class="list-question">
 									<a class="item-question" th:each="part5 : ${mockExam.part5s}"
-										th:text="${part5.number}" th:href="'#question-' + ${part5.number}"
+										th:text="${part5.number}"
+										th:href="'#question-' + ${part5.number}"
 										th:attr="data-tooltip='Câu số ' + ${part5.number}">number</a>
 								</div>
 								<a class="part-list" href="#part-6">Phần 6</a>
 								<div class="list-question">
 									<div class="mockexam34" th:each="part6 : ${mockExam.part6s}">
-										<a class="item-question" th:each="part6Question : ${part6.questions}"
+										<a class="item-question"
+											th:each="part6Question : ${part6.questions}"
 											th:text="${part6Question.number}"
 											th:href="'#question-' + ${part6Question.number}"
 											th:attr="data-tooltip='Câu số ' + ${part6Question.number}">number</a>
@@ -85,7 +93,8 @@
 								<a class="part-list" href="#part-7">Phần 7</a>
 								<div class="list-question">
 									<div class="mockexam34" th:each="part7 : ${mockExam.part7s}">
-										<a class="item-question" th:each="part7Question : ${part7.questions}"
+										<a class="item-question"
+											th:each="part7Question : ${part7.questions}"
 											th:text="${part7Question.number}"
 											th:href="'#question-' + ${part7Question.number}"
 											th:attr="data-tooltip='Câu số ' + ${part7Question.number}">number</a>
@@ -106,7 +115,8 @@
 							</div>
 							<div class="list-question-wrapper">
 								<!-- bat dau 1 cau -->
-								<div class="each-question question-detail" th:each="part1 : ${mockExam.part1s}"
+								<div class="each-question question-detail"
+									th:each="part1 : ${mockExam.part1s}"
 									th:attr="id='question-' + ${part1.number}">
 									<div class="ques-audio">
 										<audio controls>
@@ -157,7 +167,8 @@
 											</div>
 											<div>
 												<span>Giải thích:</span>
-												<p th:utext="${#strings.replace(part1.explanation, '.', '.<br>')}"></p>
+												<p
+													th:utext="${#strings.replace(part1.explanation, '.', '.<br>')}"></p>
 											</div>
 										</div>
 									</div>
@@ -171,7 +182,8 @@
 							</div>
 							<div class="list-question-wrapper">
 								<!-- bat dau 1 cau -->
-								<div class="each-question question-detail" th:each="part2 : ${mockExam.part2s}"
+								<div class="each-question question-detail"
+									th:each="part2 : ${mockExam.part2s}"
 									th:attr="id='question-' + ${part2.number}">
 									<div class="ques-audio">
 										<audio controls>
@@ -211,7 +223,8 @@
 											</div>
 											<div>
 												<span>Giải thích:</span>
-												<p th:utext="${#strings.replace(part2.explanation, '.', '.<br>')}"></p>
+												<p
+													th:utext="${#strings.replace(part2.explanation, '.', '.<br>')}"></p>
 											</div>
 										</div>
 									</div>
@@ -224,7 +237,8 @@
 								<span>Phần 3 - Đoạn hội thoại</span>
 							</div>
 							<div class="list-question-wrapper">
-								<div class="list-each-audio" th:each="part3 : ${mockExam.part3s}">
+								<div class="list-each-audio"
+									th:each="part3 : ${mockExam.part3s}">
 									<div class="each-question-audio">
 										<div class="question-common">
 											<div class="ques-audio">
@@ -306,7 +320,8 @@
 								<span>Phần 4 - Bài nói ngắn</span>
 							</div>
 							<div class="list-question-wrapper">
-								<div class="list-each-audio" th:each="part4 : ${mockExam.part4s}">
+								<div class="list-each-audio"
+									th:each="part4 : ${mockExam.part4s}">
 									<!-- bat dau 1 cau chung audio -->
 									<div class="each-question-audio">
 										<div class="question-common">
@@ -393,7 +408,8 @@
 							</div>
 							<div class="test-question-wrapper">
 								<!-- bat dau 1 cau -->
-								<div class="each-question question-detail" th:each="part5 : ${mockExam.part5s}"
+								<div class="each-question question-detail"
+									th:each="part5 : ${mockExam.part5s}"
 									th:attr="id='question-' + ${part5.number}">
 									<div class="test-number have-question">
 										<div class="number-question-text">
@@ -439,7 +455,8 @@
 											</div>
 											<div>
 												<span>Giải thích:</span>
-												<p th:utext="${#strings.replace(part5.explanation, '.', '.<br>')}"></p>
+												<p
+													th:utext="${#strings.replace(part5.explanation, '.', '.<br>')}"></p>
 											</div>
 										</div>
 									</div>
@@ -453,7 +470,8 @@
 								<span>Phần 6 - Hoàn thành đoạn văn</span>
 							</div>
 							<div class="test-question-wrapper">
-								<div class="list-each-script" th:each="part6 : ${mockExam.part6s}">
+								<div class="list-each-script"
+									th:each="part6 : ${mockExam.part6s}">
 									<!-- bat dau 1 script -->
 									<div class="each-question-script">
 										<div class="part67-script script-common">
@@ -529,7 +547,8 @@
 								<span>Phần 7 - Đọc hiểu đoạn văn</span>
 							</div>
 							<div class="test-question-wrapper">
-								<div class="list-each-script" th:each="part7 : ${mockExam.part7s}">
+								<div class="list-each-script"
+									th:each="part7 : ${mockExam.part7s}">
 									<!-- bat dau 1 script -->
 									<div class="each-question-script">
 										<div class="part67-script script-common">
@@ -768,5 +787,5 @@
 	</script>
 
 </body>
-
+<script th:src="@{/user-asset/preloader.js}"></script>
 </html>

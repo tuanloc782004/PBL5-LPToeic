@@ -1,0 +1,11 @@
+<div id="preloader" aria-label="Loading animation: blinking portraits"
+	th:fragment="preloader">
+	<div class="zoom-call-frame">
+		<img th:src="@{/user-asset/image/trang.png}"
+			class="zoom-person person1" /> <img
+			th:src="@{/user-asset/image/loc.png}" class="zoom-person person2" />
+		<img th:src="@{/user-asset/image/phuong.png}"
+			class="zoom-person person3" />
+	</div>
+
+</div>

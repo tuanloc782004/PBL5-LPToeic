@@ -1,0 +1,20 @@
+.zoom-call-frame {
+  display: flex;
+  gap: 30px;
+  background: #000;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.zoom-person {
+  width: 120px;
+  border-radius: 15px;
+  filter: grayscale(50%) brightness(0.8);
+  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+  animation: pulseZoom 2s infinite ease-in-out;
+}
+
+@keyframes pulseZoom {
+  0%, 100% { transform: scale(1); filter: grayscale(50%) brightness(0.8); }
+  50% { transform: scale(1.05); filter: grayscale(0%) brightness(1); }
+}

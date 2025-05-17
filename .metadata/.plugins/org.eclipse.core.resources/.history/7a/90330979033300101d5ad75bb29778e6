@@ -1,0 +1,36 @@
+package com.pbl5.controller.admin;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.pbl5.ai.AiService;
+
+@Controller
+@RequestMapping("/admin/ai")
+public class AiQuestionController {
+
+	private static final Logger logger = LoggerFactory.getLogger(DashboardController.class);
+
+	@Autowired
+	private AiService aiService;
+
+	@GetMapping("/admin/ai/part5-generate")
+    public String generatePart5(@RequestParam("quantity") int quantity, Model model) {
+        try {
+            var questions = aiService.generatePart5(quantity);
+            model.addAttribute("successMessage", "Đã sinh thành công " + questions.size() + " câu hỏi Part 5.");
+            // Bạn có thể truyền thêm questions lên view để hiển thị
+            model.addAttribute("questions", questions);
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Lỗi khi sinh câu hỏi: " + e.getMessage());
+        }
+        return "admin/part5-generate";
+    }
+	
+}

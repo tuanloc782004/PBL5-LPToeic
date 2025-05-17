@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{user/layout/head::head}"></head>
+
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main>
+		<div class="main-container">
+			<div class="main-section">
+				<section class="sidebar-list">
+					<div class="header-topic">
+						<h3>Từ vựng theo chủ đề</h3>
+					</div>
+					<div class="list-topic">
+						<ul th:each="vocabularyLessonOfList, iterStat : ${list}"
+							th:class="${requestURI == #strings.concat('/vocabulary-lesson/', vocabularyLessonOfList.id) 
+                          ? 'active' 
+                          : (iterStat.index == 0 && requestURI == '/vocabulary-lesson' ? 'active' : '')}">
+							<li><a
+								th:href="@{|/vocabulary-lesson/${vocabularyLessonOfList.id}|}"
+								th:text="${vocabularyLessonOfList.lessonName}"> </a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="main-content">
+					<div class="main-vocal-search">
+						<div class="vocal">
+							<div class="list-vocal"
+								th:each="vocabularyLessonContent : ${vocabularyLesson.vocabularyLessonContents}">
+								<div class="vocal-detail">
+									<div class="head-img">
+										<b
+											th:text="${vocabularyLessonContent.number} + '. ' + ${vocabularyLessonContent.content}"></b>
+										<img th:src="${vocabularyLessonContent.imageUrl}" alt="">
+									</div>
+									<div class="vocal-content">
+										<p>
+											Phiên âm: <span
+												th:text="${vocabularyLessonContent.transcribe}">transcribe</span>
+										</p>
+										<p>
+											Nghĩa: <span th:text="${vocabularyLessonContent.meaning}">meaning</span>
+										</p>
+										<p>
+											Ví dụ: <span th:text="${vocabularyLessonContent.sentence}">sentence</span>
+										</p>
+										<audio controls type="audio/wav"
+											th:src="${vocabularyLessonContent.audioUrl}"></audio>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</main>
+
+</body>
+<script th:src="@{/user-asset/preloader.js}"></script>
+</html>

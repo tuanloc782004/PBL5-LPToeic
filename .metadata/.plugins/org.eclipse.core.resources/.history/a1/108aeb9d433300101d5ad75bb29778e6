@@ -1,0 +1,10 @@
+window.addEventListener('load', () => {
+	const preloader = document.getElementById('preloader');
+	const content = document.getElementById('content');
+
+	preloader.classList.add('hidden'); // fade out preloader
+	setTimeout(() => {
+		preloader.style.display = 'none'; // ẩn preloader khỏi flow DOM
+		if (content) content.style.display = 'block'; // hiện nội dung trang chính nếu có
+	}, 500); // trùng với thời gian transition opacity trong CSS
+});

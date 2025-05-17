@@ -1,0 +1,10 @@
+window.addEventListener('load', () => {
+	const preloader = document.getElementById('preloader');
+	const content = document.getElementById('content');
+
+	preloader.classList.add('hidden'); // bắt đầu hiệu ứng ẩn
+	setTimeout(() => {
+		preloader.style.display = 'none'; // ẩn khỏi DOM flow
+		content.style.display = 'block';  // hiện nội dung chính
+	}, 500); // thời gian khớp với transition trong CSS
+});

@@ -1,0 +1,17 @@
+<div id="preloader" th:fragment="preloader"
+	aria-label="Loading Zoom-style">
+	<div class="zoom-preload-container">
+		<div class="zoom-video-frame">
+			<img th:src="@{/user-asset/image/trang.png}" alt="Trang"
+				class="zoom-person person1" /> <img
+				th:src="@{/user-asset/image/loc.png}" alt="Loc"
+				class="zoom-person person2" /> <img
+				th:src="@{/user-asset/image/phuong.png}" alt="Phuong"
+				class="zoom-person person3" />
+		</div>
+		<div class="zoom-text">
+			Đang kết nối<span class="dot">.</span><span class="dot">.</span><span
+				class="dot">.</span>
+		</div>
+	</div>
+</div>

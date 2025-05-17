@@ -1,0 +1,9 @@
+package com.pbl5.ai;
+
+import java.util.List;
+
+public interface AiQuestionService {
+
+	public List<String> generatePart5Questions(int quantity);
+
+}

@@ -1,0 +1,12 @@
+package com.pbl5.ai;
+
+import java.util.List;
+
+import com.pbl5.dto.Part5DTO;
+
+public interface AiQuestionService {
+
+	List<Part5DTO
+	> generatePart5Questions(int quantity) throws Exception;
+
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{user/layout/head::head}"></head>
+<body>
+	<header th:replace="~{user/layout/header::header}"></header>
+	<main>
+		<div class="main-container">
+			<div class="user-profile">
+				<section th:replace="~{user/account/sidebar-acc::sidebar}"></section>
+
+				<section class="user-history-test">
+					<div class="user-his-container">
+						<div class="user-info-header">
+							<h3>Lịch sử làm bài</h3>
+						</div>
+						<div class="card-custom">
+							<table class="table table-bordered text-center">
+								<thead>
+									<tr>
+										<th>Bài thi thử</th>
+										<th>Ngày Giờ</th>
+										<th>Số Câu Đúng</th>
+										<th>Số Câu Sai</th>
+										<th>Tổng Số Câu</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="testResult : ${list}">
+										<td th:text="${testResult.mockExam.mockExamName}">id</td>
+										<td
+											th:text="${#temporals.format(testResult.createdAt, 'dd/MM/yyyy HH:mm')}">created
+											At</td>
+										<td><span class="highlight text-correct"
+											th:text="${testResult.correctAnswers}">correctAnswers</span></td>
+										<td><span class="highlight text-wrong"
+											th:text="${testResult.incorrectAnswers}">incorrectAnswers</span></td>
+										<td>200</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</main>
+</body>
+</html>

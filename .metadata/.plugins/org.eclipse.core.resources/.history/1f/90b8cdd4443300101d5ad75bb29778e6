@@ -1,0 +1,7 @@
+<div id="preloader" th:fragment="preloader" aria-label="Funny dancing preloader">
+  <div class="stage">
+    <img th:src="@{/user-asset/image/trang.png}" alt="Trang" class="dancer dancer1" />
+    <img th:src="@{/user-asset/image/loc.png}" alt="Loc" class="dancer dancer2" />
+    <img th:src="@{/user-asset/image/phuong.png}" alt="Phuong" class="dancer dancer3" />
+  </div>
+</div>

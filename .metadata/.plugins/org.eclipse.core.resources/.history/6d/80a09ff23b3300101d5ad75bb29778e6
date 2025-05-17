@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/layout/head::head}"></head>
+
+<body>
+	<div class="container-scroller">
+		<!-- Sidebar -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar"
+			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+
+		<!-- Navbar -->
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="~{admin/layout/navbar::navbar}"></nav>
+
+		<div class="main-panel">
+			<div class="content-wrapper pb-0">
+				<!-- Thông báo -->
+				<div th:if="${successMessage}" class="alert alert-success">
+					<p th:text="${successMessage}"></p>
+				</div>
+
+				<div th:if="${errorMessage}" class="alert alert-danger">
+					<p th:text="${errorMessage}"></p>
+				</div>
+
+				<h2 class="mb-4">Sinh câu hỏi TOEIC Part 6 từ AI</h2>
+
+				<div th:if="${error}">
+					<p class="text-danger" th:text="${error}"></p>
+				</div>
+
+				<!-- Nút xuất Excel -->
+				<form th:action="@{/admin/ai/part7-export-excel}" method="post"
+					class="mb-4">
+					<button type="submit" class="btn btn-success">
+						<i class="mdi mdi-file-excel"></i> Xuất file Excel
+					</button>
+				</form>
+
+				<!-- Danh sách đoạn văn và câu hỏi -->
+				<div class="row" th:each="part6, iterStat : ${questions}">
+					<div class="col-md-12 mb-4">
+						<div class="card shadow-sm">
+							<div class="card-header bg-primary text-white">
+								<h5 class="mb-0">Đoạn văn [[${iterStat.index + 1}]]</h5>
+							</div>
+							<div class="card-body">
+								<p th:text="${part6.script}" class="mb-4"></p>
+
+								<!-- Câu hỏi -->
+								<div th:each="q : ${part6.questions}"
+									class="mb-4 border-top pt-3">
+									<p>
+										<strong th:text="${q.question}"></strong>
+									</p>
+									<ul class="list-group list-group-flush mb-2">
+										<li class="list-group-item" th:text="'A. ' + ${q.optionA}"></li>
+										<li class="list-group-item" th:text="'B. ' + ${q.optionB}"></li>
+										<li class="list-group-item" th:text="'C. ' + ${q.optionC}"></li>
+										<li class="list-group-item" th:text="'D. ' + ${q.optionD}"></li>
+									</ul>
+									<p>
+										<strong>Đáp án đúng:</strong> <span
+											th:text="${q.correctAnswer}"></span>
+									</p>
+									<p>
+										<strong>Giải thích:</strong> <em th:text="${q.explanation}"></em>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<footer class="footer" th:replace="~{admin/layout/footer::footer}"></footer>
+		</div>
+	</div>
+
+	<!-- Script -->
+	<div th:replace="~{admin/layout/script::script}"></div>
+</body>
+
+</html>

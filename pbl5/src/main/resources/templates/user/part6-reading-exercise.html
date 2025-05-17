@@ -4,6 +4,7 @@
 <head th:replace="~{user/layout/head::head}"></head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
 
@@ -33,7 +34,8 @@
 						</div>
 						<div class="ques-list">
 
-							<div class="question-detail" th:each="part6 : ${part6ReadingExercise.questions}">
+							<div class="question-detail"
+								th:each="part6 : ${part6ReadingExercise.questions}">
 								<div class="ques-audio">
 									<h3 th:text="'Câu hỏi ' + ${part6.number}"></h3>
 								</div>
@@ -72,7 +74,8 @@
 											</div>
 											<div>
 												<span>Giải thích: </span>
-												<p th:utext="${#strings.replace(part6.explanation, '.', '.<br>')}"></p>
+												<p
+													th:utext="${#strings.replace(part6.explanation, '.', '.<br>')}"></p>
 											</div>
 										</div>
 										<button class="hide-explanation">Ẩn giải thích</button>
@@ -160,5 +163,5 @@
 		});
 	</script>
 </body>
-
+<script th:src="@{/user-asset/preloader.js}"></script>
 </html>

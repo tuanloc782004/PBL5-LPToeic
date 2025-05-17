@@ -2,23 +2,28 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	<link rel="stylesheet" th:href="@{/login-form-asset/style.css}">
-	<title>LPToeic | Tài khoản</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}">
+<link rel="stylesheet" th:href="@{/user-asset/preloader.css}" />
+<title>LPToeic | Tài khoản</title>
 </head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 	<div class="container" id="container">
 		<a th:href="@{/}" class="home-button"><i class="fas fa-home"></i></a>
 		<div class="form-container sign-up">
 			<form th:action="@{/register}" method="post" th:object="${user}">
 				<h1>Tạo tài khoản</h1>
 				<p th:if="${error}" th:text="${error}" style="color: red;"></p>
-				<input type="text" th:field="*{username}" placeholder="Username" required> <input type="email"
-					th:field="*{email}" placeholder="Email" required> <input type="password" th:field="*{password}"
-					placeholder="Mật khẩu" required> <input type="password" th:field="*{confirmPassword}"
+				<input type="text" th:field="*{username}" placeholder="Username"
+					required> <input type="email" th:field="*{email}"
+					placeholder="Email" required> <input type="password"
+					th:field="*{password}" placeholder="Mật khẩu" required> <input
+					type="password" th:field="*{confirmPassword}"
 					placeholder="Nhập lại mật khẩu" required>
 				<button>Đăng ký</button>
 			</form>
@@ -26,7 +31,7 @@
 		<div class="form-container sign-in">
 			<form th:action="@{/login}" method="post">
 				<h1>Đăng nhập</h1>
-        <p th:if="${successMessage}" th:text="${successMessage}"
+				<p th:if="${successMessage}" th:text="${successMessage}"
 					style="color: green;"></p>
 				<p th:if="${errorMessage}" th:text="${errorMessage}"
 					style="color: red;"></p>
@@ -55,6 +60,7 @@
 	</div>
 
 	<script th:src="@{/login-form-asset/script.js}"></script>
+	<script th:src="@{/user-asset/preloader.js}"></script>
 
 </body>
 

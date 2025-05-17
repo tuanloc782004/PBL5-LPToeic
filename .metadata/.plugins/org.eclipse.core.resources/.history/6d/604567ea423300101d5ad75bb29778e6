@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+/* Preloader nền */
+#preloader {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #a3cef1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Đường đua (đường xám tối) */
+.road {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 100px;
+  background: #444;
+  overflow: hidden;
+}
+
+/* Đường kẻ trắng chạy */
+.road-stripes {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 200vw;
+  height: 20px;
+  background: repeating-linear-gradient(to right, #fff 0 30px, transparent 30px 60px);
+  animation: moveStripes 2s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-60px);
+  }
+}
+
+/* Container xe */
+.car-container {
+  position: relative;
+  width: 150px;
+  height: 80px;
+  animation: drive 3s linear infinite;
+}
+
+/* Thân xe */
+.car-body {
+  width: 150px;
+  height: 60px;
+  background: #3498db;
+  border-radius: 15px 15px 5px 5px;
+  position: relative;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Kính xe */
+.car-window {
+  width: 60px;
+  height: 40px;
+  background: #ecf0f1;
+  border-radius: 8px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Bánh xe */
+.wheel {
+  width: 40px;
+  height: 40px;
+  background: #2c3e50;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -20px;
+  border: 5px solid #34495e;
+  animation: wheel-spin 1s linear infinite;
+}
+
+.wheel:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  background: #bdc3c7;
+  border-radius: 50%;
+}
+
+.wheel.left {
+  left: 20px;
+}
+
+.wheel.right {
+  right: 20px;
+}
+
+/* Animations */
+@keyframes drive {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 200px));
+  }
+}
+
+@keyframes wheel-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

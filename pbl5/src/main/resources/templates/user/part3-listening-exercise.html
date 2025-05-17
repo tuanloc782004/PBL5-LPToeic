@@ -4,6 +4,7 @@
 <head th:replace="~{user/layout/head::head}"></head>
 
 <body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
 
@@ -15,7 +16,7 @@
 						<h3>Phần 3: Đoạn hội thoại</h3>
 					</div>
 					<div class="list-topic">
-<ul th:each="part3ListeningExerciseOfList, iterStat : ${list}"
+						<ul th:each="part3ListeningExerciseOfList, iterStat : ${list}"
 							th:class="${requestURI == #strings.concat('/part3-listening-exercise/', part3ListeningExerciseOfList.id) 
                           ? 'active' 
                           : (iterStat.index == 0 && requestURI == '/part3-listening-exercise' ? 'active' : '')}">
@@ -31,12 +32,14 @@
 						<div class="part34-audio">
 							<p>Nghe và trả lời câu hỏi:</p>
 							<audio controls>
-								<source th:src="${part3ListeningExercise.audioUrl}" type="audio/mpeg">
+								<source th:src="${part3ListeningExercise.audioUrl}"
+									type="audio/mpeg">
 							</audio>
 						</div>
 
 						<div class="ques-list">
-							<div class="question-detail" th:each="part3 : ${part3ListeningExercise.questions}">
+							<div class="question-detail"
+								th:each="part3 : ${part3ListeningExercise.questions}">
 								<div class="ques-audio">
 									<h3 th:text="'Câu hỏi ' + ${part3.number}"></h3>
 								</div>
@@ -75,7 +78,8 @@
 											</div>
 											<div>
 												<span>Giải thích: </span>
-												<p th:utext="${#strings.replace(part3.explanation, '.', '.<br>')}"></p>
+												<p
+													th:utext="${#strings.replace(part3.explanation, '.', '.<br>')}"></p>
 											</div>
 										</div>
 										<button class="hide-explanation">Ẩn giải thích</button>
@@ -163,5 +167,5 @@
 		});
 	</script>
 </body>
-
+<script th:src="@{/user-asset/preloader.js}"></script>
 </html>

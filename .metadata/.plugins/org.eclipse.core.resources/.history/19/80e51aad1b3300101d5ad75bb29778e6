@@ -1,0 +1,53 @@
+package com.pbl5.ai;
+
+package com.pbl5.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.completion.CompletionResult;
+import com.theokanning.openai.service.OpenAiService;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AiQuestionServiceImpl implements AiQuestionService {
+
+	private final OpenAiService openAiService;
+
+	@Override
+	public List<String> generatePart5Questions(int quantity) {
+		String prompt = buildPrompt(quantity);
+
+		CompletionRequest completionRequest = CompletionRequest.builder().prompt(prompt).model("text-davinci-003") // hoặc
+																													// gpt-3.5-turbo-instruct
+																													// nếu
+																													// hỗ
+																													// trợ
+				.maxTokens(1500).temperature(0.7).topP(1.0).n(1).build();
+
+		CompletionResult result = openAiService.createCompletion(completionRequest);
+
+		String content = result.getChoices().get(0).getText();
+
+		return parseQuestions(content);
+	}
+
+	private String buildPrompt(int quantity) {
+		return "Hãy sinh ra " + quantity
+				+ " câu hỏi TOEIC Part 5 (hoàn thành câu), mỗi câu có 4 đáp án (A, B, C, D) và đáp án đúng.\n"
+				+ "Định dạng ví dụ:\n" + "1. The manager ______ to submit the report by Friday.\n"
+				+ "A. expects\nB. expect\nC. expected\nD. expecting\n"
+				+ "Đáp án: A\nGiải thích: 'The manager' là chủ ngữ số ít nên dùng 'expects'.\n\n";
+	}
+
+	private List<String> parseQuestions(String content) {
+		List<String> result = new ArrayList<>();
+		result.add(content);
+		return result;
+	}
+}

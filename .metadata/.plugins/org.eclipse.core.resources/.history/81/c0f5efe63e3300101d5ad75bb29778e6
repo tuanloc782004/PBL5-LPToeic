@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{user/layout/head::head}"></head>
+
+<body>
+
+	<header th:replace="~{user/layout/header::header}"></header>
+
+	<main class="main-container">
+		<div class="main-content-card">
+			<div class="header-title">
+				<h1>Luyện nghe tiếng Anh</h1>
+			</div>
+			<div class="cards">
+				<div class="card">
+					<a th:href="@{/part1-listening-exercise}">
+						<div class="part-img">
+							<img th:src="@{/user-asset/image/part-1.jpg}" alt="">
+						</div>
+						<div class="part-title">
+							<h3>Phần 1</h3>
+							<h5>Mô tả tranh</h5>
+							<p>Thí sinh sẽ nghe 1 lần duy nhất 4 câu mô tả về một bức
+								tranh. Sau đó chọn 1 đáp án mô tả đúng nhất bức tranh đó.</p>
+						</div>
+					</a>
+				</div>
+				<div class="card">
+					<a th:href="@{/part2-listening-exercise}">
+						<div class="part-img">
+							<img th:src="@{/user-asset/image/part-2.jpg}" alt="">
+						</div>
+						<div class="part-title">
+							<h3>Phần 2</h3>
+							<h5>Hỏi - Đáp</h5>
+							<p>Thí sinh sẽ nghe 1 lần duy nhất 3 câu hồi đáp cho 1 câu
+								hỏi hoặc 1 câu nói. Sau đó chọn câu hồi đáp phù hợp nhất.</p>
+						</div>
+					</a>
+				</div>
+				<div class="card">
+					<a th:href="@{/part3-listening-exercise}">
+						<div class="part-img">
+							<img th:src="@{/user-asset/image/part-3.jpg}" alt="">
+						</div>
+						<div class="part-title">
+							<h3>Phần 3</h3>
+							<h5>Đoạn hội thoại</h5>
+							<p>Thí sinh sẽ nghe 1 lần duy nhất các đoạn hội thoại giữa 2
+								hoặc 3 người. Mỗi đoạn hội thoại sẽ có 3 câu hỏi, mỗi câu hỏi có
+								4 lựa chọn. Thí sinh đọc câu hỏi sau đó chọn câu trả lời phù hợp
+								nhất.</p>
+						</div>
+					</a>
+				</div>
+				<div class="card">
+					<a th:href="@{/part4-listening-exercise}">
+						<div class="part-img">
+							<img th:src="@{/user-asset/image/part-4.jpg}" alt="">
+						</div>
+						<div class="part-title">
+							<h3>Phần 4</h3>
+							<h5>Bài nói ngắn</h5>
+							<p>Thí sinh sẽ nghe 1 lần duy nhất các bài nói ngắn. Mỗi bài
+								sẽ có 3 câu hỏi, mỗi câu hỏi có 4 lựa chọn. Thí sinh đọc câu hỏi
+								sau đó chọn câu trả lời phù hợp nhất.</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>

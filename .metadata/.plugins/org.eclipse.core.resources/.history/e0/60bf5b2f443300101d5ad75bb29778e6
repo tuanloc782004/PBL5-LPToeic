@@ -1,0 +1,17 @@
+.portrait {
+  position: relative;
+  border-radius: 15px;
+  width: 120px;
+  opacity: 0.4;
+  transition: transform 0.3s, opacity 0.3s;
+  animation: spotlight 6s infinite ease-in-out;
+}
+
+@keyframes spotlight {
+  0%, 33% { opacity: 0.4; transform: scale(1); }
+  11%, 22% { opacity: 1; transform: scale(1.1); }
+}
+
+.portrait1 { animation-delay: 0s; }
+.portrait2 { animation-delay: 2s; }
+.portrait3 { animation-delay: 4s; }
