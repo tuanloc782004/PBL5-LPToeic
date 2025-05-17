@@ -14,25 +14,22 @@
 							<h3>Lịch sử làm bài</h3>
 						</div>
 						<div class="card-custom">
-							<div class="search-box">
-								<input type="text" class="form-control"
-									placeholder="🔍 Tìm kiếm..."> <input type="date"
-									class="form-control" placeholder="📅 Lọc theo ngày">
-							</div>
 							<table class="table table-bordered text-center">
 								<thead>
 									<tr>
-										<th>#</th>
-										<th>📅 Ngày Giờ</th>
-										<th>✅ Số Câu Đúng</th>
-										<th>❌ Số Câu Sai</th>
-										<th>📋 Tổng Số Câu</th>
+										<th>Bài thi thử</th>
+										<th>Ngày Giờ</th>
+										<th>Số Câu Đúng</th>
+										<th>Số Câu Sai</th>
+										<th>Tổng Số Câu</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:each="testResult : ${list}">
-										<td th:text="${testResult.id}">id</td>
-										<td th:text="${testResult.createdAt}">created At</td>
+										<td th:text="${testResult.mockExam.mockExamName}">id</td>
+										<td
+											th:text="${#temporals.format(testResult.createdAt, 'dd/MM/yyyy HH:mm')}">created
+											At</td>
 										<td><span class="highlight text-correct"
 											th:text="${testResult.correctAnswers}">correctAnswers</span></td>
 										<td><span class="highlight text-wrong"

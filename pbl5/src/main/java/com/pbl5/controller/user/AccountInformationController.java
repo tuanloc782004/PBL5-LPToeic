@@ -152,32 +152,64 @@ public class AccountInformationController {
 	}
 
 	
+	// @PostMapping("/change-password")
+	// public String updatePassword(@RequestParam("oldPassword") String oldPassword,
+	// 		@RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword,
+	// 		RedirectAttributes redirectAttributes) {
+	// 	System.out.println(">>> Đã nhận request đổi mật khẩu <<<");
+
+	// 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	// 	String currentUsername = auth.getName();
+	// 	User currentUser = userService.findByUsername(currentUsername);
+
+	// 	if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+	// 		redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
+	// 		return "redirect:/user/account/change-password";
+	// 	}
+
+	// 	if (!newPassword.equals(confirmPassword)) {
+	// 		redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
+	// 		return "redirect:/user/account/change-password";
+	// 	}
+
+	// 	currentUser.setPassword(passwordEncoder.encode(newPassword));
+	// 	userService.save(currentUser);
+
+	// 	redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
+	// 	return "redirect:/user/account/change-password";
+	// }
+
 	@PostMapping("/change-password")
-	public String updatePassword(@RequestParam("oldPassword") String oldPassword,
-			@RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword,
-			RedirectAttributes redirectAttributes) {
-		System.out.println(">>> Đã nhận request đổi mật khẩu <<<");
+public String updatePassword(@RequestParam("oldPassword") String oldPassword,
+	@RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword,
+	RedirectAttributes redirectAttributes) {
+	System.out.println(">>> Đã nhận request đổi mật khẩu <<<");
 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String currentUsername = auth.getName();
-		User currentUser = userService.findByUsername(currentUsername);
+	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	String currentUsername = auth.getName();
+	User currentUser = userService.findByUsername(currentUsername);
 
-		if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
-			redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
-			return "redirect:/user/account/change-password";
-		}
-
-		if (!newPassword.equals(confirmPassword)) {
-			redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
-			return "redirect:/user/account/change-password";
-		}
-
-		currentUser.setPassword(passwordEncoder.encode(newPassword));
-		userService.save(currentUser);
-
-		redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
+	// Kiểm tra mật khẩu cũ
+	if (!passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
+		redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu cũ không đúng.");
 		return "redirect:/user/account/change-password";
 	}
+
+	// Kiểm tra mật khẩu mới và xác nhận mật khẩu có khớp không
+	if (!newPassword.equals(confirmPassword)) {
+		redirectAttributes.addFlashAttribute("errorMessage", "Mật khẩu mới và xác nhận mật khẩu không khớp.");
+		return "redirect:/user/account/change-password";
+	}
+
+	// Cập nhật mật khẩu mới
+	currentUser.setPassword(passwordEncoder.encode(newPassword));
+	userService.save(currentUser);
+
+	// Thêm thông báo thành công
+	redirectAttributes.addFlashAttribute("successMessage", "Mật khẩu đã được cập nhật thành công.");
+	return "redirect:/user/account/change-password";
+}
+
 
 	@RequestMapping("/history-test")
 	public String cardMockExam(Model model, RedirectAttributes redirectAttributes) {
