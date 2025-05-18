@@ -12,6 +12,8 @@
 		<div class="main-content-test">
 			<div class="header-title">
 				<h3 th:text="'TOEIC ' + ${mockExam.mockExamName}">TOEIC Test</h3>
+				<input type="hidden" id="currentUserId" th:value="${currentUser.id}" />
+				<input type="hidden" id="mockExamId" th:value="${mockExam.id}" />
 			</div>
 			<div class="wrapper-test">
 
@@ -632,38 +634,85 @@
 	</main>
 
 	<script>
-	const mockExamId = /*[[${mockExam.id}]]*/ 0;
+	// Giả sử server truyền biến này, ví dụ:
+	const currentUserId = document.getElementById('currentUserId').value || 'anonymous';
+	const mockExamId = document.getElementById('mockExamId').value || 0;
+
+	console.log("currentUserId =", currentUserId);
+	console.log("mockExamId =", mockExamId);
+
+	// Key localStorage theo user + mockExam
+	const TIME_KEY = `user-${currentUserId}-mockExam-${mockExamId}-remainingTime`;
+	const ANSWER_KEY = `user-${currentUserId}-mockExam-${mockExamId}-answers`;
 
 	let timerElement = document.querySelector(".time-sum");
 	let duration = 2 * 60 * 60; // 2 tiếng = 7200 giây
 
 	// Load lại thời gian nếu có trong localStorage
-	if (localStorage.getItem("mockExamId") == mockExamId && localStorage.getItem("remainingTime")) {
-	    duration = parseInt(localStorage.getItem("remainingTime"));
-	} else {
-	    // Nếu khác đề thi thì reset lại localStorage
-	    localStorage.clear();
-	    localStorage.setItem("mockExamId", mockExamId);
+	if (localStorage.getItem(TIME_KEY)) {
+	    duration = parseInt(localStorage.getItem(TIME_KEY));
 	}
 
+	// Load đáp án đã chọn nếu có
+	let savedAnswers = {};
+	try {
+	    savedAnswers = JSON.parse(localStorage.getItem(ANSWER_KEY)) || {};
+	} catch(e) {
+	    savedAnswers = {};
+	}
+
+	// Phục hồi đáp án lên form và highlight sidebar tương ứng
+	document.querySelectorAll('input[type="radio"]').forEach(input => {
+	    if (savedAnswers[input.name] === input.id) {
+	        input.checked = true;
+	        const questionNumber = input.name.split('-')[1];
+	        const answerLetter = input.id.split('-')[0].slice(-1);
+	        const sidebarLink = document.querySelector(`.item-question[href="#question-${questionNumber}"]`);
+	        if (sidebarLink) {
+	            sidebarLink.classList.add('selected');
+	            sidebarLink.setAttribute("data-tooltip", `Đã chọn: ${answerLetter}`);
+	        }
+	    }
+	});
+
+	// Định dạng thời gian hiển thị
+	function formatTime(seconds) {
+	    const h = Math.floor(seconds / 3600);
+	    const m = Math.floor((seconds % 3600) / 60);
+	    const s = seconds % 60;
+	    return `${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+	}
+
+	// Cập nhật đồng hồ
 	function updateTimer() {
-	    const hours = Math.floor(duration / 3600);
-	    const minutes = Math.floor((duration % 3600) / 60);
-	    const seconds = duration % 60;
-
-	    timerElement.textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-	    if (duration > 0) {
-	        duration--;
-	        localStorage.setItem("remainingTime", duration); // Lưu thời gian
-	        setTimeout(updateTimer, 1000);
-	    } else {
+	    if (duration <= 0) {
 	        alert("Hết giờ!");
 	        document.querySelector(".btn-submit-test").click();
+	        return;
 	    }
+	    timerElement.textContent = formatTime(duration);
+	    duration--;
+	    localStorage.setItem(TIME_KEY, duration);
+	    setTimeout(updateTimer, 1000);
 	}
 
 	updateTimer();
+
+	// Khi chọn đáp án, lưu lại vào savedAnswers rồi lưu vào localStorage
+	document.querySelectorAll('input[type="radio"]').forEach(input => {
+	    input.addEventListener('change', function () {
+	        savedAnswers[this.name] = this.id;
+	        localStorage.setItem(ANSWER_KEY, JSON.stringify(savedAnswers));
+
+	        const questionNumber = this.name.split('-')[1];
+	        const answerLetter = this.id.split('-')[0].slice(-1);
+	        const sidebarLink = document.querySelector(`.item-question[href="#question-${questionNumber}"]`);
+	        if (sidebarLink) {
+	            sidebarLink.classList.add('selected');
+	            sidebarLink.setAttribute("data-tooltip", `Đã chọn: ${answerLetter}`);
+	        }
+	    });
+	});
 
 	// Cuộn mượt tới câu hỏi khi click sidebar
 	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -676,114 +725,82 @@
 	    });
 	});
 
-	document.addEventListener("DOMContentLoaded", function () {
-	    // Load lại đáp án từ localStorage
-	    document.querySelectorAll('input[type="radio"]').forEach(input => {
-	        const savedValue = localStorage.getItem(input.name);
-	        if (savedValue === input.id) {
-	            input.checked = true;
-	            const questionNumber = input.name.split('-')[1];
-	            const answerLetter = input.id.split('-')[0].slice(-1);
-	            const sidebarLink = document.querySelector(`.item-question[href="#question-${questionNumber}"]`);
-	            if (sidebarLink) {
-	                sidebarLink.classList.add('selected');
-	                sidebarLink.setAttribute("data-tooltip", `Đã chọn: ${answerLetter}`);
-	            }
-	        }
+	// Xử lý khi nộp bài
+	const submitBtn = document.querySelector(".btn-submit-test");
+	const saveBtnDiv = document.querySelector(".div-result");
+	const scoreSummary = document.getElementById("score-summary");
 
-	        // Khi chọn đáp án thì lưu vào localStorage
-	        input.addEventListener('change', function () {
-	            localStorage.setItem(this.name, this.id);
-
-	            const questionNumber = this.name.split('-')[1];
-	            const answerLetter = this.id.split('-')[0].slice(-1);
-	            const sidebarLink = document.querySelector(`.item-question[href="#question-${questionNumber}"]`);
-	            if (sidebarLink) {
-	                sidebarLink.classList.add('selected');
-	                sidebarLink.setAttribute("data-tooltip", `Đã chọn: ${answerLetter}`);
-	            }
-	        });
-	    });
-
-	    // Xử lý khi nộp bài
+	submitBtn.addEventListener("click", function () {
+	    const questions = document.querySelectorAll(".question-detail");
 	    let correctCount = 0;
 	    let wrongCount = 0;
 
-	    const submitBtn = document.querySelector(".btn-submit-test");
-	    const saveBtnDiv = document.querySelector(".div-result");
-	    const scoreSummary = document.getElementById("score-summary");
+	    document.querySelector(".time-test").style.display = "none";
 
-	    submitBtn.addEventListener("click", function () {
-	        const questions = document.querySelectorAll(".question-detail");
-	        correctCount = 0;
-	        wrongCount = 0;
+	    questions.forEach(question => {
+	        const questionId = question.getAttribute("id");
+	        const number = questionId.split("-")[1];
+	        const sidebarLink = document.querySelector(`.item-question[href="#${questionId}"]`);
 
-	        document.querySelector(".time-test").style.display = "none";
+	        const correctAnswer = question.querySelector(".check-ans span").textContent.trim();
+	        const answers = question.querySelectorAll('input[type="radio"]');
+	        const labels = question.querySelectorAll(".choose-ans label");
+	        const checkAns = question.querySelector(".check-ans");
+	        const ansDetail = question.querySelector(".ans-detail");
 
-	        questions.forEach(question => {
-	            const questionId = question.getAttribute("id");
-	            const number = questionId.split("-")[1];
-	            const sidebarLink = document.querySelector(`.item-question[href="#${questionId}"]`);
-
-	            const correctAnswer = question.querySelector(".check-ans span").textContent.trim();
-	            const answers = question.querySelectorAll('input[type="radio"]');
-	            const labels = question.querySelectorAll(".choose-ans label");
-	            const checkAns = question.querySelector(".check-ans");
-	            const ansDetail = question.querySelector(".ans-detail");
-
-	            let selectedIndex = -1;
-	            answers.forEach((input, index) => {
-	                input.disabled = true;
-	                if (input.checked) selectedIndex = index;
-	            });
-
-	            if (selectedIndex !== -1) {
-	                const selectedAnswer = String.fromCharCode(65 + selectedIndex);
-	                if (selectedAnswer === correctAnswer) {
-	                    labels[selectedIndex].style.color = "green";
-	                    labels[selectedIndex].innerHTML += " ✔️";
-	                    correctCount++;
-	                    sidebarLink.classList.add("correct");
-	                } else {
-	                    labels[selectedIndex].style.color = "red";
-	                    labels[selectedIndex].innerHTML += " ❌";
-	                    const correctIndex = [...labels].findIndex(label =>
-	                        label.textContent.trim().startsWith(correctAnswer)
-	                    );
-	                    if (correctIndex !== -1) {
-	                        labels[correctIndex].style.color = "green";
-	                        labels[correctIndex].innerHTML += " ✔️";
-	                    }
-	                    wrongCount++;
-	                    sidebarLink.classList.add("wrong");
-	                }
-	            } else {
-	                wrongCount++;
-	                if (sidebarLink) {
-	                    sidebarLink.classList.add("unanswered");
-	                }
-	            }
-
-	            checkAns.style.display = "block";
-	            ansDetail.style.display = "block";
+	        let selectedIndex = -1;
+	        answers.forEach((input, index) => {
+	            input.disabled = true;
+	            if (input.checked) selectedIndex = index;
 	        });
 
-	        submitBtn.style.display = "none";
-	        saveBtnDiv.style.display = "block";
+	        if (selectedIndex !== -1) {
+	            const selectedAnswer = String.fromCharCode(65 + selectedIndex);
+	            if (selectedAnswer === correctAnswer) {
+	                labels[selectedIndex].style.color = "green";
+	                labels[selectedIndex].innerHTML += " ✔️";
+	                correctCount++;
+	                sidebarLink.classList.add("correct");
+	            } else {
+	                labels[selectedIndex].style.color = "red";
+	                labels[selectedIndex].innerHTML += " ❌";
+	                const correctIndex = [...labels].findIndex(label =>
+	                    label.textContent.trim().startsWith(correctAnswer)
+	                );
+	                if (correctIndex !== -1) {
+	                    labels[correctIndex].style.color = "green";
+	                    labels[correctIndex].innerHTML += " ✔️";
+	                }
+	                wrongCount++;
+	                sidebarLink.classList.add("wrong");
+	            }
+	        } else {
+	            wrongCount++;
+	            if (sidebarLink) {
+	                sidebarLink.classList.add("unanswered");
+	            }
+	        }
 
-	        scoreSummary.innerHTML = `
-	            <div style="color: green;">Số câu đúng: ${correctCount}/200</div>
-	            <div style="color: red;">Số câu sai: ${wrongCount}/200</div>
-	        `;
-
-	        // Truyền giá trị đúng, sai vào các input ẩn
-	        document.getElementById("correctInput").value = correctCount;
-	        document.getElementById("wrongInput").value = wrongCount;
-
-	        // Xoá dữ liệu localStorage sau khi nộp
-	        localStorage.clear();
+	        checkAns.style.display = "block";
+	        ansDetail.style.display = "block";
 	    });
-	});
+
+	    submitBtn.style.display = "none";
+	    saveBtnDiv.style.display = "block";
+
+	    scoreSummary.innerHTML = `
+	        <div style="color: green;">Số câu đúng: ${correctCount}/200</div>
+	        <div style="color: red;">Số câu sai: ${wrongCount}/200</div>
+	    `;
+
+	    // Truyền giá trị đúng, sai vào các input ẩn
+	    document.getElementById("correctInput").value = correctCount;
+	    document.getElementById("wrongInput").value = wrongCount;
+
+	    // Xoá dữ liệu localStorage liên quan user+mockExam sau khi nộp
+	    localStorage.removeItem(TIME_KEY);
+	    localStorage.removeItem(ANSWER_KEY);
+		});
 	</script>
 
 </body>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Nhập mã OTP</title>
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="stylesheet" th:href="@{/user-asset/preloader.css}" />
+
+<style>
+/* Toàn bộ giao diện */
+body {
+	font-family: "Arial", sans-serif;
+	background-color: #f4f7fc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+/* Container */
+.container {
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+}
+
+/* Cải thiện nhãn và input */
+label {
+	font-size: 16px;
+	margin-bottom: 10px;
+	text-align: left;
+	display: block;
+}
+
+input[type="otp"] {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+/* Nút home */
+.home-button {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 40px;
+	height: 40px;
+	background-color: #1a1a96; /* hoặc màu nền giống ảnh */
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+	background-color: #15157c;
+}
+
+/* Thông báo lỗi và thành công */
+p {
+	margin-top: 10px; /* Điều chỉnh khoảng cách lên một chút */
+	font-size: 14px;
+}
+
+p.error {
+	color: red;
+}
+
+p.success {
+	color: green;
+}
+
+/* Tiêu đề form */
+h1 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+/* Nhãn và input */
+label {
+	font-size: 16px;
+	margin-bottom: 10px;
+	text-align: left;
+	display: block;
+}
+
+input[type="text"] {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+/* Nút xác nhận */
+button {
+	width: 100%;
+	padding: 12px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+/* Thông báo lỗi và thành công */
+p {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+p.error {
+	color: red;
+}
+
+p.success {
+	color: green;
+}
+/* Liên kết */
+a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Đếm ngược thời gian và số lần thử */
+#timer, #attempts {
+	text-align: center;
+	margin-top: 10px;
+}
+
+/* Responsive */
+@media ( max-width : 500px) {
+	.container {
+		padding: 20px;
+	}
+	button {
+		font-size: 14px;
+	}
+}
+</style>
+</head>
+<body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
+	<div class="container" id="container">
+		<a th:href="@{/}" class="home-button"><i class="fas fa-home"></i></a>
+
+		<h1>Nhập mã OTP</h1>
+
+		<form th:action="@{/verify-otp}" method="POST">
+			<!-- Lưu email người dùng trong form -->
+			<input type="hidden" name="email" th:value="${email}" />
+			<!-- Truyền actionType vào form -->
+			<input type="hidden" name="actionType" th:value="${actionType}" /> <input
+				type="text" id="otp" name="otp" placeholder="Nhập mã OTP" required />
+			<button type="submit">Xác nhận</button>
+		</form>
+
+		<div id="timer">
+			<span id="countdown">60</span> giây còn lại
+		</div>
+		<div id="attempts">
+			<p>
+				Số lần thử còn lại: <span id="remainingAttempts">3</span>
+			</p>
+		</div>
+
+		<script th:inline="javascript">
+        const otpForm = document.querySelector("form");
+        const countdown = document.getElementById("countdown");
+        const remainingAttemptsSpan =
+          document.getElementById("remainingAttempts");
+
+        let remainingTime = 60;
+        let remainingAttempts = 3;
+
+        if (isNaN(remainingTime) || remainingTime < 0) remainingTime = 60;
+        if (isNaN(remainingAttempts) || remainingAttempts < 0)
+          remainingAttempts = 3;
+
+        remainingAttemptsSpan.textContent = remainingAttempts;
+
+        const interval = setInterval(() => {
+          if (remainingTime > 0) {
+            remainingTime--;
+            countdown.textContent = remainingTime;
+          } else {
+            clearInterval(interval);
+
+            // Đổi action form nếu hết thời gian
+            otpForm.setAttribute("action", "/resend-otp");
+
+            // Đổi text nút
+            otpForm.querySelector("button").textContent = "Gửi lại mã";
+
+            // Đổi tiêu đề
+            document.querySelector("h1").textContent = "Gửi lại mã OTP";
+
+            // Ẩn các ô nhập OTP
+            document.getElementById("otp").disabled = true;
+
+            // Hiển thị thông báo
+            document.getElementById("timer").textContent = "Thời gian đã hết!";
+          }
+        }, 1000);
+      </script>
+		<script th:src="@{/user-asset/preloader.js}"></script>
+	</div>
+</body>
+</html>

@@ -45,6 +45,12 @@ public class MockExamController {
 			MockExam mockExam = this.mockExamService.findById(id);
 
 			model.addAttribute("mockExam", mockExam);
+			
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String currentUsername = auth.getName();
+
+			User currentUser = userService.findByUsername(currentUsername);
+			model.addAttribute("currentUser", currentUser);
 
 		} catch (Exception e) {
 			logger.error("Lỗi khi lấy danh sách bài thi thử: ", e);

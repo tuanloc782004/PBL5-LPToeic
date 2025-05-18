@@ -24,7 +24,11 @@
 				<div th:if="${errorMessage}" class="alert alert-danger">
 					<p th:text="${errorMessage}"></p>
 				</div>
-				<h4 class="card-title">Thêm mới bài học từ vựng</h4>
+				<h4 class="card-title">
+					<a th:href="@{/admin/vocabulary-lesson}" class="text-decoration-none"> <i
+						class="mdi mdi-cube-unfolded"></i>
+					</a> Thêm mới bài học từ vựng
+				</h4>
 				<!-- first row starts here -->
 				<div class="row">
 					<div class="col-12 grid-margin stretch-card">

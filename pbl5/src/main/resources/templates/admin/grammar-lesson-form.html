@@ -24,8 +24,10 @@
 				<div th:if="${errorMessage}" class="alert alert-danger">
 					<p th:text="${errorMessage}"></p>
 				</div>
-				<h4 class="card-title"
-					th:text="${grammarLesson.id == null} ? 'Thêm mới bài học ngữ pháp' : 'Chỉnh sửa bài học ngữ pháp'">
+				<h4 class="card-title">
+					<a th:href="@{/admin/grammar-lesson}" class="text-decoration-none">
+						<i class="mdi mdi-houzz-box"></i>
+					</a> Thêm mới bài học ngữ pháp
 				</h4>
 				<!-- first row starts here -->
 				<div class="row">

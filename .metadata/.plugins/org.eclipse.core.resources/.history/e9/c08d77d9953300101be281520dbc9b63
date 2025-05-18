@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="stylesheet" th:href="@{/login-form-asset/style.css}" />
+<link rel="stylesheet" th:href="@{/user-asset/preloader.css}" />
+<title>Quên mật khẩu</title>
+<style>
+/* Toàn bộ giao diện */
+body {
+	font-family: "Arial", sans-serif;
+	background-color: #f4f7fc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+/* Container */
+.container {
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* Phân bổ đều không gian giữa các phần tử */
+	text-align: center;
+}
+
+/* Cải thiện nhãn và input */
+label {
+	font-size: 16px;
+	margin-bottom: 10px;
+	text-align: left;
+	display: block;
+}
+
+input[type="email"] {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+/* Nút home */
+.home-button {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 40px;
+	height: 40px;
+	background-color: #1a1a96; /* hoặc màu nền giống ảnh */
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+	background-color: #15157c;
+}
+
+/* Nút gửi */
+button {
+	width: 100%;
+	padding: 12px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+/* Thông báo lỗi và thành công */
+p {
+	margin-top: 10px; /* Điều chỉnh khoảng cách lên một chút */
+	font-size: 14px;
+}
+
+p.error {
+	color: red;
+}
+
+p.success {
+	color: green;
+}
+
+/* Liên kết */
+a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Căn giữa phần Quay lại Đăng nhập */
+.container p {
+	margin-top: 10px; /* Đảm bảo khoảng cách hợp lý */
+	align-self: center; /* Căn giữa nội dung trong phần container */
+}
+
+/* Responsive */
+@media ( max-width : 500px) {
+	.container {
+		padding: 20px;
+	}
+	button {
+		font-size: 14px;
+	}
+}
+</style>
+</head>
+
+<body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
+	<div class="container" id="container">
+		<a th:href="@{/}" class="home-button"><i class="fas fa-home"></i></a>
+
+		<h1>Nhập email</h1>
+		<form th:action="@{/forgot-password}" method="post">
+			<input type="email" x id="email" name="email"
+				placeholder="Nhập email của bạn" required />
+			<button type="submit">Gửi OTP</button>
+		</form>
+
+		<!-- Thông báo lỗi và thành công -->
+		<p th:if="${error}" th:text="${error}" class="error"></p>
+		<p th:if="${success}" th:text="${success}" class="success"></p>
+
+		<!-- Liên kết quay lại đăng nhập -->
+		<!-- Liên kết quay lại đăng nhập -->
+		<p>
+			Quay lại <a th:href="@{/login}">Đăng nhập</a>
+		</p>
+	</div>
+
+	<script th:src="@{/login-form-asset/script.js}"></script>
+	<script th:src="@{/user-asset/preloader.js}"></script>
+</body>
+</html>

@@ -24,8 +24,12 @@
 				<div th:if="${errorMessage}" class="alert alert-danger">
 					<p th:text="${errorMessage}"></p>
 				</div>
-				<h4 class="card-title">Thêm mới bài luyện nghe Phần 4 - Bài nói
-					ngắn</h4>
+				<h4 class="card-title">
+					<a th:href="@{/admin/part4-listening-exercise}"
+						class="text-decoration-none"> <i
+						class="mdi mdi-book-open-page-variant"></i>
+					</a> Thêm mới bài luyện nghe Phần 4 - Bài nói ngắn
+				</h4>
 				<!-- first row starts here -->
 				<div class="row">
 					<div class="col-12 grid-margin stretch-card">

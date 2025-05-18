@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/layout/head::head}"></head>
+
+<body>
+	<div th:replace="~{user/layout/preloader::preloader}"></div>
+	<div class="container-scroller">
+		<!-- partial:partials/_sidebar.html -->
+		<nav class="sidebar sidebar-offcanvas" id="sidebar"
+			th:replace="~{admin/layout/sidebar::sidebar}"></nav>
+		<!-- partial:partials/_navbar.html -->
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="~{admin/layout/navbar::navbar}"></nav>
+		<!-- partial -->
+		<div class="main-panel">
+			<div class="content-wrapper pb-0">
+				<!-- Hiển thị thông báo thành công -->
+				<div th:if="${successMessage}" class="alert alert-success">
+					<p th:text="${successMessage}"></p>
+				</div>
+				<!-- Hiển thị thông báo lỗi -->
+				<div th:if="${errorMessage}" class="alert alert-danger">
+					<p th:text="${errorMessage}"></p>
+				</div>
+
+				<div class="page-header flex-wrap">
+					<div class="header-left">
+						<h3>
+							Phần 5 - Điền từ vào câu: <span th:text="${quantity}"></span> câu hỏi được AI
+							sinh tự động
+						</h3>
+					</div>
+					<div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
+						<form th:action="@{/admin/ai/part5-export-excel}" method="post">
+							<div class="input-group-append">
+								<button type="submit" class="btn btn-sm btn-success">
+									<i class="mdi mdi-file-excel"></i> Xuất file Excel
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="row" th:each="q, iterStat : ${questions}">
+					<div class="col-md-12 mb-4">
+						<div class="card shadow-sm rounded-lg">
+							<div class="card-body">
+								<h4 class="card-title text-primary">Câu hỏi
+									[[${iterStat.count}]]</h4>
+								<p>
+									<strong>Câu hỏi:</strong> <span th:text="${q.question}"></span>
+								</p>
+								<ul class="list-group list-group-flush mb-3">
+									<li class="list-group-item"><span th:text="${q.optionA}"></span></li>
+									<li class="list-group-item"><span th:text="${q.optionB}"></span></li>
+									<li class="list-group-item"><span th:text="${q.optionC}"></span></li>
+									<li class="list-group-item"><span th:text="${q.optionD}"></span></li>
+								</ul>
+								<p class="mb-1">
+									<strong class="text-success">Đáp án đúng:</strong> <span
+										th:text="${q.correctAnswer}"></span>
+								</p>
+								<p>
+									<strong>Giải thích:</strong> <span th:text="${q.explanation}"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- content-wrapper ends -->
+			<!-- partial:partials/_footer.html -->
+			<footer class="footer" th:replace="~{admin/layout/footer::footer}">
+			</footer>
+			<!-- partial -->
+		</div>
+		<!-- main-panel ends -->
+	</div>
+	<!-- page-body-wrapper ends -->
+	<!-- container-scroller -->
+	<div th:replace="~{admin/layout/script::script}"></div>
+	<!-- End custom js for this page -->
+</body>
+
+</html>
