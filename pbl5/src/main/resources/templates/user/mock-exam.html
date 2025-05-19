@@ -4,6 +4,9 @@
 <head th:replace="~{user/layout/head::head}"></head>
 
 <body>
+
+	<span id="top"></span>
+
 	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
@@ -133,7 +136,7 @@
 											<strong th:text="${part1.number}">number</strong>
 										</div>
 										<div class="choose-ans">
-											<div class="choose-ans">
+											<div class="choose-ans part1">
 												<div>
 													<input type="radio" th:name="'question-' + ${part1.number}"
 														th:id="'optionA-' + ${part1.number}"> <label
@@ -488,7 +491,7 @@
 													<div class="number-question marked">
 														<strong th:text="${part6Question.number}">number</strong>
 													</div>
-													<div class="choose-ans">
+													<div class="choose-ans trandong">
 														<div>
 															<input type="radio"
 																th:name="'question-' + ${part6Question.number}"
@@ -562,7 +565,7 @@
 												th:each="part7Question : ${part7.questions}"
 												th:attr="id='question-' + ${part7Question.number}">
 												<div class="test-number have-question">
-													<div class="number-question-text">
+													<div class="number-question-text trandong">
 														<div class="number-question marked">
 															<strong th:text="${part7Question.number}">number</strong>
 														</div>
@@ -629,7 +632,7 @@
 					</div>
 				</div>
 			</div>
-
+			<a href="#top" class="to-top-btn"> To top <span class="line"></span></a>
 		</div>
 	</main>
 
@@ -802,6 +805,50 @@
 	    localStorage.removeItem(ANSWER_KEY);
 		});
 	</script>
+
+	<script>
+       
+	new kursor({
+	    type: 1, 
+	    color: "#ffc448", 
+	    removeDefaultCursor: true,
+	})
+
+	$(document).ready(function(){
+	    $('.project-slider').slick({
+	        autoplay: true, 
+	        infinite: true,
+	        slidesToShow: 3,
+	        slidesToScroll: 3,
+
+	        responsive: [
+	            {
+	                breakpoint: 1024,
+	                settings: {
+	                    slidesToShow: 2,
+	                    slidesToScroll: 2,
+	                }
+	            },
+	            {
+	                breakpoint: 650,
+	                settings: {
+	                    slidesToShow: 1,
+	                    slidesToScroll: 1,
+	                }
+	            }
+	        ]
+	    });
+	});
+
+	window.addEventListener("scroll", () => {
+	    let header = document.querySelector("header");
+	    let fixed = header.offsetTop;
+	    let scroll = document.querySelector(".to-top-btn");
+	    scroll.classList.toggle("show", window.scrollY > 500);
+	    header.classList.toggle("fixed", window.pageYOffset > fixed);
+	});
+
+   </script>
 
 </body>
 <script th:src="@{/user-asset/preloader.js}"></script>
