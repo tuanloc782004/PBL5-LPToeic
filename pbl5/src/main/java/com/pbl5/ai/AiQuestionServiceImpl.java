@@ -3,6 +3,7 @@ package com.pbl5.ai;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,11 +11,15 @@ import com.pbl5.dto.Part5DTO;
 import com.pbl5.dto.Part6DTO;
 import com.pbl5.dto.Part7DTO;
 import com.pbl5.dto.Part7DTO.Part7QuestionDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 @Service
 public class AiQuestionServiceImpl implements AiQuestionService {
+
+	private static final Logger logger = LoggerFactory.getLogger(AiQuestionServiceImpl.class);
 
 	@Value("${cohere.api.key}")
 	private String apiKey;
@@ -325,6 +330,54 @@ public class AiQuestionServiceImpl implements AiQuestionService {
 		part7.setQuestions(questions);
 
 		return part7;
+	}
+
+	private String buildPrompt(String userPrompt) {
+		userPrompt = userPrompt.trim().toLowerCase();
+
+		if (userPrompt.startsWith("dịch") || userPrompt.contains("tiếng anh") || userPrompt.contains("tiếng việt")) {
+			return "Bạn là một trợ lý học ngôn ngữ. Hãy dịch câu sau một cách chính xác:\n" + userPrompt;
+		} else if (userPrompt.contains("ngữ pháp") || userPrompt.startsWith("giải thích")) {
+			return "Bạn là một giáo viên tiếng Anh. Hãy giải thích ngữ pháp một cách rõ ràng và dễ hiểu:\n"
+					+ userPrompt;
+		} else {
+			return "Bạn là một trợ lý học tiếng Anh thân thiện. Hãy trả lời câu hỏi sau:\n" + userPrompt;
+		}
+	}
+
+	@Override
+	public String askQuestion(String userPrompt) {
+	    try {
+	        String prompt = buildPrompt(userPrompt);
+
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.APPLICATION_JSON);
+	        headers.setBearerAuth(apiKey);
+
+	        Map<String, Object> requestBody = new HashMap<>();
+	        requestBody.put("model", "command-r-plus");
+	        requestBody.put("message", prompt);
+	        requestBody.put("temperature", 0.7);
+	        requestBody.put("max_tokens", 300);
+
+	        String bodyJson = objectMapper.writeValueAsString(requestBody);
+	        HttpEntity<String> request = new HttpEntity<>(bodyJson, headers);
+
+	        ResponseEntity<String> response = restTemplate.postForEntity(apiUrl, request, String.class);
+
+	        if (response.getStatusCode() == HttpStatus.OK) {
+	            return parseTextFromResponse(response.getBody());
+	        } else {
+	            logger.error("Lỗi gọi API Cohere: {}", response.getStatusCode());
+	            return "Đã xảy ra lỗi khi gọi API. Vui lòng thử lại sau.";
+	        }
+	    } catch (HttpClientErrorException e) {
+	        logger.error("Lỗi HTTP từ Cohere API: {}", e.getResponseBodyAsString());
+	        return "Lỗi từ API: " + e.getResponseBodyAsString();
+	    } catch (Exception e) {
+	        logger.error("Lỗi hệ thống: ", e);
+	        return "Đã xảy ra lỗi hệ thống. Vui lòng thử lại.";
+	    }
 	}
 
 }

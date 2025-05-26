@@ -523,9 +523,14 @@
 	flex: 4;
 }
 
+.choose-ans.trandong {
+	display: flex;
+    align-items: start;
+}
+
 .choose-ans.trandong div {
     display: flex;
-    align-items: flex-start;
+    /*align-items: flex-start;*/
     padding: 10px;
 }
 

@@ -9,9 +9,10 @@ import com.pbl5.dto.Part7DTO;
 public interface AiQuestionService {
 
 	public List<Part5DTO> generatePart5Questions(int quantity) throws Exception;
-	
+
 	public List<Part6DTO> generatePart6Questions(int quantity) throws Exception;
-	
+
 	public List<Part7DTO> generatePart7Questions(int quantity) throws Exception;
 
+	public String askQuestion(String userPrompt);
 }

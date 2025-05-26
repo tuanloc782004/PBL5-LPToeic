@@ -2,8 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{user/layout/head::head}"></head>
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 
 <body>
+
 	<div th:replace="~{user/layout/preloader::preloader}"></div>
 
 	<header th:replace="~{user/layout/header::header}"></header>
@@ -141,13 +144,25 @@
 
 	<!-- CHATBOT -->
 	<div class="message-icon">
-		<a th:href="@{user/chatbot}"> <img src="/upload-dir/image/chatbot-icon.png"
+		<a href=""> <img src="/upload-dir/image/chatbot-icon.png"
 			alt="Message" /> <span class="tooltip">Hỏi cùng AI</span>
 		</a>
 	</div>
 
-</body>
+	<div id="chat-popup" class="chat-popup hidden">
+		<div class="chat-header">
+			<span>Hỏi cùng AI</span>
+			<button id="close-chat">&times;</button>
+		</div>
+		<div class="chat-body" id="chat-body"></div>
+		<div class="chat-input">
+			<input type="text" id="chat-input" placeholder="Nhập câu hỏi..." />
+			<button id="send-chat">Gửi</button>
+		</div>
+	</div>
 
+</body>
+<script th:src="@{/user-asset/chatbotAI.js}"></script>
 <script th:src="@{/user-asset/preloader.js}"></script>
 
 </html>
