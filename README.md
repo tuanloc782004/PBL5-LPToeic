@@ -1,67 +1,103 @@
 
-# 📚 PBL5-LPToeic – Ứng dụng Học và Thi thử TOEIC
+# 📚 PBL5-LPToeic – TOEIC Learning and Mock Test Web Application
 
 ---
 
-### 🔍 Giới thiệu
+### 🔍 Introduction
 
-**PBL5-LPToeic** là ứng dụng web hỗ trợ người học ôn luyện và thi thử TOEIC, bao gồm đầy đủ các kỹ năng Nghe, Đọc và Ngữ pháp. Ứng dụng sở hữu giao diện thân thiện, trực quan và dễ dàng sử dụng, giúp người dùng luyện tập hiệu quả.
-
----
-
-### 🚀 Tính năng nổi bật
-
-- 📝 **Luyện tập theo từng phần TOEIC:**
-  - 🖼️ Part 1: Hình ảnh
-  - ❓ Part 2: Hỏi – Đáp
-  - 🗣️ Part 3: Đoạn hội thoại
-  - 📢 Part 4: Bài nói chuyện
-  - ✍️ Part 5: Hoàn thành câu
-  - 📄 Part 6: Hoàn thành đoạn văn
-  - 📚 Part 7: Đọc hiểu
-- 📖 **Học ngữ pháp (Grammar):** bài giảng chi tiết kèm bài tập minh họa.
-- ⏱️ **Thi thử:** mô phỏng cấu trúc đề thi thật với giới hạn thời gian chặt chẽ.
-- ✅ **Tự động chấm điểm:** kết quả và lời giải được hiển thị ngay sau khi thi.
-- 📊 **Thống kê kết quả:** theo dõi tiến trình học tập và cải thiện theo thời gian.
-- 🗂️ **Danh sách từ vựng và mẹo làm bài:** giúp người học mở rộng vốn từ và nâng cao kỹ năng làm bài thi.
+**PBL5-LPToeic** is a web application designed to support learners in practicing and taking mock TOEIC tests, covering all essential skills: Listening, Reading, and Grammar. The application features a user-friendly and intuitive interface, helping users practice effectively.
 
 ---
 
-### 💻 Công nghệ sử dụng
+### 🚀 Key Features
 
-- ☕ **Backend:** Java (Spring Boot)
-- 🌐 **Frontend:** HTML, CSS, JavaScript, SCSS
-- 🛢️ **Cơ sở dữ liệu:** MySQL
+- 📝 **Practice by TOEIC parts:**
+  - 🖼️ Part 1: Photographs
+  - ❓ Part 2: Question-Response
+  - 🗣️ Part 3: Conversations
+  - 📢 Part 4: Talks
+  - ✍️ Part 5: Incomplete sentences
+  - 📄 Part 6: Text completion
+  - 📚 Part 7: Reading comprehension
+- 📖 **Grammar lessons:** Detailed lectures with illustrative exercises.
+- ⏱️ **Mock tests:** Simulate real TOEIC exams with strict time limits.
+- ✅ **Automatic scoring:** Results and explanations displayed immediately after tests.
+- 📊 **Performance statistics:** Track learning progress and improvement over time.
+- 🗂️ **Vocabulary list:** Help learners expand vocabulary and improve test skills.
 
 ---
 
-### 📂 Cấu trúc thư mục dự án
+### 🖼️ UI/UX Screenshots & Descriptions
 
-``` 
+Below are some key interface screenshots demonstrating major features of the project. You can find the images in the `screenshots` folder of the repository.
+
+| Screenshot                | Description                                              |
+|---------------------------|----------------------------------------------------------|
+| ![Home](screenshots/home.png)                                    | Homepage interface.                                       |
+| ![Listening Practice](screenshots/listening.png)                 | Listening practice interface (representing all 7 parts of Listening & Reading). |
+| ![Vocabulary](screenshots/vocabulary.png)                        | Vocabulary learning interface (also represents grammar lessons). |
+| ![Mock Exam](screenshots/mock-exam.png)                          | Mock test interface simulating real exam conditions.      |
+| ![AI Question Generation](screenshots/ai.png)                    | Automatic question generation using AI.                   |
+| ![Chatbot](screenshots/chatbot.png)                              | Chatbot interaction with users for learning support.     |
+| ![Exercise Management](screenshots/exercise-management.png)      | Manage lessons: vocabulary, grammar, listening & reading exercises, and mock tests. |
+| ![Account Management](screenshots/account-management.png)         | Manage user accounts (admin feature).                    |
+| ![Dashboard](screenshots/dashboard.png)                          | Admin dashboard with data statistics and charts.          |
+
+---
+
+### 💻 Technology Stack
+
+- ☕ **Backend:** Java (Spring Boot)  
+- 🌐 **Frontend:** HTML, CSS, JavaScript, SCSS  
+- 🛢️ **Database:** MySQL  
+
+---
+
+### 📂 Project Structure
+
+```
 PBL5-LPToeic/
-├── .metadata/           # Cấu hình dự án
-├── pbl5/                # Mã nguồn backend
-├── Upload Data/         # Dữ liệu tải lên
-├── Dump.sql             # File sao lưu database
-└── README.md            # Hướng dẫn này
-``` 
+├── .metadata/             # Project configurations
+├── pbl5/                  # Backend source code
+├── Upload Data/           # Uploaded data files
+├── screenshots/           # UI/UX screenshots
+├── Dump.sql               # Database backup file
+└── README.md              # This README file
+```
 
-### ⚙️ Hướng dẫn khởi chạy
+---
 
-1. Clone repo:
-   bash
+### ⚙️ How to Run
+
+1. Clone the repository:
+   ```bash
    git clone https://github.com/tuanloc782004/PBL5-LPToeic.git
    cd PBL5-LPToeic
+   ```
 
-2. Cấu hình và chạy backend:
-   - Mở thư mục `pbl5` bằng IDE Java (IntelliJ/Eclipse).
-   - Thiết lập kết nối database trong `application.properties`.
-   - Chạy ứng dụng Spring Boot.
+2. Configure and run backend:
+   - Open the `pbl5` folder in your Java IDE (IntelliJ, Eclipse, etc.).
+   - Set up your database connection in `application.properties`.
+   - Run the Spring Boot application.
+
 3. Frontend:
-   - Mở trình duyệt truy cập giao diện frontend.
-4. Cơ sở dữ liệu:
-   - Import file `Dump.sql` vào MySQL.
+   - Open the frontend interface in your web browser.
 
-### 📝 Giấy phép
+4. Database:
+   - Import `Dump.sql` into your MySQL database.
 
-Dự án cấp phép theo **MIT License**. Vui lòng xem file `LICENSE` để biết chi tiết.
+---
+
+### 📝 License
+
+This project is licensed under the **MIT License**. Please see the `LICENSE` file for details.
+
+---
+
+### 🔗 Repository Link
+
+[https://github.com/tuanloc782004/PBL5-LPToeic](https://github.com/tuanloc782004/PBL5-LPToeic)
+
+---
+
+Thank you for checking out the project! Feel free to contribute, report issues, or contact me for further collaboration.

@@ -1,7 +1,0 @@
-<div id="preloader" aria-label="Loading animation: running people" th:fragment="preloader">
-  <div class="people-track">
-    <img th:src="@{/user-asset/image/trang.png}" alt="Person 1" class="person person1" />
-    <img th:src="@{/user-asset/image/loc.png}" alt="Person 2" class="person person2" />
-    <img th:src="@{/user-asset/image/phuong.png}" alt="Person 3" class="person person3" />
-  </div>
-</div>
