@@ -159,10 +159,10 @@ public class ExcelServiceImpl implements ExcelService {
 		if (cell == null)
 			return "";
 		return switch (cell.getCellType()) {
-		case STRING -> cell.getStringCellValue().trim();
-		case NUMERIC -> String.valueOf((long) cell.getNumericCellValue());
-		case BOOLEAN -> String.valueOf(cell.getBooleanCellValue());
-		default -> "";
+			case STRING -> cell.getStringCellValue().trim();
+			case NUMERIC -> String.valueOf((long) cell.getNumericCellValue());
+			case BOOLEAN -> String.valueOf(cell.getBooleanCellValue());
+			default -> "";
 		};
 	}
 
